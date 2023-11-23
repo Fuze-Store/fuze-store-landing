@@ -7,9 +7,15 @@ const roboto = Roboto({
   display: 'swap',
 });
 
+declare module '@mui/material/Button' {
+  interface ButtonPropsSizeOverrides {
+    'extra-large': true;
+  }
+}
+
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
   typography: {
     fontFamily: roboto.style.fontFamily,
@@ -23,6 +29,23 @@ const theme = createTheme({
           }),
         }),
       },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          borderRadius: 50,
+          textTransform: 'none',
+        }),
+      },
+      variants: [
+        {
+          props: { size: 'extra-large' },
+          style: {
+            fontSize: '1rem',
+            padding: '0.65rem 2.75rem',
+          },
+        },
+      ],
     },
   },
 });
