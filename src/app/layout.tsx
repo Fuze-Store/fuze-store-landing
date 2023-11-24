@@ -1,5 +1,6 @@
 import AppBar from '@/components/AppBar';
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
+import { AppProvider } from '@/providers/App';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -38,19 +39,22 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
-          <AppBar />
-          <Box
-            component="main"
-            sx={{
-              flexGrow: 1,
-              bgcolor: 'background.default',
-              // ml: `${DRAWER_WIDTH}px`,
-              // mt: ['128px'],
-              // p: 3,
-            }}
-          >
-            {children}
-          </Box>
+          <AppProvider>
+            <AppBar />
+            <Box id="main" />
+            <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                bgcolor: 'background.default',
+                // ml: `${DRAWER_WIDTH}px`,
+                // mt: ['128px'],
+                // p: 3,
+              }}
+            >
+              {children}
+            </Box>
+          </AppProvider>
         </ThemeRegistry>
       </body>
     </html>

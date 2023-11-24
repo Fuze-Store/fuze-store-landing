@@ -1,13 +1,18 @@
 'use client';
 
+import { AppContext } from '@/contexts/App';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
-import { Link } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Box, IconButton } from '@mui/material';
 import AppBarMui from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
+import Link from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { useContext } from 'react';
 
 const ListGroup = styled('ul')(({ theme }) => ({
   display: 'flex',
@@ -44,11 +49,18 @@ const LinkItem = styled(Link)(({ theme }) => ({
 }));
 
 export default function AppBar() {
+  const { setShowDrawer } = useContext(AppContext);
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 150,
+  });
+
   return (
     <AppBarMui
       color="transparent"
-      position="absolute"
-      sx={{ boxShadow: 'none', zIndex: 2000 }}
+      position={trigger ? 'fixed' : 'absolute'}
+      sx={{ boxShadow: 'none' }}
     >
       <Toolbar style={{ minHeight: 128 }}>
         <Container
@@ -90,6 +102,19 @@ export default function AppBar() {
             </ListItem>
           </ListGroup>
         </Container>
+
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            right: (theme) => theme.spacing(2),
+            transform: 'translateY(-50%)',
+          }}
+        >
+          <IconButton onClick={() => setShowDrawer((prevState) => !prevState)}>
+            <MenuIcon />
+          </IconButton>
+        </Box>
       </Toolbar>
     </AppBarMui>
   );

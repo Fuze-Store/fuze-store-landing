@@ -1,59 +1,77 @@
+import ScrollTop from '@/components/ScrollToTop';
+import SideBar from '@/components/SideBar';
 import banner from '@/images/banner.jpg';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-export default function HomePage() {
+export default function HomePage({ ...props }) {
   return (
-    <Box sx={{ minHeight: 2000 }}>
-      <section style={{ overflow: 'hidden', position: 'relative' }}>
-        <Box
-          sx={{
-            alignItems: 'center',
-            display: 'flex',
-            position: 'relative',
-            backgroundImage: `url(${banner.src})`,
-            height: '100vh',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-          }}
-        >
-          <Container maxWidth="lg">
-            <Grid container>
-              <Grid xs={12} md={6}>
-                <Typography sx={{ mb: 2 }} fontWeight="bold" variant="h2">
-                  Premium
-                  <Box
-                    component="span"
-                    sx={{ color: 'primary.main' }}
-                    className="block"
+    <>
+      <Box sx={{ minHeight: 2000 }}>
+        <section style={{ overflow: 'hidden', position: 'relative' }}>
+          <Box
+            sx={{
+              alignItems: 'center',
+              display: 'flex',
+              position: 'relative',
+              backgroundImage: `url(${banner.src})`,
+              height: '100vh',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          >
+            <Container maxWidth="lg">
+              <Grid container>
+                <Grid item xs={12} md={6}>
+                  <Typography sx={{ mb: 2 }} fontWeight="bold" variant="h2">
+                    Premium
+                    <Box
+                      component="span"
+                      sx={{ color: 'primary.main' }}
+                      className="block"
+                    >
+                      Auto Accessories
+                    </Box>
+                  </Typography>
+
+                  <Typography
+                    sx={{ mb: 2 }}
+                    component="p"
+                    variant="h6"
+                    fontWeight="400"
                   >
-                    Auto Accessories
-                  </Box>
-                </Typography>
+                    Lorem ipsum is simply dummy text of the printing and
+                    typesetting. Lorem Ipsum has been the industry’s standard
+                    dummy.
+                  </Typography>
 
-                <Typography
-                  sx={{ mb: 2 }}
-                  component="p"
-                  variant="h6"
-                  fontWeight="400"
-                >
-                  Lorem ipsum is simply dummy text of the printing and
-                  typesetting. Lorem Ipsum has been the industry’s standard
-                  dummy.
-                </Typography>
-
-                <Button size="extra-large" variant="contained" color="primary">
-                  Learn More
-                </Button>
+                  <Button
+                    size="extra-large"
+                    variant="contained"
+                    color="primary"
+                  >
+                    Learn More
+                  </Button>
+                </Grid>
+                <Grid item xs={12} md={6}></Grid>
               </Grid>
-              <Grid xs={12} md={6}></Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </section>
-    </Box>
+            </Container>
+          </Box>
+        </section>
+      </Box>
+
+      <ScrollTop {...props}>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
+
+      <SideBar />
+    </>
   );
 }
