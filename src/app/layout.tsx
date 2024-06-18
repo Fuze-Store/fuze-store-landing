@@ -1,14 +1,16 @@
-import AppBar from '@/components/AppBar';
-import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
-import { AppProvider } from '@/providers/App';
 import ChecklistIcon from '@mui/icons-material/Checklist';
 import HomeIcon from '@mui/icons-material/Home';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SettingsIcon from '@mui/icons-material/Settings';
 import StarIcon from '@mui/icons-material/Star';
 import SupportIcon from '@mui/icons-material/Support';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Box from '@mui/material/Box';
 import * as React from 'react';
+
+import AppBar from '@/components/AppBar';
+import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
+import { AppProvider } from '@/providers/App';
 // import './globals.css';
 
 export const metadata = {
@@ -38,24 +40,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>
-          <AppProvider>
-            <AppBar />
-            <Box id="main" />
-            <Box
-              component="main"
-              sx={{
-                flexGrow: 1,
-                bgcolor: 'background.default',
-                // ml: `${DRAWER_WIDTH}px`,
-                // mt: ['128px'],
-                // p: 3,
-              }}
-            >
-              {children}
-            </Box>
-          </AppProvider>
-        </ThemeRegistry>
+        <AppRouterCacheProvider>
+          <ThemeRegistry>
+            <AppProvider>
+              <AppBar />
+              <Box id="main" />
+              <Box
+                component="main"
+                sx={{
+                  flexGrow: 1,
+                  bgcolor: 'background.default',
+                  // ml: `${DRAWER_WIDTH}px`,
+                  // mt: ['128px'],
+                  // p: 3,
+                }}
+              >
+                {children}
+              </Box>
+            </AppProvider>
+          </ThemeRegistry>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

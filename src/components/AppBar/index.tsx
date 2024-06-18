@@ -1,7 +1,5 @@
 'use client';
 
-import { AppContext } from '@/contexts/App';
-import DashboardIcon from '@mui/icons-material/Dashboard';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -13,6 +11,9 @@ import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useContext } from 'react';
+
+import Logo from '@/components/Logo';
+import { AppContext } from '@/contexts/App';
 
 const ListGroup = styled('ul')(({ theme }) => ({
   display: 'flex',
@@ -39,6 +40,7 @@ const LinkItem = styled(Link)(({ theme }) => ({
   marginRight: theme.spacing(2),
   color: theme.palette.text.primary,
   textDecoration: 'none',
+  fontWeight: 500,
   '&:hover': {
     color: theme.palette.primary.dark,
   },
@@ -53,20 +55,28 @@ export default function AppBar() {
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 150,
+    threshold: 64,
   });
 
   return (
     <AppBarMui
-      color="transparent"
-      position={trigger ? 'fixed' : 'absolute'}
+      color={trigger ? 'default' : 'transparent'}
+      // position={trigger ? 'fixed' : 'absolute'}
+      position="fixed"
       sx={{ boxShadow: 'none' }}
     >
-      <Toolbar style={{ minHeight: 128 }}>
+      <Toolbar style={{ height: 64 }}>
         <Container
-          maxWidth="lg"
-          sx={{ display: 'flex', justifyContent: 'center' }}
+          maxWidth="xl"
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         >
+          <Box sx={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+            <Logo />
+          </Box>
           <ListGroup className="list-none">
             <ListItem>
               <LinkItem href="/">
@@ -80,9 +90,7 @@ export default function AppBar() {
             <ListItem>
               <LinkItem href="/">Products</LinkItem>
             </ListItem>
-            <ListItem className="logo">
-              <DashboardIcon sx={{ fontSize: 80, color: '#444' }} />
-            </ListItem>
+
             <ListItem>
               <LinkItem href="/">Our Work</LinkItem>
             </ListItem>

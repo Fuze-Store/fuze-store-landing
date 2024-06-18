@@ -16,6 +16,16 @@ declare module '@mui/material/Button' {
 const theme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: '#87d991',
+      dark: '#5e9765',
+      light: '#9fe0a7',
+    },
+    secondary: {
+      main: '#b8ccb6',
+      dark: '#808e7f',
+      light: '#c6d6c4',
+    },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,
