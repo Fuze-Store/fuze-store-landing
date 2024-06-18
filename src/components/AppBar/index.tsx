@@ -1,7 +1,5 @@
 'use client';
 
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box, IconButton } from '@mui/material';
 import AppBarMui from '@mui/material/AppBar';
@@ -20,6 +18,7 @@ const ListGroup = styled('ul')(({ theme }) => ({
   alignItems: 'center',
   listStyle: 'none',
   listStyleType: 'none',
+  padding: 0,
 }));
 
 const ListItem = styled('li')(({ theme }) => ({
@@ -65,9 +64,9 @@ export default function AppBar() {
       position="fixed"
       sx={{ boxShadow: 'none' }}
     >
-      <Toolbar style={{ height: 64 }}>
+      <Toolbar disableGutters style={{ height: 64 }}>
         <Container
-          maxWidth="xl"
+          maxWidth="lg"
           sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -78,12 +77,6 @@ export default function AppBar() {
             <Logo />
           </Box>
           <ListGroup className="list-none">
-            <ListItem>
-              <LinkItem href="/">
-                <LocalPhoneOutlinedIcon sx={{ mr: 1, fontSize: 20 }} />
-                <span> +1 631 123 4567</span>
-              </LinkItem>
-            </ListItem>
             <ListItem>
               <LinkItem href="/">About Us</LinkItem>
             </ListItem>
@@ -96,17 +89,6 @@ export default function AppBar() {
             </ListItem>
             <ListItem>
               <LinkItem href="/">Contact Us</LinkItem>
-            </ListItem>
-            <ListItem>
-              <LinkItem className="social" href="/">
-                <FacebookOutlinedIcon />
-              </LinkItem>
-              <LinkItem className="social" href="/">
-                <FacebookOutlinedIcon />
-              </LinkItem>
-              <LinkItem className="social" href="/">
-                <FacebookOutlinedIcon />
-              </LinkItem>
             </ListItem>
           </ListGroup>
         </Container>
