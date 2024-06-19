@@ -5,6 +5,7 @@ import EventIcon from '@mui/icons-material/Event';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import { Divider, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -14,10 +15,8 @@ import Typography from '@mui/material/Typography';
 
 import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
-import SideBar from '@/components/SideBar';
-import { Divider, Stack } from '@mui/material';
 
-export default function HomePage({ ...props }) {
+export default function HomePage() {
   return (
     <>
       <Box>
@@ -699,13 +698,11 @@ export default function HomePage({ ...props }) {
         <Footer />
       </Box>
 
-      <ScrollTop {...props}>
+      <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">
           <KeyboardArrowUpIcon />
         </Fab>
       </ScrollTop>
-
-      <SideBar />
     </>
   );
 }

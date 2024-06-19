@@ -18,7 +18,7 @@ import { AppContext } from '@/contexts/App';
  * @see https://react-hook-form.com/api/useformcontext/
  *
  */
-export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [showDrawer, setShowDrawer] = useState(false);
 
   const value = useMemo(

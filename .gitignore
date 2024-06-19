@@ -6,8 +6,8 @@
 # Node artifact files
 node_modules/
 dist/
+.firebase/
 .next/
-.next
 
 # Compiled Java class files
 *.class
@@ -50,3 +50,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+
+# Sentry Config File
+.env.sentry-build-plugin

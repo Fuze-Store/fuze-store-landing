@@ -1,16 +1,14 @@
-import ChecklistIcon from '@mui/icons-material/Checklist';
-import HomeIcon from '@mui/icons-material/Home';
-import LogoutIcon from '@mui/icons-material/Logout';
-import SettingsIcon from '@mui/icons-material/Settings';
-import StarIcon from '@mui/icons-material/Star';
-import SupportIcon from '@mui/icons-material/Support';
+// Import the functions you need from the SDKs you need
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Box from '@mui/material/Box';
+import { getAnalytics, isSupported } from 'firebase/analytics';
+import { initializeApp } from 'firebase/app';
 import * as React from 'react';
 
 import AppBar from '@/components/AppBar';
+import SideBar from '@/components/SideBar';
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
-import { AppProvider } from '@/providers/App';
+import AppProvider from '@/providers/App';
 // import './globals.css';
 
 export const metadata = {
@@ -18,19 +16,21 @@ export const metadata = {
   description: 'Next.js App Router + Material UI v5',
 };
 
-const DRAWER_WIDTH = 240;
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: 'AIzaSyD-rb_g4QWK5ZASANVMAXiO3qFhzwFaaeI',
+  authDomain: 'fuze-landing-app.firebaseapp.com',
+  projectId: 'fuze-landing-app',
+  storageBucket: 'fuze-landing-app.appspot.com',
+  messagingSenderId: '640997110614',
+  appId: '1:640997110614:web:e5a9877a4748e05e785cf7',
+  measurementId: 'G-1WWW2RE0RY',
+};
 
-const LINKS = [
-  { text: 'Home', href: '/', icon: HomeIcon },
-  { text: 'Starred', href: '/starred', icon: StarIcon },
-  { text: 'Tasks', href: '/tasks', icon: ChecklistIcon },
-];
-
-const PLACEHOLDER_LINKS = [
-  { text: 'Settings', icon: SettingsIcon },
-  { text: 'Support', icon: SupportIcon },
-  { text: 'Logout', icon: LogoutIcon },
-];
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
 export default function RootLayout({
   children,
@@ -47,16 +47,11 @@ export default function RootLayout({
               <Box id="main" />
               <Box
                 component="main"
-                sx={{
-                  flexGrow: 1,
-                  bgcolor: 'background.default',
-                  // ml: `${DRAWER_WIDTH}px`,
-                  // mt: ['128px'],
-                  // p: 3,
-                }}
+                sx={{ flexGrow: 1, bgcolor: 'background.default' }}
               >
                 {children}
               </Box>
+              <SideBar />
             </AppProvider>
           </ThemeRegistry>
         </AppRouterCacheProvider>
