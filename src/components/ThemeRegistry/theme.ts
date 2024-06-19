@@ -15,16 +15,16 @@ declare module '@mui/material/Button' {
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
-      main: '#87d991',
-      dark: '#5e9765',
-      light: '#9fe0a7',
+      main: '#196c32',
+      dark: '#114b23',
+      light: '#47895b',
     },
     secondary: {
-      main: '#b8ccb6',
-      dark: '#808e7f',
-      light: '#c6d6c4',
+      main: '#516351',
+      dark: '#384538',
+      light: '#738273',
     },
   },
   typography: {

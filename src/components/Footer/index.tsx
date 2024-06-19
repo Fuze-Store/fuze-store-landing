@@ -80,7 +80,7 @@ export default function Footer() {
         >
           <Typography>
             © 2024 Untitled UI. All rights reserved. Untitled UI is not
-            affiliated with Figma or Figma's team, nor is it endorsed by or
+            affiliated with Figma or Figma`s team, nor is it endorsed by or
             sponsored by Figma. A side project by Jordan who is working on
             Himalayas, a better remote jobs platform. This website was built in
             Webflow (this is an affiliate link). Crafted in Melbourne,

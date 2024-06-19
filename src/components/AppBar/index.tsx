@@ -1,7 +1,7 @@
 'use client';
 
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import AppBarMui from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
@@ -50,6 +50,9 @@ const LinkItem = styled(Link)(({ theme }) => ({
 }));
 
 export default function AppBar() {
+  const theme = useTheme();
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+
   const { setShowDrawer } = useContext(AppContext);
 
   const trigger = useScrollTrigger({
@@ -76,35 +79,42 @@ export default function AppBar() {
           <Box sx={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
             <Logo />
           </Box>
-          <ListGroup className="list-none">
-            <ListItem>
-              <LinkItem href="/">About Us</LinkItem>
-            </ListItem>
-            <ListItem>
-              <LinkItem href="/">Products</LinkItem>
-            </ListItem>
 
-            <ListItem>
-              <LinkItem href="/">Our Work</LinkItem>
-            </ListItem>
-            <ListItem>
-              <LinkItem href="/">Contact Us</LinkItem>
-            </ListItem>
-          </ListGroup>
+          {isMdUp && (
+            <ListGroup className="list-none">
+              <ListItem>
+                <LinkItem href="/">About Us</LinkItem>
+              </ListItem>
+              <ListItem>
+                <LinkItem href="/">Products</LinkItem>
+              </ListItem>
+
+              <ListItem>
+                <LinkItem href="/">Our Work</LinkItem>
+              </ListItem>
+              <ListItem>
+                <LinkItem href="/">Contact Us</LinkItem>
+              </ListItem>
+            </ListGroup>
+          )}
         </Container>
 
-        <Box
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            right: (theme) => theme.spacing(2),
-            transform: 'translateY(-50%)',
-          }}
-        >
-          <IconButton onClick={() => setShowDrawer((prevState) => !prevState)}>
-            <MenuIcon />
-          </IconButton>
-        </Box>
+        {!isMdUp && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              right: (theme) => theme.spacing(2),
+              transform: 'translateY(-50%)',
+            }}
+          >
+            <IconButton
+              onClick={() => setShowDrawer((prevState) => !prevState)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        )}
       </Toolbar>
     </AppBarMui>
   );

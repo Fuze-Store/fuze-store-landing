@@ -75,7 +75,10 @@ export default function HomePage({ ...props }) {
         <Box
           component="section"
           sx={(theme) => ({
-            bgcolor: theme.palette.grey[900],
+            bgcolor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.grey[50],
             py: theme.spacing(12),
           })}
         >
@@ -339,7 +342,10 @@ export default function HomePage({ ...props }) {
         <Box
           component="section"
           sx={(theme) => ({
-            bgcolor: theme.palette.grey[900],
+            bgcolor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.grey[50],
             py: theme.spacing(12),
           })}
         >
@@ -447,7 +453,10 @@ export default function HomePage({ ...props }) {
         <Box
           component="section"
           sx={(theme) => ({
-            // bgcolor: theme.palette.grey[900],
+            bgcolor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.grey[50],
             py: theme.spacing(12),
           })}
         >
@@ -487,179 +496,199 @@ export default function HomePage({ ...props }) {
               </Typography>
             </Box>
 
-            <Stack direction="row" spacing={2}>
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor: theme.palette.grey[900],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
+            <Grid container direction="row" spacing={2}>
+              <Grid item xs={6} md={3}>
+                <Box
+                  sx={(theme) => ({
+                    flex: 1,
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? theme.palette.grey[900]
+                        : theme.palette.grey[200],
+                    height: 290,
+                  })}
                 >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <SubscriptionsIcon sx={{ height: 40, width: 40 }} />
+                  <Stack
+                    sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
+                    direction="column"
+                    alignItems="space-between"
+                  >
+                    <Box sx={{ flex: 1 }}>
+                      <Box
+                        sx={{
+                          flex: 1,
+                          borderRadius: '50%',
+                          borderWidth: 5,
+                          borderColor: '#424242',
+                          borderStyle: 'solid',
+                          height: 40 + 20 + 4,
+                          width: 40 + 20 + 4,
+                          display: 'flex',
+                          // backgroundColor: '#757575',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <SubscriptionsIcon sx={{ height: 40, width: 40 }} />
+                      </Box>
                     </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Startups
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Design and prototype faster, with an entire library of
-                      ready components.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
+                    <Box>
+                      <Typography variant="h6" fontWeight={500} gutterBottom>
+                        Startups
+                      </Typography>
+                      <Typography fontWeight={500} color="text.secondary">
+                        Design and prototype faster, with an entire library of
+                        ready components.
+                      </Typography>
+                    </Box>
+                  </Stack>
+                </Box>
+              </Grid>
 
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor: theme.palette.grey[900],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
+              <Grid item xs={6} md={3}>
+                <Box
+                  sx={(theme) => ({
+                    flex: 1,
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? theme.palette.grey[900]
+                        : theme.palette.grey[200],
+                    height: 290,
+                  })}
                 >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <ReceiptIcon sx={{ height: 40, width: 40 }} />
+                  <Stack
+                    sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
+                    direction="column"
+                    alignItems="space-between"
+                  >
+                    <Box sx={{ flex: 1 }}>
+                      <Box
+                        sx={{
+                          flex: 1,
+                          borderRadius: '50%',
+                          borderWidth: 5,
+                          borderColor: '#424242',
+                          borderStyle: 'solid',
+                          height: 40 + 20 + 4,
+                          width: 40 + 20 + 4,
+                          display: 'flex',
+                          // backgroundColor: '#757575',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <ReceiptIcon sx={{ height: 40, width: 40 }} />
+                      </Box>
                     </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Design Teams
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Get everyone on the same page with a single library.
-                      Design faster consistently.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
+                    <Box>
+                      <Typography variant="h6" fontWeight={500} gutterBottom>
+                        Design Teams
+                      </Typography>
+                      <Typography fontWeight={500} color="text.secondary">
+                        Get everyone on the same page with a single library.
+                        Design faster consistently.
+                      </Typography>
+                    </Box>
+                  </Stack>
+                </Box>
+              </Grid>
 
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor: theme.palette.grey[900],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
+              <Grid item xs={6} md={3}>
+                <Box
+                  sx={(theme) => ({
+                    flex: 1,
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? theme.palette.grey[900]
+                        : theme.palette.grey[200],
+                    height: 290,
+                  })}
                 >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <BoltIcon sx={{ height: 40, width: 40 }} />
+                  <Stack
+                    sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
+                    direction="column"
+                    alignItems="space-between"
+                  >
+                    <Box sx={{ flex: 1 }}>
+                      <Box
+                        sx={{
+                          flex: 1,
+                          borderRadius: '50%',
+                          borderWidth: 5,
+                          borderColor: '#424242',
+                          borderStyle: 'solid',
+                          height: 40 + 20 + 4,
+                          width: 40 + 20 + 4,
+                          display: 'flex',
+                          // backgroundColor: '#757575',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <BoltIcon sx={{ height: 40, width: 40 }} />
+                      </Box>
                     </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Beginners & Students
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Learn how professional design systems are built and learn
-                      Figma best practices.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
+                    <Box>
+                      <Typography variant="h6" fontWeight={500} gutterBottom>
+                        Beginners & Students
+                      </Typography>
+                      <Typography fontWeight={500} color="text.secondary">
+                        Learn how professional design systems are built and
+                        learn Figma best practices.
+                      </Typography>
+                    </Box>
+                  </Stack>
+                </Box>
+              </Grid>
 
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor: theme.palette.grey[900],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
+              <Grid item xs={6} md={3}>
+                <Box
+                  sx={(theme) => ({
+                    flex: 1,
+                    bgcolor:
+                      theme.palette.mode === 'dark'
+                        ? theme.palette.grey[900]
+                        : theme.palette.grey[200],
+                    height: 290,
+                  })}
                 >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <EventIcon sx={{ height: 40, width: 40 }} />
+                  <Stack
+                    sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
+                    direction="column"
+                    alignItems="space-between"
+                  >
+                    <Box sx={{ flex: 1 }}>
+                      <Box
+                        sx={{
+                          flex: 1,
+                          borderRadius: '50%',
+                          borderWidth: 5,
+                          borderColor: '#424242',
+                          borderStyle: 'solid',
+                          height: 40 + 20 + 4,
+                          width: 40 + 20 + 4,
+                          display: 'flex',
+                          // backgroundColor: '#757575',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <EventIcon sx={{ height: 40, width: 40 }} />
+                      </Box>
                     </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Freelance Designers
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Deliver high-quality projects faster, take on more
-                      clients, and increase your income.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
-            </Stack>
+                    <Box>
+                      <Typography variant="h6" fontWeight={500} gutterBottom>
+                        Freelance Designers
+                      </Typography>
+                      <Typography fontWeight={500} color="text.secondary">
+                        Deliver high-quality projects faster, take on more
+                        clients, and increase your income.
+                      </Typography>
+                    </Box>
+                  </Stack>
+                </Box>
+              </Grid>
+            </Grid>
           </Container>
         </Box>
 
