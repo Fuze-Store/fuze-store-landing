@@ -36,13 +36,13 @@ export default function HomePage() {
               <Grid container>
                 <Grid item xs={12} md={6}>
                   <Typography sx={{ mb: 2 }} fontWeight="bold" variant="h2">
-                    Premium
+                    {`Welcome to `}
                     <Box
                       component="span"
                       sx={{ color: 'primary.main' }}
                       className="block"
                     >
-                      Auto Accessories
+                      Fuze Store
                     </Box>
                   </Typography>
 
@@ -84,24 +84,16 @@ export default function HomePage() {
           <Container maxWidth="lg">
             <Grid container spacing={4}>
               <Grid item xs={12} md={6}>
-                <Box>
-                  <Typography
-                    component="h3"
-                    color="primary.light"
-                    fontWeight={500}
-                    gutterBottom
-                  >
-                    The ultimate UI kit
-                  </Typography>
-
+                <Box py={6}>
                   <Typography
                     component="h2"
                     variant="h4"
                     gutterBottom
                     fontWeight={500}
                   >
-                    Design fast. Design consistently.
+                    What we offer
                   </Typography>
+
                   <Typography
                     variant="h6"
                     gutterBottom
@@ -113,83 +105,12 @@ export default function HomePage() {
                     UI comes with everything you need to design modern and
                     beautiful UI and websites.
                   </Typography>
-                </Box>
 
-                <Box sx={{ py: 5 }}>
-                  <Grid container spacing={4}>
-                    <Grid item xs={6}>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'nowrap',
-                        }}
-                      >
-                        <Box sx={{ mr: 1 }}>
-                          <EventIcon color="primary" />
-                        </Box>
-                        <Box sx={{ display: 'flex', flex: 1 }}>
-                          <Typography color="primary" fontWeight={500}>
-                            Figma`s powerful new Config 2023 features
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'nowrap',
-                        }}
-                      >
-                        <Box sx={{ mr: 1 }}>
-                          <EventIcon color="primary" />
-                        </Box>
-                        <Box sx={{ display: 'flex', flex: 1 }}>
-                          <Typography color="primary" fontWeight={500}>
-                            Figma`s powerful new Config 2023 features
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'nowrap',
-                        }}
-                      >
-                        <Box sx={{ mr: 1 }}>
-                          <EventIcon color="primary" />
-                        </Box>
-                        <Box sx={{ display: 'flex', flex: 1 }}>
-                          <Typography color="primary" fontWeight={500}>
-                            Figma`s powerful new Config 2023 features
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'row',
-                          flexWrap: 'nowrap',
-                        }}
-                      >
-                        <Box sx={{ mr: 1 }}>
-                          <EventIcon color="primary" />
-                        </Box>
-                        <Box sx={{ display: 'flex', flex: 1 }}>
-                          <Typography color="primary" fontWeight={500}>
-                            Figma`s powerful new Config 2023 features
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Grid>
-                  </Grid>
+                  <Box mt={3}>
+                    <Button variant="contained" size="extra-large">
+                      Learn More
+                    </Button>
+                  </Box>
                 </Box>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -242,7 +163,7 @@ export default function HomePage() {
                     gutterBottom
                     fontWeight={500}
                   >
-                    Design fast. Design consistently.
+                    How does it work
                   </Typography>
                   <Typography
                     variant="h6"

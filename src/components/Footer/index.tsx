@@ -5,13 +5,11 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import XIcon from '@mui/icons-material/X';
 import { Box, Stack, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import { styled } from '@mui/material/styles';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { useContext } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import Logo from '@/components/Logo';
-import { AppContext } from '@/contexts/App';
 
 const ListGroup = styled('ul')(({ theme }) => ({
   display: 'flex',
@@ -35,15 +33,16 @@ const LinkItem = styled(Link)(({ theme }) => ({
     marginLeft: theme.spacing(0.5),
     marginRight: theme.spacing(0.5),
   },
+  '&.selected': {
+    color: theme.palette.primary.main,
+  },
+  '&.selected:hover': {
+    color: theme.palette.primary.dark,
+  },
 }));
 
 export default function Footer() {
-  const { setShowDrawer } = useContext(AppContext);
-
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 64,
-  });
+  const pathname = usePathname();
 
   return (
     <Box sx={{ py: 4 }} component="footer">
@@ -51,16 +50,26 @@ export default function Footer() {
         <Box>
           <Stack direction="row" spacing={2}>
             <Box sx={{ flex: 1 }}>
-              <Logo width={40} height={40} />
+              <Link href="/">
+                <Logo width={40} height={40} />
+              </Link>
             </Box>
             <Stack direction="row" spacing={1}>
-              <LinkItem className="social" href="/">
+              <LinkItem
+                className="social"
+                href="https://facebook.com"
+                target="_blank"
+              >
                 <FacebookOutlinedIcon sx={{ width: 40, height: 40 }} />
               </LinkItem>
-              <LinkItem className="social" href="/">
+              <LinkItem className="social" href="https://x.com" target="_blank">
                 <XIcon sx={{ width: 40, height: 40 }} />
               </LinkItem>
-              <LinkItem className="social" href="/">
+              <LinkItem
+                className="social"
+                href="https://instagram.com"
+                target="_blank"
+              >
                 <InstagramIcon sx={{ width: 40, height: 40 }} />
               </LinkItem>
             </Stack>
@@ -68,11 +77,25 @@ export default function Footer() {
         </Box>
 
         <ListGroup sx={{ my: 4 }}>
-          <LinkItem href="/">FAQs</LinkItem>
+          <LinkItem
+            href="/faqs"
+            className={pathname === '/faqs' ? 'selected' : undefined}
+          >
+            FAQs
+          </LinkItem>
           <LinkItem href="/">License</LinkItem>
-          <LinkItem href="/">Privacy</LinkItem>
-          <LinkItem href="/">Terms</LinkItem>
-          <LinkItem href="/">Cookies</LinkItem>
+          <LinkItem
+            href="/privacy"
+            className={pathname === '/privacy' ? 'selected' : undefined}
+          >
+            Privacy
+          </LinkItem>
+          <LinkItem
+            href="/terms"
+            className={pathname === '/terms' ? 'selected' : undefined}
+          >
+            Terms
+          </LinkItem>
         </ListGroup>
 
         <Box

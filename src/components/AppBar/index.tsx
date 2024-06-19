@@ -4,10 +4,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Box, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import AppBarMui from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
 
 import Logo from '@/components/Logo';
@@ -47,10 +49,17 @@ const LinkItem = styled(Link)(({ theme }) => ({
     marginLeft: theme.spacing(0.5),
     marginRight: theme.spacing(0.5),
   },
+  '&.selected': {
+    color: theme.palette.primary.main,
+  },
+  '&.selected:hover': {
+    color: theme.palette.primary.dark,
+  },
 }));
 
 export default function AppBar() {
   const theme = useTheme();
+  const pathname = usePathname();
   const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
 
   const { setShowDrawer } = useContext(AppContext);
@@ -77,23 +86,37 @@ export default function AppBar() {
           }}
         >
           <Box sx={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
           </Box>
 
           {isMdUp && (
             <ListGroup className="list-none">
               <ListItem>
-                <LinkItem href="/">About Us</LinkItem>
+                <LinkItem
+                  href="/about-us"
+                  className={pathname === '/about-us' ? 'selected' : undefined}
+                >
+                  About Us
+                </LinkItem>
               </ListItem>
               <ListItem>
-                <LinkItem href="/">Products</LinkItem>
+                <LinkItem href="/">Services</LinkItem>
               </ListItem>
 
               <ListItem>
                 <LinkItem href="/">Our Work</LinkItem>
               </ListItem>
               <ListItem>
-                <LinkItem href="/">Contact Us</LinkItem>
+                <LinkItem
+                  href="/contact-us"
+                  className={
+                    pathname === '/contact-us' ? 'selected' : undefined
+                  }
+                >
+                  Contact Us
+                </LinkItem>
               </ListItem>
             </ListGroup>
           )}
