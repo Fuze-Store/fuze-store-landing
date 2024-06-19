@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   reactStrictMode: true,
   swcMinify: true,
   modularizeImports: {
@@ -9,7 +8,7 @@ const nextConfig = {
     },
   },
   images: {
-    path: '/src/assets/',
+    // path: '/src/assets/',
     remotePatterns: [
       {
         protocol: 'https',

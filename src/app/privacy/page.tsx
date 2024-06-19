@@ -9,11 +9,6 @@ import Typography from '@mui/material/Typography';
 import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
 
-export const metadata = {
-  title: 'Privacy Policy',
-  description: 'Privacy Policy Page',
-};
-
 export default function PrivacyPage() {
   return (
     <>

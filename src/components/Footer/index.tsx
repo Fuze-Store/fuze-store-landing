@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import TikTokIcon from '@/components/Icons/TikTokIcon';
 import Logo from '@/components/Logo';
 
 const ListGroup = styled('ul')(({ theme }) => ({
@@ -71,6 +72,13 @@ export default function Footer() {
                 target="_blank"
               >
                 <InstagramIcon sx={{ width: 40, height: 40 }} />
+              </LinkItem>
+              <LinkItem
+                className="social"
+                href="https://tiktok.com"
+                target="_blank"
+              >
+                <TikTokIcon color="inherit" sx={{ width: 40, height: 40 }} />
               </LinkItem>
             </Stack>
           </Stack>

@@ -11,13 +11,9 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
 import { Stack } from '@mui/material';
-
-export const metadata = {
-  title: 'About Us',
-  description: 'About Us Page',
-};
 
 export default function AboutUsPage() {
   return (
@@ -253,6 +249,8 @@ export default function AboutUsPage() {
           </Grid>
         </Container>
       </Box>
+
+      <Footer />
 
       <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">

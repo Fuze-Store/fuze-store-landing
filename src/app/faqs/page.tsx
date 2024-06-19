@@ -15,11 +15,6 @@ import Typography from '@mui/material/Typography';
 import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
 
-export const metadata = {
-  title: 'Frequently Asked Questions',
-  description: 'Frequently Asked Questions Page',
-};
-
 export default function FAQsPage() {
   return (
     <>
