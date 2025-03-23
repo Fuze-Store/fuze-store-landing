@@ -5,7 +5,13 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Image from 'next/image';
 
-export default function MediaCard({ heading, text }: { heading: string; text: string }) {
+export default function MediaCard({
+  heading,
+  text,
+}: {
+  heading: string;
+  text: string;
+}) {
   return (
     <Card>
       <Image

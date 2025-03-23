@@ -10,11 +10,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 
 import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
+import TestimonialFront from '@/containers/Testimonial/Front';
 
 export default function HomePage() {
   return (
@@ -28,13 +29,14 @@ export default function HomePage() {
               position: 'relative',
               // backgroundImage: `url(${banner.src})`,
               height: '100vh',
+              backgroundColor: '#fcfdf7',
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
           >
             <Container maxWidth="lg">
               <Grid container>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <Typography sx={{ mb: 2 }} fontWeight="bold" variant="h2">
                     {`Welcome to `}
                     <Box
@@ -57,15 +59,20 @@ export default function HomePage() {
                     dummy.
                   </Typography>
 
-                  <Button
-                    size="extra-large"
-                    variant="contained"
-                    color="primary"
-                  >
-                    Learn More
-                  </Button>
+                  <Stack direction="row" spacing={1}>
+                    <Button
+                      size="extra-large"
+                      variant="contained"
+                      color="primary"
+                    >
+                      Stat Free Trial
+                    </Button>
+                    <Button size="extra-large" color="primary">
+                      Learn More
+                    </Button>
+                  </Stack>
                 </Grid>
-                <Grid item xs={12} md={6}></Grid>
+                <Grid size={{ xs: 12, md: 6 }}></Grid>
               </Grid>
             </Container>
           </Box>
@@ -83,7 +90,7 @@ export default function HomePage() {
         >
           <Container maxWidth="lg">
             <Grid container spacing={4}>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box py={6}>
                   <Typography
                     component="h2"
@@ -113,7 +120,7 @@ export default function HomePage() {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box
                   sx={{
                     minHeight: 440,
@@ -133,7 +140,7 @@ export default function HomePage() {
         <Box component="section" sx={(theme) => ({ py: theme.spacing(12) })}>
           <Container maxWidth="lg">
             <Grid container spacing={4}>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box
                   sx={{
                     minHeight: 440,
@@ -146,7 +153,7 @@ export default function HomePage() {
                   }}
                 />
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid size={{ xs: 12, md: 6 }}>
                 <Box>
                   <Typography
                     component="h3"
@@ -180,7 +187,7 @@ export default function HomePage() {
 
                 <Box sx={{ py: 5 }}>
                   <Grid container spacing={4}>
-                    <Grid item xs={6}>
+                    <Grid size={{ xs: 6 }}>
                       <Box
                         sx={{
                           display: 'flex',
@@ -198,7 +205,7 @@ export default function HomePage() {
                         </Box>
                       </Box>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid size={{ xs: 6 }}>
                       <Box
                         sx={{
                           display: 'flex',
@@ -216,7 +223,7 @@ export default function HomePage() {
                         </Box>
                       </Box>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid size={{ xs: 6 }}>
                       <Box
                         sx={{
                           display: 'flex',
@@ -234,7 +241,7 @@ export default function HomePage() {
                         </Box>
                       </Box>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid size={{ xs: 6 }}>
                       <Box
                         sx={{
                           display: 'flex',
@@ -271,6 +278,33 @@ export default function HomePage() {
         >
           <Container maxWidth="lg">
             <Box mb={8}>
+              <TestimonialFront />
+            </Box>
+            <Box
+              sx={{
+                borderWidth: 1,
+                borderStyle: 'solid',
+                borderColor: '#ccc',
+                borderRadius: 8,
+                height: 440,
+                width: '100%',
+              }}
+            />
+          </Container>
+        </Box>
+
+        <Box
+          component="section"
+          sx={(theme) => ({
+            bgcolor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.grey[50],
+            py: theme.spacing(12),
+          })}
+        >
+          <Container maxWidth="lg">
+            <Box mb={8}>
               <Typography
                 textAlign="center"
                 component="h3"
@@ -399,7 +433,7 @@ export default function HomePage() {
                 gutterBottom
                 fontWeight={500}
               >
-                Design fast. Design consistently.
+                Integrations.
               </Typography>
 
               <Typography
@@ -417,7 +451,7 @@ export default function HomePage() {
             </Box>
 
             <Grid container direction="row" spacing={2}>
-              <Grid item xs={6} md={3}>
+              <Grid size={{ xs: 6, md: 3 }}>
                 <Box
                   sx={(theme) => ({
                     flex: 1,
@@ -465,7 +499,7 @@ export default function HomePage() {
                 </Box>
               </Grid>
 
-              <Grid item xs={6} md={3}>
+              <Grid size={{ xs: 6, md: 3 }}>
                 <Box
                   sx={(theme) => ({
                     flex: 1,
@@ -513,7 +547,7 @@ export default function HomePage() {
                 </Box>
               </Grid>
 
-              <Grid item xs={6} md={3}>
+              <Grid size={{ xs: 6, md: 3 }}>
                 <Box
                   sx={(theme) => ({
                     flex: 1,
@@ -561,7 +595,7 @@ export default function HomePage() {
                 </Box>
               </Grid>
 
-              <Grid item xs={6} md={3}>
+              <Grid size={{ xs: 6, md: 3 }}>
                 <Box
                   sx={(theme) => ({
                     flex: 1,

@@ -26,30 +26,43 @@ const ListGroup = styled('ul')(({ theme }) => ({
 const ListItem = styled('li')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  marginLeft: theme.spacing(1),
-  marginRight: theme.spacing(1),
+  borderRadius: 24,
+  marginLeft: theme.spacing(0.25),
+  marginRight: theme.spacing(0.25),
   '&.logo': {
     marginLeft: theme.spacing(8),
     marginRight: theme.spacing(8),
   },
+  '&.selected': {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+
+    '> a': {
+      color: theme.palette.primary.contrastText,
+    },
+  },
+  '&:hover': {
+    backgroundColor: theme.palette.primary.dark,
+
+    '> a': {
+      color: theme.palette.primary.contrastText,
+    },
+  },
 }));
 
 const LinkItem = styled(Link)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  marginLeft: theme.spacing(2),
-  marginRight: theme.spacing(2),
+  paddingTop: theme.spacing(1),
+  paddingBottom: theme.spacing(1),
+  paddingLeft: theme.spacing(3),
+  paddingRight: theme.spacing(3),
   color: theme.palette.text.primary,
   textDecoration: 'none',
   fontWeight: 500,
-  '&:hover': {
-    color: theme.palette.primary.dark,
-  },
   '&.social': {
     marginLeft: theme.spacing(0.5),
     marginRight: theme.spacing(0.5),
   },
-  '&.selected': {
+  '& .selected': {
     color: theme.palette.primary.main,
   },
   '&.selected:hover': {
@@ -74,7 +87,12 @@ export default function AppBar() {
       color={trigger ? 'default' : 'transparent'}
       // position={trigger ? 'fixed' : 'absolute'}
       position="fixed"
-      sx={{ boxShadow: 'none' }}
+      elevation={trigger ? 4 : 0}
+      sx={{
+        // boxShadow: 'none',
+        // backgroundColor: trigger ? '#edf1e5' : 'transparent',
+        backgroundColor: trigger ? '#fcfdf7' : 'transparent',
+      }}
     >
       <Toolbar disableGutters style={{ height: 64 }}>
         <Container
@@ -93,30 +111,34 @@ export default function AppBar() {
 
           {isMdUp && (
             <ListGroup className="list-none">
-              <ListItem>
-                <LinkItem
-                  href="/about-us"
-                  className={pathname === '/about-us' ? 'selected' : undefined}
-                >
-                  About Us
-                </LinkItem>
+              <ListItem
+                className={pathname === '/features' ? 'selected' : undefined}
+              >
+                <LinkItem href="/features">Feature</LinkItem>
               </ListItem>
-              <ListItem>
+
+              <ListItem
+                className={pathname === '/pricing' ? 'selected' : undefined}
+              >
+                <LinkItem href="/pricing">Pricing</LinkItem>
+              </ListItem>
+
+              <ListItem
+                className={pathname === '/about-us' ? 'selected' : undefined}
+              >
+                <LinkItem href="/about-us">About Us</LinkItem>
+              </ListItem>
+
+              <ListItem
+                className={pathname === '/services' ? 'selected' : undefined}
+              >
                 <LinkItem href="/">Services</LinkItem>
               </ListItem>
 
-              <ListItem>
-                <LinkItem href="/">Our Work</LinkItem>
-              </ListItem>
-              <ListItem>
-                <LinkItem
-                  href="/contact-us"
-                  className={
-                    pathname === '/contact-us' ? 'selected' : undefined
-                  }
-                >
-                  Contact Us
-                </LinkItem>
+              <ListItem
+                className={pathname === '/contact-us' ? 'selected' : undefined}
+              >
+                <LinkItem href="/contact-us">Contact Us</LinkItem>
               </ListItem>
             </ListGroup>
           )}

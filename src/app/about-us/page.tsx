@@ -42,15 +42,12 @@ export default function AboutUsPage() {
 
             <Typography
               textAlign="center"
-              variant="h6"
               gutterBottom
               color="textSecondary"
               fontWeight={400}
             >
-              Tired of wasting thousands of hours starting from scratch on every
-              project and rebuilding the same components? Untitled UI comes with
-              everything you need to design modern and beautiful UI and
-              websites.
+              Lorem ipsum is simply dummy text of the printing and typesetting.
+              Lorem Ipsum has been the industry’s standard dummy..
             </Typography>
           </Box>
 

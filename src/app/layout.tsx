@@ -1,5 +1,7 @@
+'use client';
+
 // Import the functions you need from the SDKs you need
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Box from '@mui/material/Box';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
@@ -8,13 +10,9 @@ import * as React from 'react';
 import AppBar from '@/components/AppBar';
 import SideBar from '@/components/SideBar';
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
+import { authPages } from '@/helpers/page.helper';
 import AppProvider from '@/providers/App';
-// import './globals.css';
-
-export const metadata = {
-  title: 'Fuze Store',
-  description: 'Welcome to Fuze Store',
-};
+import { usePathname } from 'next/navigation';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -37,21 +35,24 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+
+  const showNavigation = !authPages.includes(pathname);
+
   return (
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
           <ThemeRegistry>
             <AppProvider>
-              <AppBar />
-              <Box id="main" />
+              {showNavigation && <AppBar />}
               <Box
                 component="main"
                 sx={{ flexGrow: 1, bgcolor: 'background.default' }}
               >
                 {children}
               </Box>
-              <SideBar />
+              {showNavigation && <SideBar />}
             </AppProvider>
           </ThemeRegistry>
         </AppRouterCacheProvider>

@@ -1,5 +1,9 @@
 'use client';
-import type { EmotionCache, Options as OptionsOfCreateCache } from '@emotion/cache';
+
+import type {
+  EmotionCache,
+  Options as OptionsOfCreateCache,
+} from '@emotion/cache';
 import createCache from '@emotion/cache';
 import { CacheProvider as DefaultCacheProvider } from '@emotion/react';
 import { useServerInsertedHTML } from 'next/navigation';
@@ -17,7 +21,9 @@ export type NextAppDirEmotionCacheProviderProps = {
 };
 
 // Adapted from https://github.com/garronej/tss-react/blob/main/src/next/appDir.tsx
-export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionCacheProviderProps) {
+export default function NextAppDirEmotionCacheProvider(
+  props: NextAppDirEmotionCacheProviderProps,
+) {
   const { options, CacheProvider = DefaultCacheProvider, children } = props;
 
   const [registry] = React.useState(() => {
@@ -59,7 +65,7 @@ export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionC
     inserted.forEach(({ name, isGlobal }) => {
       const style = registry.cache.inserted[name];
 
-      if (typeof style !== 'boolean') {
+      if (typeof style !== 'boolean' && style !== undefined) {
         if (isGlobal) {
           globals.push({ name, style });
         } else {
@@ -75,14 +81,12 @@ export default function NextAppDirEmotionCacheProvider(props: NextAppDirEmotionC
           <style
             key={name}
             data-emotion={`${registry.cache.key}-global ${name}`}
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: style }}
           />
         ))}
         {styles && (
           <style
             data-emotion={dataEmotionAttribute}
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: styles }}
           />
         )}

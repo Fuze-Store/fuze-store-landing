@@ -25,7 +25,6 @@ export default [
       'eslint:recommended',
       'plugin:react/recommended',
       'plugin:prettier/recommended',
-      'plugin:redux-saga/recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:@typescript-eslint/recommended-requiring-type-checking',
       'plugin:react-hooks/recommended',
@@ -59,7 +58,7 @@ export default [
     },
 
     rules: {
-      'prettier/prettier': ['error', 'prettierOptions'],
+      // 'prettier/prettier': ['error', 'prettierOptions'],
       'arrow-body-style': [2, 'as-needed'],
 
       'no-plusplus': [
@@ -109,17 +108,8 @@ export default [
         },
       ],
 
-      'unused-imports/no-unused-imports': 'error',
-
-      'unused-imports/no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          varsIgnorePattern: '^_',
-          args: 'after-used',
-          argsIgnorePattern: '^_',
-        },
-      ],
+      'react/react-in-jsx-scope': 0,
+      'react/jsx-uses-react': 0,
 
       'react/style-prop-object': [
         2,

@@ -42,19 +42,9 @@ export default function SideBar() {
       onClose={toggleDrawer}
       PaperProps={{
         sx: {
-          width: {
-            xs: 300,
-            sm: '50%',
-            md: '40%',
-          },
-          px: {
-            xs: 2,
-            lg: 10,
-          },
-          py: {
-            // xs: 4,
-            lg: 7,
-          },
+          width: { xs: 300, sm: '50%', md: '40%' },
+          px: { xs: 2, lg: 10 },
+          py: { lg: 7 },
           pt: 8,
         },
       }}
