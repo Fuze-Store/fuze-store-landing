@@ -1,6 +1,7 @@
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import eslintPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import prettier from 'eslint-plugin-prettier';
@@ -19,6 +20,7 @@ const compat = new FlatCompat({
 });
 
 export default [
+  ...pluginQuery.configs['flat/recommended'],
   ...fixupConfigRules(
     compat.extends(
       'prettier',

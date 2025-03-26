@@ -8,4 +8,5 @@ export enum paths {
   contactUs = '/contact-us',
   services = '/services',
   pricing = '/pricing',
+  account = '/account',
 }

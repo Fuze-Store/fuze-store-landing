@@ -3,16 +3,21 @@
 // Import the functions you need from the SDKs you need
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Box from '@mui/material/Box';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
 
-import AppBar from '@/components/AppBar';
-import SideBar from '@/components/SideBar';
-import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
+import '@/containers/Localization/i18n';
 import { authPages } from '@/helpers/page.helper';
+
+import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
+import AppBar from '@/containers/Appbar';
+import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
-import { usePathname } from 'next/navigation';
+import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -30,6 +35,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
+const queryClient = new QueryClient();
+
 export default function RootLayout({
   children,
 }: {
@@ -42,20 +49,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppRouterCacheProvider>
-          <ThemeRegistry>
-            <AppProvider>
-              {showNavigation && <AppBar />}
-              <Box
-                component="main"
-                sx={{ flexGrow: 1, bgcolor: 'background.default' }}
-              >
-                {children}
-              </Box>
-              {showNavigation && <SideBar />}
-            </AppProvider>
-          </ThemeRegistry>
-        </AppRouterCacheProvider>
+        <QueryClientProvider client={queryClient}>
+          <AppRouterCacheProvider>
+            <ThemeRegistry>
+              <AppProvider>
+                <ReactQueryDevtools />
+                <AxiosInterceptor />
+                {showNavigation && <AppBar />}
+                <Box
+                  component="main"
+                  sx={{ flexGrow: 1, bgcolor: 'background.default' }}
+                >
+                  {children}
+                </Box>
+                {showNavigation && <SideBar />}
+              </AppProvider>
+            </ThemeRegistry>
+          </AppRouterCacheProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );

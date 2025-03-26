@@ -1,0 +1,163 @@
+/**
+ * @module RegisterForm
+ * @category Forms
+ *
+ */
+
+import { Box, Stack, styled, TextField, Typography } from '@mui/material';
+import { memo } from 'react';
+import { useFormContext } from 'react-hook-form';
+
+import { FormInputs } from '@/containers/Register/Form/Provider/types';
+
+import FieldErrorMessage from '@/components/FieldErrorMessage';
+import Label from '@/components/Label';
+
+const SectionContainer = styled(Box)(({ theme }) => ({
+  marginBottom: theme.spacing(2),
+}));
+
+/**
+ * Register Form
+ *
+ * @category Forms
+ *
+ */
+const RegisterForm = () => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<FormInputs>();
+
+  console.log('errors', errors);
+
+  return (
+    <>
+      <SectionContainer>
+        <Label htmlFor="username" error={!!errors.username}>
+          Username *
+        </Label>
+        <TextField
+          type="text"
+          id="username"
+          required
+          fullWidth
+          {...register('username')}
+          error={!!errors.username}
+          helperText={errors.username?.message}
+        />
+        <FieldErrorMessage name="username" errors={errors} />
+
+        <Box mt={2}>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * Username must be at least 6 characters.
+          </Typography>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * Username must be a lowercase.
+          </Typography>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * Username must be alphanumeric, dot, underscore only.
+          </Typography>
+        </Box>
+      </SectionContainer>
+
+      <SectionContainer>
+        <Stack direction="row" spacing={1}>
+          <Box sx={{ flex: 1 }}>
+            <Label htmlFor="first-name" error={!!errors.firstName}>
+              First Name *
+            </Label>
+            <TextField
+              type="text"
+              id="first-name"
+              required
+              fullWidth
+              {...register('firstName')}
+              error={!!errors.firstName}
+              helperText={errors.firstName?.message}
+            />
+            <FieldErrorMessage name="firstName" errors={errors} />
+          </Box>
+          <Box sx={{ flex: 1 }}>
+            <Label htmlFor="last-name" error={!!errors.lastName}>
+              Last Name *
+            </Label>
+            <TextField
+              type="text"
+              id="last-name"
+              required
+              fullWidth
+              {...register('lastName')}
+              error={!!errors.lastName}
+            />
+            <FieldErrorMessage name="lastName" errors={errors} />
+          </Box>
+        </Stack>
+      </SectionContainer>
+
+      <SectionContainer>
+        <Label htmlFor="email" error={!!errors.email}>
+          Email *
+        </Label>
+        <TextField
+          type="email"
+          id="email"
+          required
+          fullWidth
+          {...register('email')}
+          error={!!errors.email}
+        />
+        <FieldErrorMessage name="email" errors={errors} />
+      </SectionContainer>
+
+      <SectionContainer>
+        <Label htmlFor="password" error={!!errors.password}>
+          Password *
+        </Label>
+        <TextField
+          type="password"
+          id="password"
+          required
+          fullWidth
+          {...register('password')}
+          error={!!errors.password}
+          helperText={errors.password?.message}
+        />
+        <FieldErrorMessage name="password" errors={errors} />
+
+        <Box mt={2}>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * New Password must be at least 8 characters.
+          </Typography>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * New Password must contain at least 1 lowercase.
+          </Typography>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * New Password must contain at least 1 uppercase.
+          </Typography>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * New Password must contain at least 8 numbers.
+          </Typography>
+        </Box>
+      </SectionContainer>
+
+      <SectionContainer>
+        <Label htmlFor="confirm-password" error={!!errors.confirmPassword}>
+          Confirm Password *
+        </Label>
+        <TextField
+          type="password"
+          id="confirm-password"
+          required
+          fullWidth
+          {...register('confirmPassword')}
+          error={!!errors.confirmPassword}
+          helperText={errors.confirmPassword?.message}
+        />
+        <FieldErrorMessage name="confirmPassword" errors={errors} />
+      </SectionContainer>
+    </>
+  );
+};
+
+export default memo(RegisterForm);
