@@ -1,13 +1,15 @@
 'use client';
 
-// Import the functions you need from the SDKs you need
-import { usePathname } from 'next/navigation';
-import * as React from 'react';
+import { useAuthContext } from '@/containers/Auth/Context/Context';
+import Error from 'next/error';
+import React from 'react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+  const { isAuthenticated } = useAuthContext();
 
-  // TODO: Add Auth checker logic
+  if (!isAuthenticated) {
+    return <Error statusCode={404} />;
+  }
 
   return children;
 }

@@ -4,6 +4,8 @@
  *
  */
 
+export type ValueOf<T> = T[keyof T];
+
 export type ApiSuccessResponse = {
   success: boolean;
   message: string;

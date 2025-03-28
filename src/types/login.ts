@@ -6,8 +6,11 @@ export type LoginPayload = {
 };
 
 export type LoginDataResponse = {
+  clientId: string;
   accessToken: string;
   expiresIn: number;
-  tokenType: string;
+  refreshToken: string;
+  // tokenType: TokenType;
 };
+
 export type LoginResponse = ApiSuccessResponse & { data: LoginDataResponse };

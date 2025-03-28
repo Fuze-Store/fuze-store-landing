@@ -10,19 +10,13 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
-import { useMutation } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import useLogin from '@/containers/Auth/hooks/useLogin';
 import { paths } from '@/enums/path.enum';
-import { axiosPrivate } from '@/utils/axios';
-import endpoints from '@/utils/endpoints';
-
-import { ApiErrorResponse } from '@/types';
-import { LoginPayload, LoginResponse } from '@/types/login';
 
 import Label from '@/components/Label';
 
@@ -34,20 +28,8 @@ const schema = z.object({
 });
 type Schema = z.infer<typeof schema>;
 
-const login = async (data: LoginPayload): Promise<LoginResponse> => {
-  const response = await axiosPrivate.post<LoginResponse>(
-    endpoints.auth.login,
-    data,
-  );
-  return response.data;
-};
-
 export default function Page() {
-  const mutation = useMutation<
-    LoginResponse,
-    AxiosError<ApiErrorResponse>,
-    LoginPayload
-  >({ mutationFn: login });
+  const { login, isError, error, isPending } = useLogin();
 
   const {
     register,
@@ -59,8 +41,8 @@ export default function Page() {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = (params: Schema) => {
-    mutation.mutate(params);
+  const onSubmit = async (params: Schema) => {
+    await login(params);
   };
 
   return (
@@ -70,11 +52,9 @@ export default function Page() {
           <Image src={logo} width={250} height={80} alt="Logo" />
         </Box>
 
-        {mutation.isError && (
+        {isError && (
           <Box mb={2}>
-            <Alert severity="error">
-              {mutation.error.response?.data.message}
-            </Alert>
+            <Alert severity="error">{error.response?.data.message}</Alert>
           </Box>
         )}
 
@@ -94,6 +74,7 @@ export default function Page() {
               required
               fullWidth
               {...register('email')}
+              disabled={isPending}
               error={!!errors.email}
               helperText={errors.email?.message}
             />
@@ -108,6 +89,7 @@ export default function Page() {
               required
               fullWidth
               {...register('password')}
+              disabled={isPending}
               error={!!errors.password}
               helperText={errors.password?.message}
             />
@@ -119,6 +101,7 @@ export default function Page() {
               variant="contained"
               disableElevation
               fullWidth
+              disabled={isPending}
             >
               Login
             </Button>

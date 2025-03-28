@@ -9,12 +9,16 @@ import { getAnalytics, isSupported } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Toaster } from 'sonner';
 
 import '@/containers/Localization/i18n';
 import { authPages } from '@/helpers/page.helper';
+import { store } from '@/rtk/configureStore';
 
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
 import AppBar from '@/containers/Appbar';
+import AuthProvider from '@/containers/Auth/Context';
 import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
 import AxiosInterceptor from '@/utils/AxiosInterceptor';
@@ -49,24 +53,29 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <QueryClientProvider client={queryClient}>
-          <AppRouterCacheProvider>
-            <ThemeRegistry>
-              <AppProvider>
-                <ReactQueryDevtools />
-                <AxiosInterceptor />
-                {showNavigation && <AppBar />}
-                <Box
-                  component="main"
-                  sx={{ flexGrow: 1, bgcolor: 'background.default' }}
-                >
-                  {children}
-                </Box>
-                {showNavigation && <SideBar />}
-              </AppProvider>
-            </ThemeRegistry>
-          </AppRouterCacheProvider>
-        </QueryClientProvider>
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <AppRouterCacheProvider>
+              <ThemeRegistry>
+                <AuthProvider>
+                  <AppProvider>
+                    <ReactQueryDevtools />
+                    <AxiosInterceptor />
+                    {showNavigation && <AppBar />}
+                    <Box
+                      component="main"
+                      sx={{ flexGrow: 1, bgcolor: 'background.default' }}
+                    >
+                      {children}
+                    </Box>
+                    {showNavigation && <SideBar />}
+                    <Toaster />
+                  </AppProvider>
+                </AuthProvider>
+              </ThemeRegistry>
+            </AppRouterCacheProvider>
+          </QueryClientProvider>
+        </Provider>
       </body>
     </html>
   );

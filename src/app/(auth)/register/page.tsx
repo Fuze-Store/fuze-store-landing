@@ -1,19 +1,10 @@
 'use client';
 
 import { Box, Button, Container, Typography } from '@mui/material';
-import { useMutation } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
 import Image from 'next/image';
 
-import { axiosPrivate } from '@/utils/axios';
-import endpoints from '@/utils/endpoints';
-
+import useRegister from '@/containers/Auth/hooks/useRegister';
 import { FormInputs } from '@/containers/Register/Form/Provider/types';
-import {
-  RegisterErrorResponse,
-  RegisterPayload,
-  RegisterResponse,
-} from '@/types/register';
 
 import RegisterForm from '@/containers/Register/Form';
 import RegisterFormProvider from '@/containers/Register/Form/Provider';
@@ -21,28 +12,16 @@ import RegisterFormSubmit from '@/containers/Register/Form/Submit';
 
 import logo from '@/images/logo.png';
 
-const register = async (data: RegisterPayload): Promise<RegisterResponse> => {
-  const response = await axiosPrivate.post<RegisterResponse>(
-    endpoints.auth.register,
-    data,
-  );
-  return response.data;
-};
-
 export default function Page() {
-  const mutation = useMutation<
-    RegisterResponse,
-    AxiosError<RegisterErrorResponse>,
-    RegisterPayload
-  >({ mutationFn: register });
+  const { register, error } = useRegister();
 
-  const onSubmit = (data: FormInputs) => {
-    mutation.mutate({ ...data, newPassword: data.password });
+  const onSubmit = async (data: FormInputs) => {
+    await register({ ...data, newPassword: data.password });
   };
 
   return (
     <RegisterFormProvider
-      errors={mutation.error?.response?.data.errors}
+      errors={error?.response?.data.errors}
       onSubmit={onSubmit}
     >
       <Container maxWidth="sm">
