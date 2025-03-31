@@ -10,6 +10,7 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
+import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
@@ -30,6 +31,7 @@ type Schema = z.infer<typeof schema>;
 
 export default function Page() {
   const { login, isError, error, isPending } = useLogin();
+  const { data: session } = useSession();
 
   const {
     register,
@@ -42,7 +44,17 @@ export default function Page() {
   });
 
   const onSubmit = async (params: Schema) => {
-    await login(params);
+    // await login(params);
+    const result = await signIn('credentials', {
+      ...params,
+      redirect: false,
+    });
+
+    console.log(result);
+
+    if (result?.error) {
+      alert('error');
+    }
   };
 
   return (

@@ -9,4 +9,10 @@ export enum paths {
   services = '/services',
   pricing = '/pricing',
   account = '/account',
+  accountInfo = '/account/info',
+  accountInfoEdit = '/account/info/edit',
+  accountAddress = '/account/address',
+  accountSecurity = '/account/security',
+  accountSecurityPassword = '/account/security/password',
+  accountSubscription = '/account/subscription',
 }

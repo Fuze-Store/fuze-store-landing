@@ -1,6 +1,7 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
+  "/(protected)/account/info/page": "app/(protected)/account/info/page.js",
+  "/(protected)/account/security/page": "app/(protected)/account/security/page.js",
+  "/(protected)/account/address/page": "app/(protected)/account/address/page.js",
   "/(protected)/account/page": "app/(protected)/account/page.js",
-  "/(auth)/login/page": "app/(auth)/login/page.js"
+  "/(protected)/account/subscription/page": "app/(protected)/account/subscription/page.js"
 }

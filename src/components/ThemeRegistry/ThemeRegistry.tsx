@@ -6,7 +6,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import * as React from 'react';
 
 import NextAppDirEmotionCacheProvider from '@/components/ThemeRegistry/EmotionCache';
-import theme from '@/components/ThemeRegistry/theme';
+import { darkTheme, lightTheme } from '@/components/ThemeRegistry/theme';
 
 export default function ThemeRegistry({
   children,
@@ -14,6 +14,8 @@ export default function ThemeRegistry({
   children: React.ReactNode;
 }) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+  const theme = prefersDarkMode ? darkTheme : lightTheme;
 
   return (
     <NextAppDirEmotionCacheProvider options={{ key: 'mui' }}>

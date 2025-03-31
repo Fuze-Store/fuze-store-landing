@@ -21,20 +21,36 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(protected)/account/page.js"
     ],
-    "/(auth)/layout": [
+    "/(protected)/account/info/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(auth)/layout.js"
+      "static/chunks/app/(protected)/account/info/page.js"
     ],
-    "/(auth)/login/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(auth)/login/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ],
-    "/_not-found/page": [
+    "/(protected)/account/address/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/chunks/app/(protected)/account/address/page.js"
+    ],
+    "/(protected)/account/security/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(protected)/account/security/page.js"
+    ],
+    "/(protected)/account/security/password/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(protected)/account/security/password/page.js"
+    ],
+    "/(protected)/account/subscription/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(protected)/account/subscription/page.js"
     ]
   }
 }

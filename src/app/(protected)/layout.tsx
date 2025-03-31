@@ -1,15 +1,18 @@
 'use client';
 
-import { useAuthContext } from '@/containers/Auth/Context/Context';
-import Error from 'next/error';
 import React from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useAuthContext();
+export default async function Layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  // const { isAuthenticated } = useAuthContext();
+  // const session = await getServerSession(authOptions);
 
-  if (!isAuthenticated) {
-    return <Error statusCode={404} />;
-  }
+  // if (!session) {
+  //   return <Error statusCode={404} />;
+  // }
 
   return children;
 }

@@ -13,7 +13,7 @@ declare module '@mui/material/Button' {
   }
 }
 
-const theme = createTheme({
+export const lightTheme = createTheme({
   palette: {
     mode: 'light',
     primary: {
@@ -60,4 +60,51 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#196c32',
+      dark: '#114b23',
+      light: '#47895b',
+    },
+    secondary: {
+      main: '#516351',
+      dark: '#384538',
+      light: '#738273',
+    },
+  },
+  typography: {
+    fontFamily: font.style.fontFamily,
+  },
+  components: {
+    MuiAlert: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.severity === 'info' && {
+            backgroundColor: '#60a5fa',
+          }),
+        }),
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          borderRadius: 50,
+          textTransform: 'none',
+        }),
+      },
+      variants: [
+        {
+          props: { size: 'extra-large' },
+          style: {
+            fontSize: '1rem',
+            padding: '0.65rem 2.75rem',
+          },
+        },
+      ],
+    },
+  },
+});
+
+export default lightTheme;

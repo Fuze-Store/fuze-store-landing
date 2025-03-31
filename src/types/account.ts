@@ -1,0 +1,67 @@
+import { SocialProvider } from '@/enums/socialProviders.enum';
+import {
+  ApiErrorResponse,
+  ApiSuccessResponse,
+  StringArray,
+  ValueOf,
+} from '@/types';
+import { Address } from '@/types/address';
+import { Subscription } from '@/types/subscription';
+
+export interface Account {
+  id: string;
+  createdAt: string;
+  email: string;
+  isVerified: boolean;
+  updatedAt: string;
+  username: string;
+  address?: Address;
+  info: AccountInfo;
+  providers?: AccountProvider[];
+  subscription?: Subscription;
+}
+
+export type AccountInfo = {
+  id: string;
+  avatar: string | null;
+  firstName: string;
+  fullName: string;
+  initials: string;
+  lastName: string;
+};
+
+export type AccountProvider = {
+  id: string;
+  avatar: string;
+  createdAt: string;
+  firstName: string;
+  lastName: string;
+  provider: SocialProvider;
+  providerId: string;
+  updatedAt: string;
+};
+
+export type AccountDetailsResponse = ApiSuccessResponse & {
+  data: Account;
+};
+
+export type AccountAddressResponse = ApiSuccessResponse & {
+  data: Address;
+};
+export type AccountAddressErrorResponse = ApiErrorResponse & {
+  errors: AddressPayloadError;
+};
+
+export type AddressPayload = Omit<Address, 'id'>;
+export type AddressPayloadError = StringArray<Omit<Address, 'id'>>;
+
+export interface RTKAccountState {
+  emailResendDate: {
+    unix: number | null;
+  };
+}
+export type PayloadUpdateAccountFields = {
+  key: keyof RTKAccountState;
+  value: ValueOf<RTKAccountState>;
+};
+export type PayloadResetAccountFields = [keyof RTKAccountState] | undefined;

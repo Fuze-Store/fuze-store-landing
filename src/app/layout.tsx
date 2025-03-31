@@ -21,6 +21,7 @@ import AppBar from '@/containers/Appbar';
 import AuthProvider from '@/containers/Auth/Context';
 import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
+import ConfirmationProvider from '@/providers/Confirmation';
 import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
 // Your web app's Firebase configuration
@@ -54,27 +55,31 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Provider store={store}>
+          {/* <SessionProvider> */}
           <QueryClientProvider client={queryClient}>
             <AppRouterCacheProvider>
               <ThemeRegistry>
                 <AuthProvider>
                   <AppProvider>
-                    <ReactQueryDevtools />
-                    <AxiosInterceptor />
-                    {showNavigation && <AppBar />}
-                    <Box
-                      component="main"
-                      sx={{ flexGrow: 1, bgcolor: 'background.default' }}
-                    >
-                      {children}
-                    </Box>
-                    {showNavigation && <SideBar />}
-                    <Toaster />
+                    <ConfirmationProvider>
+                      <ReactQueryDevtools />
+                      <AxiosInterceptor />
+                      {showNavigation && <AppBar />}
+                      <Box
+                        component="main"
+                        sx={{ flexGrow: 1, bgcolor: 'background.default' }}
+                      >
+                        {children}
+                      </Box>
+                      {showNavigation && <SideBar />}
+                      <Toaster />
+                    </ConfirmationProvider>
                   </AppProvider>
                 </AuthProvider>
               </ThemeRegistry>
             </AppRouterCacheProvider>
           </QueryClientProvider>
+          {/* </SessionProvider> */}
         </Provider>
       </body>
     </html>

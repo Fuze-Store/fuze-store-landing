@@ -31,23 +31,23 @@ export const authOptions: AuthOptions = {
       },
     }),
   ],
-  // callbacks: {
-  //   async jwt({ token, user }) {
-  //     if (user) {
-  //       token.accessToken = user.accessToken;
-  //     }
-  //     return token;
-  //   },
-  //   async session({ session, token }) {
-  //     session.accessToken = token.accessToken as string;
-  //     return session;
-  //   },
-  // },
+  callbacks: {
+    jwt({ token, user }) {
+      if (user) {
+        token.accessToken = user.accessToken;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      session.accessToken = token.accessToken as string;
+      return session;
+    },
+  },
   pages: {
     signIn: '/login',
   },
-  // secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
-// const handler = NextAuth(authOptions);
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };
