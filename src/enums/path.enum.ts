@@ -12,6 +12,7 @@ export enum paths {
   accountInfo = '/account/info',
   accountInfoEdit = '/account/info/edit',
   accountAddress = '/account/address',
+  accountEmail = '/account/email',
   accountSecurity = '/account/security',
   accountSecurityPassword = '/account/security/password',
   accountSubscription = '/account/subscription',

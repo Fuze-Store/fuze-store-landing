@@ -2,7 +2,10 @@
 
 import { Button, Card, CardContent, Chip, Grid2, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import { memo } from 'react';
+
+import { paths } from '@/enums/path.enum';
 
 import AccountResendEmailButton from '@/containers/Account/Email/ResendButton';
 
@@ -28,7 +31,13 @@ const AccountDetailsEmail = ({ email, isVerified = false }: Props) => {
                 )}
               </Stack>
 
-              <Button size="small">Change Email</Button>
+              <Button
+                href={paths.accountEmail}
+                LinkComponent={Link}
+                size="small"
+              >
+                Change Email
+              </Button>
             </Grid2>
 
             {!isVerified && (

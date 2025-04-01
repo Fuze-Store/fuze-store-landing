@@ -8,6 +8,8 @@ import {
 import { Address } from '@/types/address';
 import { Subscription } from '@/types/subscription';
 
+// ---- ACCOUNT
+
 export interface Account {
   id: string;
   createdAt: string;
@@ -45,6 +47,26 @@ export type AccountDetailsResponse = ApiSuccessResponse & {
   data: Account;
 };
 
+export type AccountDetailsErrorResponse = ApiErrorResponse & {
+  errors?: AccountDetailsPayloadError;
+};
+
+export type AccountDetailsPayloadError = {
+  username: string[];
+  firstName: string[];
+  lastName: string[];
+};
+
+export type AccountDetailsPayload = {
+  username: string;
+  info: {
+    firstName: string;
+    lastName: string;
+  };
+};
+
+// ---- ACCOUNT ADDRESS
+
 export type AccountAddressResponse = ApiSuccessResponse & {
   data: Address;
 };
@@ -55,6 +77,16 @@ export type AccountAddressErrorResponse = ApiErrorResponse & {
 export type AddressPayload = Omit<Address, 'id'>;
 export type AddressPayloadError = StringArray<Omit<Address, 'id'>>;
 
+// ---- ACCOUNT EMAIL
+
+export type AccountEmailErrorResponse = ApiErrorResponse & {
+  errors: AccountEmailPayloadError;
+};
+
+export type AccountEmailPayload = { email: string };
+export type AccountEmailPayloadError = StringArray<AccountEmailPayload>;
+
+// ---- RTK
 export interface RTKAccountState {
   emailResendDate: {
     unix: number | null;

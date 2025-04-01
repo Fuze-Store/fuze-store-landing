@@ -2,14 +2,16 @@
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Button, Card, CardContent, Chip, Grid2, Stack } from '@mui/material';
+import { Card, CardContent, Chip, Grid2, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback } from 'react';
 
 import { SocialProvider } from '@/enums/socialProviders.enum';
 import { SOCIAL_LINKS } from '@/utils/constants';
 
-import { AccountProvider } from '@/types/account';
+import type { AccountProvider } from '@/types/account';
+
+import LinkProviderButton from '@/containers/Account/LinkProviderButton';
 
 type Props = {
   providers?: AccountProvider[];
@@ -59,11 +61,7 @@ const AccountDetailsProvider = ({ providers }: Props) => {
                   </Stack>
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 'auto' }}>
-                  {linked ? (
-                    <Button color="error">Unlink</Button>
-                  ) : (
-                    <Button>Link</Button>
-                  )}
+                  <LinkProviderButton isLinked={linked} />
                 </Grid2>
               </Grid2>
             );

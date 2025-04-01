@@ -72,7 +72,11 @@ export default function RootLayout({
                         {children}
                       </Box>
                       {showNavigation && <SideBar />}
-                      <Toaster />
+                      <Toaster
+                        // theme={theme.dark ? 'light' : 'dark'}
+                        closeButton
+                        position="bottom-right"
+                      />
                     </ConfirmationProvider>
                   </AppProvider>
                 </AuthProvider>
