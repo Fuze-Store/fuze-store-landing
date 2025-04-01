@@ -55,7 +55,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Provider store={store}>
-          {/* <SessionProvider> */}
+          {/* <SessionProvider session={session}> */}
           <QueryClientProvider client={queryClient}>
             <AppRouterCacheProvider>
               <ThemeRegistry>

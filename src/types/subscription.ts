@@ -1,8 +1,10 @@
+import { AvailableCurrency } from '@/enums/currencies.enum';
 import {
   SubscriptionInvoiceStatus,
   SubscriptionPlan,
   SubscriptionStatus,
 } from '@/enums/subscription.enum';
+import { ApiSuccessResponse } from '@/types';
 import { Store } from '@/types/store';
 
 export interface Subscription {
@@ -33,7 +35,7 @@ export interface Subscription {
   /**
    * Subscribed Plan
    */
-  plan?: SubscriptionPlan;
+  plan?: Plan;
   /**
    * The date for subscribing to new plan
    */
@@ -41,13 +43,23 @@ export interface Subscription {
   /**
    * The new plan to be subscribed on next billing
    */
-  newPlan?: SubscriptionPlan;
+  newPlan?: Plan;
   /**
    * list of subscription invoices
    */
   invoices?: Invoice[];
 
   stores?: Store[];
+}
+
+export interface Plan {
+  baseFee: number;
+  code: SubscriptionPlan;
+  currency: AvailableCurrency;
+  features: Record<string, any>;
+  id: string;
+  name: string;
+  salesThreshold: number;
 }
 
 export interface Invoice {
@@ -78,3 +90,7 @@ export interface Invoice {
   createdAt: string;
   updatedAt: string | null;
 }
+
+export type SubcriptionResponse = ApiSuccessResponse & {
+  data: Subscription;
+};

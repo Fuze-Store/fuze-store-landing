@@ -16,4 +16,5 @@ export enum paths {
   accountSecurity = '/account/security',
   accountSecurityPassword = '/account/security/password',
   accountSubscription = '/account/subscription',
+  accountSubscriptionChoosePlan = '/account/subscription/choose-plan',
 }

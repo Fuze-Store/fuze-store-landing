@@ -16,56 +16,20 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(protected)/layout.js"
     ],
-    "/(protected)/account/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/page.js"
-    ],
-    "/(protected)/account/info/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/info/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
-    "/(protected)/account/address/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/address/page.js"
-    ],
-    "/(protected)/account/security/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/security/page.js"
-    ],
-    "/(protected)/account/security/password/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/security/password/page.js"
-    ],
-    "/(protected)/account/subscription/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/subscription/page.js"
-    ],
-    "/(protected)/account/info/edit/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/info/edit/page.js"
-    ],
     "/(protected)/account/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(protected)/account/layout.js"
     ],
-    "/(protected)/account/email/page": [
+    "/(protected)/account/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/email/page.js"
+      "static/chunks/app/(protected)/account/page.js"
+    ],
+    "/(protected)/account/subscription/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(protected)/account/subscription/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

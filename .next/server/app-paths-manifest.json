@@ -1,9 +1,5 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/(protected)/account/page": "app/(protected)/account/page.js",
-  "/(protected)/account/email/page": "app/(protected)/account/email/page.js",
-  "/(protected)/account/security/password/page": "app/(protected)/account/security/password/page.js",
-  "/(protected)/account/subscription/page": "app/(protected)/account/subscription/page.js",
-  "/(protected)/account/security/page": "app/(protected)/account/security/page.js",
-  "/(protected)/account/address/page": "app/(protected)/account/address/page.js"
+  "/(protected)/account/subscription/page": "app/(protected)/account/subscription/page.js"
 }
