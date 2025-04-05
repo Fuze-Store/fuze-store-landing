@@ -1,6 +1,6 @@
 'use client';
 
-import { CircularProgress, Stack, Toolbar } from '@mui/material';
+import { CircularProgress, Stack, Toolbar, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
@@ -13,11 +13,11 @@ import AccountDetailsInfo from '@/containers/Account/Details/Info';
 import AccountDetailsProvider from '@/containers/Account/Details/Provider';
 
 export default function Page() {
-  const { data: response, isFetching } = useGetAccount();
+  const { data: response, isPending } = useGetAccount();
 
   const account = response?.data;
 
-  if (isFetching) {
+  if (isPending) {
     return (
       <>
         <Toolbar />
@@ -31,8 +31,11 @@ export default function Page() {
   if (account) {
     return (
       <>
-        <Toolbar />
-        <Container maxWidth="sm">
+        <SectionContainer px={3} sx={{ mb: 4 }}>
+          <Typography variant="h4">Account Information</Typography>
+        </SectionContainer>
+
+        <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
           <Box py={2}>
             <SectionContainer>
               <AccountDetailsInfo

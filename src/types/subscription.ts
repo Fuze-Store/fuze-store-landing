@@ -1,10 +1,10 @@
 import { AvailableCurrency } from '@/enums/currencies.enum';
 import {
-  SubscriptionInvoiceStatus,
   SubscriptionPlan,
   SubscriptionStatus,
 } from '@/enums/subscription.enum';
 import { ApiSuccessResponse } from '@/types';
+import { Invoice } from '@/types/invoice';
 import { Store } from '@/types/store';
 
 export interface Subscription {
@@ -60,35 +60,6 @@ export interface Plan {
   id: string;
   name: string;
   salesThreshold: number;
-}
-
-export interface Invoice {
-  id: string;
-  /**
-   * The reference identifier that connects to payments service
-   */
-  reference: string | null;
-  /**
-   * The first day of your billing cycle
-   */
-  billingStartDate: string;
-  /**
-   * The last day of your billing cycle
-   */
-  billingEndDate: string;
-  /**
-   * Total amount of your billings (base fee, store sales fee, etc)
-   */
-  totalAmount: number;
-  /**
-   * The satatus of your invoice
-   */
-  status: SubscriptionInvoiceStatus;
-  filename: string;
-  currency: string;
-
-  createdAt: string;
-  updatedAt: string | null;
 }
 
 export type SubcriptionResponse = ApiSuccessResponse & {

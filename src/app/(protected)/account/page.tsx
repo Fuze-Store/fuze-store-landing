@@ -1,105 +1,69 @@
 'use client';
 
+import { CircularProgress, Stack, Toolbar, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 
-import { paths } from '@/enums/path.enum';
-import {
-  Avatar,
-  Card,
-  CardContent,
-  Grid2,
-  Stack,
-  Toolbar,
-} from '@mui/material';
-import Link from 'next/link';
+import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 
-const menus = [
-  {
-    label: 'Account Details',
-    description: 'Manage your account information',
-    path: paths.accountInfo,
-  },
-  {
-    label: 'Subscription',
-    description: 'Manage your subscription',
-    path: paths.accountSubscription,
-  },
-  {
-    label: 'Address',
-    description: 'Manage your account address',
-    path: paths.accountAddress,
-  },
-  {
-    label: 'Security',
-    description: 'Manage your account security',
-    path: paths.accountSecurity,
-  },
-];
+import SectionContainer from '@/components/SectionContainer';
+import AccountDeleteButton from '@/containers/Account/DeleteButton';
+import AccountDetailsEmail from '@/containers/Account/Details/Email';
+import AccountDetailsInfo from '@/containers/Account/Details/Info';
+import AccountDetailsProvider from '@/containers/Account/Details/Provider';
 
 export default function Page() {
-  return (
-    <>
-      <Toolbar />
-      <Box
-        mb={2}
-        sx={{
-          height: 160,
-          position: 'relative',
-          display: 'flex',
-          py: 2,
-          px: 3,
-          flexDirection: 'row',
-          alignItems: 'center',
-          // bgcolor: (theme) => theme.palette.grey[100],
-          bgcolor: 'rgba(221, 229, 217, 0.24)',
-        }}
-      >
-        <Container maxWidth="lg">
-          <Stack direction="row" spacing={2}>
-            <Avatar
-              sx={{ height: 56, width: 56, fontSize: 28, lineHeight: 56 }}
-            >
-              KD
-            </Avatar>
+  const { data: response, isPending } = useGetAccount();
 
-            <Box>
-              <Typography variant="h5">Kim Del Rosario</Typography>
-              <Typography variant="body2" color="textSecondary">
-                kimuel.delrosario@gmail.com
-              </Typography>
-            </Box>
-          </Stack>
+  const account = response?.data;
+
+  if (isPending) {
+    return (
+      <>
+        <Toolbar />
+        <Stack direction="row" justifyContent="center">
+          <CircularProgress />
+        </Stack>
+      </>
+    );
+  }
+
+  if (account) {
+    return (
+      <>
+        <SectionContainer px={3} sx={{ mb: 4 }}>
+          <Typography variant="h4">Account Information</Typography>
+        </SectionContainer>
+
+        <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
+          <Box py={2}>
+            <SectionContainer>
+              <AccountDetailsInfo
+                email={account.email}
+                fullName={account.info.fullName}
+                initials={account.info.initials}
+              />
+            </SectionContainer>
+
+            <SectionContainer>
+              <AccountDetailsEmail
+                email={account.email}
+                isVerified={account.isVerified}
+              />
+            </SectionContainer>
+
+            <SectionContainer>
+              <AccountDetailsProvider providers={account.providers} />
+            </SectionContainer>
+
+            <SectionContainer>
+              <AccountDeleteButton />
+            </SectionContainer>
+          </Box>
         </Container>
-      </Box>
-      <Container maxWidth="lg">
-        <Grid2 container spacing={1}>
-          {menus.map((menu) => (
-            <Grid2 key={menu.label} size={{ xs: 6, md: 4 }}>
-              <Link href={menu.path} style={{ textDecoration: 'none' }}>
-                <Card
-                  variant="outlined"
-                  elevation={0}
-                  sx={{
-                    height: 150,
-                    // bgcolor: (theme) => theme.palette.text.secondary,
-                  }}
-                >
-                  <CardContent>
-                    <Typography variant="subtitle1">{menu.label}</Typography>
-                    {menu.description && (
-                      <Typography variant="body2" color="textSecondary">
-                        {menu.description}
-                      </Typography>
-                    )}
-                  </CardContent>
-                </Card>
-              </Link>
-            </Grid2>
-          ))}
-        </Grid2>
-      </Container>
-    </>
-  );
+      </>
+    );
+  }
+
+  return null;
 }

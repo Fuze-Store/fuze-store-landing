@@ -1,89 +1,69 @@
 'use client';
 
-import {
-  Button,
-  Card,
-  CardContent,
-  Divider,
-  Stack,
-  Toolbar,
-} from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Button, Divider, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+
+import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
+import { paths } from '@/enums/path.enum';
 
 import SectionContainer from '@/components/SectionContainer';
-import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
+import AccountRecentInvoices from '@/containers/Account/Invoice/Recent';
+import AddPaymentMethodButton from '@/containers/Account/PaymentMethod/AddButton';
+import PaymentMethodList from '@/containers/Account/PaymentMethod/List';
 import AccountSubscriptionPlan from '@/containers/Account/Subscription/Plan';
 
 export default function Page() {
   const { data: response } = useGetSubscription();
 
   const subscription = response?.data;
-  console.log(subscription);
+
   return (
     <>
-      <Toolbar />
+      <SectionContainer px={3} sx={{ mb: 4 }}>
+        <Typography variant="h4">Subscription</Typography>
+      </SectionContainer>
 
-      <Container maxWidth="md">
-        <Typography variant="body2">Plan</Typography>
-        <Divider sx={{ my: 1 }} />
+      <Container sx={{ ml: { md: 0 } }} maxWidth="md">
+        <Typography fontWeight={600}>Plan</Typography>
+        <Divider sx={{ mb: 2 }} />
 
-        <SectionContainer>
+        <SectionContainer sx={{ mb: 4 }}>
           <AccountSubscriptionPlan subscription={subscription} />
         </SectionContainer>
 
-        <Typography variant="body2">Payment Method</Typography>
-        <Divider sx={{ my: 1 }} />
+        <Typography fontWeight={600}>Payment Method</Typography>
+        <Divider sx={{ mb: 2 }} />
 
-        <SectionContainer>
-          <Card elevation={0}>
-            <CardContent>
-              <SectionContainer>
-                <Typography>Starter</Typography>
-              </SectionContainer>
+        <SectionContainer sx={{ mb: 4 }}>
+          <SectionContainer>
+            <PaymentMethodList />
+          </SectionContainer>
 
-              <SectionContainer>
-                <Typography variant="body2">
-                  You`re on the basic plan. Upgrade to access more features.
-                </Typography>
-                <Typography variant="body2">
-                  Your next billing will be on Mar 16, 2025 01:51 AM
-                </Typography>
-              </SectionContainer>
-
-              <Stack direction="row" spacing={2}>
-                <Button variant="contained">Choose Plan</Button>
-                <Button color="error">Cancel Subscription</Button>
-              </Stack>
-            </CardContent>
-          </Card>
+          <SectionContainer>
+            <AddPaymentMethodButton />
+          </SectionContainer>
         </SectionContainer>
 
-        <Typography variant="body2">Recent Invoices</Typography>
-        <Divider sx={{ my: 1 }} />
+        <Typography fontWeight={600}>Recent Invoices</Typography>
+        <Divider sx={{ mb: 2 }} />
 
         <SectionContainer>
-          <Card elevation={0}>
-            <CardContent>
-              <SectionContainer>
-                <Typography>Starter</Typography>
-              </SectionContainer>
+          <SectionContainer mb={1}>
+            <AccountRecentInvoices />
+          </SectionContainer>
 
-              <SectionContainer>
-                <Typography variant="body2">
-                  You`re on the basic plan. Upgrade to access more features.
-                </Typography>
-                <Typography variant="body2">
-                  Your next billing will be on Mar 16, 2025 01:51 AM
-                </Typography>
-              </SectionContainer>
-
-              <Stack direction="row" spacing={2}>
-                <Button variant="contained">Choose Plan</Button>
-                <Button color="error">Cancel Subscription</Button>
-              </Stack>
-            </CardContent>
-          </Card>
+          <Stack direction="row" justifyContent="flex-end">
+            <Button
+              LinkComponent={Link}
+              endIcon={<ArrowForwardIcon />}
+              href={paths.accountInvoice}
+            >
+              View All Invoices
+            </Button>
+          </Stack>
         </SectionContainer>
       </Container>
     </>

@@ -9,6 +9,8 @@ import type { FormInputs } from '@/containers/Account/Email/Form/Provider/types'
 
 import GoBackButton from '@/components/GoBackButton';
 import PageLoader from '@/components/PageLoader';
+import PageTitle from '@/components/PageTitle';
+import SectionContainer from '@/components/SectionContainer';
 import AccountEmailForm from '@/containers/Account/Email/Form';
 import AccountEmailFormProvider from '@/containers/Account/Email/Form/Provider';
 import AccountEmailFormSubmit from '@/containers/Account/Email/Form/Submit';
@@ -26,13 +28,19 @@ export default function Page() {
   }
 
   return (
-    <AccountEmailFormProvider
-      formData={response?.data}
-      errors={error?.response?.data.errors}
-      onSubmit={onSubmit}
-    >
-      <Container maxWidth="sm">
-        <Box sx={{ py: 10 }}>
+    <>
+      <SectionContainer px={3}>
+        <GoBackButton />
+      </SectionContainer>
+
+      <PageTitle title="Change Email" />
+
+      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
+        <AccountEmailFormProvider
+          formData={response?.data}
+          errors={error?.response?.data.errors}
+          onSubmit={onSubmit}
+        >
           <AccountEmailForm loading={isPending} />
 
           <Box mb={1}>
@@ -43,12 +51,8 @@ export default function Page() {
               fullWidth
             />
           </Box>
-
-          <Box mb={2}>
-            <GoBackButton disableElevation fullWidth />
-          </Box>
-        </Box>
+        </AccountEmailFormProvider>
       </Container>
-    </AccountEmailFormProvider>
+    </>
   );
 }

@@ -26,6 +26,9 @@ export const lightTheme = createTheme({
       dark: '#384538',
       light: '#738273',
     },
+    background: {
+      // default: '#fcfdf7',
+    },
   },
   typography: {
     fontFamily: font.style.fontFamily,
@@ -61,48 +64,18 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
+  ...lightTheme,
   palette: {
     mode: 'dark',
     primary: {
-      main: '#516351',
-      dark: '#384538',
-      light: '#738273',
+      main: '#87d991',
+      dark: '#5e9765',
+      light: '#9fe0a7',
     },
     secondary: {
-      main: '#516351',
-      dark: '#384538',
-      light: '#738273',
-    },
-  },
-  typography: {
-    fontFamily: font.style.fontFamily,
-  },
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.severity === 'info' && {
-            backgroundColor: '#60a5fa',
-          }),
-        }),
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          borderRadius: 50,
-          textTransform: 'none',
-        }),
-      },
-      variants: [
-        {
-          props: { size: 'extra-large' },
-          style: {
-            fontSize: '1rem',
-            padding: '0.65rem 2.75rem',
-          },
-        },
-      ],
+      main: '#b8ccb6',
+      dark: '#808e7f',
+      light: '#c6d6c4',
     },
   },
 });

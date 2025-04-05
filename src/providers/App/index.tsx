@@ -20,13 +20,16 @@ import { AppContext } from '@/contexts/App';
  */
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [showDrawer, setShowDrawer] = useState(false);
+  const [showAccountDrawer, setShowAccountDrawer] = useState(false);
 
   const value = useMemo(
     () => ({
       showDrawer,
+      showAccountDrawer,
       setShowDrawer,
+      setShowAccountDrawer,
     }),
-    [showDrawer, setShowDrawer],
+    [showDrawer, showAccountDrawer, setShowDrawer, setShowAccountDrawer],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

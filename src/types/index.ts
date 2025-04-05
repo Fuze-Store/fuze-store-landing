@@ -28,3 +28,20 @@ export type AxiosErrorResponse = {
 export type StringArray<T> = {
   [K in keyof T]: T[K] extends object ? StringArray<T[K]> : string[];
 };
+
+export type ListResponse<T> = {
+  items: T;
+  total: number;
+  page: number;
+  perPage: number;
+  lastPage: number;
+};
+
+export type FilterParams = {
+  searchText?: string;
+  page: number;
+  perPage: number;
+  lastPage?: number;
+  onChangeSearchText?: (text?: string) => void;
+  // onPaginationChange?: OnChangeFn<PaginationState>;
+};

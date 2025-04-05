@@ -83,7 +83,7 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   };
 
   return (
-    <Card>
+    <Card elevation={0}>
       <CardContent>
         <SectionContainer>
           <Typography>{getAccountSubscriptionLabel(code)}</Typography>

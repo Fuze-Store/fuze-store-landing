@@ -41,7 +41,7 @@ const AccountDetailsInfo = ({ email, fullName, initials }: Props) => (
           </Box>
         </Stack>
 
-        <Button href={paths.accountInfoEdit} LinkComponent={Link} size="small">
+        <Button href={paths.accountEdit} LinkComponent={Link} size="small">
           Edit
         </Button>
       </Stack>

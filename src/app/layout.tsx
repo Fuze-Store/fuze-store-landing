@@ -3,7 +3,12 @@
 // Import the functions you need from the SDKs you need
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Box from '@mui/material/Box';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
@@ -23,6 +28,8 @@ import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
 import ConfirmationProvider from '@/providers/Confirmation';
 import AxiosInterceptor from '@/utils/AxiosInterceptor';
+
+import './globals.css';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -57,31 +64,39 @@ export default function RootLayout({
         <Provider store={store}>
           {/* <SessionProvider session={session}> */}
           <QueryClientProvider client={queryClient}>
-            <AppRouterCacheProvider>
-              <ThemeRegistry>
-                <AuthProvider>
-                  <AppProvider>
-                    <ConfirmationProvider>
-                      <ReactQueryDevtools />
-                      <AxiosInterceptor />
-                      {showNavigation && <AppBar />}
-                      <Box
-                        component="main"
-                        sx={{ flexGrow: 1, bgcolor: 'background.default' }}
-                      >
-                        {children}
-                      </Box>
-                      {showNavigation && <SideBar />}
-                      <Toaster
-                        // theme={theme.dark ? 'light' : 'dark'}
-                        closeButton
-                        position="bottom-right"
-                      />
-                    </ConfirmationProvider>
-                  </AppProvider>
-                </AuthProvider>
-              </ThemeRegistry>
-            </AppRouterCacheProvider>
+            <HydrationBoundary state={dehydrate(queryClient)}>
+              <AppRouterCacheProvider>
+                <ThemeRegistry>
+                  <AuthProvider>
+                    <AppProvider>
+                      <ConfirmationProvider>
+                        <ReactQueryDevtools />
+                        <AxiosInterceptor />
+                        {showNavigation && <AppBar />}
+                        <Box
+                          component="main"
+                          sx={{
+                            flexGrow: 1,
+                            bgcolor: (theme) => theme.palette.grey[50],
+                            minHeight: '100vh',
+                            flexDirection: 'column',
+                            display: 'flex',
+                          }}
+                        >
+                          {children}
+                        </Box>
+                        {showNavigation && <SideBar />}
+                        <Toaster
+                          // theme={theme.dark ? 'light' : 'dark'}
+                          closeButton
+                          position="bottom-right"
+                        />
+                      </ConfirmationProvider>
+                    </AppProvider>
+                  </AuthProvider>
+                </ThemeRegistry>
+              </AppRouterCacheProvider>
+            </HydrationBoundary>
           </QueryClientProvider>
           {/* </SessionProvider> */}
         </Provider>

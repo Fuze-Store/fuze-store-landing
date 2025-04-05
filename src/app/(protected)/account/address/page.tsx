@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Box, Toolbar } from '@mui/material';
+import { Alert, Box, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 
 import useGetAccountAddress from '@/containers/Account/Address/hooks/useGetAccountAddress';
@@ -26,9 +26,11 @@ export default function Page() {
 
   return (
     <>
-      <Toolbar />
+      <SectionContainer px={3} sx={{ mb: 4 }}>
+        <Typography variant="h4">Address</Typography>
+      </SectionContainer>
 
-      <Container sx={{ py: 2 }} maxWidth="sm">
+      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
         <AddressFormProvider
           address={response?.data}
           errors={error?.errors}

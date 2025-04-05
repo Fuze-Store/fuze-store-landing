@@ -43,8 +43,6 @@ export default function SideBar() {
 
   const toggleDrawer = () => setShowDrawer((prevShowDrawer) => !prevShowDrawer);
 
-  console.log('pathname', pathname);
-
   return (
     <Drawer
       anchor="right"
