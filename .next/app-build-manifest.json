@@ -11,12 +11,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
     "/(protected)/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -27,60 +21,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/(protected)/account/layout.js"
     ],
-    "/(protected)/account/invoices/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/invoices/page.js"
-    ],
-    "/(protected)/account/address/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/address/page.js"
-    ],
     "/(protected)/account/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(protected)/account/page.js"
     ],
-    "/(protected)/account/edit/page": [
+    "/api/auth/[...nextauth]/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/edit/page.js"
-    ],
-    "/(protected)/account/change-email/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/change-email/page.js"
-    ],
-    "/(protected)/account/security/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/security/page.js"
-    ],
-    "/(protected)/account/security/password/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/security/password/page.js"
-    ],
-    "/(protected)/account/subscription/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/subscription/page.js"
-    ],
-    "/(protected)/account/payment-methods/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/payment-methods/[id]/page.js"
-    ],
-    "/(protected)/account/subscription/plans/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(protected)/account/subscription/plans/page.js"
-    ],
-    "/(aux)/pricing/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/(aux)/pricing/page.js"
+      "static/chunks/app/api/auth/[...nextauth]/route.js"
     ]
   }
 }

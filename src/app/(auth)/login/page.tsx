@@ -10,18 +10,19 @@ import {
   Stack,
   TextField,
 } from '@mui/material';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import useLogin from '@/containers/Auth/hooks/useLogin';
 import { paths } from '@/enums/path.enum';
 
 import Label from '@/components/Label';
 
 import logo from '@/images/name-logo-black.png';
+import { useState } from 'react';
 
 const schema = z.object({
   email: z.string().min(1, 'Email is required').email(),
@@ -30,8 +31,8 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>;
 
 export default function Page() {
-  const { login, isError, error, isPending } = useLogin();
-  const { data: session } = useSession();
+  const [errorMessage, setErrorMessage] = useState('');
+  const router = useRouter();
 
   const {
     register,
@@ -44,16 +45,17 @@ export default function Page() {
   });
 
   const onSubmit = async (params: Schema) => {
-    // await login(params);
-    const result = await signIn('credentials', {
-      ...params,
-      redirect: false,
-    });
+    const result = await signIn('credentials', { ...params, redirect: false });
 
-    console.log(result);
+    if (result?.ok) {
+      router.push(paths.account);
+      return;
+    }
 
-    if (result?.error) {
-      alert('error');
+    if (result?.status === 401) {
+      setErrorMessage('Incorrect email or password.');
+    } else {
+      setErrorMessage('Something went wrong processing your request');
     }
   };
 
@@ -64,9 +66,9 @@ export default function Page() {
           <Image src={logo} width={250} height={80} alt="Logo" />
         </Box>
 
-        {isError && (
+        {errorMessage && (
           <Box mb={2}>
-            <Alert severity="error">{error.response?.data.message}</Alert>
+            <Alert severity="error">{errorMessage}</Alert>
           </Box>
         )}
 
@@ -86,7 +88,6 @@ export default function Page() {
               required
               fullWidth
               {...register('email')}
-              disabled={isPending}
               error={!!errors.email}
               helperText={errors.email?.message}
             />
@@ -101,7 +102,6 @@ export default function Page() {
               required
               fullWidth
               {...register('password')}
-              disabled={isPending}
               error={!!errors.password}
               helperText={errors.password?.message}
             />
@@ -113,7 +113,6 @@ export default function Page() {
               variant="contained"
               disableElevation
               fullWidth
-              disabled={isPending}
             >
               Login
             </Button>

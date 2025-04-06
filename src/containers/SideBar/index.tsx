@@ -1,9 +1,5 @@
 'use client';
 
-import { AppContext } from '@/contexts/App';
-import { paths } from '@/enums/path.enum';
-import { navPages } from '@/helpers/page.helper';
-
 import CloseIcon from '@mui/icons-material/Close';
 import {
   Divider,
@@ -17,8 +13,14 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import { styled } from '@mui/material/styles';
+import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
+
+import useLogout from '@/containers/Auth/hooks/useLogout';
+import { AppContext } from '@/contexts/App';
+import { paths } from '@/enums/path.enum';
+import { navPages } from '@/helpers/page.helper';
 
 const ListItemButtonS = styled(ListItemButton)(({ theme }) => ({
   borderRadius: 8,
@@ -39,9 +41,13 @@ const ListItemButtonS = styled(ListItemButton)(({ theme }) => ({
 
 export default function SideBar() {
   const pathname = usePathname();
+  const { logout } = useLogout();
+  const { status } = useSession();
   const { showDrawer, setShowDrawer } = useContext(AppContext);
 
   const toggleDrawer = () => setShowDrawer((prevShowDrawer) => !prevShowDrawer);
+
+  const isAuthenticated = status === 'authenticated';
 
   return (
     <Drawer
@@ -80,40 +86,47 @@ export default function SideBar() {
         </List>
         <Divider />
         <List component="nav" aria-label="account menu">
-          <ListItem
-            sx={{ color: 'inherit', padding: 0 }}
-            component="a"
-            href={paths.login}
-            onClick={toggleDrawer}
-          >
-            <ListItemButtonS>
-              <ListItemText primary="Login" />
-            </ListItemButtonS>
-          </ListItem>
+          {isAuthenticated ? (
+            <>
+              <ListItem
+                sx={{ color: 'inherit', padding: 0 }}
+                component="a"
+                href={paths.account}
+                onClick={toggleDrawer}
+              >
+                <ListItemButtonS>
+                  <ListItemText primary="Account" />
+                </ListItemButtonS>
+              </ListItem>
+              <ListItemButtonS onClick={logout}>
+                <ListItemText primary="Logout" />
+              </ListItemButtonS>
+            </>
+          ) : (
+            <>
+              <ListItem
+                sx={{ color: 'inherit', padding: 0 }}
+                component="a"
+                href={paths.login}
+                onClick={toggleDrawer}
+              >
+                <ListItemButtonS>
+                  <ListItemText primary="Login" />
+                </ListItemButtonS>
+              </ListItem>
 
-          <ListItem
-            sx={{ color: 'inherit', padding: 0 }}
-            component="a"
-            href={paths.register}
-            onClick={toggleDrawer}
-          >
-            <ListItemButtonS>
-              <ListItemText primary="Register" />
-            </ListItemButtonS>
-          </ListItem>
-          <ListItem
-            sx={{ color: 'inherit', padding: 0 }}
-            component="a"
-            href={paths.account}
-            onClick={toggleDrawer}
-          >
-            <ListItemButtonS>
-              <ListItemText primary="Register" />
-            </ListItemButtonS>
-          </ListItem>
-          <ListItemButtonS>
-            <ListItemText primary="Logout" />
-          </ListItemButtonS>
+              <ListItem
+                sx={{ color: 'inherit', padding: 0 }}
+                component="a"
+                href={paths.register}
+                onClick={toggleDrawer}
+              >
+                <ListItemButtonS>
+                  <ListItemText primary="Register" />
+                </ListItemButtonS>
+              </ListItem>
+            </>
+          )}
         </List>
       </Stack>
 

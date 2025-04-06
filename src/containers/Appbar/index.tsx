@@ -2,8 +2,7 @@
 
 import Logout from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
+import Person from '@mui/icons-material/Person';
 import {
   Avatar,
   Box,
@@ -23,15 +22,17 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useContext, useState } from 'react';
 
+import useLogout from '@/containers/Auth/hooks/useLogout';
 import { paths } from '@/enums/path.enum';
+import { navPages } from '@/helpers/page.helper';
 
 import Logo from '@/components/Logo';
 import { AppContext } from '@/contexts/App';
-import { navPages } from '@/helpers/page.helper';
 
 const ListGroup = styled('ul')(() => ({
   display: 'flex',
@@ -91,17 +92,12 @@ const LinkItem = styled(Link)(({ theme }) => ({
 export default function AppBar() {
   const theme = useTheme();
   const pathname = usePathname();
+  const { logout } = useLogout();
+  const { status } = useSession();
+  const { setShowDrawer } = useContext(AppContext);
   const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const { setShowDrawer } = useContext(AppContext);
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -109,6 +105,120 @@ export default function AppBar() {
   });
 
   const isElevate = isLgUp && trigger;
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const renderAccount = () => {
+    if (status === 'authenticated') {
+      return (
+        <>
+          <Box>
+            <Tooltip title="Account settings">
+              <IconButton
+                onClick={handleClick}
+                size="small"
+                sx={{ ml: 2 }}
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+              >
+                <Avatar sx={{ width: 32, height: 32 }} />
+              </IconButton>
+            </Tooltip>
+          </Box>
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            slotProps={{
+              paper: {
+                elevation: 0,
+                sx: {
+                  overflow: 'visible',
+                  filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                  mt: 1.5,
+                  '& .MuiAvatar-root': {
+                    width: 32,
+                    height: 32,
+                    ml: -0.5,
+                    mr: 1,
+                  },
+                  '&::before': {
+                    content: '""',
+                    display: 'block',
+                    position: 'absolute',
+                    top: 0,
+                    right: 14,
+                    width: 10,
+                    height: 10,
+                    bgcolor: 'background.paper',
+                    transform: 'translateY(-50%) rotate(45deg)',
+                    zIndex: 0,
+                  },
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <Link
+              style={{ textDecoration: 'none', color: 'inherit' }}
+              href={paths.account}
+            >
+              <MenuItem onClick={handleClose}>
+                <ListItemIcon>
+                  <Person fontSize="small" />
+                </ListItemIcon>
+                Account
+              </MenuItem>
+            </Link>
+            <MenuItem onClick={logout}>
+              <ListItemIcon>
+                <Logout fontSize="small" />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </Menu>
+        </>
+      );
+    }
+
+    if (status === 'unauthenticated') {
+      return (
+        <Stack
+          direction="row"
+          alignItems="center"
+          divider={<Divider orientation="vertical" sx={{ height: 40 }} />}
+          spacing={1}
+        >
+          <Button
+            LinkComponent={Link}
+            sx={{ fontSize: 16, px: 4 }}
+            href={paths.login}
+          >
+            Login
+          </Button>
+          <Button
+            LinkComponent={Link}
+            sx={{ fontSize: 16, px: 4 }}
+            href={paths.register}
+          >
+            Register
+          </Button>
+        </Stack>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <AppBarMui
@@ -150,98 +260,7 @@ export default function AppBar() {
                 })}
               </ListGroup>
 
-              <Box>
-                <Tooltip title="Account settings">
-                  <IconButton
-                    onClick={handleClick}
-                    size="small"
-                    sx={{ ml: 2 }}
-                    aria-controls={open ? 'account-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                  >
-                    <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-              <Menu
-                anchorEl={anchorEl}
-                id="account-menu"
-                open={open}
-                onClose={handleClose}
-                onClick={handleClose}
-                slotProps={{
-                  paper: {
-                    elevation: 0,
-                    sx: {
-                      overflow: 'visible',
-                      filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-                      mt: 1.5,
-                      '& .MuiAvatar-root': {
-                        width: 32,
-                        height: 32,
-                        ml: -0.5,
-                        mr: 1,
-                      },
-                      '&::before': {
-                        content: '""',
-                        display: 'block',
-                        position: 'absolute',
-                        top: 0,
-                        right: 14,
-                        width: 10,
-                        height: 10,
-                        bgcolor: 'background.paper',
-                        transform: 'translateY(-50%) rotate(45deg)',
-                        zIndex: 0,
-                      },
-                    },
-                  },
-                }}
-                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-              >
-                <MenuItem onClick={handleClose}>
-                  <ListItemIcon>
-                    <PersonAdd fontSize="small" />
-                  </ListItemIcon>
-                  Add another account
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <ListItemIcon>
-                    <Settings fontSize="small" />
-                  </ListItemIcon>
-                  Settings
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                  <ListItemIcon>
-                    <Logout fontSize="small" />
-                  </ListItemIcon>
-                  Logout
-                </MenuItem>
-              </Menu>
-
-              <Stack
-                direction="row"
-                alignItems="center"
-                divider={<Divider orientation="vertical" sx={{ height: 40 }} />}
-                spacing={1}
-              >
-                <Button
-                  LinkComponent={Link}
-                  sx={{ fontSize: 16, px: 4 }}
-                  href={paths.login}
-                >
-                  Login
-                </Button>
-                <Button
-                  LinkComponent={Link}
-                  sx={{ fontSize: 16, px: 4 }}
-                  href={paths.register}
-                >
-                  Register
-                </Button>
-              </Stack>
+              {renderAccount()}
             </Stack>
           )}
         </Container>

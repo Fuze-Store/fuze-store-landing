@@ -1,6 +1,7 @@
 'use client';
 
 // Import the functions you need from the SDKs you need
+import { useTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Box from '@mui/material/Box';
 import {
@@ -12,24 +13,23 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
+import { SessionProvider } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import * as React from 'react';
+import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { Toaster } from 'sonner';
 
 import '@/containers/Localization/i18n';
 import { authPages } from '@/helpers/page.helper';
 import { store } from '@/rtk/configureStore';
+import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
 import AppBar from '@/containers/Appbar';
-import AuthProvider from '@/containers/Auth/Context';
 import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
 import ConfirmationProvider from '@/providers/Confirmation';
-import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
-import { useTheme } from '@mui/material';
 import './globals.css';
 
 // Your web app's Firebase configuration
@@ -48,13 +48,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // With SSR, we usually want to set some default staleTime
+      // above 0 to avoid refetching immediately on the client
+      staleTime: 60 * 1000,
+    },
+  },
+});
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: PropsWithChildren) {
   const theme = useTheme();
   const pathname = usePathname();
 
@@ -64,12 +68,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Provider store={store}>
-          {/* <SessionProvider session={session}> */}
           <QueryClientProvider client={queryClient}>
             <HydrationBoundary state={dehydrate(queryClient)}>
-              <AppRouterCacheProvider>
-                <ThemeRegistry>
-                  <AuthProvider>
+              <SessionProvider>
+                <AppRouterCacheProvider>
+                  <ThemeRegistry>
                     <AppProvider>
                       <ConfirmationProvider>
                         <ReactQueryDevtools />
@@ -97,12 +100,11 @@ export default function RootLayout({
                         />
                       </ConfirmationProvider>
                     </AppProvider>
-                  </AuthProvider>
-                </ThemeRegistry>
-              </AppRouterCacheProvider>
+                  </ThemeRegistry>
+                </AppRouterCacheProvider>
+              </SessionProvider>
             </HydrationBoundary>
           </QueryClientProvider>
-          {/* </SessionProvider> */}
         </Provider>
       </body>
     </html>

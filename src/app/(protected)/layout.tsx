@@ -1,13 +1,15 @@
-'use client';
+import { paths } from '@/enums/path.enum';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+import { PropsWithChildren } from 'react';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
-import React from 'react';
+export default async function Layout({ children }: PropsWithChildren) {
+  const session = await getServerSession(authOptions);
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  // const { isAuthenticated } = useAuthContext();
-  // const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect(paths.login);
+  }
 
-  // if (!session) {
-  //   return <Error statusCode={404} />;
-  // }
   return children;
 }

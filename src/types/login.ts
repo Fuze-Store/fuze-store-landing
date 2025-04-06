@@ -1,4 +1,5 @@
-import { ApiSuccessResponse } from '@/types';
+import type { ApiSuccessResponse } from '@/types';
+import type { User } from '@/types/user';
 
 export type LoginPayload = {
   email: string;
@@ -10,6 +11,7 @@ export type LoginDataResponse = {
   accessToken: string;
   expiresIn: number;
   refreshToken: string;
+  user: User;
   // tokenType: TokenType;
 };
 

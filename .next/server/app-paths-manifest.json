@@ -1,7 +1,4 @@
 {
-  "/(aux)/pricing/page": "app/(aux)/pricing/page.js",
-  "/(protected)/account/page": "app/(protected)/account/page.js",
-  "/(protected)/account/invoices/page": "app/(protected)/account/invoices/page.js",
-  "/(protected)/account/subscription/plans/page": "app/(protected)/account/subscription/plans/page.js",
-  "/(protected)/account/payment-methods/[id]/page": "app/(protected)/account/payment-methods/[id]/page.js"
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/(protected)/account/page": "app/(protected)/account/page.js"
 }

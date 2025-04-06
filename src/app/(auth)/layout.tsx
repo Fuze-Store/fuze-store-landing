@@ -1,21 +1,16 @@
-'use client';
-
-import { useAuthContext } from '@/containers/Auth/Context/Context';
-// Import the functions you need from the SDKs you need
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import * as React from 'react';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const { isLoading, isAuthenticated } = useAuthContext();
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { paths } from '@/enums/path.enum';
 
-  console.log('isLoading', isLoading);
+export default async function Layout({ children }: React.PropsWithChildren) {
+  const session = await getServerSession(authOptions);
 
-  // if (isAuthenticated) {
-  //   redirect(paths.account);
-  // }
-
-  // if (isLoading) {
-  //   return null;
-  // }
+  if (session) {
+    redirect(paths.account);
+  }
 
   return children;
 }

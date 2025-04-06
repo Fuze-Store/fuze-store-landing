@@ -13,11 +13,11 @@ import AccountDetailsInfo from '@/containers/Account/Details/Info';
 import AccountDetailsProvider from '@/containers/Account/Details/Provider';
 
 export default function Page() {
-  const { data: response, isPending } = useGetAccount();
+  const { data: response, isLoading } = useGetAccount();
 
   const account = response?.data;
 
-  if (isPending) {
+  if (isLoading) {
     return (
       <>
         <Toolbar />
