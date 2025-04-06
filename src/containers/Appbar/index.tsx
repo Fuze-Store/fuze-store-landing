@@ -28,11 +28,11 @@ import { usePathname } from 'next/navigation';
 import { useContext, useState } from 'react';
 
 import useLogout from '@/containers/Auth/hooks/useLogout';
+import { AppContext } from '@/contexts/App';
 import { paths } from '@/enums/path.enum';
 import { navPages } from '@/helpers/page.helper';
 
 import Logo from '@/components/Logo';
-import { AppContext } from '@/contexts/App';
 
 const ListGroup = styled('ul')(() => ({
   display: 'flex',
@@ -95,7 +95,7 @@ export default function AppBar() {
   const { logout } = useLogout();
   const { status } = useSession();
   const { setShowDrawer } = useContext(AppContext);
-  const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
+  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -104,7 +104,7 @@ export default function AppBar() {
     threshold: 64,
   });
 
-  const isElevate = isLgUp && trigger;
+  const isElevate = isMdUp && trigger;
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -223,7 +223,7 @@ export default function AppBar() {
   return (
     <AppBarMui
       color={isElevate ? 'default' : 'transparent'}
-      position={isLgUp ? 'fixed' : 'absolute'}
+      position={isMdUp ? 'fixed' : 'absolute'}
       elevation={isElevate ? 4 : 0}
       sx={{
         // backgroundColor: trigger ? '#edf1e5' : 'transparent',
@@ -245,7 +245,7 @@ export default function AppBar() {
             </Link>
           </Box>
 
-          {isLgUp && (
+          {isMdUp && (
             <Stack direction="row" spacing={3}>
               <ListGroup className="list-none">
                 {navPages.map((nav) => {
@@ -265,7 +265,7 @@ export default function AppBar() {
           )}
         </Container>
 
-        {!isLgUp && (
+        {!isMdUp && (
           <Box
             sx={{
               position: 'absolute',

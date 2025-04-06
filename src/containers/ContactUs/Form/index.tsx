@@ -4,16 +4,14 @@
  *
  */
 
-import { Box, Stack, styled, TextField } from '@mui/material';
+import { Grid2, TextField } from '@mui/material';
 import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import Label from '@/components/Label';
 import { FormInputs } from '@/containers/ContactUs/Form/Provider/types';
 
-const SectionContainer = styled(Box)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-}));
+import Label from '@/components/Label';
+import SectionContainer from '@/components/SectionContainer';
 
 /**
  * ContactUs Form
@@ -30,8 +28,8 @@ const ContactUsForm = () => {
   return (
     <>
       <SectionContainer>
-        <Stack direction="row" spacing={1}>
-          <Box sx={{ flex: 1 }}>
+        <Grid2 container spacing={1}>
+          <Grid2 size={{ xs: 12, sm: 6 }}>
             <Label htmlFor="first-name" error={!!errors.firstName}>
               First Name *
             </Label>
@@ -44,8 +42,8 @@ const ContactUsForm = () => {
               error={!!errors.firstName}
               helperText={errors.firstName?.message}
             />
-          </Box>
-          <Box sx={{ flex: 1 }}>
+          </Grid2>
+          <Grid2 size={{ xs: 12, sm: 6 }}>
             <Label htmlFor="last-name" error={!!errors.lastName}>
               Last Name *
             </Label>
@@ -58,8 +56,8 @@ const ContactUsForm = () => {
               error={!!errors.lastName}
               helperText={errors.lastName?.message}
             />
-          </Box>
-        </Stack>
+          </Grid2>
+        </Grid2>
       </SectionContainer>
 
       <SectionContainer>

@@ -40,7 +40,7 @@ const useLogout = () => {
 
   const logout = async () => {
     const response = await mutateAsync();
-    await signOut({ callbackUrl: paths.login });
+    await signOut({ callbackUrl: paths.home });
     return response;
   };
 

@@ -82,10 +82,11 @@ const Sidebar = () => {
         component="nav"
         sx={{
           width: 280,
-          height: `calc(100vh - 64px)`,
-          py: 4,
-          px: 2,
-          // borderRight: `1px solid rgba(0, 0, 0, 0.12)`,
+          height: `calc(100vh - 64px - 80px)`,
+          mt: 10,
+          pb: 4,
+          px: 3,
+          borderRight: `1px solid rgba(0, 0, 0, 0.12)`,
         }}
       >
         {renderList()}

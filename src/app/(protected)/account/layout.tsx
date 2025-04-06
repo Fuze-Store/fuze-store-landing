@@ -9,7 +9,6 @@ import { AppContext } from '@/contexts/App';
 import {
   Box,
   Container,
-  Divider,
   IconButton,
   Stack,
   Toolbar,
@@ -29,7 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Stack
           direction="row"
           alignItems="stretch"
-          divider={isMdUp && <Divider orientation="vertical" flexItem />}
+          // divider={isMdUp && <Divider orientation="vertical" flexItem />}
           spacing={isMdUp ? 3 : 0}
         >
           <Box>
