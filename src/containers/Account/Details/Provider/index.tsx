@@ -61,7 +61,10 @@ const AccountDetailsProvider = ({ providers }: Props) => {
                   </Stack>
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 'auto' }}>
-                  <LinkProviderButton isLinked={linked} />
+                  <LinkProviderButton
+                    isLinked={linked}
+                    provider={SocialProvider.FACEBOOK}
+                  />
                 </Grid2>
               </Grid2>
             );

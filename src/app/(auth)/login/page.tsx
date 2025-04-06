@@ -31,6 +31,7 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>;
 
 export default function Page() {
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const router = useRouter();
 
@@ -45,17 +46,25 @@ export default function Page() {
   });
 
   const onSubmit = async (params: Schema) => {
-    const result = await signIn('credentials', { ...params, redirect: false });
+    try {
+      setLoading(true);
+      const result = await signIn('credentials', {
+        ...params,
+        redirect: false,
+      });
 
-    if (result?.ok) {
-      router.push(paths.account);
-      return;
-    }
+      if (result?.ok) {
+        router.push(paths.account);
+        return;
+      }
 
-    if (result?.status === 401) {
-      setErrorMessage('Incorrect email or password.');
-    } else {
-      setErrorMessage('Something went wrong processing your request');
+      if (result?.status === 401) {
+        setErrorMessage('Incorrect email or password.');
+      } else {
+        setErrorMessage('Something went wrong processing your request');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -113,6 +122,7 @@ export default function Page() {
               variant="contained"
               disableElevation
               fullWidth
+              loading={loading}
             >
               Login
             </Button>

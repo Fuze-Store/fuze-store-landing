@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Toolbar />
-      <Container disableGutters maxWidth="xl">
+      <Container disableGutters maxWidth="lg">
         <Stack
           direction="row"
           alignItems="stretch"

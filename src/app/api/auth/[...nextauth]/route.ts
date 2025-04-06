@@ -5,7 +5,6 @@ import endpoints from '@/utils/endpoints';
 import { NextApiHandler } from 'next';
 import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import FacebookProvider from 'next-auth/providers/facebook';
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -37,10 +36,6 @@ export const authOptions: AuthOptions = {
 
         throw new Error('Invalid email or password');
       },
-    }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID!,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),
   ],
   callbacks: {

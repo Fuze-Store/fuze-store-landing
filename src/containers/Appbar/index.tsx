@@ -201,15 +201,17 @@ export default function AppBar() {
         >
           <Button
             LinkComponent={Link}
-            sx={{ fontSize: 16, px: 4 }}
+            sx={{ fontSize: 16, px: 2 }}
             href={paths.login}
+            size="small"
           >
             Login
           </Button>
           <Button
             LinkComponent={Link}
-            sx={{ fontSize: 16, px: 4 }}
+            sx={{ fontSize: 16, px: 2 }}
             href={paths.register}
+            size="small"
           >
             Register
           </Button>

@@ -5,7 +5,7 @@ import EventIcon from '@mui/icons-material/Event';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import { Divider, Stack } from '@mui/material';
+import { Divider, Stack, useMediaQuery } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -18,6 +18,7 @@ import ScrollTop from '@/components/ScrollToTop';
 import TestimonialFront from '@/containers/Testimonial/Front';
 
 export default function HomePage() {
+  const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
   return (
     <>
       <Box>
@@ -59,7 +60,7 @@ export default function HomePage() {
                     dummy.
                   </Typography>
 
-                  <Stack direction="row" spacing={1}>
+                  <Stack direction={isSmUp ? 'row' : 'column'} spacing={1}>
                     <Button
                       size="extra-large"
                       variant="contained"
