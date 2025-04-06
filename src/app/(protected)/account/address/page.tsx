@@ -8,21 +8,25 @@ import useUpdateAccountAddress from '@/containers/Account/Address/hooks/useUpdat
 
 import type { FormInputs } from '@/containers/Address/Form/Provider/types';
 
+import PageLoader from '@/components/PageLoader';
 import SectionContainer from '@/components/SectionContainer';
 import AddressForm from '@/containers/Address/Form';
 import AddressFormProvider from '@/containers/Address/Form/Provider';
 import AddressFormSubmit from '@/containers/Address/Form/Submit';
 
 export default function Page() {
-  const { data: response } = useGetAccountAddress();
+  const { data: response, isLoading } = useGetAccountAddress();
   const { updateAccountAddress, error: err } = useUpdateAccountAddress();
   const error = err?.response?.data;
 
   const onSubmit = async (payload: FormInputs) => {
-    console.log(payload);
     const { street: address1, ...rest } = payload;
     await updateAccountAddress({ address1, ...rest });
   };
+
+  if (isLoading) {
+    return <PageLoader BoxProps={{ sx: { height: 300 } }} />;
+  }
 
   return (
     <>

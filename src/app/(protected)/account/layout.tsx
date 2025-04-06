@@ -1,20 +1,26 @@
 'use client';
 
-import React from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import React, { useContext } from 'react';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
 import Sidebar from '@/containers/Account/Sidebar';
+import { AppContext } from '@/contexts/App';
 import {
   Box,
   Container,
   Divider,
+  IconButton,
   Stack,
   Toolbar,
   useMediaQuery,
 } from '@mui/material';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
+  const { setShowAccountDrawer } = useContext(AppContext);
   const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+
+  const toggleDrawer = () => setShowAccountDrawer((prev) => !prev);
 
   return (
     <>
@@ -29,10 +35,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Box>
             <Sidebar />
           </Box>
-          <Box sx={{ flex: 1 }}>
-            <Box px={3} py={2}>
-              <Breadcrumbs />
-            </Box>
+          <Box sx={{ flex: 1, width: '100%' }}>
+            <Stack px={3} py={2} alignItems="center" direction="row">
+              {!isMdUp && (
+                <Box ml={-1} mr={2}>
+                  <IconButton aria-label="account menu" onClick={toggleDrawer}>
+                    <MenuIcon />
+                  </IconButton>
+                </Box>
+              )}
+              <Box>
+                <Breadcrumbs />
+              </Box>
+            </Stack>
             {children}
           </Box>
         </Stack>

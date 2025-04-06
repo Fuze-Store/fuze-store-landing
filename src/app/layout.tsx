@@ -29,6 +29,7 @@ import AppProvider from '@/providers/App';
 import ConfirmationProvider from '@/providers/Confirmation';
 import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
+import { useTheme } from '@mui/material';
 import './globals.css';
 
 // Your web app's Firebase configuration
@@ -54,6 +55,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const theme = useTheme();
   const pathname = usePathname();
 
   const showNavigation = !authPages.includes(pathname);
@@ -87,9 +89,11 @@ export default function RootLayout({
                         </Box>
                         {showNavigation && <SideBar />}
                         <Toaster
-                          // theme={theme.dark ? 'light' : 'dark'}
+                          theme={
+                            theme.palette.mode === 'dark' ? 'dark' : 'light'
+                          }
                           closeButton
-                          position="bottom-right"
+                          position="top-right"
                         />
                       </ConfirmationProvider>
                     </AppProvider>

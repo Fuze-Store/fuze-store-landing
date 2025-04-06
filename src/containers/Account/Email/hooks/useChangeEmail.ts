@@ -11,6 +11,7 @@ import type {
   AccountEmailErrorResponse,
   AccountEmailPayload,
 } from '@/types/account';
+import { toast } from 'sonner';
 
 const useChangeEmail = () => {
   const { mutateAsync, ...rest } = useMutation<
@@ -26,6 +27,9 @@ const useChangeEmail = () => {
         data,
       );
       return response.data;
+    },
+    onSuccess: (response) => {
+      toast.success(response.message);
     },
   });
 

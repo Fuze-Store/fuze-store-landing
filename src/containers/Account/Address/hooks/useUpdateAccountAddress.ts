@@ -27,9 +27,10 @@ const useUpdateAccountAddress = () => {
         data,
       );
 
-      toast.success(response.data.message);
-
       return response.data;
+    },
+    onSuccess: (response) => {
+      toast.success(response.message);
     },
   });
 

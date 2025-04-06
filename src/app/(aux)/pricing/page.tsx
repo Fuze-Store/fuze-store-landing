@@ -1,6 +1,5 @@
 'use client';
 
-import CheckIcon from '@mui/icons-material/Check';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
@@ -15,134 +14,9 @@ import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 
 import Footer from '@/components/Footer';
-import {
-  alpha,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Divider,
-  Stack,
-} from '@mui/material';
-
-const FeatureItem = () => (
-  <Stack direction="row" alignItems="center" spacing={1}>
-    <Box
-      sx={{
-        p: 1,
-        height: 24,
-        width: 24,
-        borderRadius: '50%',
-        backgroundColor: (theme) => theme.palette.success.light,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <CheckIcon
-        sx={{
-          fontWeight: 500,
-          fontSize: 16,
-          color: (theme) => theme.palette.primary.dark,
-        }}
-      />
-    </Box>
-
-    <Typography variant="body2" color="textSecondary">
-      Access to basic features
-    </Typography>
-  </Stack>
-);
-
-const Plan = () => (
-  <Card sx={{ borderRadius: 4 }}>
-    <CardContent
-      sx={{
-        flexDirection: 'column',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        p: 2,
-        textAlign: 'center',
-      }}
-    >
-      <Box sx={{ p: 2 }}>
-        <Chip
-          sx={{
-            backgroundColor: (theme) =>
-              alpha(theme.palette.primary.light, 0.16),
-            px: 2,
-            fontWeight: 500,
-          }}
-          variant="outlined"
-          label="Starter"
-          color="primary"
-        />
-      </Box>
-
-      <Typography
-        variant="h3"
-        fontWeight={700}
-        sx={{ verticalAlign: 'bottom' }}
-      >
-        <Typography
-          variant="h6"
-          sx={{ verticalAlign: 'top' }}
-          component="span"
-          fontWeight={700}
-        >
-          PHP
-        </Typography>
-        1,500
-      </Typography>
-
-      <Typography gutterBottom color="textSecondary" sx={{ maxWidth: 300 }}>
-        plus 3% above PHP 25,000.00 monthly sales
-      </Typography>
-    </CardContent>
-    <Divider />
-    <CardContent>
-      <Box mb={2}>
-        <Typography variant="subtitle1" fontWeight={500}>
-          Features
-        </Typography>
-        <Typography variant="body2" color="textSecondary">
-          Everything in our Free plan plus ...
-        </Typography>
-      </Box>
-
-      <Grid container spacing={1}>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <FeatureItem />
-        </Grid>
-      </Grid>
-    </CardContent>
-    <Divider />
-    <CardContent>
-      <Button variant="contained" disableElevation fullWidth>
-        Get Started
-      </Button>
-    </CardContent>
-  </Card>
-);
+import PlanItem from '@/components/PlanItem';
+import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
+import { Divider } from '@mui/material';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -185,6 +59,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function Page() {
+  const { data: response } = useGetPlanList();
+
+  const plans = response?.data ?? [];
+
   return (
     <>
       <Box
@@ -221,17 +99,11 @@ export default function Page() {
           </Box>
 
           <Grid container direction="row" spacing={2}>
-            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-              <Plan />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-              <Plan />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
-              <Plan />
-            </Grid>
+            {plans.map((plan) => (
+              <Grid key={plan.id} size={{ xs: 12, sm: 6, md: 4 }}>
+                <PlanItem plan={plan} />
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>

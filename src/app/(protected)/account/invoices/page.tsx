@@ -13,8 +13,11 @@ import {
   Typography,
 } from '@mui/material';
 import Container from '@mui/material/Container';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { ChangeEventHandler } from 'react';
 
 import useGetInvoiceList from '@/containers/Account/Invoice/hooks/useGetInvoiceList';
+import { paths } from '@/enums/path.enum';
 import { formatDate } from '@/helpers/date.helper';
 
 import SectionContainer from '@/components/SectionContainer';
@@ -46,6 +49,7 @@ const HeaderTableHead = styled(TableHead)(({ theme }) => ({
     height: theme.spacing(2) /* space between thead and tbody */,
   },
 }));
+
 const HeaderTableRow = styled(TableRow)(({ theme }) => ({
   '& th:first-child, & td:first-child': {
     borderTopLeftRadius: 24,
@@ -61,34 +65,47 @@ const HeaderTableRow = styled(TableRow)(({ theme }) => ({
       theme.palette.grey[theme.palette.mode === 'dark' ? 400 : 200],
   },
 }));
+
 const HeaderTableCell = styled(TableCell)(({ theme }) => ({
   fontWeight: 700,
 }));
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 export default function Page() {
-  const { data: response } = useGetInvoiceList({ page: 1, perPage: 10 });
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const pageStr = searchParams.get('page');
+  const perPageStr = searchParams.get('perPage');
+
+  const page = pageStr ? parseInt(pageStr) : 1;
+  const perPage = perPageStr ? parseInt(perPageStr) : 10;
+
+  const { data: response } = useGetInvoiceList({ page, perPage });
 
   const paginatedInvoices = response?.data;
-  const invoices = response?.data;
-  console.log(invoices);
+  const invoices = paginatedInvoices?.items;
+
+  const onPageChange = (
+    _event: React.MouseEvent<HTMLButtonElement> | null,
+    page: number,
+  ) => {
+    const params = new URLSearchParams({
+      page: (page + 1).toString(),
+      perPage: perPage.toString(),
+    });
+    router.replace(`${paths.accountInvoice}?${params.toString()}`);
+  };
+
+  const onRowsPerPageChange: ChangeEventHandler<
+    HTMLInputElement | HTMLTextAreaElement
+  > = (event) => {
+    const params = new URLSearchParams({
+      page: '1',
+      perPage: event.target.value,
+    });
+    router.replace(`${paths.accountInvoice}?${params.toString()}`);
+  };
+
   return (
     <>
       <SectionContainer px={3} sx={{ mb: 4 }}>
@@ -112,7 +129,7 @@ export default function Page() {
                 </HeaderTableRow>
               </HeaderTableHead>
               <TableBody>
-                {paginatedInvoices?.items.map((invoice) => (
+                {invoices?.map((invoice) => (
                   <StyledTableRow key={invoice.id}>
                     <StyledTableCell>
                       <Typography
@@ -135,13 +152,13 @@ export default function Page() {
 
         <TablePagination
           component="div"
-          count={100}
-          page={1}
+          count={paginatedInvoices?.total ?? 0}
+          page={(paginatedInvoices?.page || page) - 1}
           showFirstButton
           showLastButton
-          onPageChange={() => {}}
-          rowsPerPage={10}
-          // onRowsPerPageChange={handleChangeRowsPerPage}
+          onPageChange={onPageChange}
+          rowsPerPage={paginatedInvoices?.perPage || perPage}
+          onRowsPerPageChange={onRowsPerPageChange}
         />
       </Container>
     </>

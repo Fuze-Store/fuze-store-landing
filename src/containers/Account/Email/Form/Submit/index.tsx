@@ -29,7 +29,8 @@ const AccountEmailFormSubmit = ({
   return (
     <Button
       type="submit"
-      disabled={!isDirty || (isSubmitted && !isValid) || loading || disabled}
+      disabled={!isDirty || (isSubmitted && !isValid) || disabled}
+      loading={loading}
       {...rest}
     >
       {i18next.t('Change Email')}

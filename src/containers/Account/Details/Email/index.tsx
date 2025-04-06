@@ -32,7 +32,7 @@ const AccountDetailsEmail = ({ email, isVerified = false }: Props) => {
               </Stack>
 
               <Button
-                href={paths.accountEmail}
+                href={paths.accountChangeEmail}
                 LinkComponent={Link}
                 size="small"
               >

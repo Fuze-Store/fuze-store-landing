@@ -1,10 +1,7 @@
-import { AvailableCurrency } from '@/enums/currencies.enum';
-import {
-  SubscriptionPlan,
-  SubscriptionStatus,
-} from '@/enums/subscription.enum';
+import { SubscriptionStatus } from '@/enums/subscription.enum';
 import { ApiSuccessResponse } from '@/types';
 import { Invoice } from '@/types/invoice';
+import { Plan } from '@/types/plan';
 import { Store } from '@/types/store';
 
 export interface Subscription {
@@ -50,16 +47,6 @@ export interface Subscription {
   invoices?: Invoice[];
 
   stores?: Store[];
-}
-
-export interface Plan {
-  baseFee: number;
-  code: SubscriptionPlan;
-  currency: AvailableCurrency;
-  features: Record<string, any>;
-  id: string;
-  name: string;
-  salesThreshold: number;
 }
 
 export type SubcriptionResponse = ApiSuccessResponse & {

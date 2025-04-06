@@ -53,8 +53,10 @@ export type AccountDetailsErrorResponse = ApiErrorResponse & {
 
 export type AccountDetailsPayloadError = {
   username: string[];
-  firstName: string[];
-  lastName: string[];
+  info: {
+    firstName: string[];
+    lastName: string[];
+  };
 };
 
 export type AccountDetailsPayload = {

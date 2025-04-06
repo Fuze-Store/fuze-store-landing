@@ -62,8 +62,6 @@ const AccountResendEmailButton = ({
     };
   }, [canResendEmail, cooldownTimer, dispatch]);
 
-  console.log(canResendEmail);
-
   if (!isVerified) {
     if (!canResendEmail) {
       return (

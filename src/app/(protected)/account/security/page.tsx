@@ -1,9 +1,6 @@
 'use client';
 
 import PasswordIcon from '@mui/icons-material/Password';
-import Container from '@mui/material/Container';
-
-import { paths } from '@/enums/path.enum';
 import {
   Card,
   List,
@@ -12,11 +9,18 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+import Container from '@mui/material/Container';
 import Link from 'next/link';
+
+import { paths } from '@/enums/path.enum';
+
+import PageTitle from '@/components/PageTitle';
 
 export default function Page() {
   return (
     <>
+      <PageTitle title="Security" />
+
       <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
         <Card variant="outlined" elevation={0}>
           <List>

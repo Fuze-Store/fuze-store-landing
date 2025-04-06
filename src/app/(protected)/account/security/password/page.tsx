@@ -1,8 +1,10 @@
 'use client';
 
 import { Box, Container } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 import useChangePassword from '@/containers/Account/Security/hooks/useChangePassword';
+import { paths } from '@/enums/path.enum';
 
 import type { FormInputs } from '@/containers/Account/Security/Password/Form/Provider/types';
 
@@ -13,10 +15,12 @@ import AccountPasswordFormProvider from '@/containers/Account/Security/Password/
 import AccountPasswordFormSubmit from '@/containers/Account/Security/Password/Form/Submit';
 
 export default function Page() {
+  const router = useRouter();
   const { changePassword, error, isPending } = useChangePassword();
 
   const onSubmit = async (data: FormInputs) => {
     await changePassword(data);
+    router.replace(paths.accountSecurity);
   };
 
   return (

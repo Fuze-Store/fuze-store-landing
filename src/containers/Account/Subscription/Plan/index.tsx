@@ -128,7 +128,7 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
               {!isCanceled && (
                 <Button
                   LinkComponent={Link}
-                  href={paths.accountSubscriptionChoosePlan}
+                  href={paths.pricing}
                   variant="contained"
                   disableElevation
                 >

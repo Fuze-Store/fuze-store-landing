@@ -3,31 +3,28 @@
 import { Alert, Box, Container } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
+import useChangeEmail from '@/containers/Account/Email/hooks/useChangeEmail';
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
-import useUpdateAccount from '@/containers/Account/hooks/useUpdateAccount';
 import { paths } from '@/enums/path.enum';
 
-import type { FormInputs } from '@/containers/Account/Details/Form/Provider/types';
+import type { FormInputs } from '@/containers/Account/Email/Form/Provider/types';
 
 import GoBackButton from '@/components/GoBackButton';
 import PageLoader from '@/components/PageLoader';
 import PageTitle from '@/components/PageTitle';
 import SectionContainer from '@/components/SectionContainer';
-import AccountDetailsForm from '@/containers/Account/Details/Form';
-import AccountDetailsFormProvider from '@/containers/Account/Details/Form/Provider';
-import AccountDetailsFormSubmit from '@/containers/Account/Details/Form/Submit';
+import AccountEmailForm from '@/containers/Account/Email/Form';
+import AccountEmailFormProvider from '@/containers/Account/Email/Form/Provider';
+import AccountEmailFormSubmit from '@/containers/Account/Email/Form/Submit';
 
 export default function Page() {
   const router = useRouter();
   const { data: response, isLoading } = useGetAccount();
-  const { updateAccount, error: err, isPending } = useUpdateAccount();
+  const { changeEmail, error: err, isPending } = useChangeEmail();
   const error = err?.response?.data;
 
   const onSubmit = async (data: FormInputs) => {
-    await updateAccount({
-      username: data.username,
-      info: { firstName: data.firstName, lastName: data.lastName },
-    });
+    await changeEmail(data);
     router.replace(paths.account);
   };
 
@@ -41,10 +38,10 @@ export default function Page() {
         <GoBackButton />
       </SectionContainer>
 
-      <PageTitle title="Edit" />
+      <PageTitle title="Change Email" />
 
       <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
-        <AccountDetailsFormProvider
+        <AccountEmailFormProvider
           formData={response?.data}
           errors={error?.errors}
           onSubmit={onSubmit}
@@ -54,18 +51,17 @@ export default function Page() {
               <Alert severity="error">{error.message}</Alert>
             </SectionContainer>
           )}
-
-          <AccountDetailsForm loading={isPending} />
+          <AccountEmailForm loading={isPending} />
 
           <Box mb={1}>
-            <AccountDetailsFormSubmit
+            <AccountEmailFormSubmit
               variant="contained"
               disableElevation
               loading={isPending}
               fullWidth
             />
           </Box>
-        </AccountDetailsFormProvider>
+        </AccountEmailFormProvider>
       </Container>
     </>
   );

@@ -13,10 +13,10 @@ export enum paths {
   accountEdit = '/account/edit',
   accountInvoice = '/account/invoices',
   accountAddress = '/account/address',
-  accountEmail = '/account/email',
+  accountChangeEmail = '/account/change-email',
   accountSecurity = '/account/security',
   accountSecurityPassword = '/account/security/password',
   accountSubscription = '/account/subscription',
-  accountSubscriptionChoosePlan = '/account/subscription/choose-plan',
+  accountSubscriptionChoosePlan = '/account/subscription/plans',
   accountPaymentMethodDetails = '/account/payment-methods/[id]',
 }

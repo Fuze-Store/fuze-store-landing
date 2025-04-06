@@ -66,17 +66,19 @@ function generateFormErrors(
   errors: Partial<AccountDetailsPayloadError>,
   setError: UseFormSetError<FormInputs>,
 ) {
-  if (errors.username && errors.username.length > 0) {
+  if (errors?.username && errors.username.length > 0) {
     setError('username', {
       types: getErrorMessageTypes(errors.username),
     });
   }
-  if (errors.firstName && errors.firstName.length > 0) {
-    setError('firstName', { types: getErrorMessageTypes(errors.firstName) });
+  if (errors?.info?.firstName && errors?.info?.firstName.length > 0) {
+    setError('firstName', {
+      types: getErrorMessageTypes(errors?.info?.firstName),
+    });
   }
-  if (errors.lastName && errors.lastName.length > 0) {
+  if (errors?.info?.lastName && errors?.info?.lastName.length > 0) {
     setError('lastName', {
-      types: getErrorMessageTypes(errors.lastName),
+      types: getErrorMessageTypes(errors?.info?.lastName),
     });
   }
 }

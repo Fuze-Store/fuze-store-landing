@@ -49,13 +49,16 @@ const AccountPasswordForm = ({ loading = false }: Props) => {
 
         <Box mt={2}>
           <Typography component="p" variant="caption" color="textSecondary">
-            * Username must be at least 6 characters.
+            * New Password must be at least 8 characters.
           </Typography>
           <Typography component="p" variant="caption" color="textSecondary">
-            * Username must be a lowercase.
+            * New Password must contain at least 1 lowercase.
           </Typography>
           <Typography component="p" variant="caption" color="textSecondary">
-            * Username must be alphanumeric, dot, underscore only.
+            * New Password must contain at least 1 uppercase.
+          </Typography>
+          <Typography component="p" variant="caption" color="textSecondary">
+            * New Password must contain at least 8 numbers.
           </Typography>
         </Box>
       </SectionContainer>

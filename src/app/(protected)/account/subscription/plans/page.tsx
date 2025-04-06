@@ -33,7 +33,7 @@ export default function Page() {
         <GoBackButton />
       </SectionContainer>
 
-      <PageTitle title="Change Email" />
+      <PageTitle title="Plans" />
 
       <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
         <AccountEmailFormProvider
