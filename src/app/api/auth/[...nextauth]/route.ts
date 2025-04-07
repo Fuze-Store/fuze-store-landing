@@ -1,10 +1,14 @@
-import { paths } from '@/enums/path.enum';
-import { LoginResponse } from '@/types/login';
-import { axiosPrivate } from '@/utils/axios';
-import endpoints from '@/utils/endpoints';
+import axios from 'axios';
 import { NextApiHandler } from 'next';
 import NextAuth, { AuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import FacebookProvider from 'next-auth/providers/facebook';
+import GoogleProvider from 'next-auth/providers/google';
+
+import { paths } from '@/enums/path.enum';
+import { SocialProvider } from '@/enums/socialProviders.enum';
+import { LoginResponse } from '@/types/login';
+import endpoints from '@/utils/endpoints';
 
 export const authOptions: AuthOptions = {
   providers: [
@@ -19,7 +23,7 @@ export const authOptions: AuthOptions = {
           throw new Error('Missing email or password');
         }
 
-        const { data: res } = await axiosPrivate.post<LoginResponse>(
+        const { data: res } = await axios.post<LoginResponse>(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoints.auth.login}`,
           { email: credentials.email, password: credentials.password },
           { headers: { 'Content-Type': 'application/json' } },
@@ -37,10 +41,23 @@ export const authOptions: AuthOptions = {
         throw new Error('Invalid email or password');
       },
     }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID!,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+      authorization: {
+        params: {
+          scope: 'email public_profile',
+        },
+      },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
   callbacks: {
-    jwt({ token, user }) {
-      if (user) {
+    async jwt({ token, user, account }) {
+      if (user?.token) {
         return {
           ...token,
           id: user.id,
@@ -49,6 +66,35 @@ export const authOptions: AuthOptions = {
           accessToken: user.token,
         };
       }
+
+      console.log(account);
+
+      // For Social
+      if (account?.provider === 'facebook' || account?.provider === 'google') {
+        let provider: SocialProvider | null = null;
+        if (account?.provider === 'facebook') {
+          provider = SocialProvider.FACEBOOK;
+        }
+        if (account?.provider === 'google') {
+          provider = SocialProvider.GOOGLE;
+        }
+
+        if (!provider) return token;
+
+        const { data: response } = await axios.post<LoginResponse>(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoints.social.login}`,
+          { provider, accessToken: account.access_token },
+        );
+
+        return {
+          ...token,
+          id: response.data.user.id,
+          name: response.data.user.info?.fullName,
+          email: response.data.user.email,
+          accessToken: response.data.accessToken,
+        };
+      }
+
       return token;
     },
     session({ session, token }) {

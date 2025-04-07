@@ -4,6 +4,7 @@
 import { useTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Box from '@mui/material/Box';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import {
   dehydrate,
   HydrationBoundary,
@@ -70,39 +71,43 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Provider store={store}>
           <QueryClientProvider client={queryClient}>
             <HydrationBoundary state={dehydrate(queryClient)}>
-              <SessionProvider>
-                <AppRouterCacheProvider>
-                  <ThemeRegistry>
-                    <AppProvider>
-                      <ConfirmationProvider>
-                        <ReactQueryDevtools />
-                        <AxiosInterceptor />
-                        {showNavigation && <AppBar />}
-                        <Box
-                          component="main"
-                          sx={{
-                            flexGrow: 1,
-                            bgcolor: (theme) => theme.palette.grey[50],
-                            minHeight: '100vh',
-                            flexDirection: 'column',
-                            display: 'flex',
-                          }}
-                        >
-                          {children}
-                        </Box>
-                        {showNavigation && <SideBar />}
-                        <Toaster
-                          theme={
-                            theme.palette.mode === 'dark' ? 'dark' : 'light'
-                          }
-                          closeButton
-                          position="top-right"
-                        />
-                      </ConfirmationProvider>
-                    </AppProvider>
-                  </ThemeRegistry>
-                </AppRouterCacheProvider>
-              </SessionProvider>
+              <GoogleOAuthProvider
+                clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+              >
+                <SessionProvider>
+                  <AppRouterCacheProvider>
+                    <ThemeRegistry>
+                      <AppProvider>
+                        <ConfirmationProvider>
+                          <ReactQueryDevtools />
+                          <AxiosInterceptor />
+                          {showNavigation && <AppBar />}
+                          <Box
+                            component="main"
+                            sx={{
+                              flexGrow: 1,
+                              bgcolor: (theme) => theme.palette.grey[50],
+                              minHeight: '100vh',
+                              flexDirection: 'column',
+                              display: 'flex',
+                            }}
+                          >
+                            {children}
+                          </Box>
+                          {showNavigation && <SideBar />}
+                          <Toaster
+                            theme={
+                              theme.palette.mode === 'dark' ? 'dark' : 'light'
+                            }
+                            closeButton
+                            position="top-right"
+                          />
+                        </ConfirmationProvider>
+                      </AppProvider>
+                    </ThemeRegistry>
+                  </AppRouterCacheProvider>
+                </SessionProvider>
+              </GoogleOAuthProvider>
             </HydrationBoundary>
           </QueryClientProvider>
         </Provider>

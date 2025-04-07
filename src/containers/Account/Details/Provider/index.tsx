@@ -12,6 +12,7 @@ import { SOCIAL_LINKS } from '@/utils/constants';
 import type { AccountProvider } from '@/types/account';
 
 import LinkProviderButton from '@/containers/Account/LinkProviderButton';
+import UnlinkProviderButton from '@/containers/Account/UnLinkProviderButton';
 
 type Props = {
   providers?: AccountProvider[];
@@ -52,7 +53,12 @@ const AccountDetailsProvider = ({ providers }: Props) => {
           {SOCIAL_LINKS.map((linkProvider) => {
             const linked = isLinked(linkProvider);
             return (
-              <Grid2 key={linkProvider} container spacing={1}>
+              <Grid2
+                key={linkProvider}
+                alignItems="center"
+                container
+                spacing={1}
+              >
                 <Grid2 size={{ xs: 12, sm: 'grow' }}>
                   <Stack direction="row" alignItems="center" spacing={2}>
                     {getProviderIcon(linkProvider)}
@@ -61,10 +67,11 @@ const AccountDetailsProvider = ({ providers }: Props) => {
                   </Stack>
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 'auto' }}>
-                  <LinkProviderButton
-                    isLinked={linked}
-                    provider={SocialProvider.FACEBOOK}
-                  />
+                  {linked ? (
+                    <UnlinkProviderButton provider={linkProvider} />
+                  ) : (
+                    <LinkProviderButton provider={linkProvider} />
+                  )}
                 </Grid2>
               </Grid2>
             );

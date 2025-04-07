@@ -1,48 +1,40 @@
 'use client';
 
-import { Button, ButtonProps } from '@mui/material';
-import { signIn } from 'next-auth/react';
+import { ButtonProps } from '@mui/material';
+import { CredentialResponse, GoogleLogin } from '@react-oauth/google';
 import { memo } from 'react';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import FacebookLogin, { ReactFacebookLoginInfo } from 'react-facebook-login';
+import { toast } from 'sonner';
 
 import useLinkAccount from '@/containers/Account/Provider/hooks/useLinkAccount';
 import { SocialProvider } from '@/enums/socialProviders.enum';
-import {
-  ReactFacebookFailureResponse,
-  ReactFacebookLoginInfo,
-} from 'react-facebook-login';
-import { toast } from 'sonner';
 
 type Props = {
   provider: SocialProvider;
-  isLinked: boolean;
   ButtonProps?: Partial<ButtonProps>;
 };
 
-const LinkProviderButton = ({ provider, isLinked, ButtonProps }: Props) => {
+const LinkProviderButton = ({ provider }: Props) => {
   const { linkAccount } = useLinkAccount();
 
-  const submit = async () => {
-    if (provider === SocialProvider.FACEBOOK) {
+  const responseFacebook = async (userInfo: ReactFacebookLoginInfo) => {
+    console.log(userInfo);
+    if (userInfo?.accessToken) {
+      await linkAccount({ accessToken: userInfo.accessToken, provider });
     }
-
-    const response = await signIn('facebook');
-    console.log(response);
-    return;
-    if (isLinked) return await linkAccount();
-    return await linkAccount();
   };
 
-  const responseFacebook = async (
-    userInfo: ReactFacebookLoginInfo | ReactFacebookFailureResponse,
-  ) => {
-    console.log(userInfo);
-    if (userInfo?.error) {
-      toast.error(userInfo.error.message);
-      return;
+  const responseGoogle = async (credentialResponse: CredentialResponse) => {
+    if (credentialResponse?.credential) {
+      await linkAccount({
+        accessToken: credentialResponse.credential,
+        provider,
+      });
     }
+  };
 
-    await linkAccount({ accessToken: userInfo.accessToken, provider });
+  const onErrorGoogle = () => {
+    toast.error('Unable to connect');
   };
 
   if (provider === SocialProvider.FACEBOOK) {
@@ -51,28 +43,30 @@ const LinkProviderButton = ({ provider, isLinked, ButtonProps }: Props) => {
         appId={process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string}
         fields="name,email,picture"
         callback={responseFacebook}
-        render={(renderProps) => (
-          <Button
-            color={isLinked ? 'error' : 'primary'}
-            onClick={renderProps.onClick}
-            {...ButtonProps}
-          >
-            {isLinked ? 'Unlink' : 'Link'}
-          </Button>
-        )}
+        buttonStyle={{
+          height: 40,
+          padding: 0,
+          fontSize: 14,
+          paddingLeft: 8,
+          paddingRight: 8,
+          textTransform: 'initial',
+          minWidth: 176,
+        }}
       />
     );
   }
 
-  return (
-    <Button
-      color={isLinked ? 'error' : 'primary'}
-      onClick={submit}
-      {...ButtonProps}
-    >
-      {isLinked ? 'Unlink' : 'Link'}
-    </Button>
-  );
+  if (provider === SocialProvider.GOOGLE) {
+    return (
+      <GoogleLogin
+        onSuccess={responseGoogle}
+        onError={onErrorGoogle}
+        useOneTap={false}
+      />
+    );
+  }
+
+  return null;
 };
 
 export default memo(LinkProviderButton);

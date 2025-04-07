@@ -14,15 +14,17 @@ import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { paths } from '@/enums/path.enum';
 
 import Label from '@/components/Label';
+import FacebookLoginButton from '@/containers/Auth/FacebookLoginButton';
+import GoogleLoginButton from '@/containers/Auth/GoogleLoginButton';
 
 import logo from '@/images/name-logo-black.png';
-import { useState } from 'react';
 
 const schema = z.object({
   email: z.string().min(1, 'Email is required').email(),
@@ -141,22 +143,8 @@ export default function Page() {
         <Divider sx={{ my: 2 }} />
 
         <Stack direction="column" alignItems="flex-start" spacing={1}>
-          <Button
-            variant="outlined"
-            sx={{ backgroundColor: '#4267b2', color: '#fff' }}
-            disableElevation
-            fullWidth
-          >
-            Login with Facebook
-          </Button>
-          <Button
-            variant="outlined"
-            sx={{ backgroundColor: '#fff', color: '#000' }}
-            disableElevation
-            fullWidth
-          >
-            Sign in with Google
-          </Button>
+          <FacebookLoginButton />
+          <GoogleLoginButton />
         </Stack>
       </Box>
     </Container>

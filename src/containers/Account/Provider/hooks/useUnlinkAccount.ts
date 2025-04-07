@@ -2,14 +2,15 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { toast } from 'sonner';
 
+import { CACHE_TAG } from '@/enums/cache.enum';
+import { SocialProvider } from '@/enums/socialProviders.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { CACHE_TAG } from '@/enums/cache.enum';
 import type { ApiErrorResponse } from '@/types';
 import type { AccountDetailsResponse } from '@/types/account';
-import { toast } from 'sonner';
 
 type Context = { previousData?: AccountDetailsResponse };
 
@@ -18,12 +19,15 @@ const useUnlinkAccount = () => {
   const { mutateAsync, ...rest } = useMutation<
     AccountDetailsResponse,
     AxiosError<ApiErrorResponse>,
-    void,
+    SocialProvider,
     Context
   >({
-    mutationFn: async (): Promise<AccountDetailsResponse> => {
-      const response = await axiosPrivate.patch<AccountDetailsResponse>(
+    mutationFn: async (
+      provider: SocialProvider,
+    ): Promise<AccountDetailsResponse> => {
+      const response = await axiosPrivate.post<AccountDetailsResponse>(
         endpoints.social.unlink,
+        { provider },
       );
       return response.data;
     },
@@ -41,12 +45,12 @@ const useUnlinkAccount = () => {
 
       return { previousData };
     },
-    onError: (err, _newData, context) => {
+    onError: ({ response }, _newData, context) => {
       if (context?.previousData) {
         queryClient.setQueryData([CACHE_TAG.ACCOUNT], context.previousData);
       }
 
-      toast.error(err.response?.data.message);
+      toast.error(response?.data.message);
     },
     onSuccess: async (response) => {
       toast.success(response.message);
@@ -55,10 +59,16 @@ const useUnlinkAccount = () => {
         queryKey: [CACHE_TAG.ACCOUNT],
         refetchType: 'none',
       });
+
+      // Optimistically update the cache
+      queryClient.setQueryData<AccountDetailsResponse>(
+        [CACHE_TAG.ACCOUNT],
+        (old) => (old ? { ...old, data: response.data } : response),
+      );
     },
   });
 
-  return { linkAccount: mutateAsync, ...rest };
+  return { unlinkAccount: mutateAsync, ...rest };
 };
 
 export default useUnlinkAccount;
