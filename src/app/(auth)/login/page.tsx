@@ -1,6 +1,5 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Alert,
   Box,
@@ -8,46 +7,32 @@ import {
   Container,
   Divider,
   Stack,
-  TextField,
+  Toolbar,
 } from '@mui/material';
 import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
 
 import { paths } from '@/enums/path.enum';
 
-import Label from '@/components/Label';
+import type { FormInputs } from '@/containers/Login/Form/Provider/types';
+
 import FacebookLoginButton from '@/containers/Auth/FacebookLoginButton';
 import GoogleLoginButton from '@/containers/Auth/GoogleLoginButton';
+import LoginForm from '@/containers/Login/Form';
+import LoginFormProvider from '@/containers/Login/Form/Provider';
+import LoginFormSubmit from '@/containers/Login/Form/Submit';
 
 import logo from '@/images/name-logo-black.png';
 
-const schema = z.object({
-  email: z.string().min(1, 'Email is required').email(),
-  password: z.string().min(1, 'Password is required'),
-});
-type Schema = z.infer<typeof schema>;
-
 export default function Page() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const router = useRouter();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<Schema>({
-    mode: 'onSubmit',
-    defaultValues: { email: '', password: '' },
-    resolver: zodResolver(schema),
-  });
-
-  const onSubmit = async (params: Schema) => {
+  const onSubmit = async (params: FormInputs) => {
     try {
       setLoading(true);
       const result = await signIn('credentials', {
@@ -71,82 +56,43 @@ export default function Page() {
   };
 
   return (
-    <Container maxWidth="xs">
-      <Box sx={{ py: 10 }}>
-        <Box sx={{ textAlign: 'center' }} mb={4}>
-          <Image src={logo} width={250} height={80} alt="Logo" />
-        </Box>
-
-        {errorMessage && (
-          <Box mb={2}>
-            <Alert severity="error">{errorMessage}</Alert>
-          </Box>
-        )}
-
-        <Box
-          component="form"
-          method="POST"
-          noValidate
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <Box mb={2}>
-            <Label htmlFor="email" error={!!errors.email}>
-              Email *
-            </Label>
-            <TextField
-              type="email"
-              id="email"
-              required
-              fullWidth
-              {...register('email')}
-              error={!!errors.email}
-              helperText={errors.email?.message}
-            />
+    <LoginFormProvider onSubmit={onSubmit}>
+      <Toolbar />
+      <Container maxWidth="xs">
+        <Box sx={{ py: { sm: 10 } }}>
+          <Box sx={{ textAlign: 'center' }} mb={4}>
+            <Image src={logo} width={250} height={80} alt="Logo" />
           </Box>
 
-          <Box mb={2}>
-            <Label htmlFor="email" error={!!errors.password}>
-              Password *
-            </Label>
-            <TextField
-              type="password"
-              required
-              fullWidth
-              {...register('password')}
-              error={!!errors.password}
-              helperText={errors.password?.message}
-            />
-          </Box>
+          {errorMessage && (
+            <Box mb={2}>
+              <Alert severity="error">{errorMessage}</Alert>
+            </Box>
+          )}
+
+          <LoginForm loading={loading} />
 
           <Box mb={2}>
-            <Button
-              type="submit"
-              variant="contained"
-              disableElevation
-              fullWidth
-              loading={loading}
-            >
-              Login
+            <LoginFormSubmit fullWidth loading={loading} />
+          </Box>
+
+          <Stack direction="column" alignItems="flex-start">
+            <Button LinkComponent={Link} href={paths.forgotPassword}>
+              Forgot Password
             </Button>
-          </Box>
+            <Button LinkComponent={Link} href={paths.register}>
+              No account yet? Register here.
+            </Button>
+          </Stack>
+
+          <Divider sx={{ my: 2 }} />
+
+          <Stack direction="column" alignItems="flex-start" spacing={1}>
+            <FacebookLoginButton />
+            <GoogleLoginButton />
+          </Stack>
         </Box>
-
-        <Stack direction="column" alignItems="flex-start">
-          <Button LinkComponent={Link} href={paths.forgotPassword}>
-            Forgot Password
-          </Button>
-          <Button LinkComponent={Link} href={paths.register}>
-            No account yet? Register here.
-          </Button>
-        </Stack>
-
-        <Divider sx={{ my: 2 }} />
-
-        <Stack direction="column" alignItems="flex-start" spacing={1}>
-          <FacebookLoginButton />
-          <GoogleLoginButton />
-        </Stack>
-      </Box>
-    </Container>
+      </Container>
+    </LoginFormProvider>
   );
 }

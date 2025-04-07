@@ -104,7 +104,7 @@ export default function AppBar() {
     threshold: 64,
   });
 
-  const isElevate = isMdUp && trigger;
+  const isElevate = trigger;
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -225,7 +225,7 @@ export default function AppBar() {
   return (
     <AppBarMui
       color={isElevate ? 'default' : 'transparent'}
-      position={isMdUp ? 'fixed' : 'absolute'}
+      position="fixed"
       elevation={isElevate ? 4 : 0}
       sx={{
         // backgroundColor: trigger ? '#edf1e5' : 'transparent',

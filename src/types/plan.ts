@@ -6,7 +6,7 @@ export interface Plan {
   baseFee: number;
   code: SubscriptionPlan;
   currency: AvailableCurrency;
-  features: Record<string, any>;
+  features: Record<string, unknown>;
   id: string;
   commissionRate: number;
   name: string;

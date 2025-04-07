@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid2';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 import Footer from '@/components/Footer';

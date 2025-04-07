@@ -54,7 +54,7 @@ export default function FAQsPage() {
           </Box>
 
           <Grid container direction="row" spacing={2}>
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,
@@ -102,7 +102,7 @@ export default function FAQsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,
@@ -150,7 +150,7 @@ export default function FAQsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,
@@ -198,7 +198,7 @@ export default function FAQsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid size={{ xs: 6 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,

@@ -52,7 +52,7 @@ export default function AboutUsPage() {
           </Box>
 
           <Grid container direction="row" spacing={2}>
-            <Grid item xs={6} md={3}>
+            <Grid size={{ xs: 6, md: 3 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,
@@ -100,7 +100,7 @@ export default function AboutUsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={6} md={3}>
+            <Grid size={{ xs: 6, md: 3 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,
@@ -148,7 +148,7 @@ export default function AboutUsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={6} md={3}>
+            <Grid size={{ xs: 6, md: 3 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,
@@ -196,7 +196,7 @@ export default function AboutUsPage() {
               </Box>
             </Grid>
 
-            <Grid item xs={6} md={3}>
+            <Grid size={{ xs: 6, md: 3 }}>
               <Box
                 sx={(theme) => ({
                   flex: 1,

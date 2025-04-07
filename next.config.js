@@ -1,4 +1,3 @@
-// Injected content via Sentry wizard below
 const { withSentryConfig } = require('@sentry/nextjs');
 
 /** @type {import('next').NextConfig} */
@@ -28,6 +27,9 @@ module.exports = withSentryConfig(nextConfig, {
   org: 'fuze-store',
   project: 'fuze-landing',
 
+  // Pass the auth token
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
   // Only print logs for uploading source maps in CI
   silent: !process.env.CI,
 
@@ -54,4 +56,10 @@ module.exports = withSentryConfig(nextConfig, {
   // https://docs.sentry.io/product/crons/
   // https://vercel.com/docs/cron-jobs
   automaticVercelMonitors: true,
+
+  autoInstrumentServerFunctions: false,
+
+  reactComponentAnnotation: {
+    enabled: true,
+  },
 });

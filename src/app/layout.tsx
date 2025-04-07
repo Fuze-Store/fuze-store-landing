@@ -4,7 +4,6 @@
 import { useTheme } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import Box from '@mui/material/Box';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import {
   dehydrate,
   HydrationBoundary,
@@ -15,13 +14,11 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import { initializeApp } from 'firebase/app';
 import { SessionProvider } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { Toaster } from 'sonner';
 
 import '@/containers/Localization/i18n';
-import { authPages } from '@/helpers/page.helper';
 import { store } from '@/rtk/configureStore';
 import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
@@ -61,9 +58,8 @@ const queryClient = new QueryClient({
 
 export default function RootLayout({ children }: PropsWithChildren) {
   const theme = useTheme();
-  const pathname = usePathname();
 
-  const showNavigation = !authPages.includes(pathname);
+  const showNavigation = true;
 
   return (
     <html lang="en">
@@ -71,43 +67,39 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <Provider store={store}>
           <QueryClientProvider client={queryClient}>
             <HydrationBoundary state={dehydrate(queryClient)}>
-              <GoogleOAuthProvider
-                clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
-              >
-                <SessionProvider>
-                  <AppRouterCacheProvider>
-                    <ThemeRegistry>
-                      <AppProvider>
-                        <ConfirmationProvider>
-                          <ReactQueryDevtools />
-                          <AxiosInterceptor />
-                          {showNavigation && <AppBar />}
-                          <Box
-                            component="main"
-                            sx={{
-                              flexGrow: 1,
-                              bgcolor: (theme) => theme.palette.grey[50],
-                              minHeight: '100vh',
-                              flexDirection: 'column',
-                              display: 'flex',
-                            }}
-                          >
-                            {children}
-                          </Box>
-                          {showNavigation && <SideBar />}
-                          <Toaster
-                            theme={
-                              theme.palette.mode === 'dark' ? 'dark' : 'light'
-                            }
-                            closeButton
-                            position="top-right"
-                          />
-                        </ConfirmationProvider>
-                      </AppProvider>
-                    </ThemeRegistry>
-                  </AppRouterCacheProvider>
-                </SessionProvider>
-              </GoogleOAuthProvider>
+              <SessionProvider>
+                <AppRouterCacheProvider>
+                  <ThemeRegistry>
+                    <AppProvider>
+                      <ConfirmationProvider>
+                        <ReactQueryDevtools />
+                        <AxiosInterceptor />
+                        {showNavigation && <AppBar />}
+                        <Box
+                          component="main"
+                          sx={{
+                            flexGrow: 1,
+                            bgcolor: (theme) => theme.palette.grey[50],
+                            minHeight: '100vh',
+                            flexDirection: 'column',
+                            display: 'flex',
+                          }}
+                        >
+                          {children}
+                        </Box>
+                        {showNavigation && <SideBar />}
+                        <Toaster
+                          theme={
+                            theme.palette.mode === 'dark' ? 'dark' : 'light'
+                          }
+                          closeButton
+                          position="top-right"
+                        />
+                      </ConfirmationProvider>
+                    </AppProvider>
+                  </ThemeRegistry>
+                </AppRouterCacheProvider>
+              </SessionProvider>
             </HydrationBoundary>
           </QueryClientProvider>
         </Provider>

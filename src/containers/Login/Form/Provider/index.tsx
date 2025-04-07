@@ -1,32 +1,33 @@
 /**
- * @module ContactUsFormProvider
+ * @module LoginFormProvider
  * @category Providers
  *
  */
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { memo, useCallback } from 'react';
+import { memo, PropsWithChildren } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { getInitialValues } from '@/containers/ContactUs/Form/Provider/schema';
-import {
-  FormInputs,
-  FormProviderProps,
-  schema,
-} from '@/containers/ContactUs/Form/Provider/types';
+import { getInitialValues } from '@/containers/Login/Form/Provider/schema';
+
+import { FormInputs, schema } from '@/containers/Login/Form/Provider/types';
+
+type Props = {
+  onSubmit: (payload: FormInputs) => void;
+};
 
 /**
- * ContactUs Form Provider
+ * Login Form Provider
  *
  * @category Provider
  * @param Props
  * @see https://react-hook-form.com/api/useformcontext/
  *
  */
-const ContactUsFormProvider = ({
+const LoginFormProvider = ({
   children,
-  onSubmit: onFormSubmit,
-}: FormProviderProps) => {
+  onSubmit,
+}: PropsWithChildren<Props>) => {
   const form = useForm<FormInputs>({
     mode: 'onSubmit',
     criteriaMode: 'all',
@@ -34,13 +35,6 @@ const ContactUsFormProvider = ({
     resolver: zodResolver(schema),
   });
   const { handleSubmit } = form;
-
-  const onSubmit = useCallback(
-    (params: FormInputs) => {
-      onFormSubmit?.(params);
-    },
-    [onFormSubmit],
-  );
 
   return (
     <FormProvider {...form}>
@@ -51,4 +45,4 @@ const ContactUsFormProvider = ({
   );
 };
 
-export default memo(ContactUsFormProvider);
+export default memo(LoginFormProvider);

@@ -5,7 +5,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { paths } from '@/enums/path.enum';
-import { Avatar, Card, CardContent, Grid2, Stack } from '@mui/material';
+import { Avatar, Card, CardContent, Grid, Stack } from '@mui/material';
 import Link from 'next/link';
 
 const menus = [
@@ -69,9 +69,9 @@ export default function Page() {
           </Container>
         </Box>
 
-        <Grid2 container spacing={1}>
+        <Grid container spacing={1}>
           {menus.map((menu) => (
-            <Grid2 key={menu.label} size={{ xs: 6, md: 4 }}>
+            <Grid key={menu.label} size={{ xs: 6, md: 4 }}>
               <Link href={menu.path} style={{ textDecoration: 'none' }}>
                 <Card
                   variant="elevation"
@@ -92,9 +92,9 @@ export default function Page() {
                   </CardContent>
                 </Card>
               </Link>
-            </Grid2>
+            </Grid>
           ))}
-        </Grid2>
+        </Grid>
       </Container>
     </>
   );

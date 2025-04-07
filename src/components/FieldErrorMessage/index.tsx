@@ -13,7 +13,6 @@ const FieldErrorMessage = ({ errors, name }: Props) => (
     name={name}
     render={({ messages, message }) => {
       if (messages) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         return Object.entries(messages).map(([type, message]) => (
           <FormHelperText key={type} error>
             {message?.toString()}

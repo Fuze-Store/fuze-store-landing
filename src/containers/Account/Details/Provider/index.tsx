@@ -2,7 +2,7 @@
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Card, CardContent, Chip, Grid2, Stack } from '@mui/material';
+import { Card, CardContent, Chip, Grid, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback } from 'react';
 
@@ -53,27 +53,27 @@ const AccountDetailsProvider = ({ providers }: Props) => {
           {SOCIAL_LINKS.map((linkProvider) => {
             const linked = isLinked(linkProvider);
             return (
-              <Grid2
+              <Grid
                 key={linkProvider}
                 alignItems="center"
                 container
                 spacing={1}
               >
-                <Grid2 size={{ xs: 12, sm: 'grow' }}>
+                <Grid size={{ xs: 12, sm: 'grow' }}>
                   <Stack direction="row" alignItems="center" spacing={2}>
                     {getProviderIcon(linkProvider)}
                     <Typography>{getProviderLabel(linkProvider)}</Typography>
                     {linked && <Chip label="Linked" color="success" />}
                   </Stack>
-                </Grid2>
-                <Grid2 size={{ xs: 12, sm: 'auto' }}>
+                </Grid>
+                <Grid size={{ xs: 12, sm: 'auto' }}>
                   {linked ? (
                     <UnlinkProviderButton provider={linkProvider} />
                   ) : (
                     <LinkProviderButton provider={linkProvider} />
                   )}
-                </Grid2>
-              </Grid2>
+                </Grid>
+              </Grid>
             );
           })}
         </Stack>

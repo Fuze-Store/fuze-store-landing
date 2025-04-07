@@ -1,11 +1,12 @@
 'use client';
 
-import { Box, Button, Container, Typography } from '@mui/material';
+import { Box, Container, Toolbar, Typography } from '@mui/material';
 import Image from 'next/image';
 
 import useRegister from '@/containers/Auth/hooks/useRegister';
 import { FormInputs } from '@/containers/Register/Form/Provider/types';
 
+import GoBackButton from '@/components/GoBackButton';
 import RegisterForm from '@/containers/Register/Form';
 import RegisterFormProvider from '@/containers/Register/Form/Provider';
 import RegisterFormSubmit from '@/containers/Register/Form/Submit';
@@ -24,8 +25,9 @@ export default function Page() {
       errors={error?.response?.data.errors}
       onSubmit={onSubmit}
     >
+      <Toolbar />
       <Container maxWidth="sm">
-        <Box sx={{ py: 10 }}>
+        <Box sx={{ py: { sm: 10 } }}>
           <Box sx={{ textAlign: 'center' }} mb={2}>
             <Image src={logo} width={80} height={80} alt="Logo" />
           </Box>
@@ -63,9 +65,7 @@ export default function Page() {
           </Box>
 
           <Box mb={2}>
-            <Button disableElevation fullWidth>
-              Go Back
-            </Button>
+            <GoBackButton fullWidth />
           </Box>
         </Box>
       </Container>

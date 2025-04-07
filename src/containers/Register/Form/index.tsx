@@ -4,7 +4,7 @@
  *
  */
 
-import { Box, Stack, styled, TextField, Typography } from '@mui/material';
+import { Box, Grid, styled, TextField, Typography } from '@mui/material';
 import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -28,8 +28,6 @@ const RegisterForm = () => {
     register,
     formState: { errors },
   } = useFormContext<FormInputs>();
-
-  console.log('errors', errors);
 
   return (
     <>
@@ -62,8 +60,8 @@ const RegisterForm = () => {
       </SectionContainer>
 
       <SectionContainer>
-        <Stack direction="row" spacing={1}>
-          <Box sx={{ flex: 1 }}>
+        <Grid container spacing={1}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <Label htmlFor="first-name" error={!!errors.firstName}>
               First Name *
             </Label>
@@ -77,8 +75,8 @@ const RegisterForm = () => {
               helperText={errors.firstName?.message}
             />
             <FieldErrorMessage name="firstName" errors={errors} />
-          </Box>
-          <Box sx={{ flex: 1 }}>
+          </Grid>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <Label htmlFor="last-name" error={!!errors.lastName}>
               Last Name *
             </Label>
@@ -91,8 +89,8 @@ const RegisterForm = () => {
               error={!!errors.lastName}
             />
             <FieldErrorMessage name="lastName" errors={errors} />
-          </Box>
-        </Stack>
+          </Grid>
+        </Grid>
       </SectionContainer>
 
       <SectionContainer>

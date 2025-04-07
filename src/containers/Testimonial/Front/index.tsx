@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Grid2 } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -37,8 +37,8 @@ const TestimonialFront = () => {
       <div className="embla" ref={emblaRef}>
         <div className="embla__container">
           <Box sx={{ p: 1 }} className="embla__slide">
-            <Grid2 container spacing={1}>
-              <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
+            <Grid container spacing={1}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card>
                   <CardContent>
                     <Typography
@@ -60,8 +60,8 @@ const TestimonialFront = () => {
                     </Typography>
                   </CardContent>
                 </Card>
-              </Grid2>
-              <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
+              </Grid>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card>
                   <CardContent>
                     <Typography
@@ -83,8 +83,8 @@ const TestimonialFront = () => {
                     </Typography>
                   </CardContent>
                 </Card>
-              </Grid2>
-              <Grid2 size={{ xs: 12, sm: 6, md: 4 }}>
+              </Grid>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card>
                   <CardContent>
                     <Typography
@@ -106,8 +106,8 @@ const TestimonialFront = () => {
                     </Typography>
                   </CardContent>
                 </Card>
-              </Grid2>
-            </Grid2>
+              </Grid>
+            </Grid>
           </Box>
         </div>
       </div>

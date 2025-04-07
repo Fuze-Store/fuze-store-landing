@@ -1,4 +1,5 @@
 import { paths } from '@/enums/path.enum';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
@@ -11,5 +12,11 @@ export default async function Layout({ children }: PropsWithChildren) {
     redirect(paths.login);
   }
 
-  return children;
+  return (
+    <GoogleOAuthProvider
+      clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}
+    >
+      {children}
+    </GoogleOAuthProvider>
+  );
 }

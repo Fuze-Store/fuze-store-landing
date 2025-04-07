@@ -67,8 +67,6 @@ export const authOptions: AuthOptions = {
         };
       }
 
-      console.log(account);
-
       // For Social
       if (account?.provider === 'facebook' || account?.provider === 'google') {
         let provider: SocialProvider | null = null;

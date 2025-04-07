@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Card, CardContent, Chip, Grid2, Stack } from '@mui/material';
+import { Button, Card, CardContent, Chip, Grid, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { memo } from 'react';
@@ -22,8 +22,8 @@ const AccountDetailsEmail = ({ email, isVerified = false }: Props) => {
           <Typography variant="body2">Email</Typography>
         </CardContent>
         <CardContent>
-          <Grid2 container spacing={1}>
-            <Grid2 size={{ xs: 12, sm: 'grow' }}>
+          <Grid container spacing={1}>
+            <Grid size={{ xs: 12, sm: 'grow' }}>
               <Stack direction="row" spacing={1}>
                 <Typography>{email}</Typography>
                 {!isVerified && (
@@ -38,14 +38,14 @@ const AccountDetailsEmail = ({ email, isVerified = false }: Props) => {
               >
                 Change Email
               </Button>
-            </Grid2>
+            </Grid>
 
             {!isVerified && (
-              <Grid2 size={{ xs: 12, sm: 'auto' }}>
+              <Grid size={{ xs: 12, sm: 'auto' }}>
                 <AccountResendEmailButton isVerified={isVerified} />
-              </Grid2>
+              </Grid>
             )}
-          </Grid2>
+          </Grid>
         </CardContent>
       </Card>
     );
