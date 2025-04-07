@@ -23,19 +23,29 @@ export const authOptions: AuthOptions = {
           throw new Error('Missing email or password');
         }
 
-        const { data: res } = await axios.post<LoginResponse>(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoints.auth.login}`,
-          { email: credentials.email, password: credentials.password },
-          { headers: { 'Content-Type': 'application/json' } },
-        );
+        try {
+          const { data: res } = await axios.post<LoginResponse>(
+            endpoints.auth.login,
+            { email: credentials.email, password: credentials.password },
+            {
+              headers: { 'Content-Type': 'application/json' },
+              baseURL: process.env.API_BASE_URL,
+            },
+          );
 
-        if (res.data.accessToken) {
-          return {
-            id: res.data.user.id, // Ensure this maps to a valid user ID
-            name: res.data.user.info?.fullName,
-            email: res.data.user.email,
-            token: res.data.accessToken,
-          };
+          if (res.data.accessToken) {
+            return {
+              id: res.data.user.id, // Ensure this maps to a valid user ID
+              name: res.data.user.info?.fullName,
+              email: res.data.user.email,
+              token: res.data.accessToken,
+            };
+          }
+        } catch (err) {
+          console.log(err);
+          throw new Error(
+            'Unable to process your request. Please try again later',
+          );
         }
 
         throw new Error('Invalid email or password');
@@ -80,8 +90,9 @@ export const authOptions: AuthOptions = {
         if (!provider) return token;
 
         const { data: response } = await axios.post<LoginResponse>(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoints.social.login}`,
+          endpoints.social.login,
           { provider, accessToken: account.access_token },
+          { baseURL: process.env.API_BASE_URL },
         );
 
         return {
@@ -113,7 +124,7 @@ export const authOptions: AuthOptions = {
   pages: {
     signIn: paths.login,
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET!,
 };
 
 const handler: NextApiHandler = (req, res) => NextAuth(req, res, authOptions);

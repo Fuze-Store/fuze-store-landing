@@ -21,7 +21,6 @@ const FacebookLoginButton = ({ ButtonProps }: Props) => {
     try {
       setLoading(true);
       const result = await signIn('facebook', {
-        callbackUrl: paths.account,
         redirect: false,
       });
 

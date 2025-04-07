@@ -21,7 +21,6 @@ const GoogleLoginButton = ({ ButtonProps }: Props) => {
     try {
       setLoading(true);
       const result = await signIn('google', {
-        callbackUrl: paths.account,
         redirect: false,
       });
 

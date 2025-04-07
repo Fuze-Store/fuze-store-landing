@@ -1,10 +1,11 @@
 'use client';
 
+import FacebookLogin, {
+  SuccessResponse,
+} from '@greatsumini/react-facebook-login';
 import { Button, ButtonProps } from '@mui/material';
 import { useGoogleLogin } from '@react-oauth/google';
 import { memo } from 'react';
-import { ReactFacebookLoginInfo } from 'react-facebook-login';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { toast } from 'sonner';
 
 import useLinkAccount from '@/containers/Account/Provider/hooks/useLinkAccount';
@@ -31,9 +32,9 @@ const LinkProviderButton = ({ provider }: Props) => {
     },
   });
 
-  const responseFacebook = async (userInfo: ReactFacebookLoginInfo) => {
-    if (userInfo?.accessToken) {
-      await linkAccount({ accessToken: userInfo.accessToken, provider });
+  const responseFacebook = async (res: SuccessResponse) => {
+    if (res?.accessToken) {
+      await linkAccount({ accessToken: res.accessToken, provider });
     }
   };
 
@@ -42,7 +43,7 @@ const LinkProviderButton = ({ provider }: Props) => {
       <FacebookLogin
         appId={process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string}
         fields="name,email,picture"
-        callback={responseFacebook}
+        onSuccess={responseFacebook}
         render={(renderProps) => (
           <Button onClick={renderProps.onClick}>Link</Button>
         )}

@@ -59,8 +59,6 @@ const queryClient = new QueryClient({
 export default function RootLayout({ children }: PropsWithChildren) {
   const theme = useTheme();
 
-  const showNavigation = true;
-
   return (
     <html lang="en">
       <body>
@@ -74,7 +72,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                       <ConfirmationProvider>
                         <ReactQueryDevtools />
                         <AxiosInterceptor />
-                        {showNavigation && <AppBar />}
+                        <AppBar />
                         <Box
                           component="main"
                           sx={{
@@ -87,7 +85,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                         >
                           {children}
                         </Box>
-                        {showNavigation && <SideBar />}
+                        <SideBar />
                         <Toaster
                           theme={
                             theme.palette.mode === 'dark' ? 'dark' : 'light'
