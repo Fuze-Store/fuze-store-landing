@@ -6,9 +6,7 @@
   display: flex;
 }
 
-.embla__slide_use_case {
-  /* flex: 0 0 30%; */
-  /* flex: 1; */
-  /* width: 400px; */
+.embla__slide {
+  flex: 0 0 100%;
   min-width: 0;
 }

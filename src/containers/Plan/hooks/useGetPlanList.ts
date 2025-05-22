@@ -5,7 +5,7 @@ import { AxiosError } from 'axios';
 import { toast } from 'sonner';
 
 import { CACHE_TAG } from '@/enums/cache.enum';
-import { axiosPrivate } from '@/utils/axios';
+import { axiosPublic } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
 import { ApiErrorResponse } from '@/types';
@@ -15,7 +15,7 @@ const useGetPlanList = () =>
   useQuery<PlanResponse, AxiosError<ApiErrorResponse>>({
     queryKey: [CACHE_TAG.PLANS],
     queryFn: async (): Promise<PlanResponse> => {
-      const response = await axiosPrivate.get<PlanResponse>(
+      const response = await axiosPublic.get<PlanResponse>(
         endpoints.subscriptionPlan.list,
       );
       return response.data;

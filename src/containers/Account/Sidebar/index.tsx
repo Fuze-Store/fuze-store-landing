@@ -2,6 +2,9 @@
 
 import { AppContext } from '@/contexts/App';
 import { accountPages } from '@/helpers/page.helper';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { memo, useContext } from 'react';
 
 import CloseIcon from '@mui/icons-material/Close';
 import {
@@ -17,9 +20,6 @@ import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { styled } from '@mui/material/styles';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { memo, useContext } from 'react';
 
 const ListItemButtonS = styled(ListItemButton)(({ theme }) => ({
   borderRadius: 8,
@@ -83,7 +83,7 @@ const Sidebar = () => {
         sx={{
           width: 280,
           height: `calc(100vh - 64px - 80px)`,
-          mt: 10,
+          // mt: 10,
           pb: 4,
           px: 3,
           borderRight: `1px solid rgba(0, 0, 0, 0.12)`,

@@ -101,7 +101,7 @@ export default function AppBar() {
 
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 64,
+    threshold: 0,
   });
 
   const isElevate = trigger;
@@ -227,44 +227,38 @@ export default function AppBar() {
       color={isElevate ? 'default' : 'transparent'}
       position="fixed"
       elevation={isElevate ? 4 : 0}
-      sx={{
-        // backgroundColor: trigger ? '#edf1e5' : 'transparent',
-        backgroundColor: isElevate ? '#fcfdf7' : 'transparent',
-      }}
+      sx={
+        {
+          // backgroundColor: trigger ? '#edf1e5' : 'transparent',
+          // backgroundColor: isElevate ? '#fcfdf7' : 'transparent',
+        }
+      }
     >
       <Toolbar disableGutters style={{ height: 64 }}>
-        <Container
-          maxWidth="xl"
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <Box sx={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-            <Link href="/">
-              <Logo />
-            </Link>
-          </Box>
-
-          {isMdUp && (
+        <Container maxWidth="xl">
+          <Stack direction="row" justifyContent="space-between" spacing={3}>
             <Stack direction="row" spacing={3}>
-              <ListGroup className="list-none">
-                {navPages.map((nav) => {
-                  const className =
-                    pathname === nav.path.toString() ? 'selected' : undefined;
+              <Link href="/">
+                <Logo />
+              </Link>
 
-                  return (
-                    <ListItem key={nav.label} className={className}>
-                      <LinkItem href={nav.path}>{nav.label}</LinkItem>
-                    </ListItem>
-                  );
-                })}
-              </ListGroup>
+              {isMdUp && (
+                <ListGroup className="list-none">
+                  {navPages.map((nav) => {
+                    const className =
+                      pathname === nav.path.toString() ? 'selected' : undefined;
 
-              {renderAccount()}
+                    return (
+                      <ListItem key={nav.label} className={className}>
+                        <LinkItem href={nav.path}>{nav.label}</LinkItem>
+                      </ListItem>
+                    );
+                  })}
+                </ListGroup>
+              )}
             </Stack>
-          )}
+            {isMdUp && renderAccount()}
+          </Stack>
         </Container>
 
         {!isMdUp && (

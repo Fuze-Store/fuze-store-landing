@@ -77,7 +77,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
                           component="main"
                           sx={{
                             flexGrow: 1,
-                            bgcolor: (theme) => theme.palette.grey[50],
                             minHeight: '100vh',
                             flexDirection: 'column',
                             display: 'flex',

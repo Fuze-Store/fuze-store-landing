@@ -9,6 +9,10 @@ export const authPages = ['/login', '/register', '/forgot-password'];
 
 export const navPages = [
   {
+    path: paths.home,
+    label: 'Home',
+  },
+  {
     path: paths.features,
     label: 'Features',
   },

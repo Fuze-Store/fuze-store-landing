@@ -39,10 +39,11 @@ export const authOptions: AuthOptions = {
               name: res.data.user.info?.fullName,
               email: res.data.user.email,
               token: res.data.accessToken,
+              account: res.data.user,
             };
           }
         } catch (err) {
-          console.log(err);
+          console.error(err);
           throw new Error(
             'Unable to process your request. Please try again later',
           );
@@ -68,13 +69,9 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user, account }) {
       if (user?.token) {
-        return {
-          ...token,
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          accessToken: user.token,
-        };
+        console.log('user', user);
+        console.log('token', token);
+        return { ...token, account: user.account, accessToken: user.token };
       }
 
       // For Social
@@ -101,6 +98,7 @@ export const authOptions: AuthOptions = {
           name: response.data.user.info?.fullName,
           email: response.data.user.email,
           accessToken: response.data.accessToken,
+          account: response.data.user,
         };
       }
 

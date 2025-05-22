@@ -24,7 +24,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Toolbar />
-      <Container disableGutters maxWidth="lg">
+      <Container disableGutters maxWidth="xl">
+        <Stack
+          px={3}
+          py={2}
+          mb={{ xs: 0, md: 4 }}
+          alignItems="center"
+          direction="row"
+        >
+          {!isMdUp && (
+            <Box ml={-1} mr={2}>
+              <IconButton aria-label="account menu" onClick={toggleDrawer}>
+                <MenuIcon />
+              </IconButton>
+            </Box>
+          )}
+          <Box>
+            <Breadcrumbs />
+          </Box>
+        </Stack>
+
         <Stack
           direction="row"
           alignItems="stretch"
@@ -34,21 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Box>
             <Sidebar />
           </Box>
-          <Box sx={{ flex: 1, width: '100%' }}>
-            <Stack px={3} py={2} alignItems="center" direction="row">
-              {!isMdUp && (
-                <Box ml={-1} mr={2}>
-                  <IconButton aria-label="account menu" onClick={toggleDrawer}>
-                    <MenuIcon />
-                  </IconButton>
-                </Box>
-              )}
-              <Box>
-                <Breadcrumbs />
-              </Box>
-            </Stack>
-            {children}
-          </Box>
+          <Box sx={{ flex: 1, width: '100%' }}>{children}</Box>
         </Stack>
       </Container>
     </>

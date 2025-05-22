@@ -1,22 +1,24 @@
 'use client';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Divider } from '@mui/material';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import { styled } from '@mui/material/styles';
+import { useSession } from 'next-auth/react';
 
+import useGetAccount from '@/containers/Account/hooks/useGetAccount';
+import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
+
+import Footer from '@/components/Footer';
+import PlanItem from '@/components/PlanItem';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-
-import Footer from '@/components/Footer';
-import PlanItem from '@/components/PlanItem';
-import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
-import { Divider } from '@mui/material';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -59,8 +61,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 export default function Page() {
+  const { data: session } = useSession();
   const { data: response } = useGetPlanList();
+  const { data: responseAccount } = useGetAccount({
+    enabled: Boolean(session),
+  });
 
+  console.log(responseAccount);
   const plans = response?.data ?? [];
 
   return (
