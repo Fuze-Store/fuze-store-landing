@@ -14,30 +14,24 @@ import Link from 'next/link';
 
 import { paths } from '@/enums/path.enum';
 
-import PageTitle from '@/components/PageTitle';
-
 export default function Page() {
   return (
-    <>
-      <PageTitle title="Security" />
-
-      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
-        <Card variant="outlined" elevation={0}>
-          <List>
-            <ListItem disablePadding>
-              <ListItemButton
-                LinkComponent={Link}
-                href={paths.accountSecurityPassword}
-              >
-                <ListItemIcon>
-                  <PasswordIcon />
-                </ListItemIcon>
-                <ListItemText primary="Change Password" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </Card>
-      </Container>
-    </>
+    <Container maxWidth="sm">
+      <Card variant="outlined" elevation={0}>
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton
+              LinkComponent={Link}
+              href={paths.accountSecurityPassword}
+            >
+              <ListItemIcon>
+                <PasswordIcon />
+              </ListItemIcon>
+              <ListItemText primary="Change Password" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+      </Card>
+    </Container>
   );
 }

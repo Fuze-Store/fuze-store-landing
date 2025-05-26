@@ -11,6 +11,7 @@ import ScrollTop from '@/components/ScrollToTop';
 import ContactUsForm from '@/containers/ContactUs/Form';
 import ContactUsFormProvider from '@/containers/ContactUs/Form/Provider';
 import ContactUsFormSubmit from '@/containers/ContactUs/Form/Submit';
+import { Toolbar } from '@mui/material';
 
 export default function ContactUsPage() {
   return (
@@ -22,9 +23,10 @@ export default function ContactUsPage() {
             theme.palette.mode === 'dark'
               ? theme.palette.grey[900]
               : theme.palette.grey[50],
-          py: theme.spacing(12),
+          py: theme.spacing(10),
         })}
       >
+        <Toolbar />
         <Container maxWidth="md">
           <Box mb={8}>
             <Typography
@@ -50,7 +52,9 @@ export default function ContactUsPage() {
             </Typography>
           </Box>
         </Container>
+      </Box>
 
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <Container maxWidth="sm">
           <ContactUsForm />
 

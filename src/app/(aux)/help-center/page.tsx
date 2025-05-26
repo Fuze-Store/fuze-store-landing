@@ -1,6 +1,6 @@
 'use client';
 
-import { Divider } from '@mui/material';
+import { Divider, Toolbar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -20,9 +20,10 @@ export default function Page() {
             theme.palette.mode === 'dark'
               ? theme.palette.grey[900]
               : theme.palette.grey[50],
-          py: theme.spacing(15),
+          py: theme.spacing(10),
         })}
       >
+        <Toolbar />
         <Container maxWidth="lg">
           <Box textAlign="center">
             <Typography

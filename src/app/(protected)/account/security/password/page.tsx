@@ -25,11 +25,11 @@ export default function Page() {
 
   return (
     <>
-      <SectionContainer px={3}>
-        <GoBackButton />
-      </SectionContainer>
+      <Container maxWidth="sm">
+        <SectionContainer>
+          <GoBackButton />
+        </SectionContainer>
 
-      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
         <AccountPasswordFormProvider
           errors={error?.response?.data.errors}
           onSubmit={onSubmit}

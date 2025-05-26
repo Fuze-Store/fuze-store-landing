@@ -11,7 +11,6 @@ import type { FormInputs } from '@/containers/Account/Email/Form/Provider/types'
 
 import GoBackButton from '@/components/GoBackButton';
 import PageLoader from '@/components/PageLoader';
-import PageTitle from '@/components/PageTitle';
 import SectionContainer from '@/components/SectionContainer';
 import AccountEmailForm from '@/containers/Account/Email/Form';
 import AccountEmailFormProvider from '@/containers/Account/Email/Form/Provider';
@@ -33,36 +32,32 @@ export default function Page() {
   }
 
   return (
-    <>
-      <SectionContainer px={3}>
+    <Container maxWidth="sm">
+      <SectionContainer>
         <GoBackButton />
       </SectionContainer>
 
-      <PageTitle title="Change Email" />
+      <AccountEmailFormProvider
+        formData={response?.data}
+        errors={error?.errors}
+        onSubmit={onSubmit}
+      >
+        {error && (
+          <SectionContainer mb={2}>
+            <Alert severity="error">{error.message}</Alert>
+          </SectionContainer>
+        )}
+        <AccountEmailForm loading={isPending} />
 
-      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
-        <AccountEmailFormProvider
-          formData={response?.data}
-          errors={error?.errors}
-          onSubmit={onSubmit}
-        >
-          {error && (
-            <SectionContainer mb={2}>
-              <Alert severity="error">{error.message}</Alert>
-            </SectionContainer>
-          )}
-          <AccountEmailForm loading={isPending} />
-
-          <Box mb={1}>
-            <AccountEmailFormSubmit
-              variant="contained"
-              disableElevation
-              loading={isPending}
-              fullWidth
-            />
-          </Box>
-        </AccountEmailFormProvider>
-      </Container>
-    </>
+        <Box mb={1}>
+          <AccountEmailFormSubmit
+            variant="contained"
+            disableElevation
+            loading={isPending}
+            fullWidth
+          />
+        </Box>
+      </AccountEmailFormProvider>
+    </Container>
   );
 }

@@ -1,9 +1,9 @@
 'use client';
 
-import { Box, CircularProgress } from '@mui/material';
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import { useEffect, useState } from 'react';
+import PageLoader from '../PageLoader';
 
 export default function MdxClientRenderer({ slug }: { slug: string }) {
   const [mdxSource, setMdxSource] = useState<MDXRemoteSerializeResult | null>(
@@ -21,12 +21,6 @@ export default function MdxClientRenderer({ slug }: { slug: string }) {
     fetchMdx();
   }, [slug]);
 
-  if (!mdxSource)
-    return (
-      <Box p={8} textAlign="center">
-        <CircularProgress />
-      </Box>
-    );
-
+  if (!mdxSource) return <PageLoader />;
   return <MDXRemote {...mdxSource} />;
 }

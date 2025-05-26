@@ -21,51 +21,45 @@ export default function Page() {
   const subscription = response?.data;
 
   return (
-    <>
-      <SectionContainer px={3} sx={{ mb: 4 }}>
-        <Typography variant="h4">Subscription</Typography>
+    <Container maxWidth="md">
+      <Typography fontWeight={600}>Plan</Typography>
+      <Divider sx={{ mb: 2 }} />
+
+      <SectionContainer sx={{ mb: 4 }}>
+        <AccountSubscriptionPlan subscription={subscription} />
       </SectionContainer>
 
-      <Container sx={{ ml: { md: 0 } }} maxWidth="md">
-        <Typography fontWeight={600}>Plan</Typography>
-        <Divider sx={{ mb: 2 }} />
+      <Typography fontWeight={600}>Payment Method</Typography>
+      <Divider sx={{ mb: 2 }} />
 
-        <SectionContainer sx={{ mb: 4 }}>
-          <AccountSubscriptionPlan subscription={subscription} />
+      <SectionContainer sx={{ mb: 4 }}>
+        <SectionContainer>
+          <PaymentMethodList />
         </SectionContainer>
-
-        <Typography fontWeight={600}>Payment Method</Typography>
-        <Divider sx={{ mb: 2 }} />
-
-        <SectionContainer sx={{ mb: 4 }}>
-          <SectionContainer>
-            <PaymentMethodList />
-          </SectionContainer>
-
-          <SectionContainer>
-            <AddPaymentMethodButton />
-          </SectionContainer>
-        </SectionContainer>
-
-        <Typography fontWeight={600}>Recent Invoices</Typography>
-        <Divider sx={{ mb: 2 }} />
 
         <SectionContainer>
-          <SectionContainer mb={1}>
-            <AccountRecentInvoices />
-          </SectionContainer>
-
-          <Stack direction="row" justifyContent="flex-end">
-            <Button
-              LinkComponent={Link}
-              endIcon={<ArrowForwardIcon />}
-              href={paths.accountInvoice}
-            >
-              View All Invoices
-            </Button>
-          </Stack>
+          <AddPaymentMethodButton />
         </SectionContainer>
-      </Container>
-    </>
+      </SectionContainer>
+
+      <Typography fontWeight={600}>Recent Invoices</Typography>
+      <Divider sx={{ mb: 2 }} />
+
+      <SectionContainer>
+        <SectionContainer mb={1}>
+          <AccountRecentInvoices />
+        </SectionContainer>
+
+        <Stack direction="row" justifyContent="flex-end">
+          <Button
+            LinkComponent={Link}
+            endIcon={<ArrowForwardIcon />}
+            href={paths.accountInvoice}
+          >
+            View All Invoices
+          </Button>
+        </Stack>
+      </SectionContainer>
+    </Container>
   );
 }

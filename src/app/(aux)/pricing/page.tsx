@@ -11,6 +11,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Toolbar,
 } from '@mui/material';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
@@ -150,7 +151,17 @@ export default function Page() {
 
   return (
     <>
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(12) })}>
+      <Box
+        component="section"
+        sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
+          py: theme.spacing(10),
+        })}
+      >
+        <Toolbar />
         <Container maxWidth="md">
           <Box mb={8}>
             <Typography
@@ -175,7 +186,9 @@ export default function Page() {
             </Typography>
           </Box>
         </Container>
+      </Box>
 
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <Container maxWidth="lg">
           <TableContainer>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -323,8 +336,9 @@ export default function Page() {
             </Table>
           </TableContainer>
         </Container>
+      </Box>
 
-        {/* <Container maxWidth="lg">
+      {/* <Container maxWidth="lg">
           <Grid container direction="row" spacing={2}>
             {plans.map((plan) => (
               <Grid key={plan.id} size={{ xs: 12, sm: 6, md: 4 }}>
@@ -333,7 +347,6 @@ export default function Page() {
             ))}
           </Grid>
         </Container> */}
-      </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <Container disableGutters maxWidth="lg">

@@ -107,60 +107,54 @@ export default function Page() {
   };
 
   return (
-    <>
-      <SectionContainer px={3} sx={{ mb: 4 }}>
-        <Typography variant="h4">Invoices</Typography>
+    <Container maxWidth="lg">
+      <SectionContainer>
+        <TableContainer>
+          <Table
+            size="small"
+            sx={{ minWidth: 700 }}
+            aria-label="customized table"
+          >
+            <HeaderTableHead>
+              <HeaderTableRow>
+                <HeaderTableCell>Period</HeaderTableCell>
+                <HeaderTableCell align="right">Amount</HeaderTableCell>
+                <HeaderTableCell>Status</HeaderTableCell>
+                <HeaderTableCell>Action</HeaderTableCell>
+              </HeaderTableRow>
+            </HeaderTableHead>
+            <TableBody>
+              {invoices?.map((invoice) => (
+                <StyledTableRow key={invoice.id}>
+                  <StyledTableCell>
+                    <Typography
+                      fontWeight={700}
+                    >{`${formatDate(invoice.billingStartDate, 'MMM dd, yyyy')} - ${formatDate(invoice.billingEndDate, 'MMM dd, yyyy')}`}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography>{`${invoice?.currency} ${invoice.totalAmount}`}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell>{invoice.status}</StyledTableCell>
+                  <StyledTableCell>
+                    <InvoiceDownloadButton invoiceId={invoice.id} />
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </SectionContainer>
 
-      <Container sx={{ ml: { lg: 0 } }} maxWidth="lg">
-        <SectionContainer>
-          <TableContainer>
-            <Table
-              size="small"
-              sx={{ minWidth: 700 }}
-              aria-label="customized table"
-            >
-              <HeaderTableHead>
-                <HeaderTableRow>
-                  <HeaderTableCell>Period</HeaderTableCell>
-                  <HeaderTableCell align="right">Amount</HeaderTableCell>
-                  <HeaderTableCell>Status</HeaderTableCell>
-                  <HeaderTableCell>Action</HeaderTableCell>
-                </HeaderTableRow>
-              </HeaderTableHead>
-              <TableBody>
-                {invoices?.map((invoice) => (
-                  <StyledTableRow key={invoice.id}>
-                    <StyledTableCell>
-                      <Typography
-                        fontWeight={700}
-                      >{`${formatDate(invoice.billingStartDate, 'MMM dd, yyyy')} - ${formatDate(invoice.billingEndDate, 'MMM dd, yyyy')}`}</Typography>
-                    </StyledTableCell>
-                    <StyledTableCell align="right">
-                      <Typography>{`${invoice?.currency} ${invoice.totalAmount}`}</Typography>
-                    </StyledTableCell>
-                    <StyledTableCell>{invoice.status}</StyledTableCell>
-                    <StyledTableCell>
-                      <InvoiceDownloadButton invoiceId={invoice.id} />
-                    </StyledTableCell>
-                  </StyledTableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </SectionContainer>
-
-        <TablePagination
-          component="div"
-          count={paginatedInvoices?.total ?? 0}
-          page={(paginatedInvoices?.page || page) - 1}
-          showFirstButton
-          showLastButton
-          onPageChange={onPageChange}
-          rowsPerPage={paginatedInvoices?.perPage || perPage}
-          onRowsPerPageChange={onRowsPerPageChange}
-        />
-      </Container>
-    </>
+      <TablePagination
+        component="div"
+        count={paginatedInvoices?.total ?? 0}
+        page={(paginatedInvoices?.page || page) - 1}
+        showFirstButton
+        showLastButton
+        onPageChange={onPageChange}
+        rowsPerPage={paginatedInvoices?.perPage || perPage}
+        onRowsPerPageChange={onRowsPerPageChange}
+      />
+    </Container>
   );
 }

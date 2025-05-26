@@ -10,7 +10,7 @@ import Dashboard from '@/containers/Feature/Dashboard';
 import Event from '@/containers/Feature/Event';
 import PointOfSale from '@/containers/Feature/PointOfSale';
 import Sales from '@/containers/Feature/Sales';
-import { Divider } from '@mui/material';
+import { Divider, Toolbar } from '@mui/material';
 
 export default function Page() {
   return (
@@ -18,11 +18,16 @@ export default function Page() {
       <Box
         component="section"
         sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
           py: theme.spacing(10),
         })}
       >
+        <Toolbar />
         <Container maxWidth="lg">
-          <Box p={4} textAlign="center">
+          <Box textAlign="center">
             <Typography
               textAlign="center"
               component="h3"
@@ -57,21 +62,11 @@ export default function Page() {
         </Container>
       </Box>
 
-      <Box
-        component="section"
-        sx={(theme) => ({
-          py: theme.spacing(10),
-        })}
-      >
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <Dashboard />
       </Box>
 
-      <Box
-        component="section"
-        sx={(theme) => ({
-          py: theme.spacing(10),
-        })}
-      >
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <PointOfSale />
       </Box>
 

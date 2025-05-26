@@ -1,6 +1,6 @@
 'use client';
 
-import { CircularProgress, Stack, Toolbar, Typography } from '@mui/material';
+import { CircularProgress, Stack, Toolbar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
@@ -30,38 +30,32 @@ export default function Page() {
 
   if (account) {
     return (
-      <>
-        <SectionContainer px={3} sx={{ mb: 4 }}>
-          <Typography variant="h4">Account Information</Typography>
-        </SectionContainer>
+      <Container maxWidth="sm">
+        <Box py={2}>
+          <SectionContainer>
+            <AccountDetailsInfo
+              email={account.email}
+              fullName={account.info.fullName}
+              initials={account.info.initials}
+            />
+          </SectionContainer>
 
-        <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
-          <Box py={2}>
-            <SectionContainer>
-              <AccountDetailsInfo
-                email={account.email}
-                fullName={account.info.fullName}
-                initials={account.info.initials}
-              />
-            </SectionContainer>
+          <SectionContainer>
+            <AccountDetailsEmail
+              email={account.email}
+              isVerified={account.isVerified}
+            />
+          </SectionContainer>
 
-            <SectionContainer>
-              <AccountDetailsEmail
-                email={account.email}
-                isVerified={account.isVerified}
-              />
-            </SectionContainer>
+          <SectionContainer>
+            <AccountDetailsProvider providers={account.providers} />
+          </SectionContainer>
 
-            <SectionContainer>
-              <AccountDetailsProvider providers={account.providers} />
-            </SectionContainer>
-
-            <SectionContainer>
-              <AccountDeleteButton />
-            </SectionContainer>
-          </Box>
-        </Container>
-      </>
+          <SectionContainer>
+            <AccountDeleteButton />
+          </SectionContainer>
+        </Box>
+      </Container>
     );
   }
 

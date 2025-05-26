@@ -5,6 +5,7 @@ import EventIcon from '@mui/icons-material/Event';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import { Stack, Toolbar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
@@ -13,7 +14,6 @@ import Typography from '@mui/material/Typography';
 
 import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
-import { Stack } from '@mui/material';
 
 export default function AboutUsPage() {
   return (
@@ -25,9 +25,10 @@ export default function AboutUsPage() {
             theme.palette.mode === 'dark'
               ? theme.palette.grey[900]
               : theme.palette.grey[50],
-          py: theme.spacing(12),
+          py: theme.spacing(10),
         })}
       >
+        <Toolbar />
         <Container maxWidth="lg">
           <Box mb={8}>
             <Typography
@@ -50,7 +51,11 @@ export default function AboutUsPage() {
               Lorem Ipsum has been the industry’s standard dummy..
             </Typography>
           </Box>
+        </Container>
+      </Box>
 
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="lg">
           <Grid container direction="row" spacing={2}>
             <Grid size={{ xs: 6, md: 3 }}>
               <Box

@@ -1,6 +1,6 @@
 'use client';
 
-import { Alert, Box, Typography } from '@mui/material';
+import { Alert, Box } from '@mui/material';
 import Container from '@mui/material/Container';
 
 import useGetAccountAddress from '@/containers/Account/Address/hooks/useGetAccountAddress';
@@ -29,30 +29,24 @@ export default function Page() {
   }
 
   return (
-    <>
-      <SectionContainer px={3} sx={{ mb: 4 }}>
-        <Typography variant="h4">Address</Typography>
-      </SectionContainer>
+    <Container maxWidth="sm">
+      <AddressFormProvider
+        address={response?.data}
+        errors={error?.errors}
+        onSubmit={onSubmit}
+      >
+        {error && (
+          <SectionContainer mb={2}>
+            <Alert severity="error">{error.message}</Alert>
+          </SectionContainer>
+        )}
 
-      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
-        <AddressFormProvider
-          address={response?.data}
-          errors={error?.errors}
-          onSubmit={onSubmit}
-        >
-          {error && (
-            <SectionContainer mb={2}>
-              <Alert severity="error">{error.message}</Alert>
-            </SectionContainer>
-          )}
+        <AddressForm />
 
-          <AddressForm />
-
-          <Box mb={1}>
-            <AddressFormSubmit variant="contained" disableElevation fullWidth />
-          </Box>
-        </AddressFormProvider>
-      </Container>
-    </>
+        <Box mb={1}>
+          <AddressFormSubmit variant="contained" disableElevation fullWidth />
+        </Box>
+      </AddressFormProvider>
+    </Container>
   );
 }
