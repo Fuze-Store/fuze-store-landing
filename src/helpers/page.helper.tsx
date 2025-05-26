@@ -25,8 +25,8 @@ export const navPages = [
     label: 'About Us',
   },
   {
-    path: paths.services,
-    label: 'Services',
+    path: paths.helpCenter,
+    label: 'Help Center',
   },
   {
     path: paths.contactUs,

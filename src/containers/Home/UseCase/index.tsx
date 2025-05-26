@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import useEmblaCarousel from 'embla-carousel-react';
+import React from 'react';
 import './style.css';
 
 const StackItem = styled(Box)(({ theme }) => ({

@@ -43,5 +43,4 @@ export type FilterParams = {
   perPage: number;
   lastPage?: number;
   onChangeSearchText?: (text?: string) => void;
-  // onPaginationChange?: OnChangeFn<PaginationState>;
 };

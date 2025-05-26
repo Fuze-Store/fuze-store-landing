@@ -71,7 +71,7 @@ export const authOptions: AuthOptions = {
       if (user?.token) {
         console.log('user', user);
         console.log('token', token);
-        return { ...token, account: user.account, accessToken: user.token };
+        return { ...token, account, accessToken: user.token };
       }
 
       // For Social

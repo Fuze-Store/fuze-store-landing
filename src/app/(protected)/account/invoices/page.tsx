@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import Container from '@mui/material/Container';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 import useGetInvoiceList from '@/containers/Account/Invoice/hooks/useGetInvoiceList';
 import { paths } from '@/enums/path.enum';
@@ -35,7 +35,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
+const StyledTableRow = styled(TableRow)(() => ({
   // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
@@ -66,7 +66,7 @@ const HeaderTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const HeaderTableCell = styled(TableCell)(({ theme }) => ({
+const HeaderTableCell = styled(TableCell)(() => ({
   fontWeight: 700,
 }));
 

@@ -49,7 +49,7 @@ const WhatWeOffer = () => (
         color="textSecondary"
         fontWeight={400}
       >
-        Whether you're running one store or scaling to many, our system is
+        Whether you`re running one store or scaling to many, our system is
         designed to be fast, flexible, and future-proof — no steep learning
         curves, no outdated workflows.
       </Typography>
@@ -87,7 +87,7 @@ const WhatWeOffer = () => (
       <Grid size={{ xs: 12, sm: 6, md: 4 }}>
         <Item
           title="🏪 Scales With You"
-          description="One store today, a franchise tomorrow — we’ve got you."
+          description="One store today, a franchise tomorrow — we've got you."
         />
       </Grid>
 

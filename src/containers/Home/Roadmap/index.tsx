@@ -37,7 +37,7 @@ const Roadmap = () => (
         gutterBottom
         fontWeight={500}
       >
-        We're Just Getting Started.
+        We&apos;re Just Getting Started.
       </Typography>
 
       <Typography

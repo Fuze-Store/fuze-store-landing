@@ -25,7 +25,7 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 
 import useLogout from '@/containers/Auth/hooks/useLogout';
 import { AppContext } from '@/contexts/App';
@@ -227,12 +227,6 @@ export default function AppBar() {
       color={isElevate ? 'default' : 'transparent'}
       position="fixed"
       elevation={isElevate ? 4 : 0}
-      sx={
-        {
-          // backgroundColor: trigger ? '#edf1e5' : 'transparent',
-          // backgroundColor: isElevate ? '#fcfdf7' : 'transparent',
-        }
-      }
     >
       <Toolbar disableGutters style={{ height: 64 }}>
         <Container maxWidth="xl">

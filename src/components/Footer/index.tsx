@@ -46,7 +46,14 @@ export default function Footer() {
   const pathname = usePathname();
 
   return (
-    <Box sx={{ py: 4 }} component="footer">
+    <Box
+      sx={{
+        bgcolor: (theme) =>
+          theme.palette.grey[theme.palette.mode === 'dark' ? 800 : 300],
+        py: 4,
+      }}
+      component="footer"
+    >
       <Container maxWidth="lg">
         <Box>
           <Stack direction="row" spacing={2}>

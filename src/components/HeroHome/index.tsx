@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useMemo } from 'react';
 
 import image1 from '@/images/image1.png';
 
@@ -15,12 +14,6 @@ const HeroHome = () => {
   const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
   const isLgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
-  const imageWidth = useMemo(() => {
-    if (isLgUp) return 900;
-    if (isMdUp) return 600;
-    return 300;
-  }, [isLgUp, isMdUp]);
-
   return (
     <section style={{ position: 'relative' }}>
       <Box
@@ -28,7 +21,8 @@ const HeroHome = () => {
           position: 'relative',
           minHeight: '100vh',
           py: 20,
-          backgroundColor: '#fcfdf7',
+          backgroundColor: (theme) =>
+            theme.palette.mode === 'dark' ? '#212121' : '#fcfdf7',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
         }}

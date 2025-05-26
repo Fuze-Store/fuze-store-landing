@@ -7,6 +7,10 @@ import * as Sentry from '@sentry/nextjs';
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
 
+  // Adds request headers and IP for users, for more info visit:
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
+  sendDefaultPii: true,
+
   // Add optional integrations for additional features
   integrations: [Sentry.replayIntegration()],
 
@@ -24,3 +28,11 @@ Sentry.init({
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
 });
+
+// This export will instrument router navigations, and is only relevant if you enable tracing.
+// `captureRouterTransitionStart` is available from SDK version 9.12.0 onwards
+// Ensure the value is defined or handle it safely
+export const onRouterTransitionStart =
+  Sentry.captureRouterTransitionStart as unknown as
+    | ((href: string, navigationType: string) => void)
+    | undefined;

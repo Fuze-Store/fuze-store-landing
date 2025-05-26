@@ -18,13 +18,15 @@ import Footer from '@/components/Footer';
 import HeroHome from '@/components/HeroHome';
 import ScrollTop from '@/components/ScrollToTop';
 import HomeFeatures from '@/containers/Home/FeaturesSection';
+import Newsletter from '@/containers/Home/Newsletter';
 import Roadmap from '@/containers/Home/Roadmap';
 import SupportedPlatform from '@/containers/Home/SupportedPlatform';
 import UseCase from '@/containers/Home/UseCase';
 import WhatWeOffer from '@/containers/Home/WhatWeOffer';
 import TestimonialFront from '@/containers/Testimonial/Front';
+import Link from 'next/link';
 
-export default function HomePage() {
+export default function Page() {
   return (
     <>
       <Box>
@@ -37,6 +39,8 @@ export default function HomePage() {
 
           <Box mt={6} px={2} textAlign="center">
             <Button
+              LinkComponent={Link}
+              href="/features"
               variant="contained"
               disableElevation
               sx={{ maxWidth: 360 }}
@@ -64,6 +68,8 @@ export default function HomePage() {
 
           <Box mt={6} px={2} textAlign="center">
             <Button
+              LinkComponent={Link}
+              href="/register"
               variant="contained"
               disableElevation
               sx={{ maxWidth: 360 }}
@@ -126,6 +132,20 @@ export default function HomePage() {
               Submit an Idea
             </Button>
           </Box>
+        </Box>
+
+        {/* Newsletter */}
+        <Box
+          component="section"
+          sx={(theme) => ({
+            bgcolor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.grey[50],
+            py: theme.spacing(10),
+          })}
+        >
+          <Newsletter />
         </Box>
 
         <Divider />
