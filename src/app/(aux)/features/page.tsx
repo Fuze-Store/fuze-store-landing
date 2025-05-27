@@ -1,16 +1,20 @@
 'use client';
 
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-
-import Footer from '@/components/Footer';
+import ScrollTop from '@/components/ScrollToTop';
 import Catalog from '@/containers/Feature/Catalog';
 import Dashboard from '@/containers/Feature/Dashboard';
 import Event from '@/containers/Feature/Event';
 import PointOfSale from '@/containers/Feature/PointOfSale';
 import Sales from '@/containers/Feature/Sales';
-import { Divider, Toolbar } from '@mui/material';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import {
+  Box,
+  Container,
+  Divider,
+  Fab,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 
 export default function Page() {
   return (
@@ -93,7 +97,11 @@ export default function Page() {
 
       <Divider />
 
-      <Footer />
+      <ScrollTop>
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </ScrollTop>
     </>
   );
 }

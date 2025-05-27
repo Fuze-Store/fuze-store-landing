@@ -1,11 +1,13 @@
 'use client';
 
+import { Divider, Toolbar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import Footer from '@/components/Footer';
-import { Divider } from '@mui/material';
+import Articles from '@/containers/HelpCenter/Articles';
+import BillingFaq from '@/containers/HelpCenter/BillingFaq';
+import GeneralFaq from '@/containers/HelpCenter/GeneralFaq';
 
 export default function Page() {
   return (
@@ -13,11 +15,16 @@ export default function Page() {
       <Box
         component="section"
         sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
           py: theme.spacing(10),
         })}
       >
+        <Toolbar />
         <Container maxWidth="lg">
-          <Box p={4} textAlign="center">
+          <Box textAlign="center">
             <Typography
               textAlign="center"
               component="h3"
@@ -25,7 +32,7 @@ export default function Page() {
               fontWeight="bold"
               gutterBottom
             >
-              Use Cases
+              Help Center
             </Typography>
 
             <Typography
@@ -35,7 +42,7 @@ export default function Page() {
               gutterBottom
               fontWeight={500}
             >
-              Everything You Need to Run and Grow Your Store.
+              Learn to Use Every Feature of Fuze Store
             </Typography>
 
             <Typography
@@ -44,17 +51,35 @@ export default function Page() {
               color="textSecondary"
               fontWeight={400}
             >
-              A modern, cloud-based POS system built for retail, service, and
-              food businesses — packed with powerful features to simplify
-              operations and boost sales.
+              Step-by-step guides, video walkthroughs, and FAQs to master our
+              POS system.
             </Typography>
           </Box>
         </Container>
       </Box>
 
-      <Divider />
+      <Box
+        component="section"
+        sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
+      >
+        <Articles />
+      </Box>
 
-      <Footer />
+      <Box
+        component="section"
+        sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
+      >
+        <GeneralFaq />
+      </Box>
+
+      <Box
+        component="section"
+        sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
+      >
+        <BillingFaq />
+      </Box>
+
+      <Divider />
     </>
   );
 }

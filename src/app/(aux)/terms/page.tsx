@@ -6,7 +6,6 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import Typography from '@mui/material/Typography';
 
-import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
 
 export default function TermsPage() {
@@ -161,8 +160,6 @@ export default function TermsPage() {
           </Box>
         </Container>
       </Box>
-
-      <Footer />
 
       <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">

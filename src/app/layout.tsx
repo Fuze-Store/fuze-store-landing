@@ -28,6 +28,7 @@ import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
 import ConfirmationProvider from '@/providers/Confirmation';
 
+import Footer from '@/components/Footer';
 import './globals.css';
 
 // Your web app's Firebase configuration
@@ -61,12 +62,12 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html lang="en">
-      <body>
-        <Provider store={store}>
-          <QueryClientProvider client={queryClient}>
-            <HydrationBoundary state={dehydrate(queryClient)}>
-              <SessionProvider>
-                <AppRouterCacheProvider>
+      <body id="main">
+        <AppRouterCacheProvider>
+          <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+              <HydrationBoundary state={dehydrate(queryClient)}>
+                <SessionProvider>
                   <ThemeRegistry>
                     <AppProvider>
                       <ConfirmationProvider>
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                         >
                           {children}
                         </Box>
+                        <Footer />
                         <SideBar />
                         <Toaster
                           theme={
@@ -95,11 +97,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
                       </ConfirmationProvider>
                     </AppProvider>
                   </ThemeRegistry>
-                </AppRouterCacheProvider>
-              </SessionProvider>
-            </HydrationBoundary>
-          </QueryClientProvider>
-        </Provider>
+                </SessionProvider>
+              </HydrationBoundary>
+            </QueryClientProvider>
+          </Provider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

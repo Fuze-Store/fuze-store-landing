@@ -1,19 +1,10 @@
 'use client';
 
-import BoltIcon from '@mui/icons-material/Bolt';
-import EventIcon from '@mui/icons-material/Event';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ReceiptIcon from '@mui/icons-material/Receipt';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
-import { Stack, Toolbar } from '@mui/material';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Fab from '@mui/material/Fab';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-
-import Footer from '@/components/Footer';
 import ScrollTop from '@/components/ScrollToTop';
+import CoreValues from '@/containers/AboutUs/CoreValues';
+import WhoWeServe from '@/containers/AboutUs/WhoWeServe';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Box, Container, Fab, Grid, Toolbar, Typography } from '@mui/material';
 
 export default function AboutUsPage() {
   return (
@@ -29,7 +20,7 @@ export default function AboutUsPage() {
         })}
       >
         <Toolbar />
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
           <Box mb={8}>
             <Typography
               textAlign="center"
@@ -38,7 +29,7 @@ export default function AboutUsPage() {
               gutterBottom
               fontWeight={500}
             >
-              About Us
+              Built for Businesses Like Yours
             </Typography>
 
             <Typography
@@ -47,8 +38,8 @@ export default function AboutUsPage() {
               color="textSecondary"
               fontWeight={400}
             >
-              Lorem ipsum is simply dummy text of the printing and typesetting.
-              Lorem Ipsum has been the industry’s standard dummy..
+              We’re on a mission to help retailers, restaurateurs, and service
+              providers thrive with powerful yet simple point-of-sale tools.
             </Typography>
           </Box>
         </Container>
@@ -56,203 +47,91 @@ export default function AboutUsPage() {
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <Container maxWidth="lg">
-          <Grid container direction="row" spacing={2}>
-            <Grid size={{ xs: 6, md: 3 }}>
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor:
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.grey[900]
-                      : theme.palette.grey[200],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
-                >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        // backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <SubscriptionsIcon sx={{ height: 40, width: 40 }} />
-                    </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Startups
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Design and prototype faster, with an entire library of
-                      ready components.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
+          <Grid
+            mb={2}
+            sx={{ minHeight: 320 }}
+            container
+            direction="row"
+            spacing={{ xs: 2, sm: 4 }}
+          >
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="h4" gutterBottom>
+                Mission
+              </Typography>
+
+              <Typography>
+                We believe every small business deserves the same tools and
+                insights as large chains. That’s why we created Fuze Store — a
+                modern POS system designed for flexibility, speed, and ease of
+                use, without the high costs or complexity.
+              </Typography>
             </Grid>
 
-            <Grid size={{ xs: 6, md: 3 }}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor:
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.grey[900]
-                      : theme.palette.grey[200],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
-                >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        // backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <ReceiptIcon sx={{ height: 40, width: 40 }} />
-                    </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Design Teams
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Get everyone on the same page with a single library.
-                      Design faster consistently.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
+                sx={{
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  borderColor: '#ccc',
+                  borderRadius: 8,
+                  height: 200,
+                  width: '100%',
+                }}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid
+            sx={{ minHeight: 320 }}
+            container
+            direction={{ xs: 'column-reverse', sm: 'row' }}
+            spacing={{ xs: 2, sm: 4 }}
+          >
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Box
+                sx={{
+                  borderWidth: 1,
+                  borderStyle: 'solid',
+                  borderColor: '#ccc',
+                  borderRadius: 8,
+                  height: 200,
+                  width: '100%',
+                }}
+              />
             </Grid>
 
-            <Grid size={{ xs: 6, md: 3 }}>
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor:
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.grey[900]
-                      : theme.palette.grey[200],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
-                >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        // backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <BoltIcon sx={{ height: 40, width: 40 }} />
-                    </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Beginners & Students
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Learn how professional design systems are built and learn
-                      Figma best practices.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
-            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <Typography variant="h4" gutterBottom>
+                Vision
+              </Typography>
 
-            <Grid size={{ xs: 6, md: 3 }}>
-              <Box
-                sx={(theme) => ({
-                  flex: 1,
-                  bgcolor:
-                    theme.palette.mode === 'dark'
-                      ? theme.palette.grey[900]
-                      : theme.palette.grey[200],
-                  height: 290,
-                })}
-              >
-                <Stack
-                  sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
-                  direction="column"
-                  alignItems="space-between"
-                >
-                  <Box sx={{ flex: 1 }}>
-                    <Box
-                      sx={{
-                        flex: 1,
-                        borderRadius: '50%',
-                        borderWidth: 5,
-                        borderColor: '#424242',
-                        borderStyle: 'solid',
-                        height: 40 + 20 + 4,
-                        width: 40 + 20 + 4,
-                        display: 'flex',
-                        // backgroundColor: '#757575',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <EventIcon sx={{ height: 40, width: 40 }} />
-                    </Box>
-                  </Box>
-                  <Box>
-                    <Typography variant="h6" fontWeight={500} gutterBottom>
-                      Freelance Designers
-                    </Typography>
-                    <Typography fontWeight={500} color="text.secondary">
-                      Deliver high-quality projects faster, take on more
-                      clients, and increase your income.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Box>
+              <Typography>
+                We believe every small business deserves the same tools and
+                insights as large chains. That’s why we created Fuze Store — a
+                modern POS system designed for flexibility, speed, and ease of
+                use, without the high costs or complexity.
+              </Typography>
             </Grid>
           </Grid>
         </Container>
       </Box>
 
-      <Footer />
+      <Box
+        component="section"
+        sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
+          py: theme.spacing(10),
+        })}
+      >
+        <WhoWeServe />
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <CoreValues />
+      </Box>
 
       <ScrollTop>
         <Fab size="small" aria-label="scroll back to top">

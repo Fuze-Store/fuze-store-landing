@@ -14,7 +14,6 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import Footer from '@/components/Footer';
 import HeroHome from '@/components/HeroHome';
 import ScrollTop from '@/components/ScrollToTop';
 import HomeFeatures from '@/containers/Home/FeaturesSection';
@@ -149,7 +148,6 @@ export default function Page() {
         </Box>
 
         <Divider />
-        <Footer />
       </Box>
 
       <ScrollTop>

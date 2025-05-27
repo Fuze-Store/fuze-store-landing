@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import Footer from '@/components/Footer';
 import Articles from '@/containers/HelpCenter/Articles';
 import BillingFaq from '@/containers/HelpCenter/BillingFaq';
 import GeneralFaq from '@/containers/HelpCenter/GeneralFaq';
@@ -81,8 +80,6 @@ export default function Page() {
       </Box>
 
       <Divider />
-
-      <Footer />
     </>
   );
 }

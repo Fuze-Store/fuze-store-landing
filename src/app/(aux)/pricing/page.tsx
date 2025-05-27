@@ -24,7 +24,6 @@ import { useSession } from 'next-auth/react';
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
 
-import Footer from '@/components/Footer';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -476,8 +475,6 @@ export default function Page() {
       </Box>
 
       <Divider />
-
-      <Footer />
     </>
   );
 }

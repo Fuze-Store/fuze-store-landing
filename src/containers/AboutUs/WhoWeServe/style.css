@@ -1,0 +1,14 @@
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide_who_we_serve {
+  flex: 0 0 100%;
+  min-width: 0;
+  filter: grayscale(1);
+  transition: filter 0.3s ease-in-out;
+}
