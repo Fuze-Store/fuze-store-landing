@@ -18,4 +18,7 @@ export default styled(
       {...props}
     />
   ),
+  {
+    shouldForwardProp: (prop) => prop !== 'error',
+  },
 )();

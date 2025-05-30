@@ -39,9 +39,11 @@ const useLogout = () => {
   });
 
   const logout = async () => {
-    const response = await mutateAsync();
-    await signOut({ callbackUrl: paths.home });
-    return response;
+    try {
+      await mutateAsync();
+    } finally {
+      await signOut({ callbackUrl: paths.home });
+    }
   };
 
   return { logout, ...rest };

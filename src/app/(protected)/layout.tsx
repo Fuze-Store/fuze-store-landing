@@ -1,12 +1,15 @@
-import { paths } from '@/enums/path.enum';
+'use client';
+
+import useSession from '@/hooks/useSession';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
-import { authOptions } from '../api/auth/[...nextauth]/route';
 
-export default async function Layout({ children }: PropsWithChildren) {
-  const session = await getServerSession(authOptions);
+import { paths } from '@/enums/path.enum';
+
+export default function Layout({ children }: PropsWithChildren) {
+  const session = useSession();
+  console.log('session', session);
 
   if (!session) {
     redirect(paths.login);

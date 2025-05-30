@@ -22,7 +22,6 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useContext, useState } from 'react';
@@ -31,6 +30,7 @@ import useLogout from '@/containers/Auth/hooks/useLogout';
 import { AppContext } from '@/contexts/App';
 import { paths } from '@/enums/path.enum';
 import { navPages } from '@/helpers/page.helper';
+import useSession from '@/hooks/useSession';
 
 import Logo from '@/components/Logo';
 
@@ -95,7 +95,7 @@ export default function AppBar() {
   const { logout } = useLogout();
   const { status } = useSession();
   const { setShowDrawer } = useContext(AppContext);
-  const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+  const isMdDown = useMediaQuery(theme.breakpoints.down('md'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -226,7 +226,11 @@ export default function AppBar() {
     <AppBarMui
       color={isElevate ? 'default' : 'transparent'}
       position="fixed"
-      elevation={isElevate ? 4 : 0}
+      elevation={0}
+      sx={{
+        borderBottom: (theme) =>
+          isElevate ? `1px solid ${theme.palette.divider}` : 0,
+      }}
     >
       <Toolbar disableGutters style={{ height: 64 }}>
         <Container maxWidth="xl">
@@ -236,7 +240,7 @@ export default function AppBar() {
                 <Logo />
               </Link>
 
-              {isMdUp && (
+              {!isMdDown && (
                 <ListGroup className="list-none">
                   {navPages.map((nav) => {
                     const className =
@@ -251,11 +255,11 @@ export default function AppBar() {
                 </ListGroup>
               )}
             </Stack>
-            {isMdUp && renderAccount()}
+            {!isMdDown && renderAccount()}
           </Stack>
         </Container>
 
-        {!isMdUp && (
+        {isMdDown && (
           <Box
             sx={{
               position: 'absolute',

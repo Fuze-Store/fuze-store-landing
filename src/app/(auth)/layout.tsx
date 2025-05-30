@@ -1,12 +1,13 @@
-import { getServerSession } from 'next-auth';
+'use client';
+
 import { redirect } from 'next/navigation';
 import * as React from 'react';
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { paths } from '@/enums/path.enum';
+import useSession from '@/hooks/useSession';
 
-export default async function Layout({ children }: React.PropsWithChildren) {
-  const session = await getServerSession(authOptions);
+export default function Layout({ children }: React.PropsWithChildren) {
+  const { data: session } = useSession();
 
   if (session) {
     redirect(paths.account);

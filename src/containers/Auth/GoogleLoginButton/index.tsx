@@ -1,10 +1,9 @@
 'use client';
 
+import { paths } from '@/enums/path.enum';
 import { Button, ButtonProps } from '@mui/material';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-
-import { paths } from '@/enums/path.enum';
 
 import { memo, useState } from 'react';
 import { toast } from 'sonner';
@@ -21,7 +20,8 @@ const GoogleLoginButton = ({ ButtonProps }: Props) => {
     try {
       setLoading(true);
       const result = await signIn('google', {
-        redirect: false,
+        redirect: true,
+        redirectTo: '/account',
       });
 
       if (result?.ok) {

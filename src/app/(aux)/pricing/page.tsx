@@ -19,10 +19,10 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import { styled } from '@mui/material/styles';
-import { useSession } from 'next-auth/react';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
+import useSession from '@/hooks/useSession';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';

@@ -13,7 +13,6 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import { styled } from '@mui/material/styles';
-import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react';
 
@@ -21,6 +20,7 @@ import useLogout from '@/containers/Auth/hooks/useLogout';
 import { AppContext } from '@/contexts/App';
 import { paths } from '@/enums/path.enum';
 import { navPages } from '@/helpers/page.helper';
+import useSession from '@/hooks/useSession';
 
 const ListItemButtonS = styled(ListItemButton)(({ theme }) => ({
   borderRadius: 8,

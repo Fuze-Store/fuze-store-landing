@@ -24,15 +24,7 @@ const StackItem = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Item = ({
-  imgSrc,
-  title,
-  description,
-}: {
-  imgSrc: string;
-  title: string;
-  description: string;
-}) => (
+const Item = ({ imgSrc, title }: { imgSrc: string; title: string }) => (
   <StackItem className="embla__slide_who_we_serve">
     <Stack
       sx={{ p: 3 }}
@@ -105,47 +97,38 @@ const WhoWeServe = () => {
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/ford-64f1953507e77.webp"
             title="Laundry Stations"
-            description="Track orders by tag, manage service types, pricing, and notify customers when ready."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/nissan-61b2c15b26163.webp"
             title="Water Refilling Stations"
-            description="Handle recurring deliveries, customer routes, bottle deposits, and quick POS."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/mitsubishi-5f4da9847ea60.webp"
             title="Veterinary Clinics"
-            description="Book appointments, manage patient records, sell pet products, and track prescriptions."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/mg-667129526125c.webp"
             title="Clinics"
-            description="Schedule sessions, assign rooms/equipment, manage services and invoices with ease."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/hyundai-6380612130230.webp"
             title="Restaurants & Food Hubs"
-            description="Use area/table layouts, modify dishes, split bills, and track dine-in/takeout orders."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/mazda-5c8b19bcc76ed.webp"
             title="Personal Services"
-            description="Ideal for salons, barbers, wellness spas—appointments, products, and staff commissions."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/54617d00e8edc.webp"
             title="Small Retail Businesses"
-            description="	Simple inventory, barcode support, and customer management for any local shop."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/54617cfcc4917.webp"
             title="Small Retail Businesses"
-            description="	Simple inventory, barcode support, and customer management for any local shop."
           />
           <Item
             imgSrc="https://d1hv7ee95zft1i.cloudfront.net/custom/car-make/standard/suzuki-6156dca556a35.webp"
             title="Small Retail Businesses"
-            description="	Simple inventory, barcode support, and customer management for any local shop."
           />
         </Stack>
       </div>

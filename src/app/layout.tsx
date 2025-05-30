@@ -11,8 +11,8 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { getAnalytics, isSupported } from 'firebase/analytics';
-import { initializeApp } from 'firebase/app';
+// import { getAnalytics, isSupported } from 'firebase/analytics';
+// import { initializeApp } from 'firebase/app';
 import { SessionProvider } from 'next-auth/react';
 import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
@@ -33,19 +33,19 @@ import './globals.css';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: 'AIzaSyD-rb_g4QWK5ZASANVMAXiO3qFhzwFaaeI',
-  authDomain: 'fuze-landing-app.firebaseapp.com',
-  projectId: 'fuze-landing-app',
-  storageBucket: 'fuze-landing-app.appspot.com',
-  messagingSenderId: '640997110614',
-  appId: '1:640997110614:web:e5a9877a4748e05e785cf7',
-  measurementId: 'G-1WWW2RE0RY',
-};
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyD-rb_g4QWK5ZASANVMAXiO3qFhzwFaaeI',
+//   authDomain: 'fuze-landing-app.firebaseapp.com',
+//   projectId: 'fuze-landing-app',
+//   storageBucket: 'fuze-landing-app.appspot.com',
+//   messagingSenderId: '640997110614',
+//   appId: '1:640997110614:web:e5a9877a4748e05e785cf7',
+//   measurementId: 'G-1WWW2RE0RY',
+// };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
+// const app = initializeApp(firebaseConfig);
+// const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
 const queryClient = new QueryClient({
   defaultOptions: {
