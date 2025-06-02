@@ -1,7 +1,0 @@
-{
-  "/(aux)/about-us/page": "app/(aux)/about-us/page.js",
-  "/(aux)/features/page": "app/(aux)/features/page.js",
-  "/(aux)/pricing/page": "app/(aux)/pricing/page.js",
-  "/page": "app/page.js",
-  "/(aux)/contact-us/page": "app/(aux)/contact-us/page.js"
-}
