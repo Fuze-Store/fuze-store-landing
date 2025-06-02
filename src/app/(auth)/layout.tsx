@@ -7,9 +7,9 @@ import { paths } from '@/enums/path.enum';
 import useSession from '@/hooks/useSession';
 
 export default function Layout({ children }: React.PropsWithChildren) {
-  const { data: session } = useSession();
+  const session = useSession();
 
-  if (session) {
+  if (session.status === 'authenticated') {
     redirect(paths.account);
   }
 

@@ -101,13 +101,18 @@ export const authOptions: AuthOptions = {
           provider = SocialProvider.GOOGLE;
         }
 
-        const { data: response } = await axios.post<LoginResponse>(
-          endpoints.social.login,
-          { provider, accessToken: account.access_token },
-          { baseURL: process.env.API_BASE_URL },
-        );
+        try {
+          const { data: response } = await axios.post<LoginResponse>(
+            endpoints.social.login,
+            { provider, accessToken: account.access_token },
+            { baseURL: process.env.API_BASE_URL },
+          );
 
-        return { ...token, fuze: response.data };
+          return { ...token, fuze: response.data };
+        } catch (err) {
+          Sentry.captureException(err);
+          throw err;
+        }
       }
 
       if (user) {
@@ -117,7 +122,12 @@ export const authOptions: AuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      return { ...session, fuze: token.fuze };
+      try {
+        return { ...session, fuze: token.fuze };
+      } catch (err) {
+        Sentry.captureException(err);
+        throw err;
+      }
     },
   },
   session: {
@@ -125,6 +135,35 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: paths.login,
+  },
+  cookies: {
+    csrfToken: {
+      name: '__Host-next-auth.csrf-token',
+      options: {
+        httpOnly: false,
+        sameSite: 'none',
+        secure: true,
+        path: '/',
+      },
+    },
+    state: {
+      name: '__Host-next-auth.state',
+      options: {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+        path: '/',
+      },
+    },
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true,
+      },
+    },
   },
   secret: process.env.NEXTAUTH_SECRET!,
 };
