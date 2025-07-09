@@ -13,7 +13,7 @@ import {
   Typography,
 } from '@mui/material';
 import Container from '@mui/material/Container';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import React, { ChangeEventHandler } from 'react';
 
 import useGetInvoiceList from '@/containers/Account/Invoice/hooks/useGetInvoiceList';
@@ -72,10 +72,14 @@ const HeaderTableCell = styled(TableCell)(() => ({
 
 export default function Page() {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  // TODO:  useSearchParams() should be wrapped in a suspense boundary at page "/account/invoices". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+  // const searchParams = useSearchParams();
 
-  const pageStr = searchParams.get('page');
-  const perPageStr = searchParams.get('perPage');
+  // const pageStr = searchParams.get('page');
+  // const pageStr = 1;
+  const pageStr = '1';
+  // const perPageStr = searchParams.get('perPage');
+  const perPageStr = '10';
 
   const page = pageStr ? parseInt(pageStr) : 1;
   const perPage = perPageStr ? parseInt(perPageStr) : 10;

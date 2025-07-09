@@ -9,7 +9,6 @@ import { paths } from '@/enums/path.enum';
 
 export default function Layout({ children }: PropsWithChildren) {
   const session = useSession();
-  console.log('session', session);
 
   if (session.status === 'unauthenticated') {
     redirect(paths.login);

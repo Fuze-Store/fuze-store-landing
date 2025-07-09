@@ -30,3 +30,20 @@ body {
 body {
   min-height: 100vh;
 }
+
+
+/* styles.css */
+.prose-mdx table {
+  border-collapse: collapse;
+}
+
+.prose-mdx th,
+.prose-mdx td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+.prose-mdx th {
+  background-color: #f4f4f4;
+  text-align: left;
+}

@@ -1,16 +1,27 @@
 'use client';
 
-import { Grid, styled } from '@mui/material';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import CircleIcon from '@mui/icons-material/Circle';
+import { ButtonBase, Collapse, Grid, styled } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { memo } from 'react';
+import React, { memo, useState } from 'react';
+
+import type { GuideLink } from '@/types/doc';
+
+import { guides } from '@/utils/articles';
+
+type ArticleLinkProps = {
+  link: GuideLink;
+  indention?: number;
+};
 
 const StyledList = styled('ul')(({ theme }) => ({
-  [theme.breakpoints.up('sm')]: {
-    padding: 0,
-  },
+  listStyle: 'none',
+  padding: 0,
   '& a': {
     color: theme.palette.text.primary,
     textDecoration: 'none',
@@ -20,136 +31,100 @@ const StyledList = styled('ul')(({ theme }) => ({
   },
 }));
 
-const Articles = () => (
-  <Container maxWidth="lg">
-    <Box mb={5}>
-      <Typography component="h2" variant="h5" gutterBottom fontWeight={500}>
-        Example Categories & Articles
-      </Typography>
-    </Box>
+const ArticleLinkComponent = ({ link, indention = 0 }: ArticleLinkProps) => {
+  const [expanded, setExpanded] = useState(false);
+  const hasLinks = link.links && link.links.length > 0;
 
-    <Grid container spacing={4} alignItems="stretch">
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">Getting Started</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">How to create your first store</Link>
-            </li>
-            <Box component="li">Setting up your POS in under 5 minutes</Box>
-            <Box component="li">Importing products via CSV</Box>
-            <Box component="li">
-              Setting up your store’s tax, time zone, and currency
-            </Box>
-          </StyledList>
-        </Box>
-      </Grid>
+  const onToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpanded((prev) => !prev);
+  };
 
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">Managing Products & Services</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">Add/edit/delete items</Link>
-            </li>
-            <Box component="li">
-              <Link href="/">Product categories vs modifiers</Link>
-            </Box>
-            <Box component="li">
-              <Link href="/">Inventory tracking and low-stock alerts</Link>
-            </Box>
-          </StyledList>
-        </Box>
-      </Grid>
+  return (
+    <>
+      <Box
+        component="li"
+        sx={{
+          marginLeft: (theme) => theme.spacing(indention * 2),
+          verticalAlign: 'middle',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+      >
+        {hasLinks ? (
+          <Box
+            component={ButtonBase}
+            disableRipple
+            onClick={onToggle}
+            sx={{ width: 24, textAlign: 'center' }}
+          >
+            {expanded ? <ArrowDropDownIcon /> : <ArrowRightIcon />}
+          </Box>
+        ) : (
+          <Box component="span" sx={{ width: 24, textAlign: 'center' }}>
+            <CircleIcon sx={{ fontSize: 8 }} />
+          </Box>
+        )}
+        <Link href={link.href}>{link.text}</Link>
+      </Box>
+      {link.links && link.links.length > 0 && (
+        <Collapse in={expanded}>
+          <Box sx={{ my: 0.5 }}>
+            {link.links.map((subLink, subIndex) => (
+              <ArticleLinkComponent
+                key={subIndex}
+                link={subLink}
+                indention={indention + 1}
+              />
+            ))}
+          </Box>
+        </Collapse>
+      )}
+    </>
+  );
+};
 
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">Orders, Payments & Refunds</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">Creating and managing orders</Link>
-            </li>
-            <Box component="li">
-              <Link href="/">Applying discounts and promotions</Link>
-            </Box>
-            <Box component="li">
-              <Link href="/">Handling refunds and partial payments</Link>
-            </Box>
-          </StyledList>
-        </Box>
-      </Grid>
+const Articles = () => {
+  return (
+    <Container maxWidth="lg">
+      <Box mb={5}>
+        <Typography component="h2" variant="h4" gutterBottom fontWeight={600}>
+          Step-by-Step Guides for Your Store & POS System
+        </Typography>
+        <Typography variant="body1" color="text.secondary" mb={2}>
+          Find clear, easy instructions for every feature—whether you’re just
+          getting started, managing products, handling sales, or setting up
+          staff and billing. Click any topic below for a simple, non-technical
+          walkthrough.
+        </Typography>
+      </Box>
 
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">Staff, Roles & Permissions</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">Creating staff accounts with pincodes</Link>
-            </li>
-            <Box component="li">
-              <Link href="/">Assigning roles per store</Link>
+      <Grid container spacing={4} alignItems="stretch">
+        {guides.map((guide, index) => (
+          <Grid size={{ xs: 12, sm: 4, md: 3 }} key={index}>
+            <Box>
+              <Typography variant="h6" gutterBottom>
+                {guide.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" mb={1}>
+                {guide.description}
+              </Typography>
+              <StyledList>
+                {guide.links.map((link, linkIndex) => (
+                  <ArticleLinkComponent
+                    key={linkIndex}
+                    link={link}
+                    indention={0}
+                  />
+                ))}
+              </StyledList>
             </Box>
-            <Box component="li">
-              <Link href="/">Managing staff access and logs</Link>
-            </Box>
-          </StyledList>
-        </Box>
+          </Grid>
+        ))}
       </Grid>
-
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">Billing & Subscriptions</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">Understanding your plan & features</Link>
-            </li>
-            <Box component="li">
-              <Link href="/">How to upgrade/downgrade</Link>
-            </Box>
-            <Box component="li">
-              <Link href="/">How billing and invoices work</Link>
-            </Box>
-          </StyledList>
-        </Box>
-      </Grid>
-
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">Reports & Analytics</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">Daily sales report</Link>
-            </li>
-            <Box component="li">
-              <Link href="/">Exporting sales and tax reports</Link>
-            </Box>
-            <Box component="li">
-              <Link href="/">Understanding commission-based reporting</Link>
-            </Box>
-          </StyledList>
-        </Box>
-      </Grid>
-
-      <Grid size={{ xs: 12, sm: 4, md: 3 }}>
-        <Box>
-          <Typography variant="h6">POS Devices & Mobile App</Typography>
-          <StyledList>
-            <li>
-              <Link href="/">
-                Recommended hardware (printers, tablets, scanners)
-              </Link>
-            </li>
-            <Box component="li">
-              <Link href="/">Installing the mobile app (iOS, Android)</Link>
-            </Box>
-            <Box component="li">
-              <Link href="/">Connectivity issues</Link>
-            </Box>
-          </StyledList>
-        </Box>
-      </Grid>
-    </Grid>
-  </Container>
-);
+    </Container>
+  );
+};
 
 export default memo(Articles);

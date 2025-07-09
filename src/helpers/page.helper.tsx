@@ -1,9 +1,33 @@
-import { paths } from '@/enums/path.enum';
 import BusinessIcon from '@mui/icons-material/Business';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import PersonIcon from '@mui/icons-material/Person';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import SecurityIcon from '@mui/icons-material/Security';
+
+export const paths = {
+  home: '/',
+  login: '/login',
+  register: '/register',
+  forgotPassword: '/forgot-password',
+  features: '/features',
+  aboutUs: '/about-us',
+  contactUs: '/contact-us',
+  services: '/services',
+  pricing: '/pricing',
+  docs: '/docs',
+  helpCenter: '/help-center',
+  account: '/account',
+  accountInfo: '/account/info',
+  accountEdit: '/account/edit',
+  accountInvoice: '/account/invoices',
+  accountAddress: '/account/address',
+  accountChangeEmail: '/account/change-email',
+  accountSecurity: '/account/security',
+  accountSecurityPassword: '/account/security/password',
+  accountSubscription: '/account/subscription',
+  accountSubscriptionChoosePlan: '/account/subscription/plans',
+  accountPaymentMethodDetails: '/account/payment-methods/[id]',
+};
 
 export const authPages = ['/login', '/register', '/forgot-password'];
 

@@ -1,141 +1,128 @@
 import Accordion from '@/components/Accordion';
 import AccordionDetails from '@/components/AccordionDetails';
 import AccordionSummary from '@/components/AccordionSummary';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
+  Button,
+  Collapse,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
+  Stack,
   Typography,
 } from '@mui/material';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
 
-const TableOfContents = () => {
+import { paths } from '@/helpers/page.helper';
+import { guides } from '@/utils/articles';
+
+import type { GuideLink } from '@/types/doc';
+
+type Props = {
+  link: GuideLink;
+  indention?: number;
+  initialExpanded?: boolean;
+};
+
+const GuideLinkComponent = ({
+  link,
+  indention = 0,
+  initialExpanded = false,
+}: Props) => {
+  const pathname = usePathname();
+  const selected = link.href === pathname;
+  const [expanded, setExpanded] = useState(initialExpanded);
+
+  const onToggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpanded((prev) => !prev);
+  };
+
   return (
     <>
-      <Typography variant="h6" gutterBottom>
-        Table of Contents
-      </Typography>
+      <ListItem disablePadding>
+        <ListItemButton
+          sx={{ borderRadius: 2 }}
+          selected={selected}
+          LinkComponent={Link}
+          href={link.href}
+        >
+          <ListItemText primary={link.text} />
+        </ListItemButton>
 
-      <Accordion defaultExpanded sx={{ borderBottom: 0 }}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>1. Introduction</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ py: 0 }}>
-          <List dense>
-            <ListItem disablePadding>
-              <ListItemButton selected>
-                <ListItemText primary="1.1 Purpose" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="1.2 Scope" />
-              </ListItemButton>
-            </ListItem>
+        {link.links && (
+          <IconButton size="small" onClick={onToggle}>
+            {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          </IconButton>
+        )}
+      </ListItem>
+      {link.links && link.links.length > 0 && (
+        <Collapse in={expanded}>
+          <List sx={{ ml: indention + 1 }} dense>
+            {link.links.map((subLink, subIndex) => (
+              <GuideLinkComponent
+                key={subIndex}
+                link={subLink}
+                indention={indention + 1}
+              />
+            ))}
           </List>
-        </AccordionDetails>
-      </Accordion>
+        </Collapse>
+      )}
+    </>
+  );
+};
 
-      <Accordion defaultExpanded sx={{ borderBottom: 0 }}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>2. Getting Started</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ py: 0 }}>
-          <List dense>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="2.1 Installation" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="2.2 First Steps" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </AccordionDetails>
-      </Accordion>
+const TableOfContents = () => {
+  const pathname = usePathname();
 
-      <Accordion defaultExpanded sx={{ borderBottom: 0 }}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>3. Advanced Topics</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ py: 0 }}>
-          <List dense>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="3.1 Customization" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="3.2 Performance Tuning" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </AccordionDetails>
-      </Accordion>
+  return (
+    <>
+      <Stack direction="row" alignItems="center" spacing={2} mb={2}>
+        <Button
+          LinkComponent={Link}
+          href={paths.docs}
+          size="large"
+          sx={{ color: 'text.primary' }}
+          startIcon={<ArrowBackIcon />}
+        >
+          Back to Docs
+        </Button>
+      </Stack>
 
-      <Accordion defaultExpanded sx={{ borderBottom: 0 }}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>1. Introduction</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ py: 0 }}>
-          <List dense>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="1.1 Purpose" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="1.2 Scope" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </AccordionDetails>
-      </Accordion>
+      {guides.map((guide, index) => {
+        return (
+          <Accordion key={index} defaultExpanded sx={{ borderBottom: 0 }}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Typography>{`${index + 1}. ${guide.title}`}</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ py: 0 }}>
+              <List dense>
+                {guide.links.map((link, linkIndex) => {
+                  const initialExpanded =
+                    link?.links?.some((item) => item.href === pathname) ??
+                    false;
 
-      <Accordion defaultExpanded sx={{ borderBottom: 0 }}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>2. Getting Started</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ py: 0 }}>
-          <List dense>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="2.1 Installation" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="2.2 First Steps" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </AccordionDetails>
-      </Accordion>
-
-      <Accordion defaultExpanded sx={{ borderBottom: 0 }}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>3. Advanced Topics</Typography>
-        </AccordionSummary>
-        <AccordionDetails sx={{ py: 0 }}>
-          <List dense>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="3.1 Customization" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemText primary="3.2 Performance Tuning" />
-              </ListItemButton>
-            </ListItem>
-          </List>
-        </AccordionDetails>
-      </Accordion>
+                  return (
+                    <GuideLinkComponent
+                      key={linkIndex}
+                      link={link}
+                      indention={0}
+                      initialExpanded={initialExpanded}
+                    />
+                  );
+                })}
+              </List>
+            </AccordionDetails>
+          </Accordion>
+        );
+      })}
     </>
   );
 };

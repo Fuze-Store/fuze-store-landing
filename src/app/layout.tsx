@@ -11,6 +11,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 // import { getAnalytics, isSupported } from 'firebase/analytics';
 // import { initializeApp } from 'firebase/app';
 import { SessionProvider } from 'next-auth/react';
@@ -101,6 +102,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
               </HydrationBoundary>
             </QueryClientProvider>
           </Provider>
+          <SpeedInsights />
         </AppRouterCacheProvider>
       </body>
     </html>

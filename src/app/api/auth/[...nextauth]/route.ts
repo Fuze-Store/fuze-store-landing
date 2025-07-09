@@ -12,8 +12,7 @@ import { LoginResponse } from '@/types/login';
 import endpoints from '@/utils/endpoints';
 
 export const authOptions: AuthOptions = {
-  // TODO: Remove this in production
-  debug: true,
+  debug: process.env.NODE_ENV !== 'production',
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -135,35 +134,6 @@ export const authOptions: AuthOptions = {
   },
   pages: {
     signIn: paths.login,
-  },
-  cookies: {
-    csrfToken: {
-      name: '__Host-next-auth.csrf-token',
-      options: {
-        httpOnly: false,
-        sameSite: 'none',
-        secure: true,
-        path: '/',
-      },
-    },
-    state: {
-      name: '__Host-next-auth.state',
-      options: {
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-        path: '/',
-      },
-    },
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: true,
-      },
-    },
   },
   secret: process.env.NEXTAUTH_SECRET!,
 };

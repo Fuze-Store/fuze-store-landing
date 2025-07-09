@@ -35,7 +35,11 @@ const Sidebar = () => {
           sx={{
             mb: 2,
             py: 0.5,
-            bgcolor: (theme) => theme.palette.grey[50],
+            borderRadius: 4,
+            bgcolor: (theme) =>
+              theme.palette.mode === 'dark'
+                ? theme.palette.grey[800]
+                : theme.palette.grey[50],
             [`& .${tabsClasses.scrollButtons}`]: {
               '&.Mui-disabled': { opacity: 0.3 },
             },

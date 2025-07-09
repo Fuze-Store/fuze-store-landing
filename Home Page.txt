@@ -1,0 +1,44 @@
+Home Page
+    - Hero Headline
+    - High level summary of core modules of the SaaS (POS, Reservations, Appointment, Table mngment, etc)
+    - Screenshots, images, videos of the app. (Table, mobile, web)
+    - Call to Action (Start Free trial)
+
+Pricing Page
+    - Show plan tiers
+    - Comparisons
+    - FAQs about pricing, suggest best deals for their needs
+
+About Page
+    - Mission and Vision
+    - Brief story about the team/self
+
+Contact Page
+    - Contact Form
+    - Contact info
+
+Blog/Resourse/Tutorials Page and Documentations
+    - Links for each tutorials/docs
+    - make it like table of content designs
+
+Integrations Page
+    - other third party partners or libraries used
+
+
+Changelog Page
+    - Show changelog informations
+
+Roadmap Page
+    - Plans for future
+    - show current work in progress
+
+
+
+(Logged in pages)
+
+
+Account Overview
+    - profile/address
+    - Subscription/Billing
+    - Stores linked
+    - Security
