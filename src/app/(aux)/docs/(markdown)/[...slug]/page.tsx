@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const contentDir = path.join(process.cwd(), 'src/markdown');
+const contentDir = path.join(process.cwd(), 'src/docs');
 
 function getAllMdxFiles(dir: string, base = ''): { slug: string[] }[] {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -33,7 +33,7 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { slug } = await params;
   const slugPath = slug.join('/'); // e.g., ['blog', 'hello-world'] → 'blog/hello-world'
-  const { default: Post } = await import(`@/markdown/${slugPath}.mdx`);
+  const { default: Post } = await import(`@/docs/${slugPath}.mdx`);
   return <Post />;
 }
 

@@ -90,7 +90,7 @@ const Articles = () => {
     <Container maxWidth="lg">
       <Box mb={5}>
         <Typography component="h2" variant="h4" gutterBottom fontWeight={600}>
-          Step-by-Step Guides for Your Store & POS System
+          Guides for Your Store & POS System
         </Typography>
         <Typography variant="body1" color="text.secondary" mb={2}>
           Find clear, easy instructions for every feature—whether you’re just

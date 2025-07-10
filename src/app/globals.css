@@ -26,11 +26,9 @@ body {
     rgb(var(--background-start-rgb));
 } */
 
-
 body {
   min-height: 100vh;
 }
-
 
 /* styles.css */
 .prose-mdx table {
@@ -46,4 +44,42 @@ body {
 .prose-mdx th {
   background-color: #f4f4f4;
   text-align: left;
+}
+
+.prose-mdx a {
+  color: #196c32;
+}
+
+.prose-mdx a:visited,
+.prose-mdx a:hover {
+  color: #114b23;
+}
+
+.prose-mdx a:active {
+  color: #47895b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .prose-mdx th {
+    background-color: #333;
+    color: #fff;
+  }
+
+  .prose-mdx th,
+  .prose-mdx td {
+    border: 1px solid #555;
+  }
+
+  .prose-mdx a {
+    color: #87d991;
+  }
+
+  .prose-mdx a:visited,
+  .prose-mdx a:hover {
+    color: #5e9765;
+  }
+
+  .prose-mdx a:active {
+    color: #9fe0a7;
+  }
 }

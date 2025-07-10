@@ -9,10 +9,10 @@ import type { MDXComponents } from 'mdx/types';
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Allows customizing built-in components, e.g. to add styling.
-    h1: (props) => <Typography variant="h3" {...props} />,
-    h2: (props) => <Typography variant="h4" {...props} />,
-    h3: (props) => <Typography variant="h5" {...props} />,
-    h4: (props) => <Typography variant="h6" {...props} />,
+    h1: (props) => <Typography variant="h4" {...props} />,
+    h2: (props) => <Typography variant="h5" {...props} />,
+    h3: (props) => <Typography variant="h6" {...props} />,
+    h4: (props) => <Typography variant="subtitle1" {...props} />,
     p: (props) => <Typography variant="body1" {...props} />,
     ul: (props) => <Box component="ul" sx={{ pl: 4, mb: 2 }} {...props} />,
     ol: (props) => <Box component="ol" sx={{ pl: 4, mb: 2 }} {...props} />,
@@ -48,7 +48,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <Box
         component="code"
         sx={{
-          backgroundColor: '#f5f5f5',
+          bgcolor: '#f5f5f5',
+          color: '#1b1b1b',
           padding: '2px 6px',
           borderRadius: '4px',
           fontFamily: 'monospace',

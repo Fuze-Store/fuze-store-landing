@@ -1,0 +1,88 @@
+# 🛍️ Product Feature Overview
+
+<br />
+The **Product** feature in Fuze POS lets you easily manage all the items and
+services you sell. With powerful tools for organizing, tracking, and customizing
+your product catalog, you can keep your business running smoothly and ensure
+customers always find what they need.
+<br />
+<br />
+
+## 🔍 What is a Product?
+
+A **product** is any item or service you offer for sale—such as drinks, food, retail goods, or service packages. Products can be physical items, digital goods, or services, and each can have its own price, description, image, and more.
+
+**Examples:**
+
+- _Food & Beverage_: Latte, Sandwich, Bottled Water
+- _Retail_: T-shirt, Headphones, Gift Card
+- _Services_: Haircut, Car Wash, Massage Package
+
+<br />
+
+## ⭐ Key Benefits
+
+- **Centralized Catalog:** Manage all your products and services in one place.
+- **Flexible Organization:** Group products by category, type, or custom tags.
+- **Variants & Modifiers:** Offer different sizes, colors, or add-ons for each product.
+- **Inventory Tracking:** Monitor stock levels and get alerts for low inventory.
+- **Visual Customization:** Add images and descriptions to help staff and customers.
+- **Pricing Control:** Set prices, discounts, and taxes for each product.
+- **Sales Insights:** Track product performance and sales trends.
+
+<br />
+
+## 🧱 Product Data Structure
+
+<br />
+Here is a sample data structure for a product:
+
+| Section      | Field                        | What it Means                                     | Required                                  | Possible Values             | Example                               |
+| ------------ | ---------------------------- | ------------------------------------------------- | ----------------------------------------- | --------------------------- | ------------------------------------- |
+| General      | **Enable**                   | Is this product enabled for sale?                 | **Yes**                                   | Yes, No                     | Yes                                   |
+|              | **Availability**             | Is this product available for purchase?           | **Yes**                                   | Yes, No                     | Yes                                   |
+|              | **Name**                     | The product or service name                       | **Yes**                                   | _(Any)_                     | Iced Latte                            |
+|              | **SKU/Code**                 | Unique identifier for inventory/tracking          |                                           | _(Any)_                     | LATTE-ICED-12OZ                       |
+|              | **Type**                     | The type of product                               |                                           | Simple, Bundle              | Simple                                |
+|              | **Categories**               | The group this product belongs to                 |                                           | _(Categories in the store)_ | Drinks                                |
+|              | **Description**              | Short details about the product                   |                                           |                             | Chilled espresso                      |
+| Attribute    | **Weight**                   | Weight of the product                             |                                           | _(Any Number)_              | 12                                    |
+|              | **Weight Unit**              | Unit of measurement for weight                    |                                           | lb, kg, g, mg, oz, l        | oz                                    |
+| Inventory    | **Manage Inventory**         | Control inventory tracking                        | **Yes**                                   | Yes, No                     | Yes                                   |
+|              | **Quantity**                 | Selling quantity                                  | **Yes** _(If Manage Inventory is Enable)_ | _(Any Number)_              | 1                                     |
+|              | **Low Stock Level**          | Alert level for low stock                         | **Yes** _(If Manage Inventory is Enable)_ | _(Any Number)_              | 5                                     |
+|              | **Status**                   | Current status of the product stock               | **Yes** _(If Manage Inventory is Enable)_ | In Stock, Out of Stock      | In Stock                              |
+| Bundle Items | **Bundle Items**             | Combination of simple products (Grouped Products) | **Yes** _(If Type is Bundle)_             | _(Products in the store)_   | Ice Coffee Latte, Croissant, Cinnamon |
+| Modifier     | **Modifiers**                | Additional options for the product                |                                           | _(Modifiers in the store)_  | Add On, Sizes                         |
+| Media        | **Media**                    | Images related to the product                     |                                           |                             | /images/latte.png                     |
+| Pricing      | **Price** (Inclusive VAT)    | Based selling price                               | **Yes**                                   | _(Any Number)_              | 150                                   |
+|              | **Cost**                     | Cost of the product                               |                                           | _(Any Number)_              | 20                                    |
+|              | **Enable Special Price**     | Enable product special pricing?                   |                                           | Yes, No                     | Yes                                   |
+|              | **Special Price**            | Special price for the product                     | **Yes** _(If Special Price is Enable)_    | _(Any Number)_              | 18                                    |
+|              | **Special Price Start Date** | Start date for special pricing                    |                                           |                             | 2023-10-01                            |
+|              | **Special Price End Date**   | End date for special pricing                      |                                           |                             | 2023-10-01                            |
+|              | **Special Price Present**    | Make Special price enable forever                 |                                           | Yes, No                     | No                                    |
+| Tax          | **Tax Class**                | Product tax class                                 | **Yes**                                   | None, Taxable goods         | Taxable Goods                         |
+|              | **Tax**                      | Tax implement to product                          | **Yes** _(If Tax Class is Taxable Goods)_ | _(Tax in the store)_        | General Tax                           |
+
+<br />
+
+## 🏆 Best Practices
+
+- Use clear, descriptive names and images for products.
+- Group products logically for easier navigation.
+- Keep inventory up to date to avoid stockouts.
+- Use modifiers and variants to reduce catalog clutter.
+- Regularly review prices and descriptions for accuracy.
+
+<br />
+
+## 🔗 Related Guides
+
+- [How to Add a Product](../../docs/product/creating-a-product)
+- [How to Update a Product](../../docs/product/updating-a-product)
+- [How to Delete a Product](../../docs/product/deleting-a-product)
+- [Category Overview](../../docs/category/overview)
+
+<br />
+For more information, see the documentation or contact support.

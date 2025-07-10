@@ -1,0 +1,94 @@
+# 📂 Category Feature Overview
+
+<br />
+The **Category** feature in your SaaS POS App empowers store owners to
+efficiently organize products, services, and bundles into logical groupings.
+This organization streamlines browsing, searching, and transactions for both
+staff and customers, while also supporting advanced menu structures and visual
+customization.
+<br />
+<br />
+
+## 🔍 What is a Category?
+
+<br />A **category** represents a group of related items — such as products,
+services, or bundles — and is used to:
+
+- Organize items in the POS interface for faster checkout
+- Structure digital menus or catalogs (e.g., QR menus, online stores)
+- Enable hierarchical nesting (e.g., _Drinks > Coffee > Iced Coffee_)
+- Apply visual themes using color or icons for quick recognition
+- Filter and report on sales by category
+- Control visibility of items in different sales channels
+
+**Examples:**
+
+- _Food & Beverage_: Drinks, Snacks, Main Courses
+- _Retail_: Apparel, Accessories, Electronics
+- _Services_: Haircut, Massage, Car Wash
+
+<br />
+
+## ⭐ Key Benefits
+
+- **Improved Navigation:** Makes it easier for staff and customers to find items quickly.
+- **Flexible Organization:** Supports multi-level nesting for complex menus.
+- **Visual Customization:** Use colors and icons to match your brand or highlight popular categories.
+- **Menu Control:** Easily include or exclude categories from digital menus.
+- **Analytics:** Track sales and performance by category.
+
+<br />
+
+## 🧱 Category Data Structure
+
+<br />
+Here is a sample data structure used for a category:
+
+| Field                            | What it Means                                         | Required | Example                             |
+| -------------------------------- | ----------------------------------------------------- | -------- | ----------------------------------- |
+| **Name**                         | The name people see in the app and menus.             | **Yes**  | Massage Therapy                     |
+| **Active**                       | Turn on if you want this category to be available now |          |                                     |
+| **Include in Menu**              | Show this category in your POS and digital menus      |          |                                     |
+| **Code** _(optional)_            | Short code for internal use (usually auto-filled)     |          | massage-therapy                     |
+| **Description** _(optional)_     | A short note about what’s in this category            |          | Relaxing massages for stress relief |
+| **Color** _(optional)_           | Pick a color to help organize or highlight categories |          | #FF5733                             |
+| **Image** _(optional)_           | Upload a picture or icon for the category             |          |                                     |
+| **Parent Category** _(optional)_ | Choose if this is a sub-category of another category  |          | Massage                             |
+
+<br />
+
+**Field Explanations:** _(JSON)_
+
+- `id`: Unique identifier for the category
+- `name`: Display name
+- `code`: Slug or code for internal use
+- `color`: Hex UI color for category
+- `description`: Short description
+- `image`: Image path or URL
+- `isActive`: If false, category is hidden from POS
+- `isIncludeInMenu`: Controls menu/catalog visibility
+- `parent`: Parent category object _(optional)_
+- `createdAt`: Timestamp when created
+- `updatedAt`: Timestamp when last updated
+
+<br />
+
+## 🏆 Best Practices
+
+- Use clear, descriptive names for categories.
+- Group similar items together for easier navigation.
+- Use colors and icons consistently to aid recognition.
+- Regularly review and update categories as your offerings change.
+- Avoid too many nested levels to keep menus user-friendly.
+
+<br />
+
+## 🔗 Related Guides
+
+- [How to Create a Category](../../docs/category/creating-a-category)
+- [Getting Started Guide](../../docs/category/getting-started)
+- [How to Create a Store](../../docs/category/how-to-create-store)
+
+<br />
+
+For more information, see the documentation or contact support.

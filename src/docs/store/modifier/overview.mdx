@@ -1,0 +1,95 @@
+# 🧩 Modifier Feature Overview
+
+<br />
+The **Modifier** feature in Fuze POS lets you add extra options or
+customizations to your products and services—making it easy for customers to
+personalize their orders and for staff to handle special requests. Modifiers are
+perfect for things like add-ons, sizes, flavors, toppings, or any extra choices
+you want to offer.
+<br />
+<br />
+
+## 🔍 What is a Modifier?
+
+<br />
+
+A **modifier** is an option or add-on that can be attached to a product or service. Modifiers help you offer more choices without cluttering your main catalog. For example, you can let customers choose a drink size, add extra cheese to a pizza, or select aromatherapy for a massage.
+
+<br />
+**Examples:**
+
+- _Food & Beverage_: Size (Small, Medium, Large), Extra Shot, Toppings (Pepperoni, Mushrooms)
+- _Retail_: Gift Wrapping, Custom Engraving
+- _Services_: Add-on (Hot Stones for Massage), Extra Time, Premium Products
+
+<br />
+
+## ⭐ Key Benefits
+
+- **Personalized Experience:** Let customers customize their orders to fit their needs.
+- **Easy Upselling:** Offer add-ons and extras to increase sales.
+- **Organized Catalog:** Keep your main product and service list clean by using modifiers for options.
+- **Flexible Setup:** Use modifiers for both products and services—great for food, retail, and appointments.
+- **Quick Selection:** Staff can easily add modifiers during checkout, speeding up service.
+
+<br />
+
+## 🧱 Modifier Data Structure
+
+<br />
+Here is a sample data structure for a modifier:
+
+| Field                        | What it Means                                                       | Required | Possible Values                  | Example              |
+| ---------------------------- | ------------------------------------------------------------------- | -------- | -------------------------------- | -------------------- |
+| **Enable**                   | Is this modifier enabled?                                           | **Yes**  | Yes, No                          | Yes                  |
+| **Name**                     | The modifier name                                                   | **Yes**  | _(Any)_                          | Drink Sizes          |
+| **Label**                    | The label that shows in the product or service                      |          | _(Any)_                          | Sizes                |
+| **Code**                     | Unique identifier for tracking                                      |          | _(Any without space)_            | MOD-EXTRACHEESE      |
+| **Required**                 | Is the modifier required when ordering product or service           | **Yes**  | Yes, No                          | Yes                  |
+| **Visible on Customer View** | Is the modifier visible when ordering product or service            | **Yes**  | Yes, No _(No effects right now)_ | No                   |
+| **Type**                     | How the modifier is applied                                         | **Yes**  | Single, Multiple                 | Single               |
+| **Min Options**              | If type is **Multiple**, set how many options are required          | **Yes**  | _(Any number)_                   | 1                    |
+| **Max Options**              | If type is **Multiple**, set how many options are allowed to select | **Yes**  | _(Any number)_                   | 2                    |
+| **Options**                  | List of choices for the modifier _(see tables below)_               | **Yes**  |                                  | Small, Medium, Large |
+
+<br />
+Here is a sample data structure for modifier options:
+
+| Field          | What it Means                        | Required | Possible Values | Example |
+| -------------- | ------------------------------------ | -------- | --------------- | ------- |
+| **Selected**   | Is option selected by default        | **Yes**  | Yes, No         | Yes     |
+| **Label**      | Label of the option                  | **Yes**  | _(Any)_         | Small   |
+| **Base Price** | Extra cost for the modifier (if any) | **Yes**  | _(Any number)_  | 10      |
+
+<br />
+
+### Note
+
+- Options are the individual choices available for a modifier. For example, if you have a "Drink Sizes" modifier, the options could be "Small", "Medium", and "Large." Each option can have its own price adjustment.
+- Options displays in order, adjust the display order as needed.
+- If you set **Required** to **Yes**, customers must select at least one option before completing their order.
+- If you set **Enable** to **No**, the modifier will be inactive and not available for selection.
+- If you set **Type** to **Single**, customers can only choose one option. If set to **Multiple**, they can select multiple options up to the limits set by **Min Options** and **Max Options**.
+
+<br />
+
+## 🏆 Best Practices
+
+- Use clear, simple names for modifiers and options.
+- Group similar modifiers together for easier selection.
+- Only add modifiers that add real value or choice for your customers.
+- Regularly review and update modifiers to match your current menu or service list.
+- Use pricing on modifiers to encourage upselling (e.g., extra toppings).
+
+<br />
+
+## 🔗 Related Guides
+
+- [How to Add a Modifier](../../docs/modifier/creating-a-modifier)
+- [How to Update a Modifier](../../docs/modifier/updating-a-modifier)
+- [How to Delete a Modifier](../../docs/modifier/deleting-a-modifier)
+- [Product Overview](../../docs/product/overview)
+- [Service Overview](../../docs/service/overview)
+
+<br />
+For more information, see the documentation or contact support.

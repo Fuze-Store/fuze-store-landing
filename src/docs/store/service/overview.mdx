@@ -1,0 +1,86 @@
+# 🛠️ Service Feature Overview
+
+<br />
+The **Service** feature in Fuze POS allows you to manage and sell non-physical
+offerings such as appointments, bookings, and service packages. With flexible
+tools for scheduling, customization, and tracking, you can deliver a seamless
+experience for both your staff and customers.
+<br />
+<br />
+
+## 🔍 What is a Service?
+
+A **service** is any non-tangible offering you provide—such as haircuts, spa treatments, car washes, consulting sessions, or bundled service packages. Services can be scheduled, assigned to staff, and customized with options or add-ons.
+
+**Examples:**
+
+- _Salon & Spa_: Haircut, Massage, Facial
+- _Automotive_: Car Wash, Oil Change, Detailing
+- _Professional_: Consulting Session, Training Package
+- _Events_: Birthday Party Package, Room Rental
+
+<br />
+
+## ⭐ Key Benefits
+
+- **Centralized Service Catalog:** Manage all your services and packages in one place.
+- **Flexible Scheduling:** Book appointments, manage calendars, and assign services to staff.
+- **Customizable Options:** Add modifiers or add-ons (e.g., extra time, premium products).
+- **Bundling:** Create service packages or combine multiple services for special offers.
+- **Staff Assignment:** Assign services to specific team members for better organization.
+- **Pricing Control:** Set prices, discounts, and taxes for each service.
+- **Sales Insights:** Track service performance and booking trends.
+
+<br />
+
+## 🧱 Service Data Structure
+
+<br />
+
+Here is a sample data structure for a service:
+
+| Section      | Field                        | What it Means                                    | Required                                  | Possible Values                      | Example                       |
+| ------------ | ---------------------------- | ------------------------------------------------ | ----------------------------------------- | ------------------------------------ | ----------------------------- |
+| General      | **Enable**                   | Is this service enabled for sale?                | **Yes**                                   | Yes, No                              | Yes                           |
+|              | **Availability**             | Is this service available for purchase?          | **Yes**                                   | Yes, No                              | Yes                           |
+|              | **Name**                     | The service name                                 | **Yes**                                   | _(Any)_                              | Thai Massage                  |
+|              | **SKU/Code**                 | Unique identifier for tracking                   |                                           | _(Any)_                              | massage-001                   |
+|              | **Type**                     | The type of service                              |                                           | Simple, Bundle                       | Simple                        |
+|              | **Categories**               | The group this service belongs to                |                                           | _(Categories in the store)_          | Massages                      |
+|              | **Description**              | Short details about the service                  |                                           |                                      | Relaxing massage              |
+| Attribute    | **Duration**                 | Duration of the service                          | **Yes**                                   | _(Any Number)_                       | 1                             |
+|              | **Duration Period**          | Measurement for duration                         | **Yes**                                   | Minute, Hour, Day, Week, Month, Year | Hour                          |
+| Bundle Items | **Bundle Items**             | Combination of simple services (Package Service) | **Yes** _(If Type is Bundle)_             | _(Services in the store)_            | Thai Massage, Swedish Massage |
+| Modifier     | **Modifiers**                | Additional options for the service               |                                           | _(Modifiers in the store)_           | Add On, Sizes                 |
+| Media        | **Media**                    | Images related to the service                    |                                           |                                      | /images/latte.png             |
+| Pricing      | **Price** (Inclusive VAT)    | Based selling price                              | **Yes**                                   | _(Any Number)_                       | 150                           |
+|              | **Cost**                     | Cost of the service                              |                                           | _(Any Number)_                       | 20                            |
+|              | **Enable Special Price**     | Enable service special pricing?                  |                                           | Yes, No                              | Yes                           |
+|              | **Special Price**            | Special price for the service                    | **Yes** _(If Special Price is Enable)_    | _(Any Number)_                       | 18                            |
+|              | **Special Price Start Date** | Start date for special pricing                   |                                           |                                      | 2023-10-01                    |
+|              | **Special Price End Date**   | End date for special pricing                     |                                           |                                      | 2023-10-01                    |
+|              | **Special Price Present**    | Make Special price enable forever                |                                           | Yes, No                              | No                            |
+| Tax          | **Tax Class**                | Product tax class                                | **Yes**                                   | None, Taxable goods                  | Taxable Goods                 |
+|              | **Tax**                      | Tax implement to product                         | **Yes** _(If Tax Class is Taxable Goods)_ | _(Tax in the store)_                 | General Tax                   |
+
+<br />
+
+## 🏆 Best Practices
+
+- Use clear, descriptive names and images for services.
+- Group services logically for easier booking and management.
+- Keep schedules and staff assignments up to date.
+- Use modifiers and packages to offer more value.
+- Regularly review prices and descriptions for accuracy.
+
+<br />
+
+## 🔗 Related Guides
+
+- [How to Add a Service](../../docs/service/creating-a-service)
+- [How to Update a Service](../../docs/service/updating-a-service)
+- [How to Delete a Service](../../docs/service/deleting-a-service)
+- [Category Overview](../../docs/category/overview)
+
+<br />
+For more information, see the documentation or contact support.
