@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import createMDX from '@next/mdx';
 import { withSentryConfig } from '@sentry/nextjs';
+import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
 const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
     remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug],
   },
 });
 

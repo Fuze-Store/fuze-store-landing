@@ -28,7 +28,6 @@ const DialogConfirmation = ({
   ButtonConfirmProps,
   title,
   description,
-  content,
   cancelText = 'Cancel',
   confirmText = 'Confirm',
   open = false,

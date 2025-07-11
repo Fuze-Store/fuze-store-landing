@@ -163,13 +163,59 @@ export const guides: Guide[] = [
       { href: '/docs/account_preferences', text: 'Preferences' },
       { href: '/docs/account_address', text: 'Store Address' },
       { href: '/docs/account_social', text: 'Social Links' },
-      { href: '/docs/account_import', text: 'Import Data' },
-      { href: '/docs/account_export', text: 'Export Data' },
-      { href: '/docs/account_unit_area', text: 'Area and Unit Management' },
+      { href: '/docs/account_import', text: 'Import/Export Data' },
+      {
+        href: '/docs/store/area/overview',
+        text: 'Area and Unit Management',
+        links: [
+          {
+            href: '/docs/store/area/creating-an-area',
+            text: 'Creating an Area',
+          },
+          {
+            href: '/docs/store/area/updating-an-area',
+            text: 'Updating an Area',
+          },
+          {
+            href: '/docs/store/area/deleting-an-area',
+            text: 'Deleting an Area',
+          },
+          {
+            href: '/docs/store/area/creating-a-unit',
+            text: 'Creating a Unit',
+          },
+          {
+            href: '/docs/store/area/updating-a-unit',
+            text: 'Updating a Unit',
+          },
+          {
+            href: '/docs/store/area/deleting-a-unit',
+            text: 'Deleting a Unit',
+          },
+        ],
+      },
       { href: '/docs/account_session', text: 'Session Management' },
       {
-        href: '/docs/account_roles_and_permissions',
+        href: '/docs/store/roles-and-permission/overview',
         text: 'Roles & Permissions',
+        links: [
+          {
+            href: '/docs/store/roles-and-permission/creating-a-role',
+            text: 'Creating a Role',
+          },
+          {
+            href: '/docs/store/staff/assigning-role',
+            text: 'Assigning a Role',
+          },
+          {
+            href: '/docs/store/roles-and-permission/updating-a-role',
+            text: 'Updating a Role',
+          },
+          {
+            href: '/docs/store/roles-and-permission/deleting-a-role',
+            text: 'Deleting Role',
+          },
+        ],
       },
     ],
   },
@@ -178,10 +224,73 @@ export const guides: Guide[] = [
     description:
       'Manage taxes, payment methods, discounts, and gift cards for your store.',
     links: [
-      { href: '/docs/account_taxes', text: 'Taxes' },
-      { href: '/docs/account_payment_methods', text: 'Payment Methods' },
-      { href: '/docs/account_discounts', text: 'Discounts' },
-      { href: '/docs/account_gift_cards', text: 'Gift Cards' },
+      {
+        href: '/docs/store/tax/overview',
+        text: 'Tax Overview',
+        links: [
+          {
+            href: '/docs/store/tax/creating-a-tax',
+            text: 'Creating a Tax',
+          },
+          {
+            href: '/docs/store/tax/attaching-tax-to-item',
+            text: 'Attaching Tax to Item',
+          },
+          {
+            href: '/docs/store/tax/removing-tax-when-ordering',
+            text: 'Removing Tax When Ordering',
+          },
+          {
+            href: '/docs/store/tax/updating-a-tax',
+            text: 'Updating a Tax',
+          },
+          {
+            href: '/docs/store/tax/deleting-a-tax',
+            text: 'Deleting a Tax',
+          },
+        ],
+      },
+      {
+        href: '/docs/store/payment-method/overview',
+        text: 'Payment Methods',
+        links: [
+          {
+            href: '/docs/store/payment-method/adding-payment-methods',
+            text: 'Adding Payment Methods to Store',
+          },
+          {
+            href: '/docs/store/payment-method/removing-a-payment-method',
+            text: 'Removing Payment Method from Store',
+          },
+          {
+            href: '/docs/store/payment-method/adding-payment-to-order',
+            text: 'Adding Payment to Order',
+          },
+        ],
+      },
+      {
+        href: '/docs/store/discount/overview',
+        text: 'Discounts',
+        links: [
+          {
+            href: '/docs/store/discount/creating-a-discount',
+            text: 'Creating a Discount',
+          },
+          {
+            href: '/docs/store/discount/applying-discount-to-order',
+            text: 'Applying a Discount to Order',
+          },
+          {
+            href: '/docs/store/discount/updating-a-discount',
+            text: 'Updating a Discount',
+          },
+          {
+            href: '/docs/store/discount/deleting-a-discount',
+            text: 'Deleting a Discount',
+          },
+        ],
+      },
+      { href: '/docs/store/gift_cards', text: 'Gift Cards' },
     ],
   },
   {
@@ -192,10 +301,21 @@ export const guides: Guide[] = [
         href: '/docs/store/customer/overview',
         text: 'Customer Overview',
         links: [
-          { href: '/docs/store/customer/overview', text: 'Managing Customers' },
           {
-            href: '/docs/store/customer/creating-a-customer',
-            text: 'Creating a customer',
+            href: '/docs/store/customer/managing-customers',
+            text: 'Managing Customers',
+          },
+          {
+            href: '/docs/store/customer/adding-customer-to-store',
+            text: 'Adding a Customer to Store',
+          },
+          {
+            href: '/docs/store/customer/updating-customer-info',
+            text: 'Updating Customer Information',
+          },
+          {
+            href: '/docs/store/customer/deleting-customer',
+            text: 'Deleting a Customer',
           },
         ],
       },
@@ -203,10 +323,29 @@ export const guides: Guide[] = [
         href: '/docs/store/staff/overview',
         text: 'Staff Overview',
         links: [
-          { href: '/docs/store/staff/overview', text: 'Managing Staffs' },
+          {
+            href: '/docs/store/staff/managing-staffs',
+            text: 'Managing Staffs',
+          },
           {
             href: '/docs/store/staff/creating-a-staff',
-            text: 'Creating a staff',
+            text: 'Adding a Staff to Store',
+          },
+          {
+            href: '/docs/store/staff/resending-email-confirmation',
+            text: 'Resending Email confirmation',
+          },
+          {
+            href: '/docs/store/staff/assigning-role',
+            text: 'Assigning Role',
+          },
+          {
+            href: '/docs/store/staff/updating-staff-info',
+            text: 'Updating Staff Information',
+          },
+          {
+            href: '/docs/store/staff/deleting-staff',
+            text: 'Deleting a Staff',
           },
         ],
       },
@@ -280,6 +419,15 @@ export const guides: Guide[] = [
         ],
       },
       { href: '/docs/store/app_faq', text: 'App & Device FAQs' },
+    ],
+  },
+  {
+    title: 'Other Resources',
+    description:
+      'Explore additional resources, guides, and documentation to enhance your experience.',
+    links: [
+      { href: '/docs', text: 'How Pricing Computation works' },
+      { href: '/docs', text: 'How Account Subscription works' },
     ],
   },
 ];

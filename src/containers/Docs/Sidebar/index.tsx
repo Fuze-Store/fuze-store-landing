@@ -32,7 +32,7 @@ const Sidebar = forwardRef<DrawerRef>((_props, ref) => {
     >
       <Drawer
         onClose={toggleDrawer}
-        open={open || isSmUp}
+        open={open}
         container={containerRef.current}
         sx={{
           '& .MuiDrawer-paper': {

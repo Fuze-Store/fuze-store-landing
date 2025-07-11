@@ -37,11 +37,23 @@ export default function Layout({ children }: PropsWithChildren) {
       <Toolbar />
       <Box py={2}>
         <Container maxWidth="xl" disableGutters>
-          <Stack direction="row" spacing={2}>
-            <Box sx={{ width: { xs: 'auto', sm: DRAWER_WIDTH } }}>
+          <Stack direction="row" spacing={{ xs: 0, sm: 2 }}>
+            <Box
+              sx={{
+                minHeight: 'calc(100vh)',
+                width: { xs: 'auto', sm: DRAWER_WIDTH },
+              }}
+            >
               <Sidebar ref={ref} />
             </Box>
-            <Stack sx={{ marginLeft: { xs: 0, sm: DRAWER_WIDTH }, flex: 1 }}>
+            <Stack
+              sx={{
+                px: 2,
+                overflowX: 'auto',
+                marginLeft: { xs: 0, sm: DRAWER_WIDTH },
+                width: { xs: '100%', sm: `calc(100% - ${DRAWER_WIDTH}px)` },
+              }}
+            >
               {renderDocSidebar()}
               <Box className="prose-mdx" sx={{ my: 3 }}>
                 {children}

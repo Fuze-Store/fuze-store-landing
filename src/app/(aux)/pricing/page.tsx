@@ -140,8 +140,8 @@ const rows = [
 
 export default function Page() {
   const { data: session } = useSession();
-  const { data: response } = useGetPlanList();
-  const { data: responseAccount } = useGetAccount({
+  useGetPlanList();
+  useGetAccount({
     enabled: Boolean(session),
   });
 

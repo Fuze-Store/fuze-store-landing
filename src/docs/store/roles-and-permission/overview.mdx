@@ -1,0 +1,134 @@
+# 🛡️ Roles & Permissions Guide
+
+<br />
+
+Welcome! This guide will help you understand how roles and permissions work in your POS system. No technical knowledge needed—just simple explanations to help you keep your business secure and running smoothly.
+
+<br />
+
+## What Are Roles & Permissions?
+
+- **Roles** are like job titles (e.g., cashier, manager, admin) that decide what each staff member can do in your store.
+- **Permissions** are the specific actions each role is allowed to perform (like making sales, viewing reports, or changing settings).
+
+Giving the right role to each team member helps you:
+
+- Protect sensitive information
+- Prevent mistakes
+- Make sure everyone has the tools they need
+
+<br />
+
+## Common Roles Explained
+
+<br />
+
+| Role        | What They Can Do                                         |
+| ----------- | -------------------------------------------------------- |
+| **Cashier** | Process sales, handle orders, view receipts              |
+| **Manager** | All cashier abilities plus manage staff, view reports    |
+| **Admin**   | Full access to all settings, reports, and sensitive info |
+
+<br />
+
+_**Note:** Your system may have custom roles. Ask your admin if you’re unsure!_
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+| Field           | Description                                        | Required | Example                                                    |
+| --------------- | -------------------------------------------------- | -------- | ---------------------------------------------------------- |
+| **Enable**      | Whether the role is active                         | **Yes**  | Yes                                                        |
+| **Name**        | The role name                                      | **Yes**  | Cashier                                                    |
+| **Description** | A brief description of the role's responsibilities |          | Handles sales transactions                                 |
+| **Permissions** | A list of actions the role can perform             | **Yes**  | Order Modify, Order Create, Transaction View, Reports View |
+
+<br />
+
+## Fuze Store Permissions
+
+<br />
+
+| Module                    | Permission     | Description                                           |
+| ------------------------- | -------------- | ----------------------------------------------------- |
+| **Store**                 | Modify         | Allow modifying of store general informations         |
+|                           | Preferences    | Allow configuring store preferences.                  |
+|                           | Data Migration | Allow migrating data between different systems.       |
+| **Area**                  | View           | Allow viewing of Areas.                               |
+|                           | Modify         | Allow creating and modifying Areas.                   |
+|                           | Delete         | Allow deletion of Areas.                              |
+| **Category**              | View           | Allow viewing of Categories                           |
+|                           | Modify         | Allow creating and modifying of Categories            |
+|                           | Delete         | Allow deletion of Categories                          |
+|                           | Migration      | Allow importing/exporting Categories                  |
+| **Customer**              | View           | Allow viewing of Customers                            |
+|                           | Modify         | Allow creating and modifying of Customers             |
+|                           | Delete         | Allow deletion of Customers                           |
+| **Discount**              | View           | Allow viewing of Discounts                            |
+|                           | Modify         | Allow creating and modifying of Discounts             |
+|                           | Delete         | Allow deletion of Discounts                           |
+|                           | Migration      | Allow importing/exporting Discounts                   |
+| **Event**                 | View           | Allow viewing of Events                               |
+|                           | Modify         | Allow creating and modifying of Events                |
+|                           | Delete         | Allow deletion of Events                              |
+| **Gift Card**             | View           | Allow viewing of Gift Cards                           |
+|                           | Modify         | Allow creating and modifying of Gift Cards            |
+|                           | Delete         | Allow deletion of Gift Cards                          |
+|                           | Migration      | Allow importing/exporting Gift Cards                  |
+| **Order**                 | View           | Allow viewing of Orders                               |
+|                           | Modify         | Allow modifying of Orders                             |
+|                           | Create         | Allow creating of Orders                              |
+| **Payment Method**        | View           | Allow viewing of Payment Methods                      |
+|                           | Modify         | Allow modifying/removing of Payment Methods           |
+| **Refund**                | View           | Allow viewing of Refunds                              |
+|                           | Modify         | Allow modifying of Refunds                            |
+| **Reports**               | View           | Allow viewing of Reports                              |
+|                           | Export         | Allow exporting of Reports                            |
+| **Roles and Permissions** | View           | Allow viewing of Roles and Permissions                |
+|                           | Modify         | Allow creating and modifying of Roles and Permissions |
+|                           | Delete         | Allow deletion of Roles and Permissions               |
+| **Session**               | Modify         | Allow modifying of Sessions                           |
+| **Staff**                 | View           | Allow viewing of Staffs                               |
+|                           | Modify         | Allow creating and modifying of Staffs                |
+|                           | Delete         | Allow deletion of Staffs                              |
+|                           | Migration      | Allow importing/exporting Staffs                      |
+| **Subscription**          | View           | Allow viewing of Subscriptions and Billings           |
+|                           | Export         | Allow exporting Billings                              |
+| **Tax**                   | View           | Allow viewing of Taxes                                |
+|                           | Modify         | Allow creating and modifying of Taxes                 |
+|                           | Delete         | Allow deletion of Taxes                               |
+|                           | Migration      | Allow importing/exporting Taxes                       |
+| **Transaction**           | View           | Allow viewing of Transactions                         |
+|                           | Modify         | Allow creating and modifying of Transactions          |
+
+<br />
+
+## How to Assign Roles
+
+1. **Go to Staff:** Open the Staff section from your menu.
+2. **Select a Staff Member:** Click on their name to open their profile.
+3. **Assign a Role:** Choose the right role from the dropdown or list.
+4. **Save Changes:** Click Save. The staff member’s permissions will update instantly.
+
+[See the full guide: Assigning Roles to Staff](../staff/assigning-role)
+
+<br />
+
+## 💡 Tips
+
+- Only give admin roles to trusted team members.
+- Review staff roles regularly, especially after promotions or team changes.
+- Remove staff promptly when they leave to keep your system secure.
+- If you’re unsure, start with a lower role and adjust as needed.
+
+<br />
+
+## Related Guides
+
+- [Creating a Role](../roles-and-permission/creating-a-role)
+- [Updating a Role](../roles-and-permission/updating-a-role)
+- [Deleting a Role](../roles-and-permission/deleting-role)
+- [Assigning Roles to Staff](../staff/assigning-role)

@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation';
 import TikTokIcon from '@/components/Icons/TikTokIcon';
 import Logo from '@/components/Logo';
 
-const ListGroup = styled('ul')(({ theme }) => ({
+const ListGroup = styled('ul')(() => ({
   display: 'flex',
   alignItems: 'center',
   listStyle: 'none',

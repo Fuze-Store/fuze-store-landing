@@ -7,7 +7,7 @@ import MuiAccordionSummary, {
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary {...props} />
-))(({ theme }) => ({
+))(() => ({
   padding: 0,
   // ...theme.applyStyles('dark', {
   //   backgroundColor: 'rgba(255, 255, 255, .05)',

@@ -66,7 +66,9 @@ const ArticleLinkComponent = ({ link, indention = 0 }: ArticleLinkProps) => {
             <CircleIcon sx={{ fontSize: 8 }} />
           </Box>
         )}
-        <Link href={link.href}>{link.text}</Link>
+        <Link href={link.href}>
+          <Typography>{link.text}</Typography>
+        </Link>
       </Box>
       {link.links && link.links.length > 0 && (
         <Collapse in={expanded}>
@@ -107,7 +109,7 @@ const Articles = () => {
               <Typography variant="h6" gutterBottom>
                 {guide.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary" mb={1}>
+              <Typography color="text.secondary" mb={1}>
                 {guide.description}
               </Typography>
               <StyledList>

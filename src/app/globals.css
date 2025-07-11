@@ -33,6 +33,7 @@ body {
 /* styles.css */
 .prose-mdx table {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .prose-mdx th,
