@@ -55,7 +55,7 @@ export default function Layout({ children }: PropsWithChildren) {
               }}
             >
               {renderDocSidebar()}
-              <Box className="prose-mdx" sx={{ my: 3 }}>
+              <Box component="article" className="prose-mdx">
                 {children}
               </Box>
             </Stack>

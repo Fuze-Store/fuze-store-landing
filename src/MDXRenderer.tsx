@@ -1,14 +1,14 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
-import type { MDXComponents } from 'mdx/types';
+import { getMDXComponent } from 'mdx-bundler/client';
+import { MDXComponents } from 'mdx/types';
+import { useMemo } from 'react';
 
-// This file allows you to provide custom React components
-// to be used in MDX files. You can import and use any
-// React component you want, including inline styles,
-// components from other libraries, and more.
+export default function MDXRenderer({ code }: { code: string }) {
+  const Component = useMemo(() => getMDXComponent(code), [code]);
 
-export function useMDXComponents(components: MDXComponents): MDXComponents {
-  return {
-    // Allows customizing built-in components, e.g. to add styling.
+  const components: MDXComponents = {
     h1: (props) => <Typography variant="h4" {...props} />,
     h2: (props) => <Typography variant="h5" {...props} />,
     h3: (props) => <Typography variant="h6" {...props} />,
@@ -58,6 +58,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {...props}
       />
     ),
-    ...components,
   };
+
+  return <Component components={components} />;
 }

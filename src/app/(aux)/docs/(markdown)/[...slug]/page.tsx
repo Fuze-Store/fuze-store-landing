@@ -1,44 +1,20 @@
-import fs from 'fs';
-import path from 'path';
-
-const contentDir = path.join(process.cwd(), 'src/docs');
-
-function getAllMdxFiles(dir: string, base = ''): { slug: string[] }[] {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-
-  return entries.flatMap((entry) => {
-    const fullPath = path.join(dir, entry.name);
-    const relativePath = path.join(base, entry.name);
-
-    if (entry.isDirectory()) {
-      return getAllMdxFiles(fullPath, relativePath);
-    }
-
-    if (entry.isFile() && entry.name.endsWith('.mdx')) {
-      const slugArray = relativePath
-        .replace(/\.mdx$/, '')
-        .replace(/\\/g, '/')
-        .split('/');
-      return [{ slug: slugArray }];
-    }
-
-    return [];
-  });
-}
+// app/docs/[...slug]/page.tsx
+import MDXRenderer from '@/MDXRenderer';
+import { compileMDX } from '@/utils/mdx';
+import { notFound } from 'next/navigation';
 
 type Props = {
-  params: Promise<{ slug: string[] }>;
+  params: { slug: string[] };
 };
 
 export default async function Page({ params }: Props) {
-  const { slug } = await params;
-  const slugPath = slug.join('/'); // e.g., ['blog', 'hello-world'] → 'blog/hello-world'
-  const { default: Post } = await import(`@/docs/${slugPath}.mdx`);
-  return <Post />;
-}
+  const slugPath = params.slug.join('/');
 
-export function generateStaticParams() {
-  return getAllMdxFiles(contentDir);
+  try {
+    const { code } = await compileMDX(slugPath);
+    return <MDXRenderer code={code} />;
+  } catch (err) {
+    console.error(err);
+    return notFound(); // 🔥 Show Next.js 404 page
+  }
 }
-
-export const dynamicParams = false;

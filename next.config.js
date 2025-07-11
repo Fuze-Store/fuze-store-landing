@@ -1,16 +1,6 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-import createMDX from '@next/mdx';
-import { withSentryConfig } from '@sentry/nextjs';
-import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
 
-const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypeSlug],
-  },
-});
+import { withSentryConfig } from '@sentry/nextjs';
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -39,7 +29,7 @@ const nextConfig = {
   },
 };
 
-export default withSentryConfig(withMDX(nextConfig), {
+export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 

@@ -6,9 +6,10 @@ export const guides: Guide[] = [
     description:
       'Learn how to create your store, set up your POS. Perfect for new users who want a smooth and easy setup experience.',
     links: [
+      { href: '/docs/what-is-fuze-store', text: 'What is Fuze Store' },
       { href: '/docs/getting-started', text: 'Getting Started Guide' },
       { href: '/docs/account/create-an-account', text: 'Create an Account' },
-      { href: '/docs/account/creating-a-store', text: 'Creating a Store' },
+      { href: '/docs/store/creating-a-store', text: 'Creating a Store' },
       {
         href: '/docs/account/upgrading-subscription',
         text: 'Upgrading Subscription',
@@ -160,9 +161,19 @@ export const guides: Guide[] = [
     description:
       'Set up your store preferences, address, taxes, payment methods, and more.',
     links: [
-      { href: '/docs/account_preferences', text: 'Preferences' },
-      { href: '/docs/account_address', text: 'Store Address' },
-      { href: '/docs/account_social', text: 'Social Links' },
+      {
+        href: '/docs/store/setup-your-store-preference',
+        text: 'Setup your store preference',
+      },
+      {
+        href: '/docs/store/updating-store-info',
+        text: 'Updating Store Information',
+      },
+      {
+        href: '/docs/store/adding-store-address',
+        text: 'Adding Store Address',
+      },
+      // { href: '/docs/account_social', text: 'Social Links' },
       { href: '/docs/account_import', text: 'Import/Export Data' },
       {
         href: '/docs/store/area/overview',
@@ -194,7 +205,7 @@ export const guides: Guide[] = [
           },
         ],
       },
-      { href: '/docs/account_session', text: 'Session Management' },
+      { href: '/docs/store/using-store-session', text: 'Using Store Session' },
       {
         href: '/docs/store/roles-and-permission/overview',
         text: 'Roles & Permissions',
@@ -290,7 +301,28 @@ export const guides: Guide[] = [
           },
         ],
       },
-      { href: '/docs/store/gift_cards', text: 'Gift Cards' },
+      {
+        href: '/docs/store/gift-card/overview',
+        text: 'Gift Cards',
+        links: [
+          {
+            href: '/docs/store/gift-card/creating-a-gift-card',
+            text: 'Creating a Gift Card',
+          },
+          {
+            href: '/docs/store/gift-card/applying-gift-cards-to-order',
+            text: 'Applying Gift Cards to Order',
+          },
+          {
+            href: '/docs/store/gift-card/updating-a-gift-card',
+            text: 'Updating a Gift Card',
+          },
+          {
+            href: '/docs/store/gift-card/deleting-gift-card',
+            text: 'Deleting a Gift Card',
+          },
+        ],
+      },
     ],
   },
   {
@@ -374,7 +406,17 @@ export const guides: Guide[] = [
         ],
       },
       { href: '/docs/account/profile', text: 'Profile Settings' },
-      { href: '/docs/account/security', text: 'Security Settings' },
+      { href: '/docs/store/switching-stores', text: 'How to Switch Stores' },
+      {
+        href: '/docs/account/security/overview',
+        text: 'Security Settings',
+        links: [
+          {
+            href: '/docs/account/security/changing-password',
+            text: 'Changing Password',
+          },
+        ],
+      },
     ],
   },
   {
@@ -400,25 +442,34 @@ export const guides: Guide[] = [
           },
         ],
       },
-      {
-        href: '/docs/store/app_devices',
-        text: 'Device Connections',
-        links: [
-          {
-            href: '/docs/store/app_devices/connecting',
-            text: 'Connecting Devices',
-          },
-          {
-            href: '/docs/store/app_devices/supported',
-            text: 'Supported Devices',
-          },
-          {
-            href: '/docs/store/app_devices/troubleshooting',
-            text: 'Device Troubleshooting',
-          },
-        ],
-      },
+      // {
+      //   href: '/docs/store/app_devices',
+      //   text: 'Device Connections',
+      //   links: [
+      //     {
+      //       href: '/docs/store/app_devices/connecting',
+      //       text: 'Connecting Devices',
+      //     },
+      //     {
+      //       href: '/docs/store/app_devices/supported',
+      //       text: 'Supported Devices',
+      //     },
+      //     {
+      //       href: '/docs/store/app_devices/troubleshooting',
+      //       text: 'Device Troubleshooting',
+      //     },
+      //   ],
+      // },
       { href: '/docs/store/app_faq', text: 'App & Device FAQs' },
+    ],
+  },
+  {
+    title: 'Security',
+    description:
+      'Learn how to keep your account secure, manage passwords, and handle security settings.',
+    links: [
+      { href: '/docs', text: 'Forgot Password' },
+      { href: '/docs', text: 'Resetting Password' },
     ],
   },
   {

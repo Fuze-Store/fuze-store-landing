@@ -1,0 +1,68 @@
+# 🏪 How to Set Up Your Store Preferences
+
+<br />
+Personalizing your store preferences helps your business run smoothly and gives
+your customers a great experience. No technical skills needed! This guide will
+show you how to update your store’s basic settings, like name, logo, hours, and
+more, in just a few easy steps.
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+<br />
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store Settings:** Select **Store Settings** from the menu list.
+3. **Edit Store Preferences:** Find the section for store preferences or general settings.
+4. **Update Your Preferences:** Update the fields you want to change based on your store's needs.
+5. **Save Changes:** Click **Save**. Your updated preferences will appear instantly in your POS and on receipts.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+| Section       | Field                                    | What it Means                                                                                                          | Required                                        | Possible Values                                           | Example    |
+| ------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | --------------------------------------------------------- | ---------- |
+| Order         | **Save Customer on order creation**      | Whether to save customer information when an order is created                                                          | **Yes** Yes, No                                 | Yes, No                                                   | Yes        |
+|               | **New Order Threshold**                  | How long the order will turn red after created (in minutes)                                                            | **Yes**                                         | Yes, No                                                   | 10         |
+|               | **Delivery Fee**                         | Add default delivery fee when creating an order                                                                        | **Yes**                                         | Yes, No                                                   | 50         |
+|               | **Enable Printing Order Slip**           | Whether to enable printing of the order slip                                                                           | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Print Order Slip on order creation**   | Whether to print the order slip automatically when an order is created                                                 | _(**Yes** when Printing Order Slip is enabled)_ | Yes, No                                                   | Yes        |
+|               | **Print Order Slip on order completion** | Whether to print the order slip automatically when an order is completed                                               | _(**Yes** when Printing Order Slip is enabled)_ | Yes, No                                                   | No         |
+|               | **Enable Email Receipts**                | Whether to enable email receipts for orders                                                                            | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Send order information on creation**   | Whether to send order information (e.g., receipt) via email when an order is created                                   | _(**Yes** when Email Receipts is enabled)_      | Yes, No                                                   | No         |
+|               | **Send order information on completion** | Whether to send order information (e.g., receipt) via email when an order is completed                                 | _(**Yes** when Email Receipts is enabled)_      | Yes, No                                                   | Yes        |
+|               | **Enable Printing Order Receipts**       | Whether to enable printing of order receipts. _(**Note:** Store needs to have business permit setup)_                  | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Print Order Receipts on completion**   | Whether to print the order receipts automatically when an order is completed                                           | _(**Yes** when Printing Receipts is enabled)_   | Yes, No                                                   | Yes        |
+| Point of Sale | **Default Order State**                  | The default order state in POS Register/Terminal when submitting an order.                                             | **Yes**                                         | New, Pending, On Hold, Processing, Ready, Ship, Completed | Processing |
+|               | **Default Payment Method**               | The default payment method in POS Register/Terminal when submitting an order.                                          | **Yes**                                         | _(Active Payment Methods in the store)_                   | Cash       |
+|               | **Customer is required**                 | Whether a customer is required to be selected in POS Register/Terminal when submitting an order.                       | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Assigning of staff(s) is required**    | Whether a staff member is required to be assigned in POS Register/Terminal when submitting an order.                   | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Service Mode is required**             | Whether a service mode is required to be selected in POS Register/Terminal when submitting an order.                   | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Auto assign staff**                    | Whether the logged in staff member should be automatically assigned in POS Register/Terminal when submitting an order. | **Yes**                                         | Yes, No                                                   | Yes        |
+| Store         | **Enable Store Session**                 | Whether the store session should be enabled before using POS Register/Terminal                                         | **Yes**                                         | Yes, No                                                   | Yes        |
+| Stock         | **Enable Return stocks on order close**  | Whether to enable return of stocks automatically when an order is closed, canceled, or voided                          | **Yes**                                         | Yes, No                                                   | Yes        |
+| Service Fee   | **Enable Service Fee**                   | Whether to enable service fee for orders                                                                               | **Yes**                                         | Yes, No                                                   | Yes        |
+|               | **Rate Type**                            | The type of rate to be applied for the service fee                                                                     | _(**Yes** when Service Fee is enabled)_         | Fixed, Percentage                                         | Fixed      |
+|               | **Rate**                                 | The amount to be applied for the service fee                                                                           | _(**Yes** when Service Fee is enabled)_         | _(Any number)_                                            | 0.00       |
+| Tax           | **Enable Tax**                           | Whether to enable tax in the store                                                                                     | **Yes**                                         | Yes, No                                                   | Yes        |
+
+<br />
+
+## 💡 Tips
+
+- Make sure to save your preferences after making changes.
+- Make this page accessible to the right staff members (by implementing proper [roles and permissions](./roles-and-permission/overview.mdx)) so they can update it as needed.
+- You can update your preferences anytime as your business grows or changes.
+
+<br />
+
+## 🔗 Related Guides
+
+- [Getting Started Guide](../../getting-started)
+- [How to Add Store Address](./adding-store-address)
+- [How to Update Store Info](./updating-store-info)
+- [How to Delete a Store](../../store/deleting-a-store)
