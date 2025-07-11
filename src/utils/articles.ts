@@ -22,25 +22,42 @@ export const guides: Guide[] = [
       'Step-by-step help for using your POS register, managing orders, and handling sales events.',
     links: [
       {
-        href: '/docs/store/pos_register',
+        href: '/docs/store/pos/using-pos-register',
         text: 'Using the POS Register/Terminal',
+      },
+      { href: '/docs/store/pos/managing-orders', text: 'Managing Orders' },
+      {
+        href: '/docs/store/pos/event/overview',
+        text: 'Events',
         links: [
           {
-            href: '/docs/store/order/creating-an-order',
-            text: 'Creating an Order',
+            href: '/docs/store/pos/event/creating-an-event',
+            text: 'Creating an Event',
           },
           {
-            href: '/docs/store/order/updating-an-order',
-            text: 'Updating an Order',
+            href: '/docs/store/pos/event/updating-an-event',
+            text: 'Updating an Event',
+          },
+          {
+            href: '/docs/store/pos/event/canceling-an-event',
+            text: 'Canceling an Event',
           },
         ],
       },
-      { href: '/docs/store/pos_orders', text: 'Managing Orders' },
       {
-        href: '/docs/store/pos_event_basic',
-        text: 'Appointments and Reservations',
+        href: '/docs/store/pos/unit/overview',
+        text: 'Managing Units',
+        links: [
+          {
+            href: '/docs/store/pos/unit/updating-unit-status',
+            text: 'Updating Unit Status',
+          },
+          {
+            href: '/docs/store/pos/unit/making-an-order-with-unit',
+            text: 'Making an Order with Unit',
+          },
+        ],
       },
-      { href: '/docs/store/pos_unit', text: 'Using Area and Unit' },
     ],
   },
   {
@@ -174,7 +191,7 @@ export const guides: Guide[] = [
         text: 'Adding Store Address',
       },
       // { href: '/docs/account_social', text: 'Social Links' },
-      { href: '/docs/account_import', text: 'Import/Export Data' },
+      { href: '/docs/store/import-export-data', text: 'Import/Export Data' },
       {
         href: '/docs/store/area/overview',
         text: 'Area and Unit Management',
@@ -227,6 +244,10 @@ export const guides: Guide[] = [
             text: 'Deleting Role',
           },
         ],
+      },
+      {
+        href: '/docs/store/transferring-ownership',
+        text: 'Transferring Ownership',
       },
     ],
   },
@@ -388,32 +409,61 @@ export const guides: Guide[] = [
     description: 'Manage multiple stores and your account settings.',
     links: [
       {
-        href: '/docs/account/subscription',
+        href: '/docs/account/subscription/overview',
         text: 'Subscriptions',
         links: [
           {
-            href: '/docs/account/upgrading-subscription',
+            href: '/docs/account/subscription/upgrading-subscription',
             text: 'Upgrading Subscription',
           },
           {
-            href: '/docs/account/downgrading-subscription',
+            href: '/docs/account/subscription/downgrading-subscription',
             text: 'Downgrading Subscription',
           },
           {
-            href: '/docs/account/canceling-subscription',
+            href: '/docs/account/subscription/canceling-subscription',
             text: 'Canceling Subscription',
+          },
+          {
+            href: '/docs/account/subscription/adding-payment-method',
+            text: 'Adding Payment Method',
+          },
+          {
+            href: '/docs/account/subscription/removing-payment-method',
+            text: 'Removing Payment Method',
+          },
+          {
+            href: '/docs/account/subscription/set-default-payment-method',
+            text: 'Setting Default Payment Method',
           },
         ],
       },
-      { href: '/docs/account/profile', text: 'Profile Settings' },
+      {
+        href: '/docs/account/overview',
+        text: 'Account Overview',
+        links: [
+          {
+            href: '/docs/account/updating-account-info',
+            text: 'Updating Account Information',
+          },
+          {
+            href: '/docs/account/changing-email',
+            text: 'Changing Email',
+          },
+          {
+            href: '/docs/account/linking-unlinking-social-accounts',
+            text: 'Linking and Unlinking Social Accounts',
+          },
+        ],
+      },
       { href: '/docs/store/switching-stores', text: 'How to Switch Stores' },
       {
         href: '/docs/account/security/overview',
-        text: 'Security Settings',
+        text: 'Security',
         links: [
           {
-            href: '/docs/account/security/changing-password',
-            text: 'Changing Password',
+            href: '/docs/account/security/change-password',
+            text: 'Change Password',
           },
         ],
       },
@@ -442,24 +492,6 @@ export const guides: Guide[] = [
           },
         ],
       },
-      // {
-      //   href: '/docs/store/app_devices',
-      //   text: 'Device Connections',
-      //   links: [
-      //     {
-      //       href: '/docs/store/app_devices/connecting',
-      //       text: 'Connecting Devices',
-      //     },
-      //     {
-      //       href: '/docs/store/app_devices/supported',
-      //       text: 'Supported Devices',
-      //     },
-      //     {
-      //       href: '/docs/store/app_devices/troubleshooting',
-      //       text: 'Device Troubleshooting',
-      //     },
-      //   ],
-      // },
       { href: '/docs/store/app_faq', text: 'App & Device FAQs' },
     ],
   },
@@ -467,10 +499,7 @@ export const guides: Guide[] = [
     title: 'Security',
     description:
       'Learn how to keep your account secure, manage passwords, and handle security settings.',
-    links: [
-      { href: '/docs', text: 'Forgot Password' },
-      { href: '/docs', text: 'Resetting Password' },
-    ],
+    links: [{ href: '/docs/account/forgot-password', text: 'Forgot Password' }],
   },
   {
     title: 'Other Resources',

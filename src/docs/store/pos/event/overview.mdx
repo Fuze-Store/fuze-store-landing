@@ -1,0 +1,89 @@
+# 📅 Events: Appointments & Reservations Overview
+
+<br />
+Fuze Store POS makes managing all your bookings simple and stress-free! In Fuze,
+every **Event** is either an **Appointment** or a **Reservation**. Understanding
+the difference helps you run your business smoothly and give customers a great
+experience.
+
+<br />
+
+## ✨ What Are Events?
+
+- **Events** are any scheduled bookings in your business. There are two types:
+  - **Appointments**
+  - **Reservations**
+
+### Appointments
+
+- Appointments are bookings that **must have at least one service or product attached**. For example, a haircut, massage, or personal training session. You can’t create an appointment without choosing a service or product.
+
+> **Note:** When you create an appointment, Fuze Store POS will automatically create an order for you, since every appointment includes a service or product. This makes checkout and payment easy for both you and your customer.
+
+### Reservations
+
+- Reservations are bookings for spaces like tables, rooms, or areas (for example, in a restaurant or hotel). **Services or products are optional**—you can reserve a space by itself, or add items if needed (like a dinner reservation with or without pre-ordering food).
+
+**Key Difference:**
+
+- Appointments = Service or product required
+- Reservations = Service or product optional
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+| Section         | Field           | What it Means                                                                                                                                                                            | Required                                 | Possible Values                       | Example             |
+| --------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | ------------------------------------- | ------------------- |
+| General         | **Event Type**  | The type of event (Appointment or Reservation)                                                                                                                                           | **Yes**                                  | Appointment, Reservation              | Appointment         |
+|                 | **Title**       | The title of the event                                                                                                                                                                   | **Yes**                                  | _(Any)_                               | Team Meeting        |
+|                 | **Start Date**  | The start date and time of the event                                                                                                                                                     | **Yes**                                  | _(Any Date)_                          | 2023-09-15 10:00 AM |
+|                 | **End Date**    | The end date and time of the event                                                                                                                                                       | **Yes**                                  | _(Any Date)_                          | 2023-09-15 11:00 AM |
+|                 | **Is All Day**  | Whether the event lasts all day                                                                                                                                                          | **Yes**                                  | Yes, No                               | No                  |
+|                 | **Location**    | Where the event takes place                                                                                                                                                              |                                          | _(Any)_                               | Meeting Room A      |
+|                 | **Note**        | Additional information about the event                                                                                                                                                   |                                          | _(Any)_                               |                     |
+|                 | **Description** | Short details about the event                                                                                                                                                            |                                          | _(Any)_                               |                     |
+| Customer        | **Customers**   | List of customers associated with the event. See [Customer Overview](/docs/store/customer/overview) for more details.                                                                    | **Yes**                                  | _(Any)_                               | John Doe            |
+| Item            | **Items**       | List of items (service or product) associated with the event. See [Product Overview](/docs/store/product/overview) or [Service Overview](/docs/store/service/overview) for more details. | **Yes** _(If event type is appointment)_ | _(Products or Services in the store)_ | Massage, Facial     |
+|                 | **Exclude Tax** | Whether to exclude tax for the items                                                                                                                                                     |                                          | Yes, No                               | No                  |
+| Discounts       | **Discounts**   | List of discounts applied to the event. See [Discount Overview](/docs/store/discount/overview) for more details.                                                                         |                                          | _(Discounts in the store)_            |                     |
+| Custom Discount | **Rate Type**   | The type of rate for the custom discount                                                                                                                                                 |                                          | Fixed, Percentage                     |                     |
+|                 | **Rate**        | The rate of the custom discount                                                                                                                                                          |                                          | _(Any number)_                        |                     |
+| Payments        | **Payments**    | Payments attached to the event.                                                                                                                                                          |                                          |                                       |                     |
+
+<br />
+
+## 🚀 Why Use Events in Fuze Store POS?
+
+- **Stay Organized:** View all your bookings in one calendar so you never double-book or miss a customer.
+- **Save Time:** Quickly add, edit, or cancel appointments and reservations.
+- **Reduce No-Shows:** Send reminders so customers remember their bookings.
+- **Personalize Service:** Track what each customer likes and make every visit special.
+- **Maximize Your Space:** Fill your schedule and make the most of your staff, rooms, or tables.
+
+<br />
+
+## 💡 Tips
+
+- Use clear names and details for each event so staff and customers know what to expect.
+- Remember: Appointments must have a service or product, but Reservations can be made with or without them.
+- Set up reminders to reduce no-shows and keep your schedule running smoothly.
+- Review your bookings regularly to spot busy times and plan ahead.
+- You can always edit or cancel events as your business needs change.
+
+<br />
+
+## 🔗 Related Guides
+
+- [How to Create an Appointment](./creating-appointment)
+- [How to Edit an Appointment](./editing-appointment)
+- [How to Cancel an Appointment](./canceling-appointment)
+- [How to Create a Reservation](./creating-reservation)
+- [How to Edit a Reservation](./editing-reservation)
+- [How to Cancel a Reservation](./canceling-reservation)
+- [Getting Started Guide](../../getting-started)
+
+<br />
+For more help, see the documentation or contact support.

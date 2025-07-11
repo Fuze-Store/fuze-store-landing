@@ -23,13 +23,13 @@ import '@/containers/Localization/i18n';
 import { store } from '@/rtk/configureStore';
 import AxiosInterceptor from '@/utils/AxiosInterceptor';
 
+import Footer from '@/components/Footer';
 import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
 import AppBar from '@/containers/Appbar';
 import SideBar from '@/containers/SideBar';
 import AppProvider from '@/providers/App';
 import ConfirmationProvider from '@/providers/Confirmation';
 
-import Footer from '@/components/Footer';
 import './globals.css';
 
 // Your web app's Firebase configuration
