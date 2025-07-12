@@ -1,0 +1,229 @@
+# 💵 How Fuze Store POS Pricing Works
+
+<br />
+
+Fuze Store POS is built to handle all kinds of pricing situations, but keeps things simple for you and your customers. Here’s how the system figures out the final price for each order, step by step:
+
+<br />
+
+## 🧮 How Pricing is Calculated
+
+<br />
+
+### Per Item Calculation
+
+- **Base Price or Special Price:** Each item starts with a base price. If there’s a special price (like a promo), the system uses it if it’s active and within the valid dates.
+- **Modifiers:** Items can have extras or options (like extra toppings or a larger size). Each option can add its own price.
+- **Tax:** If the item has tax attached and tax is set to be excluded, the system removes the tax from the price before any discounts are applied.
+- **Item Discounts:** You can apply multiple discounts to an item. Each discount can be a percentage (like 10% off) or a fixed amount (like ₱20 off).
+- **Quantity:** The total for each item is multiplied by the quantity ordered.
+
+**How the POS Calculates Each Item:**
+
+- **If tax is included in the price and not excluded:**
+
+  1. Start with the base price (or special price if there’s a promo).
+  2. Add the price of any extras or options (modifiers).
+  3. Subtract any discounts for that item.
+  4. Multiply by the number of items (quantity).
+
+- **If tax is attached but set to be excluded:**
+
+  1. Start with the base price (or special price if there’s a promo).
+  2. Add the price of any extras or options (modifiers).
+  3. Remove the tax:
+     - If tax is a percentage, divide the total by (1 + tax rate).
+     - If tax is a fixed amount, subtract the fixed tax amount from the total.
+  4. Subtract any discounts for that item.
+  5. Multiply by the number of items (quantity).
+
+- **If tax is not included or attached:**
+  1. Do all the steps above, but skip the tax removal step.
+
+### Order Summary Calculation
+
+- **Order Discounts:** The whole order can have custom discounts, multiple discounts, or gift card discounts. These can be percentages or fixed amounts.
+- **Service Fee:** You can add a service fee to the order (set amount or percentage).
+- **Gift Card Discount:** Gift cards are subtracted after service fees.
+- **Delivery Fee:** Delivery fees are added last (after gift card discounts), and can be a set fixed amount.
+
+**How the POS Calculates the Order Total:**
+
+1. Add up the total for all items (including their extras, discounts, and tax if included or excluded as set).
+2. Subtract any order-level discounts or custom discounts.
+3. Add any service fees.
+4. Subtract any gift card amounts used.
+5. Add any delivery fees.
+
+The result is the final amount your customer needs to pay. Every step is shown on the order screen, so you always know how the total was calculated!
+
+<br />
+
+## 📝 Example Calculation (in Philippine Pesos)
+
+<br />
+
+### Example 1: Basic Item Calculation
+
+<br />
+
+Let’s say a customer orders:
+
+- 1 Burger (₱200 base price)
+- Add Cheese Modifier (₱25)
+- 20% Item Discount (**percentage**)
+- 12% Tax (included in price, **percentage**)
+- 2 Quantity
+
+Here’s how the POS does the math:
+
+1. Use special price if available, otherwise base price: ₱200.00
+2. Add modifier: ₱200.00 + ₱25.00 = ₱225.00
+3. Apply item discount: ₱225.00 - ₱45.00 (20% percentage discount) = ₱180.00
+4. Multiply by quantity: ₱180.00 × 2 = ₱360.00
+5. If tax is set to be excluded, divide by (1 + 0.12): ₱360.00 / 1.12 = ₱321.43 (12% percentage tax)
+
+If you add a ₱50.00 custom discount (**fixed amount**) and a ₱20.00 service fee (**fixed amount**) to the order:
+
+Summary = (₱360.00 - ₱50.00 (fixed discount) + ₱20.00 (fixed service fee)) = **₱330.00**
+
+<br />
+<br />
+
+### Example 2: No Tax Attached
+
+<br />
+
+Let’s say a customer orders:
+
+- 1 Pasta (₱150 base price)
+- Add Garlic Bread Modifier (₱30)
+- 10% Item Discount (**percentage**)
+- No tax attached
+- 3 Quantity
+
+Here’s how the POS does the math:
+
+1. Use special price if available, otherwise base price: ₱150.00
+2. Add modifier: ₱150.00 + ₱30.00 = ₱180.00
+3. Apply item discount: ₱180.00 - ₱18.00 (10% percentage discount) = ₱162.00
+4. Multiply by quantity: ₱162.00 × 3 = ₱486.00
+
+If you add a ₱36.00 custom discount (**fixed amount**) and a ₱50.00 delivery fee (**fixed amount**) to the order:
+
+Summary = (₱486.00 - ₱36.00 (fixed discount) + ₱50.00 (fixed delivery fee)) = **₱500.00**
+
+<br />
+<br />
+
+### Example 3: Complex Order (Mixed Tax, Discounts, Modifiers, and Fees)
+
+<br />
+
+Let’s say a customer orders:
+
+- **Item 1:** 2 Pizza (₱300 base price each, 12% tax included, **percentage**)
+  - Add Extra Cheese Modifier (₱40)
+  - 15% Item Discount (**percentage**)
+- **Item 2:** 1 Salad (₱120 base price, no tax)
+  - Add Chicken Modifier (₱35)
+  - 5% Item Discount (**percentage**)
+- **Item 3:** 3 Iced Tea (₱60 base price each, 12% tax included, **percentage**)
+  - No modifiers
+  - No item discount
+- **Item 4:** 1 Cake Slice (₱90 base price, 12% tax attached but manually excluded, **percentage**)
+  - Add Fruit Topping Modifier (₱20)
+  - 10% Item Discount (**percentage**)
+
+Order-level discounts:
+
+- 10% order discount (**percentage**)
+- ₱50 custom discount (**fixed amount**)
+- Service fee: ₱30 (**fixed amount**)
+- Delivery fee: ₱40 (**fixed amount**)
+- Gift card discount: ₱100 (**fixed amount**)
+
+Here’s how the POS does the math:
+
+<br />
+
+**Item 1: Pizza (tax included, percentage)**
+
+1. Base price: ₱300.00
+2. Add modifier: ₱300.00 + ₱40.00 = ₱340.00
+3. Apply item discount: ₱340.00 - ₱51.00 (15% percentage discount) = ₱289.00
+4. Multiply by quantity: ₱289.00 × 2 = ₱578.00
+
+**Item 2: Salad (no tax)**
+
+1. Base price: ₱120.00
+2. Add modifier: ₱120.00 + ₱35.00 = ₱155.00
+3. Apply item discount: ₱155.00 - ₱7.75 (5% percentage discount) = ₱147.25
+4. Quantity: ₱147.25 × 1 = ₱147.25
+
+**Item 3: Iced Tea (tax included, percentage)**
+
+1. Base price: ₱60.00
+2. No modifiers or discounts
+3. Quantity: ₱60.00 × 3 = ₱180.00
+
+**Item 4: Cake Slice (tax attached but manually excluded, percentage)**
+
+1. Base price: ₱90.00
+2. Add modifier: ₱90.00 + ₱20.00 = ₱110.00
+3. Since tax is manually excluded, remove tax first: ₱110.00 / 1.12 = ₱98.21 (12% percentage tax)
+4. Apply item discount: ₱98.21 - ₱9.82 (10% percentage discount) = ₱88.39
+5. Quantity: ₱88.39 × 1 = ₱88.39
+
+**Subtotal (tax inclusive):**
+
+₱578.00 (Pizza) + ₱147.25 (Salad) + ₱180.00 (Iced Tea) + ₱88.39 (Cake Slice, tax excluded) = ₱993.64
+
+<br />
+
+**Apply order-level discounts:**
+
+1. 10% order discount: ₱993.64 - ₱99.36 (10% percentage discount) = ₱894.28
+2. Custom discount: ₱894.28 - ₱50.00 (fixed discount) = ₱844.28
+
+<br />
+
+**Add service fee:**
+₱844.28 + ₱30.00 (fixed service fee) = ₱874.28
+
+<br />
+
+**Subtract gift card discount:**
+₱874.28 - ₱100.00 (fixed gift card discount) = ₱774.28
+
+<br />
+
+**Add delivery fee:**
+₱774.28 + ₱40.00 (fixed delivery fee) = **₱814.28**
+
+<br />
+
+**Final total:** ₱814.28
+
+<br />
+<br />
+
+## 💡 Tips
+
+- You can see a full breakdown of pricing, tax, discounts, and fees on the order screen before completing the sale.
+- Make sure your tax rates, discounts, and fees are set up correctly in the settings.
+- Discounts can be applied to the whole order or just certain items.
+- Gift cards can be used as discounts and will be subtracted from the total.
+- The POS keeps a record of all calculations for easy reporting and troubleshooting.
+
+<br />
+
+## 🔗 Related Guides
+
+- [Order Overview](/docs/store/order/overview)
+- [How to Set Up Taxes](../tax/creating-tax)
+- [How to Create Discounts](../discount/creating-a-discount)
+- [Getting Started Guide](../getting-started)
+
+<br />
+Need more help? Check the documentation or contact support!

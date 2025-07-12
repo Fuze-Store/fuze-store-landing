@@ -14,7 +14,9 @@ const Sidebar = forwardRef<DrawerRef>((_props, ref) => {
   const [open, setOpen] = useState(false);
   const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
 
-  const toggleDrawer = () => setOpen((prevOpen) => !prevOpen);
+  const toggleDrawer = (open?: boolean) => {
+    setOpen((prevOpen) => (open !== undefined ? open : !prevOpen));
+  };
 
   useImperativeHandle(ref, () => {
     return { toggleDrawer };
@@ -31,7 +33,7 @@ const Sidebar = forwardRef<DrawerRef>((_props, ref) => {
       }}
     >
       <Drawer
-        onClose={toggleDrawer}
+        onClose={() => toggleDrawer()}
         open={open}
         container={containerRef.current}
         sx={{
@@ -52,7 +54,7 @@ const Sidebar = forwardRef<DrawerRef>((_props, ref) => {
           keepMounted: true, // improves performance
         }}
       >
-        <TableOfContents />
+        <TableOfContents onClick={() => toggleDrawer(false)} />
       </Drawer>
     </Box>
   );

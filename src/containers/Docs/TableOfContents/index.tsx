@@ -28,12 +28,14 @@ type Props = {
   link: GuideLink;
   indention?: number;
   initialExpanded?: boolean;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 };
 
 const GuideLinkComponent = ({
   link,
   indention = 0,
   initialExpanded = false,
+  onClick,
 }: Props) => {
   const pathname = usePathname();
   const selected = link.href === pathname;
@@ -52,6 +54,7 @@ const GuideLinkComponent = ({
           selected={selected}
           LinkComponent={Link}
           href={link.href}
+          onClick={onClick}
         >
           <ListItemText primary={link.text} />
         </ListItemButton>
@@ -70,6 +73,7 @@ const GuideLinkComponent = ({
                 key={subIndex}
                 link={subLink}
                 indention={indention + 1}
+                onClick={onClick}
               />
             ))}
           </List>
@@ -79,7 +83,11 @@ const GuideLinkComponent = ({
   );
 };
 
-const TableOfContents = () => {
+const TableOfContents = ({
+  onClick,
+}: {
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+}) => {
   const pathname = usePathname();
 
   return (
@@ -115,6 +123,7 @@ const TableOfContents = () => {
                       link={link}
                       indention={0}
                       initialExpanded={initialExpanded}
+                      onClick={onClick}
                     />
                   );
                 })}

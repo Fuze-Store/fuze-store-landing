@@ -11,7 +11,7 @@ export const guides: Guide[] = [
       { href: '/docs/account/create-an-account', text: 'Create an Account' },
       { href: '/docs/store/creating-a-store', text: 'Creating a Store' },
       {
-        href: '/docs/account/upgrading-subscription',
+        href: '/docs/account/subscription/upgrading-subscription',
         text: 'Upgrading Subscription',
       },
     ],
@@ -68,30 +68,21 @@ export const guides: Guide[] = [
       {
         href: '/docs/store/order/overview',
         text: 'Order Overview',
-        links: [
-          {
-            href: '/docs/store/order/history',
-            text: 'Managing Orders',
-          },
-          {
-            href: '/docs/store/order/closing-an-order',
-            text: 'Closing an Order',
-          },
-          {
-            href: '/docs/store/order/status-flow',
-            text: 'How order status flow works',
-          },
-          {
-            href: '/docs/store/order/completing-an-order',
-            text: 'Different ways to customize order flows',
-          },
-        ],
       },
       {
         href: '/docs/store/transaction/overview',
         text: 'Transaction Overview',
       },
-      { href: '/docs/store/order/refunds', text: 'Refunds' },
+      {
+        href: '/docs/store/refund/overview',
+        text: 'Refunds',
+        links: [
+          {
+            href: '/docs/store/refund/completing-a-refund',
+            text: 'Completing a Refund',
+          },
+        ],
+      },
     ],
   },
   {
@@ -475,24 +466,10 @@ export const guides: Guide[] = [
       'Set up printers, connect devices, and troubleshoot your POS hardware and app.',
     links: [
       {
-        href: '/docs/store/app_printer',
+        href: '/docs/app/printer/setup',
         text: 'Printer Setup',
-        links: [
-          {
-            href: '/docs/store/app_printer/connecting',
-            text: 'Connecting a Printer',
-          },
-          {
-            href: '/docs/store/app_printer/configuring',
-            text: 'Configuring Printer Settings',
-          },
-          {
-            href: '/docs/store/app_printer/troubleshooting',
-            text: 'Printer Troubleshooting',
-          },
-        ],
       },
-      { href: '/docs/store/app_faq', text: 'App & Device FAQs' },
+      { href: '/docs/app/general-info', text: 'Knowing about app information' },
     ],
   },
   {
@@ -506,8 +483,14 @@ export const guides: Guide[] = [
     description:
       'Explore additional resources, guides, and documentation to enhance your experience.',
     links: [
-      { href: '/docs', text: 'How Pricing Computation works' },
-      { href: '/docs', text: 'How Account Subscription works' },
+      {
+        href: '/docs/other/how-pos-pricing-works',
+        text: 'How POS Pricing works',
+      },
+      {
+        href: '/docs/other/how-account-subscription-works',
+        text: 'How Account Subscription works',
+      },
     ],
   },
 ];
