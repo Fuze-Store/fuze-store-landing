@@ -12,7 +12,7 @@ export interface DrawerRef {
 const Sidebar = forwardRef<DrawerRef>((_props, ref) => {
   const containerRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+  const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
 
   const toggleDrawer = (open?: boolean) => {
     setOpen((prevOpen) => (open !== undefined ? open : !prevOpen));
@@ -46,7 +46,7 @@ const Sidebar = forwardRef<DrawerRef>((_props, ref) => {
             width: DRAWER_WIDTH,
           },
         }}
-        variant={isSmUp ? 'permanent' : 'temporary'}
+        variant={isMdUp ? 'permanent' : 'temporary'}
         anchor="left"
         ModalProps={{
           container: containerRef.current,

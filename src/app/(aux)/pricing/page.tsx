@@ -19,44 +19,30 @@ import MuiAccordionSummary, {
   AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import { styled } from '@mui/material/styles';
+import React, { ReactNode, useCallback } from 'react';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
 import useSession from '@/hooks/useSession';
 
+import type { Plan, PlanFeatureValue } from '@/types/plan';
+
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { ReactNode } from 'react';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   borderBottom: `1px solid ${theme.palette.divider}`,
-  // '&:not(:last-child)': {
-  //   borderBottom: 0,
-  // },
   '&::before': {
     display: 'none',
   },
 }));
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary
-    // expandIcon={<ArrowForwardIosSharpIcon sx={{ fontSize: '0.9rem' }} />}
-    {...props}
-  />
+  <MuiAccordionSummary {...props} />
 ))(({ theme }) => ({
-  // backgroundColor: 'rgba(0, 0, 0, .03)',
-  // borderBottom: '1px solid rgba(0, 0, 0, .125)',
-  // flexDirection: 'row-reverse',
-  // [`& .${accordionSummaryClasses.expandIconWrapper}.${accordionSummaryClasses.expanded}`]:
-  //   {
-  //     transform: 'rotate(90deg)',
-  //   },
-  // [`& .${accordionSummaryClasses.content}`]: {
-  //   marginLeft: theme.spacing(1),
-  // },
   ...theme.applyStyles('dark', {
     backgroundColor: 'rgba(255, 255, 255, .05)',
   }),
@@ -66,7 +52,6 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
   paddingTop: 0,
   color: theme.palette.text.secondary,
-  // borderBottom: '1px solid rgba(0, 0, 0, .125)',
 }));
 
 const Check = () => (
@@ -105,48 +90,65 @@ const StickyTableCell = styled(TableCell)(({ theme }) => ({
   // borderRight: `1px solid ${theme.palette.divider}`,
 }));
 
-function createData(
-  name: string,
-  lite: ReactNode,
-  standard: ReactNode,
-  premium: ReactNode,
-) {
-  return { name, lite, standard, premium };
-}
-
-const rows = [
-  createData('Dashboard', <Cross />, 6.0, <Check />),
-  createData('Point of Sales', <Cross />, 9.0, <Check />),
-  createData('Categories', <Cross />, 16.0, <Check />),
-  createData('Products and Services', <Cross />, 12, <Check />),
-  createData('Modifiers', <Cross />, 16.0, <Check />),
-  createData('Sales', <Cross />, 3.7, <Check />),
-  createData('Refunds', <Cross />, 3.7, <Check />),
-  createData('Discounts', <Cross />, 16.0, <Check />),
-  createData('Taxes', <Cross />, 16.0, <Check />),
-  createData('Area/Unit Management', <Cross />, 16.0, <Check />),
-  createData('Store Session', <Cross />, 16.0, <Check />),
-  createData('Events', <Cross />, 16.0, <Check />),
-  createData('Reports', <Cross />, 16.0, <Check />),
-  createData('Import/Export', <Cross />, 16.0, <Check />),
-  createData('Roles and Permissions', <Cross />, 16.0, <Check />),
-  createData('Payment Methods', <Cross />, 16.0, <Check />),
-  createData('Staff Management', <Cross />, 16.0, <Check />),
-  createData('Customer Management', <Cross />, 16.0, <Check />),
-  createData('SMS Notification', <Cross />, 16.0, <Check />),
-  createData('Email Notification', <Cross />, 16.0, <Check />),
-  createData('Service Mode', <Cross />, 16.0, <Check />),
-];
+// TODO: Implement feature labels
+const featureLabels: Record<string, string> = {
+  dashboard: 'Dashboard',
+  pos: 'Point of Sales',
+  event_basic: 'Appointments',
+  event_advanced: 'Reservations',
+  area: 'Area Management',
+  unit: 'Table/Room Management',
+  transactions: 'Sale Transactions',
+  refunds: 'Refunds',
+  catalogs: 'Catalog Management',
+  staffs: 'Staffs',
+  customers: 'Customers',
+  roles_and_permissions: 'Roles and Permissions',
+  import_data: 'Import Data',
+  export_data: 'Export Data',
+  taxes: 'Taxes',
+  gift_cards: 'Gift Cards',
+  reports_basic: 'Basic Reports',
+  reports_advanced: 'Advanced Reports',
+  discounts_basic: 'Basic Discounts',
+  discounts_advanced: 'Advanced Discounts',
+  store_session: 'Store Session',
+  email_notifications: 'Email Notifications',
+  sms_notifications: 'SMS Notifications',
+  printer: 'Printer Integration',
+  ai_agent: 'AI Assistant',
+  store_limit: 'Store Limit',
+};
 
 export default function Page() {
   const { data: session } = useSession();
-  useGetPlanList();
-  useGetAccount({
-    enabled: Boolean(session),
-  });
+  const { data: plansResponse } = useGetPlanList();
+  useGetAccount({ enabled: Boolean(session) });
 
-  // console.log(responseAccount);
-  // const plans = response?.data ?? [];
+  const featureKeys = Object.keys(featureLabels);
+
+  const plans: Plan[] = plansResponse?.data || [];
+
+  const getValue = useCallback((value: PlanFeatureValue, feature: string) => {
+    if (feature === 'store_limit' && value === true) {
+      return <Typography>Unlimited</Typography>;
+    } else if (feature === 'staffs' && value === true) {
+      return <Typography>Unlimited</Typography>;
+    } else if (feature === 'unit' && value === true) {
+      return <Typography>Unlimited</Typography>;
+    } else if (feature === 'area' && value === true) {
+      return <Typography>Unlimited</Typography>;
+    }
+
+    if (typeof value === 'boolean') {
+      return value ? <Check /> : <Cross />;
+    } else if (typeof value === 'number') {
+      return value > 0 ? <Typography>{value}</Typography> : <Cross />;
+    } else if (typeof value === 'string') {
+      return <Typography>{value}</Typography>;
+    }
+    return <Cross />;
+  }, []);
 
   return (
     <>
@@ -188,149 +190,153 @@ export default function Page() {
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <TableContainer>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <StyledTableRow>
                   <StickyTableCell />
-                  <TableCell align="center">
-                    <Typography variant="h6" fontWeight={700}>
-                      Lite
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Typography variant="h6" fontWeight={700}>
-                      Standard
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Typography variant="h6" fontWeight={700}>
-                      Premium
-                    </Typography>
-                  </TableCell>
+                  {plans.map((plan, index) => (
+                    <React.Fragment key={index}>
+                      <TableCell align="center">
+                        <Typography variant="h6" fontWeight={700}>
+                          {plan.name}
+                        </Typography>
+                      </TableCell>
+                    </React.Fragment>
+                  ))}
                 </StyledTableRow>
               </TableHead>
               <TableBody>
                 <StyledTableRow>
                   <StickyTableCell />
-                  <TableCell align="center">
-                    <Typography
-                      variant="h3"
-                      fontWeight={700}
-                      sx={{ verticalAlign: 'bottom' }}
-                    >
-                      <Typography
-                        variant="h6"
-                        sx={{ verticalAlign: 'top' }}
-                        component="span"
-                        fontWeight={700}
-                      >
-                        PHP
-                      </Typography>
-                      499
-                    </Typography>
+                  {plans.map((plan, index) => {
+                    let text = `${plan.currency} ${Intl.NumberFormat(
+                      undefined,
+                      { style: 'decimal' },
+                    ).format(plan.baseFee)}`;
+                    let message: ReactNode = '';
 
-                    <Typography>
-                      plus{' '}
-                      <Typography component="span" fontWeight="bold">
-                        3%
-                      </Typography>{' '}
-                      when hit PHP30,000 monthly sales
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Typography
-                      variant="h3"
-                      fontWeight={700}
-                      sx={{ verticalAlign: 'bottom' }}
-                    >
-                      <Typography
-                        variant="h6"
+                    if (plan.baseFee === 0 && plan.commissionRate === 0) {
+                      text = 'Free';
+                      message = 'No monthly fee';
+                    }
+
+                    if (plan.baseFee > 0 && plan.commissionRate > 0) {
+                      message = `plus ${(plan.commissionRate * 100).toFixed(
+                        1,
+                      )}% when you hit ${plan.currency} ${Intl.NumberFormat(
+                        undefined,
+                        { style: 'decimal' },
+                      ).format(plan.salesThreshold)} monthly sales`;
+                    } else if (plan.commissionRate > 0) {
+                      text = `${(plan.commissionRate * 100).toFixed(1)}%`;
+                      message = `on monthly sales`;
+                    }
+
+                    return (
+                      <TableCell
+                        align="center"
                         sx={{ verticalAlign: 'top' }}
-                        component="span"
-                        fontWeight={700}
+                        key={index}
                       >
-                        PHP
-                      </Typography>
-                      999
-                    </Typography>
-                    <Typography>
-                      plus{' '}
-                      <Typography component="span" fontWeight="bold">
-                        3%
-                      </Typography>{' '}
-                      when hit PHP40,000 monthly sales
-                    </Typography>
-                  </TableCell>
-                  <TableCell align="center">
-                    <Typography
-                      variant="h3"
-                      fontWeight={700}
-                      sx={{ verticalAlign: 'bottom' }}
-                    >
-                      3.5%
-                    </Typography>
-                    <Typography>of monthly sales per month</Typography>
-                  </TableCell>
+                        <Typography
+                          variant="h3"
+                          fontWeight={700}
+                          sx={{ verticalAlign: 'bottom' }}
+                        >
+                          {text}
+                        </Typography>
+
+                        <Typography>{message}</Typography>
+                      </TableCell>
+                    );
+                  })}
                 </StyledTableRow>
                 <StyledTableRow>
                   <StickyTableCell />
+
                   <TableCell
                     sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
                   >
-                    <Typography>
-                      Great for stores that need basic order management without
-                      complicated setups. Best if you have low transaction
-                      volume and don’t require cash sessions, refunds, or
-                      reports.
+                    <Typography fontWeight={700}>
+                      Test the waters—risk-free!
                     </Typography>
+                    <Typography>{plans[0]?.description}</Typography>
                   </TableCell>
                   <TableCell
                     sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
                   >
-                    <Typography>
-                      Full POS features, sales tracking, staff management,
-                      sessions, discounts, and reports. Ideal if you want to
-                      manage daily operations efficiently and scale over time.
-                      Hybrid pricing helps you pay based on your success!
+                    <Typography fontWeight={700}>
+                      Sell smart without the stress.
                     </Typography>
+                    <Typography>{plans[1]?.description}</Typography>
                   </TableCell>
                   <TableCell
                     sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
                   >
-                    <Typography>
-                      All-in-one POS for serious businesses. Multi-store
-                      management, advanced discounts, detailed reporting,
-                      printer integrations, and everything you need to run and
-                      grow multiple locations. Best for expanding businesses
-                      looking for the ultimate control and insight.
+                    <Typography fontWeight={700}>
+                      Grow fast, stay in control.
                     </Typography>
+                    <Typography>{plans[2]?.description}</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
+                  >
+                    <Typography fontWeight={700}>
+                      Unlock everything. Win everywhere.
+                    </Typography>
+                    <Typography>{plans[3]?.description}</Typography>
                   </TableCell>
                 </StyledTableRow>
-                {rows.map((row) => (
-                  <StyledTableRow className="row" key={row.name}>
+
+                {featureKeys.map((featureKey, index) => (
+                  <StyledTableRow className="row" key={index}>
+                    <StickyTableCell>
+                      <Typography variant="body2">
+                        {featureLabels[featureKey]}
+                      </Typography>
+                    </StickyTableCell>
+                    {plans.map((plan, planIndex) => (
+                      <TableCell
+                        key={planIndex}
+                        sx={{ minWidth: 240, width: '23%' }}
+                        align="center"
+                      >
+                        {getValue(
+                          plan.features[featureKey] as PlanFeatureValue,
+                          featureKey,
+                        )}
+                      </TableCell>
+                    ))}
+                  </StyledTableRow>
+                ))}
+
+                {/* {rows.map((row, index) => (
+                  <StyledTableRow className="row" key={index}>
                     <StickyTableCell>{row.name}</StickyTableCell>
                     <TableCell
                       sx={{ minWidth: 240, width: '23%' }}
                       align="center"
-                    >
-                      {row.lite}
-                    </TableCell>
+                    ></TableCell>
                     <TableCell
                       sx={{ minWidth: 240, width: '23%' }}
                       align="center"
-                    >
-                      {row.standard}
-                    </TableCell>
+                    ></TableCell>
                     <TableCell
                       sx={{ minWidth: 240, width: '23%' }}
                       align="center"
-                    >
-                      {row.premium}
-                    </TableCell>
+                    ></TableCell>
+                    <TableCell
+                      sx={{ minWidth: 240, width: '23%' }}
+                      align="center"
+                    ></TableCell>
+                    <TableCell
+                      sx={{ minWidth: 240, width: '23%' }}
+                      align="center"
+                    ></TableCell>
                   </StyledTableRow>
-                ))}
+                ))} */}
               </TableBody>
             </Table>
           </TableContainer>
