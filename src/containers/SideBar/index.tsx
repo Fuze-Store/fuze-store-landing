@@ -1,10 +1,12 @@
 'use client';
 
 import CloseIcon from '@mui/icons-material/Close';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import {
   Divider,
   List,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
   Stack,
 } from '@mui/material';
@@ -83,6 +85,21 @@ export default function SideBar() {
               </ListItem>
             );
           })}
+
+          <ListItem
+            sx={{ color: 'inherit', padding: 0 }}
+            component="a"
+            href={process.env.NEXT_PUBLIC_FUZE_STORE_URL as string}
+            onClick={toggleDrawer}
+            target="_blank"
+          >
+            <ListItemButtonS>
+              <ListItemText primary="Go To App" />
+              <ListItemIcon>
+                <OpenInNewIcon color="inherit" />
+              </ListItemIcon>
+            </ListItemButtonS>
+          </ListItem>
         </List>
         <Divider />
         <List component="nav" aria-label="account menu">

@@ -2,6 +2,7 @@
 
 import Logout from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Person from '@mui/icons-material/Person';
 import {
   Avatar,
@@ -252,6 +253,21 @@ export default function AppBar() {
                       </ListItem>
                     );
                   })}
+                  <ListItem>
+                    <Button
+                      href={process.env.NEXT_PUBLIC_FUZE_STORE_URL as string}
+                      target="_blank"
+                      size="large"
+                      variant="contained"
+                      color="secondary"
+                      disableElevation
+                      LinkComponent={Link}
+                      sx={{ fontSize: 16, px: 2 }}
+                      endIcon={<OpenInNewIcon />}
+                    >
+                      Go To App
+                    </Button>
+                  </ListItem>
                 </ListGroup>
               )}
             </Stack>

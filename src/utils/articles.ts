@@ -17,75 +17,6 @@ export const guides: Guide[] = [
     ],
   },
   {
-    title: 'Point of Sale (POS)',
-    description:
-      'Step-by-step help for using your POS register, managing orders, and handling sales events.',
-    links: [
-      {
-        href: '/docs/store/pos/using-pos-register',
-        text: 'Using the POS Register/Terminal',
-      },
-      { href: '/docs/store/pos/managing-orders', text: 'Managing Orders' },
-      {
-        href: '/docs/store/pos/event/overview',
-        text: 'Events',
-        links: [
-          {
-            href: '/docs/store/pos/event/creating-an-event',
-            text: 'Creating an Event',
-          },
-          {
-            href: '/docs/store/pos/event/updating-an-event',
-            text: 'Updating an Event',
-          },
-          {
-            href: '/docs/store/pos/event/canceling-an-event',
-            text: 'Canceling an Event',
-          },
-        ],
-      },
-      {
-        href: '/docs/store/pos/unit/overview',
-        text: 'Managing Units',
-        links: [
-          {
-            href: '/docs/store/pos/unit/updating-unit-status',
-            text: 'Updating Unit Status',
-          },
-          {
-            href: '/docs/store/pos/unit/making-an-order-with-unit',
-            text: 'Making an Order with Unit',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    title: 'Sales',
-    description:
-      'Everything you need to know about tracking orders, payments, and processing refunds.',
-    links: [
-      {
-        href: '/docs/store/order/overview',
-        text: 'Order Overview',
-      },
-      {
-        href: '/docs/store/transaction/overview',
-        text: 'Transaction Overview',
-      },
-      {
-        href: '/docs/store/refund/overview',
-        text: 'Refunds',
-        links: [
-          {
-            href: '/docs/store/refund/completing-a-refund',
-            text: 'Completing a Refund',
-          },
-        ],
-      },
-    ],
-  },
-  {
     title: 'Catalog',
     description:
       'Organize your products, services, and add-ons for a smooth selling experience.',
@@ -159,6 +90,75 @@ export const guides: Guide[] = [
           {
             href: '/docs/store/modifier/deleting-a-modifier',
             text: 'Deleting a Modifier',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Point of Sale (POS)',
+    description:
+      'Step-by-step help for using your POS register, managing orders, and handling sales events.',
+    links: [
+      {
+        href: '/docs/store/pos/using-pos-register',
+        text: 'Using the POS Register/Terminal',
+      },
+      { href: '/docs/store/pos/managing-orders', text: 'Managing Orders' },
+      {
+        href: '/docs/store/pos/event/overview',
+        text: 'Events',
+        links: [
+          {
+            href: '/docs/store/pos/event/creating-an-event',
+            text: 'Creating an Event',
+          },
+          {
+            href: '/docs/store/pos/event/updating-an-event',
+            text: 'Updating an Event',
+          },
+          {
+            href: '/docs/store/pos/event/canceling-an-event',
+            text: 'Canceling an Event',
+          },
+        ],
+      },
+      {
+        href: '/docs/store/pos/unit/overview',
+        text: 'Managing Units',
+        links: [
+          {
+            href: '/docs/store/pos/unit/updating-unit-status',
+            text: 'Updating Unit Status',
+          },
+          {
+            href: '/docs/store/pos/unit/making-an-order-with-unit',
+            text: 'Making an Order with Unit',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Sales',
+    description:
+      'Everything you need to know about tracking orders, payments, and processing refunds.',
+    links: [
+      {
+        href: '/docs/store/order/overview',
+        text: 'Order Overview',
+      },
+      {
+        href: '/docs/store/transaction/overview',
+        text: 'Transaction Overview',
+      },
+      {
+        href: '/docs/store/refund/overview',
+        text: 'Refunds',
+        links: [
+          {
+            href: '/docs/store/refund/completing-a-refund',
+            text: 'Completing a Refund',
           },
         ],
       },
