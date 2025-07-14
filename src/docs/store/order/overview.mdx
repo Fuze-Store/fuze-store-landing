@@ -1,22 +1,20 @@
-# 🛒 Order Feature Overview
+# 🛒 Order Overview
 
 <br />
-The **Order** feature in Fuze Store POS is your all-in-one tool for handling every
-sale, booking, or transaction in your business. Whether you’re ringing up a
-coffee, booking a service, or processing a return, the Orders section keeps
-everything organized and easy to manage—no technical skills needed!
+
+The **Order** feature in Fuze Store POS is your all-in-one tool for handling every sale, booking, or transaction in your business. Whether you’re ringing up a coffee, booking a service, or processing a return, the Orders section keeps everything organized and easy to manage—no technical skills needed!
+
 <br />
 <br />
 
 ## 🔍 What is an Order?
 
 <br />
-An **order** is any sale, booking, or transaction made through your POS system.
-Orders can include single items, multiple products, services, or even special
-requests. Each order keeps track of what was sold, who bought it, how it was
-paid for, and who handled the sale.
+
+An **order** is any sale, booking, or transaction made through your POS system. Orders can include single items, multiple products, services, or even special requests. Each order keeps track of what was sold, who bought it, how it was paid for, and who handled the sale.
 
 <br />
+
 **Real-Life Examples:**
 
 - _Food & Beverage_: A customer orders a latte and a croissant at the counter.
@@ -36,23 +34,35 @@ paid for, and who handled the sale.
 
 <br />
 
-## 🧱 What Does an Order Include?
+## ⚙️ Field Explanations
 
 <br />
+
 Here’s what you’ll see for each order:
 
-| Field              | What it Means                            | Example            |
-| ------------------ | ---------------------------------------- | ------------------ |
-| **Order Number**   | Unique ID for the order                  | 100234             |
-| **Date/Time**      | When the order was placed                | 2025-07-10 14:32   |
-| **Customer**       | Who made the purchase (if known)         | Jane Smith         |
-| **Items**          | List of products/services in the order   | Latte, Croissant   |
-| **Total Amount**   | Total price paid                         | $8.50              |
-| **Payment Method** | How the order was paid                   | Credit Card        |
-| **Staff**          | Team member who processed the order      | John Doe           |
-| **Status**         | Order status (Completed, Refunded, etc.) | Completed          |
-| **Notes**          | Any special instructions or comments     | No sugar in coffee |
+| Field                     | What it Means                                                                                                                                      | Required                                                      | Example                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------ |
+| **Order ID**              | Unique uuid identifier for the order                                                                                                               | **Yes** _(auto generated)_                                    | bafc576c-7f8d-4e2c-864e-bdb2a85ea05d |
+| **Order Number**          | Unique identifier for the order                                                                                                                    | **Yes** _(auto generated)_                                    | 100234                               |
+| **Currency**              | Currency used for the order                                                                                                                        | **Yes** _(auto generated based on the currency of the store)_ | USD                                  |
+| **Items**                 | List of products/services in the order. See [Products](/docs/store/product/overview) or [Services](/docs/store/service/overview) for more details. | **Yes**                                                       | Latte, Croissant                     |
+| **Notes**                 | Any special instructions or comments                                                                                                               |                                                               | No sugar in coffee                   |
+| **Service Mode**          | Mode of service (e.g., In-Store, Delivery)                                                                                                         |                                                               | Jane Smith                           |
+| **Discounts**             | List of discounts applied to the order. See [Discount Overview](/docs/store/discount/overview) for more details.                                   |                                                               | 10% off Latte, 5% off Croissant      |
+| **Customer**              | The customer attached to the order. See [Customer Overview](/docs/store/customer/overview) for more details.                                       |                                                               | John Doe                             |
+| **Event**                 | The event attached to the order. See [Event Overview](/docs/store/event/overview) for more details.                                                |                                                               | Birthday Party                       |
+| **Exclude Tax**           | If the order is tax-exempt or if you want to exclude tax from the order total                                                                      | **Yes**                                                       | No                                   |
+| **Subtotal**              | Total price before taxes and fees                                                                                                                  | **Yes** _(auto computes)_                                     | $8.50                                |
+| **Total Discount Amount** | Total discount applied to the order                                                                                                                | **Yes** _(auto computes)_                                     | $0.85                                |
+| **Total Tax Amount**      | Total tax applied to the order                                                                                                                     | **Yes** _(auto computes)_                                     | $0.85                                |
+| **Total Gift Amount**     | Total gift cards amount applied to the order                                                                                                       | **Yes** _(auto computes)_                                     | $0.85                                |
+| **Delivery Fee**          | Fee for delivery service                                                                                                                           | **Yes** _(auto computes)_                                     | $5.00                                |
+| **Service Fee**           | Fee for service provided                                                                                                                           | **Yes** _(auto computes)_                                     | $2.00                                |
+| **Grand Total**           | Total price paid                                                                                                                                   | **Yes** _(auto computes)_                                     | $16.35                               |
+| **Created At**            | Team member who processed the order                                                                                                                |                                                               | John Doe                             |
+| **Updated At**            | Order status (Completed, Refunded, etc.)                                                                                                           |                                                               | Completed                            |
 
+<br />
 <br />
 
 ## 🏆 Best Practices
@@ -65,13 +75,6 @@ Here’s what you’ll see for each order:
 
 <br />
 
-## 🔗 Related Guides
-
-- [How to Process a Sale](../../docs/order/sale)
-- [How to Process a Refund](../../docs/order/refund)
-- [How to Search Orders](../../docs/order/search)
-- [Sales Reports & Analytics](../../docs/store_reports)
-- [Getting Started Guide](../../docs/getting-started)
+For more information, see the documentation or contact support.
 
 <br />
-For more information, see the documentation or contact support.

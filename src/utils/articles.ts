@@ -104,7 +104,7 @@ export const guides: Guide[] = [
         href: '/docs/store/pos/using-pos-register',
         text: 'Using the POS Register/Terminal',
       },
-      { href: '/docs/store/pos/managing-orders', text: 'Managing Orders' },
+      { href: '/docs/store/pos/managing-orders', text: 'POS Order Screens' },
       {
         href: '/docs/store/pos/event/overview',
         text: 'Events',
@@ -125,7 +125,7 @@ export const guides: Guide[] = [
       },
       {
         href: '/docs/store/pos/unit/overview',
-        text: 'Managing Units',
+        text: 'POS Unit (Area and Unit Management)',
         links: [
           {
             href: '/docs/store/pos/unit/updating-unit-status',
@@ -133,7 +133,7 @@ export const guides: Guide[] = [
           },
           {
             href: '/docs/store/pos/unit/making-an-order-with-unit',
-            text: 'Making an Order with Unit',
+            text: 'Making an Order in a Unit',
           },
         ],
       },

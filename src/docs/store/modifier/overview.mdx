@@ -1,12 +1,9 @@
-# 🧩 Modifier Feature Overview
+# 🧩 Modifier Overview
 
 <br />
-The **Modifier** feature in Fuze Store POS lets you add extra options or
-customizations to your products and services—making it easy for customers to
-personalize their orders and for staff to handle special requests. Modifiers are
-perfect for things like add-ons, sizes, flavors, toppings, or any extra choices
-you want to offer.
-<br />
+
+The **Modifier** feature in Fuze Store POS lets you add extra options or customizations to your products and services—making it easy for customers to personalize their orders and for staff to handle special requests. Modifiers are perfect for things like add-ons, sizes, flavors, toppings, or any extra choices you want to offer.
+
 <br />
 
 ## 🔍 What is a Modifier?
@@ -16,6 +13,7 @@ you want to offer.
 A **modifier** is an option or add-on that can be attached to a product or service. Modifiers help you offer more choices without cluttering your main catalog. For example, you can let customers choose a drink size, add extra cheese to a pizza, or select aromatherapy for a massage.
 
 <br />
+
 **Examples:**
 
 - _Food & Beverage_: Size (Small, Medium, Large), Extra Shot, Toppings (Pepperoni, Mushrooms)
@@ -34,9 +32,10 @@ A **modifier** is an option or add-on that can be attached to a product or servi
 
 <br />
 
-## 🧱 Modifier Data Structure
+## ⚙️ Field Explanations
 
 <br />
+
 Here is a sample data structure for a modifier:
 
 | Field                        | What it Means                                                       | Required | Possible Values                  | Example              |
@@ -53,6 +52,8 @@ Here is a sample data structure for a modifier:
 | **Options**                  | List of choices for the modifier _(see tables below)_               | **Yes**  |                                  | Small, Medium, Large |
 
 <br />
+<br />
+
 Here is a sample data structure for modifier options:
 
 | Field          | What it Means                        | Required | Possible Values | Example |
@@ -62,8 +63,9 @@ Here is a sample data structure for modifier options:
 | **Base Price** | Extra cost for the modifier (if any) | **Yes**  | _(Any number)_  | 10      |
 
 <br />
+<br />
 
-### Note
+### ❗️ Note
 
 - Options are the individual choices available for a modifier. For example, if you have a "Drink Sizes" modifier, the options could be "Small", "Medium", and "Large." Each option can have its own price adjustment.
 - Options displays in order, adjust the display order as needed.
