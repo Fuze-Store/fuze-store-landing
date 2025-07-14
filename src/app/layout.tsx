@@ -1,36 +1,9 @@
-'use client';
-
 // Import the functions you need from the SDKs you need
-import { useTheme } from '@mui/material';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import Box from '@mui/material/Box';
-import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 // import { getAnalytics, isSupported } from 'firebase/analytics';
 // import { initializeApp } from 'firebase/app';
-import { SessionProvider } from 'next-auth/react';
 import { PropsWithChildren } from 'react';
-import { Provider } from 'react-redux';
-import { Toaster } from 'sonner';
 
-import '@/containers/Localization/i18n';
-import { store } from '@/rtk/configureStore';
-import AxiosInterceptor from '@/utils/AxiosInterceptor';
-
-import Footer from '@/components/Footer';
-import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
-import AppBar from '@/containers/Appbar';
-import SideBar from '@/containers/SideBar';
-import AppProvider from '@/providers/App';
-import ConfirmationProvider from '@/providers/Confirmation';
-
-import './globals.css';
+import Main from '@/containers/Main';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -48,62 +21,44 @@ import './globals.css';
 // const app = initializeApp(firebaseConfig);
 // const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      // With SSR, we usually want to set some default staleTime
-      // above 0 to avoid refetching immediately on the client
-      staleTime: 60 * 1000,
-    },
+export const metadata = {
+  title: 'Fuze Store',
+  description: 'Fuze Store - Your POS and Store Management Solution',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-32x32.png',
+    apple: '/apple-touch-icon.png',
   },
-});
+  manifest: '/site.webmanifest',
+};
 
 export default function RootLayout({ children }: PropsWithChildren) {
-  const theme = useTheme();
-
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#000000" />
+      </head>
       <body id="main">
-        <AppRouterCacheProvider>
-          <Provider store={store}>
-            <QueryClientProvider client={queryClient}>
-              <HydrationBoundary state={dehydrate(queryClient)}>
-                <SessionProvider>
-                  <ThemeRegistry>
-                    <AppProvider>
-                      <ConfirmationProvider>
-                        <ReactQueryDevtools />
-                        <AxiosInterceptor />
-                        <AppBar />
-                        <Box
-                          component="main"
-                          sx={{
-                            flexGrow: 1,
-                            minHeight: '100vh',
-                            flexDirection: 'column',
-                            display: 'flex',
-                          }}
-                        >
-                          {children}
-                        </Box>
-                        <Footer />
-                        <SideBar />
-                        <Toaster
-                          theme={
-                            theme.palette.mode === 'dark' ? 'dark' : 'light'
-                          }
-                          closeButton
-                          position="top-right"
-                        />
-                      </ConfirmationProvider>
-                    </AppProvider>
-                  </ThemeRegistry>
-                </SessionProvider>
-              </HydrationBoundary>
-            </QueryClientProvider>
-          </Provider>
-          <SpeedInsights />
-        </AppRouterCacheProvider>
+        <Main>{children}</Main>
       </body>
     </html>
   );

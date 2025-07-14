@@ -29,8 +29,7 @@ import React, { useContext, useState } from 'react';
 
 import useLogout from '@/containers/Auth/hooks/useLogout';
 import { AppContext } from '@/contexts/App';
-import { paths } from '@/enums/path.enum';
-import { navPages } from '@/helpers/page.helper';
+import { navPages, paths } from '@/helpers/page.helper';
 import useSession from '@/hooks/useSession';
 
 import Logo from '@/components/Logo';
@@ -96,7 +95,7 @@ export default function AppBar() {
   const { logout } = useLogout();
   const { status } = useSession();
   const { setShowDrawer } = useContext(AppContext);
-  const isMdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const isLgDown = useMediaQuery(theme.breakpoints.down('lg'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -241,7 +240,7 @@ export default function AppBar() {
                 <Logo />
               </Link>
 
-              {!isMdDown && (
+              {!isLgDown && (
                 <ListGroup className="list-none">
                   {navPages.map((nav) => {
                     const className =
@@ -255,7 +254,7 @@ export default function AppBar() {
                   })}
                   <ListItem>
                     <Button
-                      href={process.env.NEXT_PUBLIC_FUZE_STORE_URL as string}
+                      href={paths.openApp}
                       target="_blank"
                       size="large"
                       variant="contained"
@@ -271,11 +270,11 @@ export default function AppBar() {
                 </ListGroup>
               )}
             </Stack>
-            {!isMdDown && renderAccount()}
+            {!isLgDown && renderAccount()}
           </Stack>
         </Container>
 
-        {isMdDown && (
+        {isLgDown && (
           <Box
             sx={{
               position: 'absolute',

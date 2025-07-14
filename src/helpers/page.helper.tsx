@@ -6,6 +6,7 @@ import SecurityIcon from '@mui/icons-material/Security';
 
 export const paths = {
   home: '/',
+  openApp: '/open-app',
   login: '/login',
   register: '/register',
   forgotPassword: '/forgot-password',

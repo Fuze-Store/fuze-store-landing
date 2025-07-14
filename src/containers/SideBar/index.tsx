@@ -20,8 +20,7 @@ import { useContext } from 'react';
 
 import useLogout from '@/containers/Auth/hooks/useLogout';
 import { AppContext } from '@/contexts/App';
-import { paths } from '@/enums/path.enum';
-import { navPages } from '@/helpers/page.helper';
+import { navPages, paths } from '@/helpers/page.helper';
 import useSession from '@/hooks/useSession';
 
 const ListItemButtonS = styled(ListItemButton)(({ theme }) => ({
@@ -56,12 +55,14 @@ export default function SideBar() {
       anchor="right"
       open={showDrawer}
       onClose={toggleDrawer}
-      PaperProps={{
-        sx: {
-          width: { xs: 300, sm: '50%', md: '40%' },
-          px: { xs: 2, lg: 10 },
-          py: { lg: 7 },
-          pt: 8,
+      slotProps={{
+        paper: {
+          sx: {
+            width: { xs: 300, sm: '50%', md: '40%' },
+            px: { xs: 2, lg: 10 },
+            py: { lg: 7 },
+            pt: 8,
+          },
         },
       }}
     >
@@ -89,7 +90,7 @@ export default function SideBar() {
           <ListItem
             sx={{ color: 'inherit', padding: 0 }}
             component="a"
-            href={process.env.NEXT_PUBLIC_FUZE_STORE_URL as string}
+            href={paths.openApp}
             onClick={toggleDrawer}
             target="_blank"
           >
