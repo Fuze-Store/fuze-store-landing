@@ -19,6 +19,7 @@ import { paths } from '@/enums/path.enum';
 
 import type { FormInputs } from '@/containers/Login/Form/Provider/types';
 
+import MetaHeader from '@/components/MetaHeader';
 import FacebookLoginButton from '@/containers/Auth/FacebookLoginButton';
 import GoogleLoginButton from '@/containers/Auth/GoogleLoginButton';
 import LoginForm from '@/containers/Login/Form';
@@ -56,43 +57,50 @@ export default function Page() {
   };
 
   return (
-    <LoginFormProvider onSubmit={onSubmit}>
-      <Toolbar />
-      <Container maxWidth="xs">
-        <Box sx={{ py: { sm: 10 } }}>
-          <Box sx={{ textAlign: 'center' }} mb={4}>
-            <Image src={logo} width={250} height={80} alt="Logo" />
-          </Box>
+    <>
+      <MetaHeader
+        title="Login"
+        description="Log in to your Fuze Store account."
+      />
 
-          {errorMessage && (
-            <Box mb={2}>
-              <Alert severity="error">{errorMessage}</Alert>
+      <LoginFormProvider onSubmit={onSubmit}>
+        <Toolbar />
+        <Container maxWidth="xs">
+          <Box sx={{ py: { sm: 10 } }}>
+            <Box sx={{ textAlign: 'center' }} mb={4}>
+              <Image src={logo} width={250} height={80} alt="Logo" />
             </Box>
-          )}
 
-          <LoginForm loading={loading} />
+            {errorMessage && (
+              <Box mb={2}>
+                <Alert severity="error">{errorMessage}</Alert>
+              </Box>
+            )}
 
-          <Box mb={2}>
-            <LoginFormSubmit fullWidth loading={loading} />
+            <LoginForm loading={loading} />
+
+            <Box mb={2}>
+              <LoginFormSubmit fullWidth loading={loading} />
+            </Box>
+
+            <Stack direction="column" alignItems="flex-start">
+              <Button LinkComponent={Link} href={paths.forgotPassword}>
+                Forgot Password
+              </Button>
+              <Button LinkComponent={Link} href={paths.register}>
+                No account yet? Register here.
+              </Button>
+            </Stack>
+
+            <Divider sx={{ my: 2 }} />
+
+            <Stack direction="column" alignItems="flex-start" spacing={1}>
+              <FacebookLoginButton />
+              <GoogleLoginButton />
+            </Stack>
           </Box>
-
-          <Stack direction="column" alignItems="flex-start">
-            <Button LinkComponent={Link} href={paths.forgotPassword}>
-              Forgot Password
-            </Button>
-            <Button LinkComponent={Link} href={paths.register}>
-              No account yet? Register here.
-            </Button>
-          </Stack>
-
-          <Divider sx={{ my: 2 }} />
-
-          <Stack direction="column" alignItems="flex-start" spacing={1}>
-            <FacebookLoginButton />
-            <GoogleLoginButton />
-          </Stack>
-        </Box>
-      </Container>
-    </LoginFormProvider>
+        </Container>
+      </LoginFormProvider>
+    </>
   );
 }

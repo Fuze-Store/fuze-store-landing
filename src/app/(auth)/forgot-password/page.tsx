@@ -11,12 +11,18 @@ import {
 import Image from 'next/image';
 
 import GoBackButton from '@/components/GoBackButton';
+import MetaHeader from '@/components/MetaHeader';
 
 import logo from '@/images/logo.png';
 
 export default function Page() {
   return (
     <>
+      <MetaHeader
+        title="Forgot Password"
+        description="Reset your password for Fuze Store."
+      />
+
       <Toolbar />
       <Container disableGutters maxWidth="xs">
         <Box sx={{ py: { sm: 10 } }}>

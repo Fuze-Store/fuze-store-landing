@@ -6,6 +6,7 @@ import Container from '@mui/material/Container';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 
+import MetaHeader from '@/components/MetaHeader';
 import SectionContainer from '@/components/SectionContainer';
 import AccountDeleteButton from '@/containers/Account/DeleteButton';
 import AccountDetailsEmail from '@/containers/Account/Details/Email';
@@ -30,32 +31,39 @@ export default function Page() {
 
   if (account) {
     return (
-      <Container maxWidth="sm">
-        <Box py={2}>
-          <SectionContainer>
-            <AccountDetailsInfo
-              email={account.email}
-              fullName={account.info.fullName}
-              initials={account.info.initials}
-            />
-          </SectionContainer>
+      <>
+        <MetaHeader
+          title="Account"
+          description="Manage your account settings for Fuze Store."
+        />
 
-          <SectionContainer>
-            <AccountDetailsEmail
-              email={account.email}
-              isVerified={account.isVerified}
-            />
-          </SectionContainer>
+        <Container maxWidth="sm">
+          <Box py={2}>
+            <SectionContainer>
+              <AccountDetailsInfo
+                email={account.email}
+                fullName={account.info.fullName}
+                initials={account.info.initials}
+              />
+            </SectionContainer>
 
-          <SectionContainer>
-            <AccountDetailsProvider providers={account.providers} />
-          </SectionContainer>
+            <SectionContainer>
+              <AccountDetailsEmail
+                email={account.email}
+                isVerified={account.isVerified}
+              />
+            </SectionContainer>
 
-          <SectionContainer>
-            <AccountDeleteButton />
-          </SectionContainer>
-        </Box>
-      </Container>
+            <SectionContainer>
+              <AccountDetailsProvider providers={account.providers} />
+            </SectionContainer>
+
+            <SectionContainer>
+              <AccountDeleteButton />
+            </SectionContainer>
+          </Box>
+        </Container>
+      </>
     );
   }
 

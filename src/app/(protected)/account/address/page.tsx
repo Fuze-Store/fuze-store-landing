@@ -8,6 +8,7 @@ import useUpdateAccountAddress from '@/containers/Account/Address/hooks/useUpdat
 
 import type { FormInputs } from '@/containers/Address/Form/Provider/types';
 
+import MetaHeader from '@/components/MetaHeader';
 import PageLoader from '@/components/PageLoader';
 import SectionContainer from '@/components/SectionContainer';
 import AddressForm from '@/containers/Address/Form';
@@ -29,24 +30,31 @@ export default function Page() {
   }
 
   return (
-    <Container maxWidth="sm">
-      <AddressFormProvider
-        address={response?.data}
-        errors={error?.errors}
-        onSubmit={onSubmit}
-      >
-        {error && (
-          <SectionContainer mb={2}>
-            <Alert severity="error">{error.message}</Alert>
-          </SectionContainer>
-        )}
+    <>
+      <MetaHeader
+        title="Address"
+        description="Manage your address settings for Fuze Store."
+      />
 
-        <AddressForm />
+      <Container maxWidth="sm">
+        <AddressFormProvider
+          address={response?.data}
+          errors={error?.errors}
+          onSubmit={onSubmit}
+        >
+          {error && (
+            <SectionContainer mb={2}>
+              <Alert severity="error">{error.message}</Alert>
+            </SectionContainer>
+          )}
 
-        <Box mb={1}>
-          <AddressFormSubmit variant="contained" disableElevation fullWidth />
-        </Box>
-      </AddressFormProvider>
-    </Container>
+          <AddressForm />
+
+          <Box mb={1}>
+            <AddressFormSubmit variant="contained" disableElevation fullWidth />
+          </Box>
+        </AddressFormProvider>
+      </Container>
+    </>
   );
 }

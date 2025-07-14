@@ -6,11 +6,17 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import Typography from '@mui/material/Typography';
 
+import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 
 export default function PrivacyPage() {
   return (
     <>
+      <MetaHeader
+        title="Privacy Policy"
+        description="Learn about our privacy practices and how we protect your information."
+      />
+
       <Box
         component="section"
         sx={(theme) => ({

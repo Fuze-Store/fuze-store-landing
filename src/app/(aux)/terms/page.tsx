@@ -6,11 +6,17 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import Typography from '@mui/material/Typography';
 
+import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 
 export default function TermsPage() {
   return (
     <>
+      <MetaHeader
+        title="Terms and Conditions"
+        description="Review the terms and conditions for using Fuze Store."
+      />
+
       <Box
         component="section"
         sx={(theme) => ({

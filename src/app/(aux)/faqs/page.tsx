@@ -12,11 +12,17 @@ import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 
 export default function FAQsPage() {
   return (
     <>
+      <MetaHeader
+        title="FAQs"
+        description="Frequently asked questions about Fuze Store."
+      />
+
       <Box
         component="section"
         sx={(theme) => ({

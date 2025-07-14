@@ -1,14 +1,20 @@
 'use client';
 
+import { Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import { Divider } from '@mui/material';
+import MetaHeader from '@/components/MetaHeader';
 
 export default function Page() {
   return (
     <>
+      <MetaHeader
+        title="Blogs"
+        description="Read the latest articles and updates from Fuze Store."
+      />
+
       <Box
         component="section"
         sx={(theme) => ({
