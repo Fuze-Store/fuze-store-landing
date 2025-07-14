@@ -1,5 +1,6 @@
 'use client';
 
+import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 import Catalog from '@/containers/Feature/Catalog';
 import Dashboard from '@/containers/Feature/Dashboard';
@@ -19,6 +20,11 @@ import {
 export default function Page() {
   return (
     <>
+      <MetaHeader
+        title="Features"
+        description="Discover the powerful features of Fuze Store."
+      />
+
       <Box
         component="section"
         sx={(theme) => ({

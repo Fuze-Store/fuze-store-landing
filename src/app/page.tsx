@@ -13,8 +13,10 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
 import HeroHome from '@/components/HeroHome';
+import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 import HomeFeatures from '@/containers/Home/FeaturesSection';
 import Newsletter from '@/containers/Home/Newsletter';
@@ -23,11 +25,15 @@ import SupportedPlatform from '@/containers/Home/SupportedPlatform';
 import UseCase from '@/containers/Home/UseCase';
 import WhatWeOffer from '@/containers/Home/WhatWeOffer';
 import TestimonialFront from '@/containers/Testimonial/Front';
-import Link from 'next/link';
 
 export default function Page() {
   return (
     <>
+      <MetaHeader
+        title=""
+        description="Welcome to Fuze Store, your all-in-one solution for managing your business efficiently."
+      />
+
       <Box>
         {/* Hero  */}
         <HeroHome />

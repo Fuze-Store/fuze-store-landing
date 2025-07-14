@@ -268,7 +268,7 @@ export const guides: Guide[] = [
             text: 'Updating a Tax',
           },
           {
-            href: '/docs/store/tax/deleting-a-tax',
+            href: '/docs/store/tax/deleting-tax',
             text: 'Deleting a Tax',
           },
         ],

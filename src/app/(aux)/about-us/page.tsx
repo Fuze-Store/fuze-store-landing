@@ -1,5 +1,6 @@
 'use client';
 
+import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 import CoreValues from '@/containers/AboutUs/CoreValues';
 import WhoWeServe from '@/containers/AboutUs/WhoWeServe';
@@ -9,6 +10,11 @@ import { Box, Container, Fab, Grid, Toolbar, Typography } from '@mui/material';
 export default function AboutUsPage() {
   return (
     <>
+      <MetaHeader
+        title="About Us"
+        description="Learn more about Fuze Store and our mission to empower businesses."
+      />
+
       <Box
         component="section"
         sx={(theme) => ({

@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+import MetaHeader from '@/components/MetaHeader';
 import Articles from '@/containers/HelpCenter/Articles';
 import BillingFaq from '@/containers/HelpCenter/BillingFaq';
 import GeneralFaq from '@/containers/HelpCenter/GeneralFaq';
@@ -12,6 +13,11 @@ import GeneralFaq from '@/containers/HelpCenter/GeneralFaq';
 export default function Page() {
   return (
     <>
+      <MetaHeader
+        title="Help Center"
+        description="Guides, FAQs, and support for Fuze Store POS"
+      />
+
       <Box
         component="section"
         sx={(theme) => ({

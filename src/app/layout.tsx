@@ -33,6 +33,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_BASE_URL || 'https://fuze-store.com';
+
   return (
     <html lang="en">
       <head>
@@ -56,6 +59,22 @@ export default function RootLayout({ children }: PropsWithChildren) {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: process.env.NEXT_PUBLIC_APP_NAME || 'Fuze Store',
+              url: baseUrl,
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${baseUrl}/search?q={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </head>
       <body id="main">
         <Main>{children}</Main>

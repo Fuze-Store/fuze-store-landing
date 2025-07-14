@@ -16,6 +16,7 @@ export async function compileMDX(slugPath: string) {
 
   const { code, frontmatter } = await bundleMDX({
     source,
+    cwd: path.dirname(fullPath),
     mdxOptions(options) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
