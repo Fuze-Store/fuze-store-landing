@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useUpdateAccount from '@/containers/Account/hooks/useUpdateAccount';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 import type { FormInputs } from '@/containers/Account/Details/Form/Provider/types';
 

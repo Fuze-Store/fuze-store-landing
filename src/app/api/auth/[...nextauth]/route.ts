@@ -6,8 +6,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import FacebookProvider from 'next-auth/providers/facebook';
 import GoogleProvider from 'next-auth/providers/google';
 
-import { paths } from '@/enums/path.enum';
 import { SocialProvider } from '@/enums/socialProviders.enum';
+import { paths } from '@/helpers/page.helper';
 import { LoginResponse } from '@/types/login';
 import endpoints from '@/utils/endpoints';
 

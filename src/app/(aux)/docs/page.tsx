@@ -1,91 +1,21 @@
-'use client';
+import { Metadata } from 'next';
 
-import { Divider, Toolbar } from '@mui/material';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
+import HelpCenterPage from '@/containers/HelpCenter/Page';
 
-import MetaHeader from '@/components/MetaHeader';
-import Articles from '@/containers/HelpCenter/Articles';
-import BillingFaq from '@/containers/HelpCenter/BillingFaq';
-import GeneralFaq from '@/containers/HelpCenter/GeneralFaq';
+export async function generateMetadata(): Promise<Metadata> {
+  const title = `Help Center | ${process.env.NEXT_PUBLIC_APP_NAME || 'Fuze Store'}`;
+  const description = 'Explore our Help Center for resources and support.';
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/help-center`;
+
+  return {
+    title,
+    description,
+    openGraph: { title, description, url },
+    twitter: { title, description },
+    alternates: { canonical: url },
+  };
+}
 
 export default function Page() {
-  return (
-    <>
-      <MetaHeader
-        title="Help Center"
-        description="Guides, FAQs, and support for Fuze Store POS"
-      />
-
-      <Box
-        component="section"
-        sx={(theme) => ({
-          bgcolor:
-            theme.palette.mode === 'dark'
-              ? theme.palette.grey[900]
-              : theme.palette.grey[50],
-          py: theme.spacing(10),
-        })}
-      >
-        <Toolbar />
-        <Container maxWidth="lg">
-          <Box textAlign="center">
-            <Typography
-              textAlign="center"
-              component="h3"
-              color="primary"
-              fontWeight="bold"
-              gutterBottom
-            >
-              Help Center
-            </Typography>
-
-            <Typography
-              textAlign="center"
-              component="h2"
-              variant="h4"
-              gutterBottom
-              fontWeight={500}
-            >
-              Learn to Use Every Feature of Fuze Store
-            </Typography>
-
-            <Typography
-              variant="h6"
-              gutterBottom
-              color="textSecondary"
-              fontWeight={400}
-            >
-              Step-by-step guides, video walkthroughs, and FAQs to master our
-              POS system.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
-
-      <Box
-        component="section"
-        sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
-      >
-        <Articles />
-      </Box>
-
-      <Box
-        component="section"
-        sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
-      >
-        <GeneralFaq />
-      </Box>
-
-      <Box
-        component="section"
-        sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
-      >
-        <BillingFaq />
-      </Box>
-
-      <Divider />
-    </>
-  );
+  return <HelpCenterPage />;
 }

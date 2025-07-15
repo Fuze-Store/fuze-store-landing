@@ -1,6 +1,6 @@
 'use client';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import { Avatar, Button, Card, CardContent, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';

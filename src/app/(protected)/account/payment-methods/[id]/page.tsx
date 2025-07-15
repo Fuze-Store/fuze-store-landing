@@ -7,7 +7,7 @@ import { useEffect, useMemo } from 'react';
 
 import useGetPaymentMethodList from '@/containers/Account/PaymentMethod/hooks/useGetPaymentMethodList';
 import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import { getAccountPaymentMethodBrandLabel } from '@/helpers/paymentMethod.helper';
 
 import GoBackButton from '@/components/GoBackButton';

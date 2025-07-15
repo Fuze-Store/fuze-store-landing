@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { memo } from 'react';
 
 import useGetPaymentMethodList from '@/containers/Account/PaymentMethod/hooks/useGetPaymentMethodList';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import { getAccountPaymentMethodBrandLabel } from '@/helpers/paymentMethod.helper';
 
 import PaymentMethodItem from '@/components/PaymentMethodItem';

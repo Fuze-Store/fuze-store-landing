@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { memo } from 'react';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 import AccountResendEmailButton from '@/containers/Account/Email/ResendButton';
 

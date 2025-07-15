@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 import SectionContainer from '@/components/SectionContainer';
 import AccountRecentInvoices from '@/containers/Account/Invoice/Recent';

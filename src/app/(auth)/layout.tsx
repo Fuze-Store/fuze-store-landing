@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import * as React from 'react';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import useSession from '@/hooks/useSession';
 
 export default function Layout({ children }: React.PropsWithChildren) {

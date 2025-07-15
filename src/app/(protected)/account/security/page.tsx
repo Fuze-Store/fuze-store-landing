@@ -12,7 +12,7 @@ import {
 import Container from '@mui/material/Container';
 import Link from 'next/link';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 export default function Page() {
   return (

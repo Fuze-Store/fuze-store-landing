@@ -4,6 +4,7 @@
 import { PropsWithChildren } from 'react';
 
 import Main from '@/containers/Main';
+import { Metadata } from 'next';
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -21,8 +22,8 @@ import Main from '@/containers/Main';
 // const app = initializeApp(firebaseConfig);
 // const analytics = isSupported().then((yes) => (yes ? getAnalytics(app) : null));
 
-export const metadata = {
-  title: 'Fuze Store',
+export const metadata: Metadata = {
+  title: process.env.NEXT_PUBLIC_APP_NAME || 'Fuze Store',
   description: 'Fuze Store - Your POS and Store Management Solution',
   icons: {
     icon: '/favicon.ico',

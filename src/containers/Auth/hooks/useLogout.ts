@@ -8,7 +8,7 @@ import { AxiosError } from 'axios';
 import { signOut } from 'next-auth/react';
 import { toast } from 'sonner';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 

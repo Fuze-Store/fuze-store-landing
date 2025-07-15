@@ -9,7 +9,7 @@ import { Button, ButtonProps } from '@mui/material';
 import { memo, useCallback } from 'react';
 
 import useCreatePaymentMethodSession from '@/containers/Account/PaymentMethod/hooks/useCreatePaymentMethodSession';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import useAppDispatch from '@/hooks/useAppDispatch';
 
 import { resetGlobalFields, updateGlobalFields } from '@/rtk/global/slice';

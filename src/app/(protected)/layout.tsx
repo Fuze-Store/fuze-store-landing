@@ -5,7 +5,7 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import { redirect } from 'next/navigation';
 import { PropsWithChildren } from 'react';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 export default function Layout({ children }: PropsWithChildren) {
   const session = useSession();

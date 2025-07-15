@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import useChangeEmail from '@/containers/Account/Email/hooks/useChangeEmail';
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 import type { FormInputs } from '@/containers/Account/Email/Form/Provider/types';
 

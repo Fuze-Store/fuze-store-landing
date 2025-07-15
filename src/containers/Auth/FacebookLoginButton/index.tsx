@@ -1,6 +1,6 @@
 'use client';
 
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import { Button, ButtonProps } from '@mui/material';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';

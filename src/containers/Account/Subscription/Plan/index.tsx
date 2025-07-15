@@ -22,7 +22,7 @@ import { Subscription } from '@/types/subscription';
 import SectionContainer from '@/components/SectionContainer';
 import CancelButton from '@/containers/Account/Subscription/CancelButton';
 import ReactiveButton from '@/containers/Account/Subscription/ReactiveButton';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 import Link from 'next/link';
 
 type Props = {

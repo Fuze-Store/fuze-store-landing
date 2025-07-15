@@ -6,17 +6,11 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import Typography from '@mui/material/Typography';
 
-import MetaHeader from '@/components/MetaHeader';
 import ScrollTop from '@/components/ScrollToTop';
 
-export default function PrivacyPage() {
+export default function TermsAndConditionsPage() {
   return (
     <>
-      <MetaHeader
-        title="Privacy Policy"
-        description="Learn about our privacy practices and how we protect your information."
-      />
-
       <Box
         component="section"
         sx={(theme) => ({
@@ -36,19 +30,18 @@ export default function PrivacyPage() {
               gutterBottom
               fontWeight={500}
             >
-              Privacy Policy
+              Terms and Conditions
             </Typography>
 
             <Typography
               textAlign="center"
-              variant="subtitle1"
               gutterBottom
               color="textSecondary"
               fontWeight={400}
             >
-              Your privacy is important to us at Fuze Store. We respect your
-              privacy regarding any information we may collect from you across
-              our application.
+              By accessing or using the Service, you agree to be bound by these
+              Terms. If you disagree with any part of the terms, then you may
+              not access the Service.
             </Typography>
           </Box>
 

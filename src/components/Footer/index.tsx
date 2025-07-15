@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation';
 
 import TikTokIcon from '@/components/Icons/TikTokIcon';
 import Logo from '@/components/Logo';
+import { paths } from '@/helpers/page.helper';
 
 const ListGroup = styled('ul')(() => ({
   display: 'flex',
@@ -86,23 +87,32 @@ export default function Footer() {
 
         <ListGroup sx={{ my: 4 }}>
           <LinkItem
-            href="/faqs"
-            className={pathname === '/faqs' ? 'selected' : undefined}
+            href={paths.faqs}
+            className={pathname === paths.faqs ? 'selected' : undefined}
           >
             FAQs
           </LinkItem>
-          <LinkItem href="/docs">Docs</LinkItem>
           <LinkItem
-            href="/privacy"
-            className={pathname === '/privacy' ? 'selected' : undefined}
+            href={paths.helpCenter}
+            className={pathname === paths.helpCenter ? 'selected' : undefined}
           >
-            Privacy
+            Help Center
           </LinkItem>
           <LinkItem
-            href="/terms"
-            className={pathname === '/terms' ? 'selected' : undefined}
+            href={paths.privacyPolicy}
+            className={
+              pathname === paths.privacyPolicy ? 'selected' : undefined
+            }
           >
-            Terms
+            Privacy Policy
+          </LinkItem>
+          <LinkItem
+            href={paths.termsAndConditions}
+            className={
+              pathname === paths.termsAndConditions ? 'selected' : undefined
+            }
+          >
+            Terms and Conditions
           </LinkItem>
         </ListGroup>
 

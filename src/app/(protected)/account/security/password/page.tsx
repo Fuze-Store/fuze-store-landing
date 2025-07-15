@@ -4,7 +4,7 @@ import { Box, Container } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
 import useChangePassword from '@/containers/Account/Security/hooks/useChangePassword';
-import { paths } from '@/enums/path.enum';
+import { paths } from '@/helpers/page.helper';
 
 import type { FormInputs } from '@/containers/Account/Security/Password/Form/Provider/types';
 
