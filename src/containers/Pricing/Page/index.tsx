@@ -85,7 +85,7 @@ const StickyTableCell = styled(TableCell)(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     width: '31%',
   },
-  minWidth: 160,
+  minWidth: 200,
   // borderRight: `1px solid ${theme.palette.divider}`,
 }));
 
@@ -93,8 +93,8 @@ const StickyTableCell = styled(TableCell)(({ theme }) => ({
 const featureLabels: Record<string, string> = {
   dashboard: 'Dashboard',
   pos: 'Point of Sales',
-  event_basic: 'Appointments',
-  event_advanced: 'Reservations',
+  event_basic: 'Basic Events',
+  event_advanced: 'Advanced Events',
   area: 'Area Management',
   unit: 'Table/Room Management',
   transactions: 'Sale Transactions',
@@ -129,13 +129,27 @@ export default function PricingPage() {
   const plans: Plan[] = plansResponse?.data || [];
 
   const getValue = useCallback((value: PlanFeatureValue, feature: string) => {
-    if (feature === 'store_limit' && value === true) {
-      return <Typography>Unlimited</Typography>;
-    } else if (feature === 'staffs' && value === true) {
-      return <Typography>Unlimited</Typography>;
-    } else if (feature === 'unit' && value === true) {
-      return <Typography>Unlimited</Typography>;
-    } else if (feature === 'area' && value === true) {
+    if (feature === 'pos' && typeof value === 'number') {
+      return <Typography>{`${value} orders / month`}</Typography>;
+    }
+
+    if (feature === 'transactions' && typeof value === 'number') {
+      return <Typography>{`up to last ${value} months`}</Typography>;
+    }
+
+    if (
+      (feature === 'store_limit' ||
+        feature === 'staffs' ||
+        feature === 'unit' ||
+        feature === 'pos' ||
+        feature === 'transactions' ||
+        feature === 'catalogs' ||
+        feature === 'customers' ||
+        feature === 'sms_notifications' ||
+        feature === 'ai_agent' ||
+        feature === 'area') &&
+      value === true
+    ) {
       return <Typography>Unlimited</Typography>;
     }
 
@@ -217,17 +231,14 @@ export default function PricingPage() {
                     let message: ReactNode = '';
 
                     if (plan.baseFee === 0 && plan.commissionRate === 0) {
-                      text = 'Free';
+                      // text = '0';
                       message = 'No monthly fee';
                     }
 
                     if (plan.baseFee > 0 && plan.commissionRate > 0) {
                       message = `plus ${(plan.commissionRate * 100).toFixed(
                         1,
-                      )}% when you hit ${plan.currency} ${Intl.NumberFormat(
-                        undefined,
-                        { style: 'decimal' },
-                      ).format(plan.salesThreshold)} monthly sales`;
+                      )}% monthly sales`;
                     } else if (plan.commissionRate > 0) {
                       text = `${(plan.commissionRate * 100).toFixed(1)}%`;
                       message = `on monthly sales`;
@@ -263,11 +274,12 @@ export default function PricingPage() {
                     </Typography>
                     <Typography>{plans[0]?.description}</Typography>
                   </TableCell>
+
                   <TableCell
                     sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
                   >
                     <Typography fontWeight={700}>
-                      Sell smart without the stress.
+                      Test the waters—risk-free!
                     </Typography>
                     <Typography>{plans[1]?.description}</Typography>
                   </TableCell>
@@ -275,7 +287,7 @@ export default function PricingPage() {
                     sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
                   >
                     <Typography fontWeight={700}>
-                      Grow fast, stay in control.
+                      Sell smart without the stress.
                     </Typography>
                     <Typography>{plans[2]?.description}</Typography>
                   </TableCell>
@@ -283,9 +295,17 @@ export default function PricingPage() {
                     sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
                   >
                     <Typography fontWeight={700}>
-                      Unlock everything. Win everywhere.
+                      Grow fast, stay in control.
                     </Typography>
                     <Typography>{plans[3]?.description}</Typography>
+                  </TableCell>
+                  <TableCell
+                    sx={{ verticalAlign: 'top', minWidth: 240, width: '23%' }}
+                  >
+                    <Typography fontWeight={700}>
+                      Unlock everything. Win everywhere.
+                    </Typography>
+                    <Typography>{plans[4]?.description}</Typography>
                   </TableCell>
                 </StyledTableRow>
 
@@ -310,32 +330,6 @@ export default function PricingPage() {
                     ))}
                   </StyledTableRow>
                 ))}
-
-                {/* {rows.map((row, index) => (
-                  <StyledTableRow className="row" key={index}>
-                    <StickyTableCell>{row.name}</StickyTableCell>
-                    <TableCell
-                      sx={{ minWidth: 240, width: '23%' }}
-                      align="center"
-                    ></TableCell>
-                    <TableCell
-                      sx={{ minWidth: 240, width: '23%' }}
-                      align="center"
-                    ></TableCell>
-                    <TableCell
-                      sx={{ minWidth: 240, width: '23%' }}
-                      align="center"
-                    ></TableCell>
-                    <TableCell
-                      sx={{ minWidth: 240, width: '23%' }}
-                      align="center"
-                    ></TableCell>
-                    <TableCell
-                      sx={{ minWidth: 240, width: '23%' }}
-                      align="center"
-                    ></TableCell>
-                  </StyledTableRow>
-                ))} */}
               </TableBody>
             </Table>
           </TableContainer>
