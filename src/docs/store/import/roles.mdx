@@ -1,0 +1,165 @@
+---
+title: Importing Roles
+description: Learn how to import roles into Fuze Store POS.
+---
+
+# 🎛️ Importing Roles
+
+<br />
+
+Moving your data in or out of Fuze Store POS is easy! Whether you want to back up your information, switch systems, or update your products in bulk, you can import or export your store data in just a few steps—no technical skills needed.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Roles** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Roles.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Roles import file:
+
+<br />
+
+| Field           | Description                                                                                                          | Required | Possible Values       | Example                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------- | -------- | --------------------- | -------------------------------------------------- |
+| **id**          | Unique uuid identifier for the role (Empty field will create a new role)                                             |          |                       | 123e4567-e89b-12d3-a456-426614174000               |
+| **code**        | Short code for internal use and also treated as identifier. Existing code will update the role (usually auto-filled) |          |                       | Cashier                                            |
+| **name**        | Name of the role                                                                                                     | **Yes**  |                       | Cashier                                            |
+| **description** | A short note about what’s in this role                                                                               |          |                       | Responsible for handling customer transactions     |
+| **is_active**   | Choose if this role is active or not                                                                                 | **Yes**  | YES,NO                | YES                                                |
+| **permissions** | Pipe separated permissions, Please see below for all available permissions                                           | **Yes**  | _list of permissions_ | store\|category_view\|product\|service\|staff_view |
+
+<br />
+<br />
+
+## ✅ List of Permissions
+
+- **superadmin** – Full access to all features and settings
+
+- **store** – Manage store settings (check all **store\_** permissions)
+  - **store_modify** – Modify store settings
+  - **store_preferences_modify** – Change store preferences
+  - **store_data_migration** – Migrate store data between systems
+  - **store_dashboard_view** – View the store dashboard
+
+- **area** – Manage store areas (check all **area\_** permissions)
+  - **area_view** – View areas and units
+  - **area_modify** – Modify areas and units
+  - **area_delete** – Delete areas and units
+  - **area_data_migration** – Migrate area data
+
+- **billing_history** – Manage billing history (check all **billing*history*** permissions)
+  - **billing_history_view** – View billing history
+  - **billing_history_download** – Download billing history
+
+- **category** – Manage categories (check all **category\_** permissions)
+  - **category_view** – View categories
+  - **category_modify** – Modify categories
+  - **category_delete** – Delete categories
+  - **category_data_migration** – Migrate category data
+
+- **customer** – Manage customers (check all **customer\_** permissions)
+  - **customer_view** – View customers
+  - **customer_modify** – Modify customers
+  - **customer_delete** – Delete customers
+
+- **discount** – Manage discounts (check all **discount\_** permissions)
+  - **discount_view** – View discounts
+  - **discount_modify** – Modify discounts
+  - **discount_delete** – Delete discounts
+  - **discount_data_migration** – Migrate discount data
+
+- **event** – Manage events (check all **event\_** permissions)
+  - **event_view** – View events
+  - **event_modify** – Modify events
+  - **event_delete** – Delete events
+
+- **gift_card** – Manage gift cards (check all **gift_card\_** permissions)
+  - **gift_card_view** – View gift cards
+  - **gift_card_modify** – Modify gift cards
+  - **gift_card_delete** – Delete gift cards
+  - **gift_card_data_migration** – Migrate gift card data
+
+- **invitation** – Manage invitations (check all **invitation\_** permissions)
+  - **invitation_view** – View invitations
+  - **invitation_modify** – Modify invitations
+  - **invitation_delete** – Delete invitations
+
+- **item** – Manage items (check all **item\_** permissions)
+  - **item_view** – View items
+  - **item_modify** – Modify items
+  - **item_delete** – Delete items
+  - **item_data_migration** – Migrate item data
+
+- **order** – Manage orders (check all **order\_** permissions)
+  - **order_view** – View orders
+  - **order_create** – Create new orders
+  - **order_modify** – Modify orders
+
+- **payment_method** – Manage payment methods (check all **payment_method\_** permissions)
+  - **payment_method_view** – View payment methods
+  - **payment_method_modify** – Modify payment methods
+
+- **refund** – Manage refunds (check all **refund\_** permissions)
+  - **refund_view** – View refunds
+  - **refund_modify** – Modify refunds
+
+- **report** – Manage reports (check all **report\_** permissions)
+  - **report_view** – View reports
+  - **report_download** – Download reports
+
+- **role** – Manage roles (check all **role\_** permissions)
+  - **role_view** – View roles
+  - **role_modify** – Modify roles
+  - **role_delete** – Delete roles
+  - **role_data_migration** – Migrate role data
+
+- **session** – Manage sessions (check all **session\_** permissions)
+  - **session_modify** – Modify sessions
+
+- **staff** – Manage staff (check all **staff\_** permissions)
+  - **staff_view** – View staff
+  - **staff_modify** – Modify staff
+  - **staff_delete** – Delete staff
+  - **staff_data_migration** – Migrate staff data
+
+- **subscription** – Manage subscription (check all **subscription\_** permissions)
+  - **subscription_view** – View subscription details
+
+- **tax** – Manage taxes (check all **tax\_** permissions)
+  - **tax_view** – View taxes
+  - **tax_modify** – Modify taxes
+  - **tax_delete** – Delete taxes
+  - **tax_data_migration** – Migrate tax data
+
+- **transaction** – Manage transactions (check all **transaction\_** permissions)
+  - **transaction_view** – View transactions
+  - **transaction_modify** – Modify transactions
+
+- **waiting_list** – Manage waiting list (check all **waiting_list\_** permissions)
+  - **waiting_list_view** – View waiting list
+  - **waiting_list_modify** – Modify waiting list
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your role structure organized for easier management.
+- Use clear and descriptive names for your roles.
+- Regularly review and update your roles as needed.
+
+<br />

@@ -1,0 +1,59 @@
+---
+title: Importing Categories
+description: Learn how to import categories into Fuze Store POS.
+---
+
+# 🎛️ Importing Categories
+
+<br />
+
+Moving your data in or out of Fuze Store POS is easy! Whether you want to back up your information, switch systems, or update your products in bulk, you can import or export your store data in just a few steps—no technical skills needed.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Categories** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Categories.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Categories import file:
+
+<br />
+
+| Field                  | Description                                                                                                              | Required | Possible Values | Example                              |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- | --------------- | ------------------------------------ |
+| **id**                 | Unique uuid identifier for the category (Empty field will create a new category)                                         |          |                 | 123e4567-e89b-12d3-a456-426614174000 |
+| **parent_id**          | uuid identifier for the parent category (leave empty if none)                                                            |          |                 | 123e4567-e89b-12d3-a456-426614174001 |
+| **code**               | Short code for internal use and also treated as identifier. Existing code will update the category (usually auto-filled) |          |                 | massage-therapy                      |
+| **name**               | Name of the category                                                                                                     | **Yes**  |                 | Massage Therapy                      |
+| **color**              | A hex color that represents the category                                                                                 |          |                 | #FF5733                              |
+| **description**        | A short note about what’s in this category                                                                               |          |                 | Relaxing massages for stress relief  |
+| **is_active**          | Choose if this category is active or not                                                                                 | **Yes**  | YES,NO          | YES                                  |
+| **is_include_in_menu** | Choose if this category is included in the POS Register screen or not                                                    | **Yes**  | YES,NO          | YES                                  |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your category structure organized for easier management.
+- Use clear and descriptive names for your categories.
+- Regularly review and update your categories as needed.
+
+<br />

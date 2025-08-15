@@ -1,0 +1,64 @@
+---
+title: Importing Modifiers
+description: Learn how to import modifiers into Fuze Store POS.
+---
+
+# 🛠️ Importing Modifiers
+
+<br />
+
+Importing modifiers into Fuze Store POS is a straightforward process that allows you to quickly set up or update your inventory. Whether you're migrating from another system or simply adding new items, you can do it in just a few steps—no technical skills required.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Modifiers** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Modifiers.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Modifiers import file:
+
+<br />
+
+| Field                   | Description                                                                            | Required                        | Applicable Only in            | Possible Values  | Example                              |
+| ----------------------- | -------------------------------------------------------------------------------------- | ------------------------------- | ----------------------------- | ---------------- | ------------------------------------ |
+| **id**                  | Unique uuid identifier for the modifier or option (leave blank to create new)          |                                 |                               |                  | 123e4567-e89b-12d3-a456-426614174000 |
+| **code**                | Unique code for each modifier                                                          |                                 | modifier_type is **MODIFIER** |                  | mod-001                              |
+| **modifier_type**       | Type of entry                                                                          | **Yes**                         |                               | MODIFIER, OPTION | MODIFIER                             |
+| **name**                | Name of the modifier or option                                                         | **Yes**                         |                               |                  | Massage Pressure                     |
+| **label**               | The label shows in receipt, POS Register, and others. If not set, defaults to **name** |                                 |                               |                  | Massage Pressure                     |
+| **is_active**           | Whether the modifier is active                                                         | **Yes**                         | modifier_type is **MODIFIER** | YES, NO          | YES                                  |
+| **is_required**         | Whether the modifier is required                                                       | **Yes**                         | modifier_type is **MODIFIER** | YES, NO          | NO                                   |
+| **is_visible_on_front** | Whether the modifier is visible on the POS front                                       | **Yes**                         | modifier_type is **MODIFIER** | YES, NO          | YES                                  |
+| **type**                | Selection type for the modifier                                                        | **Yes**                         | modifier_type is **MODIFIER** | SINGLE, MULTIPLE | SINGLE                               |
+| **min_options**         | Minimum number of options selectable                                                   | **Yes** if type is **MULTIPLE** | modifier_type is **MODIFIER** |                  | 1                                    |
+| **max_options**         | Maximum number of options selectable                                                   | **Yes** if type is **MULTIPLE** | modifier_type is **MODIFIER** |                  | 3                                    |
+| **is_selected**         | Whether the option is selected by default                                              |                                 | modifier_type is **OPTION**   | YES, NO          | NO                                   |
+| **base_price**          | Price for the option                                                                   | **Yes**                         | modifier_type is **OPTION**   |                  | 12.50                                |
+| **ordering**            | Display order of the option                                                            |                                 | modifier_type is **OPTION**   |                  | 1                                    |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your product data consistent and accurate.
+- Regularly review and update your product information.
+
+<br />

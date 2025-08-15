@@ -1,0 +1,74 @@
+---
+title: Importing Products
+description: Learn how to import products into Fuze Store POS.
+---
+
+# 🍖 Importing Products
+
+<br />
+
+Importing products into Fuze Store POS is a straightforward process that allows you to quickly set up or update your inventory. Whether you're migrating from another system or simply adding new items, you can do it in just a few steps—no technical skills required.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Products** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Products.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Products import file:
+
+<br />
+
+| Field                    | Description                                                                    | Required                                   | Possible Values       | Example                              |
+| ------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------ | --------------------- | ------------------------------------ |
+| **id**                   | Unique uuid identifier for the product (Empty field will create a new product) |                                            |                       | 123e4567-e89b-12d3-a456-426614174000 |
+| **sku**                  | Stock Keeping Unit, a unique code for each product                             |                                            |                       | SKU-12345                            |
+| **enable_product**       | Whether the product is enabled/active in the store                             | **Yes**                                    | YES,NO                | YES                                  |
+| **availability**         | Product availability status                                                    | **Yes**                                    | AVAILABLE,UNAVAILABLE | AVAILABLE                            |
+| **name**                 | Name of the product                                                            | **Yes**                                    |                       | Grilled Chicken                      |
+| **type**                 | Type of product                                                                | **Yes**                                    | SIMPLE,BUNDLE         | simple                               |
+| **bundle_item_ids**      | Pipe-separated list of product IDs or SKUs included in the bundle              | **Yes**, If type is **BUNDLE**             |                       | SKU-123\|SKU-124                     |
+| **category_ids**         | Pipe-separated list of category IDs or category codes the product belongs to   |                                            |                       | chickens\|best-sellers               |
+| **description**          | Description of the product                                                     |                                            |                       | Delicious grilled chicken            |
+| **weight**               | Weight of the product                                                          |                                            |                       | 1.5                                  |
+| **weight_unit**          | Unit of weight                                                                 |                                            | g, kg, lb, oz         | kg                                   |
+| **manage_inventory**     | Whether inventory is managed for this product                                  | **Yes**                                    | YES,NO                | NO                                   |
+| **quantity**             | Quantity in stock                                                              | **Yes**, If manage_inventory is **Yes**    |                       | 100                                  |
+| **low_stock_level**      | Threshold for low stock alert                                                  |                                            |                       | 10                                   |
+| **stock_status**         | Stock status of the product                                                    | **Yes**, If manage_inventory is **Yes**    | IN_STOCK,OUT_OF_STOCK | IN_STOCK                             |
+| **modifier_ids**         | Pipe-separated list of modifier IDs or modifier codes                          |                                            |                       | chicken-part\|chicken-size           |
+| **price**                | Selling price of the product _(Tax Included)_                                  | **Yes**                                    |                       | 79.99                                |
+| **cost**                 | Cost price of the product                                                      |                                            |                       | 10.00                                |
+| **enable_special_price** | Whether special price is enabled                                               |                                            | YES,NO                | NO                                   |
+| **special_price**        | Special discounted price                                                       |                                            |                       | 7.99                                 |
+| **special_price_from**   | Start date for special price _(ISO string format)_                             |                                            |                       | 2024-06-01                           |
+| **special_price_to**     | End date for special price _(ISO string format)_                               |                                            |                       | 2024-06-30                           |
+| **tax_class**            | Tax class name or code                                                         |                                            | TAXABLE_GOODS,NONE    | NONE                                 |
+| **tax_id**               | Tax ID (UUID) associated with the product                                      | **Yes**, If tax_class is **TAXABLE_GOODS** |                       | 123e4567-e89b-12d3-a456-426614173000 |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your product data consistent and accurate.
+- Regularly review and update your product information.
+
+<br />

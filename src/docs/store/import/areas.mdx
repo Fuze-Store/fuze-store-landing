@@ -1,0 +1,57 @@
+---
+title: Importing Areas
+description: Learn how to import areas into Fuze Store POS.
+---
+
+# 🪑 Importing Areas
+
+<br />
+
+Importing areas into Fuze Store POS is a straightforward process that allows you to quickly set up or update your inventory. Whether you're migrating from another system or simply adding new items, you can do it in just a few steps—no technical skills required.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Areas** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Areas.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Areas import file:
+
+<br />
+
+| Field           | Description                                                               | Required | Applicable Only in | Possible Values                            | Example                              |
+| --------------- | ------------------------------------------------------------------------- | -------- | ------------------ | ------------------------------------------ | ------------------------------------ |
+| **id**          | Unique uuid identifier for the area or option (leave blank to create new) |          | _both_             |                                            | 123e4567-e89b-12d3-a456-426614174000 |
+| **code**        | Unique code for each area                                                 |          | type is **AREA**   |                                            | al-fresco                            |
+| **type**        | Type of entry                                                             | **Yes**  | _both_             | AREA, UNIT                                 | AREA                                 |
+| **name**        | Name of the area or unit                                                  | **Yes**  | _both_             |                                            | Al Fresco                            |
+| **description** | A brief description of the area                                           |          | type is **AREA**   |                                            |                                      |
+| **capacity**    | How many can fit in the unit                                              | **Yes**  | type is **UNIT**   | _(numeric)_                                | 5                                    |
+| **status**      | Status of the unit                                                        | **Yes**  | type is **UNIT**   | AVAILABLE, UNAVAILABLE, OCCUPIED, RESERVED | AVAILABLE                            |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your product data consistent and accurate.
+- Regularly review and update your product information.
+
+<br />

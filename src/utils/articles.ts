@@ -181,7 +181,6 @@ export const guides: Guide[] = [
         href: '/docs/store/adding-store-address',
         text: 'Adding Store Address',
       },
-      // { href: '/docs/account_social', text: 'Social Links' },
       { href: '/docs/store/import-export-data', text: 'Import/Export Data' },
       {
         href: '/docs/store/area/overview',
@@ -457,6 +456,66 @@ export const guides: Guide[] = [
             text: 'Change Password',
           },
         ],
+      },
+    ],
+  },
+  {
+    title: 'Import and Export Data',
+    description: 'Manage your data import and export processes efficiently.',
+    links: [
+      {
+        href: '/docs/store/import/overview',
+        text: 'Import Overview',
+        links: [
+          {
+            href: '/docs/store/import/categories',
+            text: 'Importing Categories',
+          },
+          {
+            href: '/docs/store/import/products',
+            text: 'Importing Products',
+          },
+          {
+            href: '/docs/store/import/product-stocks',
+            text: 'Importing Product Stocks',
+          },
+          {
+            href: '/docs/store/import/services',
+            text: 'Importing Services',
+          },
+          {
+            href: '/docs/store/import/modifiers',
+            text: 'Importing Modifiers',
+          },
+          {
+            href: '/docs/store/import/taxes',
+            text: 'Importing Taxes',
+          },
+          {
+            href: '/docs/store/import/discounts',
+            text: 'Importing Discounts',
+          },
+          {
+            href: '/docs/store/import/areas',
+            text: 'Importing Areas',
+          },
+          {
+            href: '/docs/store/import/roles',
+            text: 'Importing Roles',
+          },
+          {
+            href: '/docs/store/import/gift-cards',
+            text: 'Importing Gift Cards',
+          },
+          {
+            href: '/docs/store/import/staffs',
+            text: 'Importing Staffs',
+          },
+        ],
+      },
+      {
+        href: '/docs/store/export/overview',
+        text: 'Export Overview',
       },
     ],
   },

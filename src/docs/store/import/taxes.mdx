@@ -1,0 +1,59 @@
+---
+title: Importing Taxes
+description: Learn how to import taxes into Fuze Store POS.
+---
+
+# 🏦 Importing Taxes
+
+<br />
+
+Importing taxes into Fuze Store POS is a straightforward process that allows you to quickly set up or update your tax rates. Whether you're migrating from another system or simply adding new tax rates, you can do it in just a few steps—no technical skills required.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Taxes** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Taxes.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Taxes import file:
+
+<br />
+
+| Field           | Description                                                              | Required | Possible Values       | Example                              |
+| --------------- | ------------------------------------------------------------------------ | -------- | --------------------- | ------------------------------------ |
+| **id**          | Unique uuid identifier for the tax (Empty field will create a new entry) |          |                       | 123e4567-e89b-12d3-a456-426614174000 |
+| **name**        | Name of the tax                                                          | **Yes**  |                       | General VAT                          |
+| **description** | A short note about what’s in this tax                                    |          |                       | General VAT of the Philippines       |
+| **is_active**   | Choose if this tax is active or not                                      | **Yes**  | YES,NO                | YES                                  |
+| **rate**        | The tax rate value (as a percentage or fixed amount)                     | **Yes**  |                       | 20                                   |
+| **rate_type**   | The type of tax rate (percentage or fixed amount)                        | **Yes**  | FIXED, PERCENTAGE     | PERCENTAGE                           |
+| **currency**    | The currency code for the tax (ISO Currency Code)                        | **Yes**  | _(ISO Currency Code)_ | PHP                                  |
+| **country**     | The country code for which the tax applies (ISO Country Code)            | **Yes**  | _(ISO Country Code)_  | PH                                   |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your tax structure organized for easier management.
+- Use clear and descriptive names for your taxes.
+- Regularly review and update your taxes as needed.
+
+<br />

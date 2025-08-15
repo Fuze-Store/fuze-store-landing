@@ -1,0 +1,60 @@
+---
+title: Importing Discounts
+description: Learn how to import discounts into Fuze Store POS.
+---
+
+# 💰 Importing Discounts
+
+<br />
+
+Importing discounts into Fuze Store POS is a straightforward process that allows you to quickly set up or update your discount rates. Whether you're migrating from another system or simply adding new discount rates, you can do it in just a few steps—no technical skills required.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Discounts** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Discounts.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Discounts import file:
+
+<br />
+
+| Field             | Description                                                                                                              | Required | Possible Values     | Example                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- | ------------------- | -------------------------------------- |
+| **id**            | Unique uuid identifier for the discount (Empty field will create a new entry)                                            |          |                     | 123e4567-e89b-12d3-a456-426614174000   |
+| **code**          | Short code for internal use and also treated as identifier. Existing code will update the discount (usually auto-filled) |          |                     | pwd-discount                           |
+| **name**          | Name of the discount                                                                                                     | **Yes**  |                     | PWD Discount                           |
+| **description**   | A short note about what’s in this discount                                                                               |          |                     | Discount for Persons with Disabilities |
+| **is_active**     | Choose if this discount is active or not                                                                                 | **Yes**  | YES,NO              | YES                                    |
+| **rate**          | The discount rate value                                                                                                  | **Yes**  |                     | 20                                     |
+| **rate_type**     | The type of discount rate                                                                                                | **Yes**  | FIXED, PERCENTAGE   | PERCENTAGE                             |
+| **duration_from** | The start date for the discount validity (ISO 8601 format)                                                               |          | _(ISO 8601 format)_ | 2023-01-01                             |
+| **duration_to**   | The end date for the discount validity (ISO 8601 format)                                                                 |          | _(ISO 8601 format)_ | 2023-12-31                             |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your discount structure organized for easier management.
+- Use clear and descriptive names for your discounts.
+- Regularly review and update your discounts as needed.
+
+<br />

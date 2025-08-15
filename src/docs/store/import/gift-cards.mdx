@@ -1,0 +1,59 @@
+---
+title: Importing Gift Cards
+description: Learn how to import gift cards into Fuze Store POS.
+---
+
+# 🎛️ Importing Gift Cards
+
+<br />
+
+Moving your data in or out of Fuze Store POS is easy! Whether you want to back up your information, switch systems, or update your products in bulk, you can import or export your store data in just a few steps—no technical skills needed.
+
+<br />
+<br />
+
+## 📍 Step-by-Step Guide
+
+1. **Open the Menu:** Click the **☰ sidebar hamburger menu** to open navigation.
+2. **Go to Store:** In **Store** section, select **Store** from the menu list.
+3. **Go to Import:** In **Store** screen, select **Import** from the list.
+4. **Fill Form:**
+   - In the "Type" field, choose **Gift Cards** from the dropdown menu.
+   - In the "File" field, upload your file (CSV or Excel format).
+     > See sample [Sample Gift Cards.xlsx](#) for reference.
+5. **Import:** Click on **Import** button. Your data will be added to your store.
+
+<br />
+
+## ⚙️ Field Explanations
+
+<br />
+
+Here are the columns structure of the Gift Cards import file:
+
+<br />
+
+| Field           | Description                                                                                                               | Required | Possible Values         | Example                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------- | ------------------------------------ |
+| **id**          | Unique uuid identifier for the gift card (Empty field will create a new gift card)                                        |          |                         | 123e4567-e89b-12d3-a456-426614174000 |
+| **code**        | Short code for internal use and also treated as identifier. Existing code will update the gift card (usually auto-filled) |          |                         | EARLYBIRD                            |
+| **amount**      | The monetary value of the gift card                                                                                       | **Yes**  | _any number_            | 100                                  |
+| **description** | A short note about what’s in this gift card                                                                               |          |                         | Gift Card for early bird customers   |
+| **max_usage**   | Maximum number of times this gift card can be used                                                                        |          | _any number_            | 100                                  |
+| **usage_count** | Number of times this gift card has already been used                                                                      |          | _any number_            | 0                                    |
+| **is_active**   | Choose if this gift card is active or not                                                                                 | **Yes**  | YES,NO                  | YES                                  |
+| **expires_at**  | Expiry date and time for the gift card                                                                                    |          | _(ISO Datetime string)_ | 2024-12-31T23:59:59Z                 |
+
+<br />
+<br />
+
+## 💡 Tips
+
+- Always double-check your data before importing to avoid mistakes.
+- If you’re not sure about the file format, download a sample export first.
+- If you need help, contact support or check the Help Center.
+- Keep your gift card structure organized for easier management.
+- Use clear and descriptive names for your gift cards.
+- Regularly review and update your gift cards as needed.
+
+<br />
