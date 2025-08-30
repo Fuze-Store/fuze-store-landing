@@ -444,6 +444,10 @@ export const guides: Guide[] = [
             href: '/docs/account/linking-unlinking-social-accounts',
             text: 'Linking and Unlinking Social Accounts',
           },
+          {
+            href: '/docs/account/deleting-an-account',
+            text: 'Deleting an Account',
+          },
         ],
       },
       { href: '/docs/store/switching-stores', text: 'How to Switch Stores' },
