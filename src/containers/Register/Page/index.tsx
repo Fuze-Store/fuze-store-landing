@@ -1,10 +1,15 @@
 'use client';
 
 import { Box, Container, Toolbar, Typography } from '@mui/material';
+import { AxiosError } from 'axios';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { toast } from 'sonner';
 
 import useRegister from '@/containers/Auth/hooks/useRegister';
-import { FormInputs } from '@/containers/Register/Form/Provider/types';
+
+import type { FormInputs } from '@/containers/Register/Form/Provider/types';
+import type { RegisterErrorResponse } from '@/types/register';
 
 import GoBackButton from '@/components/GoBackButton';
 import RegisterForm from '@/containers/Register/Form';
@@ -14,10 +19,27 @@ import RegisterFormSubmit from '@/containers/Register/Form/Submit';
 import logo from '@/images/logo.png';
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { register, error } = useRegister();
 
   const onSubmit = async (data: FormInputs) => {
-    await register({ ...data, newPassword: data.password });
+    try {
+      const response = await register({ ...data, newPassword: data.password });
+
+      // Redirect to referer if exists
+      const referer = searchParams.get('referer');
+      if (referer) {
+        window.location.href = decodeURIComponent(referer);
+        return;
+      }
+
+      toast.success(response.message);
+      router.replace('/login');
+    } catch (err) {
+      const error = err as AxiosError<RegisterErrorResponse, unknown>;
+      toast.error(error.response?.data.message || 'Registration failed');
+    }
   };
 
   return (

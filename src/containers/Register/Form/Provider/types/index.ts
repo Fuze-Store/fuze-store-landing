@@ -34,6 +34,7 @@ export const schema = z
         'Password must contain at least one special character',
       ),
     confirmPassword: z.string(),
+    couponCode: z.string().optional(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Passwords must match',

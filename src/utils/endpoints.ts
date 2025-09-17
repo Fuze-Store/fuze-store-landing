@@ -65,6 +65,9 @@ export const endpoints = {
     paymentSessionDetails: '/api/v1/checkout/payments/sessions/:sessionId',
     paymentDetails: '/api/v1/checkout/payments/details',
   },
+  coupon: {
+    validate: '/api/v1/coupons/validate',
+  },
   csrf: '/sanctum/csrf-cookie',
   oauth2: {
     authorize: '/oauth/authorize',

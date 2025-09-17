@@ -8,6 +8,7 @@ export type RegisterPayload = {
   email: string;
   newPassword: string;
   confirmPassword: string;
+  couponCode?: string;
 };
 export type RegisterResponse = ApiSuccessResponse & { data: User };
 

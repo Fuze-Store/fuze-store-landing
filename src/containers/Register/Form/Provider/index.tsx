@@ -38,7 +38,7 @@ const RegisterFormProvider = ({
     defaultValues: getInitialValues(),
     resolver: zodResolver(schema),
   });
-  const { handleSubmit, setError, reset } = form;
+  const { handleSubmit, setError } = form;
 
   useEffect(() => {
     if (errors) generateFormErrors(errors, setError);
