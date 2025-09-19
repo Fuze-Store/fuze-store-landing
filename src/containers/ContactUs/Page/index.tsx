@@ -1,13 +1,10 @@
 'use client';
 
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Toolbar } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Fab from '@mui/material/Fab';
 import Typography from '@mui/material/Typography';
 
-import ScrollTop from '@/components/ScrollToTop';
 import ContactUsForm from '@/containers/ContactUs/Form';
 import ContactUsFormProvider from '@/containers/ContactUs/Form/Provider';
 import ContactUsFormSubmit from '@/containers/ContactUs/Form/Submit';
@@ -65,12 +62,6 @@ export default function ContactUsPage() {
             />
           </Container>
         </Box>
-
-        <ScrollTop>
-          <Fab size="small" aria-label="scroll back to top">
-            <KeyboardArrowUpIcon />
-          </Fab>
-        </ScrollTop>
       </ContactUsFormProvider>
     </>
   );

@@ -1,10 +1,8 @@
 'use client';
 
-import ScrollTop from '@/components/ScrollToTop';
 import CoreValues from '@/containers/AboutUs/CoreValues';
 import WhoWeServe from '@/containers/AboutUs/WhoWeServe';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { Box, Container, Fab, Grid, Toolbar, Typography } from '@mui/material';
+import { Box, Container, Grid, Toolbar, Typography } from '@mui/material';
 
 export default function AboutUsPage() {
   return (
@@ -132,12 +130,6 @@ export default function AboutUsPage() {
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <CoreValues />
       </Box>
-
-      <ScrollTop>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
     </>
   );
 }

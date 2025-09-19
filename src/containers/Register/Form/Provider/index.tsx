@@ -85,6 +85,11 @@ function generateFormErrors(
       types: getErrorMessageTypes(errors.username),
     });
   }
+  if (errors.couponCode && errors.couponCode.length > 0) {
+    setError('couponCode', {
+      types: getErrorMessageTypes(errors.couponCode),
+    });
+  }
 }
 
 export default memo(RegisterFormProvider);

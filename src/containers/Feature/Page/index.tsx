@@ -1,20 +1,11 @@
 'use client';
 
-import ScrollTop from '@/components/ScrollToTop';
 import Catalog from '@/containers/Feature/Catalog';
 import Dashboard from '@/containers/Feature/Dashboard';
 import Event from '@/containers/Feature/Event';
 import PointOfSale from '@/containers/Feature/PointOfSale';
 import Sales from '@/containers/Feature/Sales';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import {
-  Box,
-  Container,
-  Divider,
-  Fab,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { Box, Container, Divider, Toolbar, Typography } from '@mui/material';
 
 export default function FeaturePage() {
   return (
@@ -96,12 +87,6 @@ export default function FeaturePage() {
       </Box>
 
       <Divider />
-
-      <ScrollTop>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
-      </ScrollTop>
     </>
   );
 }
