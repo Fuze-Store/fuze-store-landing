@@ -4,17 +4,15 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Divider } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 import HeroHome from '@/components/HeroHome';
 import MetaHeader from '@/components/MetaHeader';
 import HomeFeatures from '@/containers/Home/FeaturesSection';
-import Newsletter from '@/containers/Home/Newsletter';
-import Roadmap from '@/containers/Home/Roadmap';
 import SupportedPlatform from '@/containers/Home/SupportedPlatform';
 import UseCase from '@/containers/Home/UseCase';
-import WhatWeOffer from '@/containers/Home/WhatWeOffer';
+import Newsletter from '@/containers/Newsletter';
+import WhatWeOffer from '@/containers/WhatWeOffer';
 
 export default function Page() {
   return (
@@ -110,7 +108,7 @@ export default function Page() {
         </Box>
 
         {/* Roadmap */}
-        <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        {/* <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
           <Roadmap />
 
           <Box mt={6} px={2} textAlign="center">
@@ -127,16 +125,16 @@ export default function Page() {
               Submit an Idea
             </Button>
           </Box>
-        </Box>
+        </Box> */}
 
         {/* Newsletter */}
         <Box
           component="section"
           sx={(theme) => ({
-            bgcolor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.grey[900]
-                : theme.palette.grey[50],
+            // bgcolor:
+            //   theme.palette.mode === 'dark'
+            //     ? theme.palette.grey[900]
+            //     : theme.palette.grey[50],
             py: theme.spacing(10),
           })}
         >

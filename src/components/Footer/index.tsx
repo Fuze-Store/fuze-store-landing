@@ -2,22 +2,24 @@
 
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import XIcon from '@mui/icons-material/X';
 import { Box, Stack, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import TikTokIcon from '@/components/Icons/TikTokIcon';
-import Logo from '@/components/Logo';
 import { paths } from '@/helpers/page.helper';
+
+import TikTokIcon from '@/components/Icons/TikTokIcon';
+import ViberIcon from '@/components/Icons/ViberIcon';
+import Logo from '@/components/Logo';
 
 const ListGroup = styled('ul')(() => ({
   display: 'flex',
   alignItems: 'center',
   listStyle: 'none',
   listStyleType: 'none',
+  flexWrap: 'wrap',
   padding: 0,
 }));
 
@@ -25,6 +27,7 @@ const LinkItem = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   marginRight: theme.spacing(4),
+  marginBottom: theme.spacing(2),
   color: theme.palette.common.white,
   textDecoration: 'none',
   fontWeight: 500,
@@ -59,13 +62,18 @@ export default function Footer() {
             <Stack direction="row" spacing={1}>
               <LinkItem
                 className="social"
-                href="https://facebook.com"
+                href="https://web.facebook.com/profile.php?id=61580336897253"
+                title="Fuze Store"
                 target="_blank"
               >
                 <FacebookOutlinedIcon sx={{ width: 40, height: 40 }} />
               </LinkItem>
-              <LinkItem className="social" href="https://x.com" target="_blank">
-                <XIcon sx={{ width: 40, height: 40 }} />
+              <LinkItem
+                className="social"
+                href="https://invite.viber.com/?g2=AQBjWRnR0%2B5AhlVPjtSKqBZRo%2BgLxIe2GipjXl7aQBgkfWVuwl6pi0f7ZnGcgWbM"
+                target="_blank"
+              >
+                <ViberIcon color="inherit" sx={{ width: 40, height: 40 }} />
               </LinkItem>
               <LinkItem
                 className="social"
@@ -120,13 +128,9 @@ export default function Footer() {
           sx={(theme) => ({ [theme.breakpoints.up('lg')]: { width: '80%' } })}
         >
           <Typography color="#fff">
-            © 2025 Fuze Store. All rights reserved. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Maecenas pulvinar sodales felis ut
-            auctor. Sed at sapien tempus, gravida justo in, viverra lacus.
-            Vivamus pharetra tincidunt sem, et molestie velit tincidunt quis.
-            Nulla id posuere leo. Proin facilisis magna a lectus interdum, eget
-            tincidunt quam sodales. Vestibulum sagittis ullamcorper rutrum.
-            Proin neque felis, semper sit amet nisl ut, luctus tristique felis.
+            © 2025 Fuze Store. All rights reserved. Fuze Store POS and all
+            related content are the property of Fuze Store. Unauthorized use,
+            reproduction, or distribution is strictly prohibited.
           </Typography>
         </Box>
       </Container>

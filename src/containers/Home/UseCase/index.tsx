@@ -15,6 +15,12 @@ import useEmblaCarousel from 'embla-carousel-react';
 import React from 'react';
 import './style.css';
 
+type ItemProps = {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+};
+
 const StackItem = styled(Box)(({ theme }) => ({
   minWidth: 0,
   flex: `0 0 100%`,
@@ -33,26 +39,16 @@ const StackItem = styled(Box)(({ theme }) => ({
   },
 }));
 
-const Item = ({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) => (
+const Item = ({ icon, title, description }: ItemProps) => (
   <StackItem className="embla__slide_use_case">
     <Stack
       sx={{ p: 3, height: '100%' }}
       direction="column"
-      flexWrap="wrap"
       alignItems="space-between"
     >
       <Box sx={{ flex: 1 }}>
         <Box
           sx={{
-            flex: 1,
             borderRadius: '50%',
             borderWidth: 5,
             borderColor: '#424242',
