@@ -25,6 +25,9 @@ const eslintConfig = [
       'public/assets/',
       'src/assets/',
     ],
+    rules: {
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    },
   }),
 ];
 

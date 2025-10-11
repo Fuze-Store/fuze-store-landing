@@ -41,7 +41,7 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
       if (code === SubscriptionPlan.BASIC) return 'Basic Plan';
       if (code === SubscriptionPlan.STARTER) return 'Starter';
       if (code === SubscriptionPlan.STANDARD) return 'Standard';
-      if (code === SubscriptionPlan.ENTERPRISE) return 'Enterprise';
+      if (code === SubscriptionPlan.PREMIUM) return 'Premium';
       return '';
     },
     [],

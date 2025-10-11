@@ -1,7 +1,5 @@
 'use client';
 
-import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import { Box, Stack, Typography } from '@mui/material';
 import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
@@ -10,9 +8,8 @@ import { usePathname } from 'next/navigation';
 
 import { paths } from '@/helpers/page.helper';
 
-import TikTokIcon from '@/components/Icons/TikTokIcon';
-import ViberIcon from '@/components/Icons/ViberIcon';
 import Logo from '@/components/Logo';
+import SocialList from '@/components/SocialList';
 
 const ListGroup = styled('ul')(() => ({
   display: 'flex',
@@ -59,37 +56,7 @@ export default function Footer() {
                 <Logo isThemeDark width={40} height={40} />
               </Link>
             </Box>
-            <Stack direction="row" spacing={1}>
-              <LinkItem
-                className="social"
-                href="https://web.facebook.com/profile.php?id=61580336897253"
-                title="Fuze Store"
-                target="_blank"
-              >
-                <FacebookOutlinedIcon sx={{ width: 40, height: 40 }} />
-              </LinkItem>
-              <LinkItem
-                className="social"
-                href="https://invite.viber.com/?g2=AQBjWRnR0%2B5AhlVPjtSKqBZRo%2BgLxIe2GipjXl7aQBgkfWVuwl6pi0f7ZnGcgWbM"
-                target="_blank"
-              >
-                <ViberIcon color="inherit" sx={{ width: 40, height: 40 }} />
-              </LinkItem>
-              <LinkItem
-                className="social"
-                href="https://instagram.com"
-                target="_blank"
-              >
-                <InstagramIcon sx={{ width: 40, height: 40 }} />
-              </LinkItem>
-              <LinkItem
-                className="social"
-                href="https://tiktok.com"
-                target="_blank"
-              >
-                <TikTokIcon color="inherit" sx={{ width: 40, height: 40 }} />
-              </LinkItem>
-            </Stack>
+            <SocialList dark />
           </Stack>
         </Box>
 

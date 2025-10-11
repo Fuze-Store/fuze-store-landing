@@ -15,7 +15,6 @@ import type { FormInputs } from '@/containers/ContactUs/Form/Provider/types';
 export const getInitialValues = (): FormInputs => ({
   message: '',
   email: '',
-  firstName: '',
-  lastName: '',
+  name: '',
   phoneNumber: '',
 });
