@@ -48,10 +48,16 @@ const DialogConfirmation = ({
       {description && (
         <>
           {typeof description === 'string' ? (
-            <DialogContentText>{description}</DialogContentText>
+            <DialogContentText color="text.primary">
+              {description}
+            </DialogContentText>
           ) : (
             description.map((item, index) => (
-              <DialogContentText key={index} sx={{ mb: 2 }}>
+              <DialogContentText
+                key={index}
+                sx={{ mb: 2 }}
+                color="text.primary"
+              >
                 {item}
               </DialogContentText>
             ))
@@ -59,7 +65,7 @@ const DialogConfirmation = ({
         </>
       )}
     </DialogContent>
-    <DialogActions>
+    <DialogActions sx={{ p: 2 }}>
       <Button sx={{ minWidth: 80 }} {...ButtonCancelProps} onClick={onCancel}>
         {cancelText}
       </Button>

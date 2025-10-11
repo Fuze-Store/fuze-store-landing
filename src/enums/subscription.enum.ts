@@ -34,6 +34,7 @@ export enum PlanFeature {
   IMPORT_DATA = 'import_data',
   EXPORT_DATA = 'export_data',
   TAXES = 'taxes',
+  ORDER_HISTORIES = 'order_histories',
   GIFT_CARDS = 'gift_cards',
   REPORTS_BASICS = 'reports_basic', // View Basic Reports
   REPORTS_ADVANCED = 'reports_advanced', // View, Download Reports

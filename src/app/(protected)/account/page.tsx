@@ -1,6 +1,12 @@
 'use client';
 
-import { CircularProgress, Stack, Toolbar } from '@mui/material';
+import {
+  CircularProgress,
+  Divider,
+  Stack,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
@@ -37,24 +43,32 @@ export default function Page() {
           description="Manage your account settings for Fuze Store."
         />
 
-        <Container maxWidth="sm">
+        <Container sx={{ marginLeft: 0 }} maxWidth="sm">
           <Box py={2}>
-            <SectionContainer>
+            <Typography fontWeight={600}>Personal Information</Typography>
+            <Divider sx={{ mb: 2 }} />
+
+            <SectionContainer mt={3} mb={4}>
               <AccountDetailsInfo
-                email={account.email}
                 fullName={account.info.fullName}
                 initials={account.info.initials}
               />
             </SectionContainer>
 
-            <SectionContainer>
+            <Typography fontWeight={600}>Email</Typography>
+            <Divider sx={{ mb: 2 }} />
+
+            <SectionContainer mt={3} mb={4}>
               <AccountDetailsEmail
                 email={account.email}
                 isVerified={account.isVerified}
               />
             </SectionContainer>
 
-            <SectionContainer>
+            <Typography fontWeight={600}>Social</Typography>
+            <Divider sx={{ mb: 2 }} />
+
+            <SectionContainer mt={3} mb={4}>
               <AccountDetailsProvider providers={account.providers} />
             </SectionContainer>
 

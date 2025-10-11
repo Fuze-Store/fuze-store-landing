@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Card, CardContent, Chip, Grid, Stack } from '@mui/material';
+import { Button, Chip, Grid, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { memo } from 'react';
@@ -17,37 +17,30 @@ type Props = {
 const AccountDetailsEmail = ({ email, isVerified = false }: Props) => {
   if (email) {
     return (
-      <Card elevation={0} variant="outlined">
-        <CardContent>
-          <Typography variant="body2">Email</Typography>
-        </CardContent>
-        <CardContent>
-          <Grid container spacing={1}>
-            <Grid size={{ xs: 12, sm: 'grow' }}>
-              <Stack direction="row" spacing={1}>
-                <Typography>{email}</Typography>
-                {!isVerified && (
-                  <Chip label="Not Verified" size="small" color="warning" />
-                )}
-              </Stack>
-
-              <Button
-                href={paths.accountChangeEmail}
-                LinkComponent={Link}
-                size="small"
-              >
-                Change Email
-              </Button>
-            </Grid>
-
+      <Grid container spacing={1}>
+        <Grid size={{ xs: 12, sm: 'grow' }}>
+          <Stack direction="row" spacing={1}>
+            <Typography>{email}</Typography>
             {!isVerified && (
-              <Grid size={{ xs: 12, sm: 'auto' }}>
-                <AccountResendEmailButton isVerified={isVerified} />
-              </Grid>
+              <Chip label="Not Verified" size="small" color="warning" />
             )}
+          </Stack>
+
+          <Button
+            href={paths.accountChangeEmail}
+            LinkComponent={Link}
+            size="small"
+          >
+            Change Email
+          </Button>
+        </Grid>
+
+        {!isVerified && (
+          <Grid size={{ xs: 12, sm: 'auto' }}>
+            <AccountResendEmailButton isVerified={isVerified} />
           </Grid>
-        </CardContent>
-      </Card>
+        )}
+      </Grid>
     );
   }
 

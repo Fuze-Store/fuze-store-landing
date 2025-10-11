@@ -111,6 +111,7 @@ const PlanCard = ({
         <Button
           sx={{ borderRadius: 2 }}
           variant="contained"
+          disableElevation
           fullWidth
           color="inherit"
         >
@@ -125,6 +126,7 @@ const PlanCard = ({
           sx={{ borderRadius: 2 }}
           variant="contained"
           fullWidth
+          disableElevation
           color="inherit"
         >
           Get Started with Starter

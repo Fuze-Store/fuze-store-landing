@@ -66,26 +66,26 @@ export const accountPages = [
   {
     path: paths.account,
     label: 'Account',
-    icon: <PersonIcon />,
+    icon: <PersonIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountSubscription,
     label: 'Subscription',
-    icon: <CurrencyExchangeIcon />,
+    icon: <CurrencyExchangeIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountSecurity,
     label: 'Security',
-    icon: <SecurityIcon />,
+    icon: <SecurityIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountAddress,
     label: 'Address',
-    icon: <BusinessIcon />,
+    icon: <BusinessIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountInvoice,
     label: 'Invoices',
-    icon: <ReceiptIcon />,
+    icon: <ReceiptIcon fontSize="small" color="secondary" />,
   },
 ];

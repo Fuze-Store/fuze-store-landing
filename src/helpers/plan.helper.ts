@@ -136,12 +136,41 @@ export function getDifferentFeaturesValues(
 }
 
 export function getFeatureValue(value: PlanFeatureValue, feature: string) {
-  if (feature === 'pos' && typeof value === 'number') {
-    return `${value} orders / month`;
-  }
+  if (typeof value === 'number') {
+    const formattedValue = Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 0,
+    }).format(value);
 
-  if (feature === 'transactions' && typeof value === 'number') {
-    return `up to last ${value} months`;
+    if (feature === PlanFeature.POS) {
+      return `${formattedValue} orders per month`;
+    }
+
+    if (feature === PlanFeature.AREA) {
+      return `${formattedValue} area(s)`;
+    }
+
+    if (
+      feature === PlanFeature.TRANSACTIONS ||
+      feature === PlanFeature.ORDER_HISTORIES
+    ) {
+      return `up to last ${formattedValue} month(s)`;
+    }
+
+    if (feature === PlanFeature.CATALOGS) {
+      return `${formattedValue} products / services`;
+    }
+
+    if (feature === PlanFeature.STAFFS) {
+      return `${formattedValue} staff(s)`;
+    }
+
+    if (feature === PlanFeature.CUSTOMERS) {
+      return `${formattedValue} saved customer(s)`;
+    }
+
+    if (feature === PlanFeature.STORE_LIMIT) {
+      return `up to ${formattedValue} store(s)`;
+    }
   }
 
   if (

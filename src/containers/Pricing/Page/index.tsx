@@ -107,6 +107,8 @@ export default function PricingPage() {
         </Container>
       </Box>
 
+      <Divider />
+
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
         <Container disableGutters maxWidth="lg">
           <Faqs />

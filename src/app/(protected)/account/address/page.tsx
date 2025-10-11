@@ -36,24 +36,30 @@ export default function Page() {
         description="Manage your address settings for Fuze Store."
       />
 
-      <Container maxWidth="sm">
-        <AddressFormProvider
-          address={response?.data}
-          errors={error?.errors}
-          onSubmit={onSubmit}
-        >
-          {error && (
-            <SectionContainer mb={2}>
-              <Alert severity="error">{error.message}</Alert>
-            </SectionContainer>
-          )}
+      <Container sx={{ marginLeft: 0 }} maxWidth="sm">
+        <Box py={2}>
+          <AddressFormProvider
+            address={response?.data}
+            errors={error?.errors}
+            onSubmit={onSubmit}
+          >
+            {error && (
+              <SectionContainer mb={2}>
+                <Alert severity="error">{error.message}</Alert>
+              </SectionContainer>
+            )}
 
-          <AddressForm />
+            <AddressForm />
 
-          <Box mb={1}>
-            <AddressFormSubmit variant="contained" disableElevation fullWidth />
-          </Box>
-        </AddressFormProvider>
+            <Box mb={1}>
+              <AddressFormSubmit
+                variant="contained"
+                disableElevation
+                fullWidth
+              />
+            </Box>
+          </AddressFormProvider>
+        </Box>
       </Container>
     </>
   );

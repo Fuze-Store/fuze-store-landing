@@ -1,13 +1,6 @@
 'use client';
 
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CircularProgress,
-  Stack,
-} from '@mui/material';
+import { Box, Button, CircularProgress, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback } from 'react';
 
@@ -83,64 +76,62 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   };
 
   return (
-    <Card elevation={0}>
-      <CardContent>
-        <SectionContainer>
-          <Typography>{getAccountSubscriptionLabel(code)}</Typography>
-        </SectionContainer>
+    <Box py={2}>
+      <SectionContainer>
+        <Typography>{getAccountSubscriptionLabel(code)}</Typography>
+      </SectionContainer>
 
-        {loading ? (
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <CircularProgress />
-          </Box>
-        ) : (
-          <>
-            <SectionContainer>
-              {isCanceled ? (
-                <Typography>Subscription canceled</Typography>
-              ) : (
-                <Typography>{getAccountSubscriptionMessage(code)}</Typography>
-              )}
-              {subscription?.expiresAt ? (
-                <Typography>
-                  {`Your plan will expire on `}
-                  <Typography component="span" fontWeight="bold">
-                    {formatDate(subscription?.expiresAt)}
-                  </Typography>
+      {loading ? (
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <CircularProgress />
+        </Box>
+      ) : (
+        <>
+          <SectionContainer>
+            {isCanceled ? (
+              <Typography>Subscription canceled</Typography>
+            ) : (
+              <Typography>{getAccountSubscriptionMessage(code)}</Typography>
+            )}
+            {subscription?.expiresAt ? (
+              <Typography>
+                {`Your plan will expire on `}
+                <Typography component="span" fontWeight="bold">
+                  {formatDate(subscription?.expiresAt)}
                 </Typography>
-              ) : (
-                <Typography>
-                  {`Your next billing will be on `}
-                  <Typography component="span" fontWeight="bold">
-                    {formatDate(subscription?.endDate ?? undefined)}
-                  </Typography>
+              </Typography>
+            ) : (
+              <Typography>
+                {`Your next billing will be on `}
+                <Typography component="span" fontWeight="bold">
+                  {formatDate(subscription?.endDate ?? undefined)}
                 </Typography>
-              )}
-            </SectionContainer>
+              </Typography>
+            )}
+          </SectionContainer>
 
-            <Stack direction="row" spacing={1}>
-              {!isCanceled && (
-                <Button
-                  LinkComponent={Link}
-                  href={paths.pricing}
-                  variant="contained"
-                  disableElevation
-                >
-                  Choose Plan
-                </Button>
-              )}
-              {renderAction()}
-            </Stack>
-          </>
-        )}
-      </CardContent>
-    </Card>
+          <Stack direction="row" spacing={1}>
+            {!isCanceled && (
+              <Button
+                LinkComponent={Link}
+                href={paths.pricing}
+                variant="contained"
+                disableElevation
+              >
+                Choose Plan
+              </Button>
+            )}
+            {renderAction()}
+          </Stack>
+        </>
+      )}
+    </Box>
   );
 };
 
