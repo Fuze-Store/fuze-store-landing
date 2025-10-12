@@ -1,6 +1,14 @@
 'use client';
 
-import { Box, Card, CircularProgress, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  ButtonBase,
+  Card,
+  CircularProgress,
+  Stack,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import Link from 'next/link';
 import { memo } from 'react';
 
@@ -11,12 +19,21 @@ import { getAccountPaymentMethodBrandLabel } from '@/helpers/paymentMethod.helpe
 import PaymentMethodItem from '@/components/PaymentMethodItem';
 
 type Props = {
+  onSelectPaymentMethod?: (_id: string) => void;
+  selectedPaymentMethodId?: string;
+  isSelectionMode?: boolean;
   paymentMethodId?: string;
 };
 
 const MIN_HEIGHT = 210;
 
-const PaymentMethodList = ({ paymentMethodId }: Props) => {
+const PaymentMethodList = ({
+  paymentMethodId,
+  selectedPaymentMethodId,
+  isSelectionMode = false,
+  onSelectPaymentMethod,
+}: Props) => {
+  const theme = useTheme();
   const { data: response, isLoading } = useGetPaymentMethodList();
 
   const paymentMethods = response?.data ?? [];
@@ -40,25 +57,50 @@ const PaymentMethodList = ({ paymentMethodId }: Props) => {
 
   return paymentMethods.length > 0 ? (
     <Box>
-      {paymentMethods.map((item) => (
-        <Stack key={item.id} flexWrap="wrap" spacing={1}>
-          <Box sx={{ width: 280 }}>
-            <Link
-              style={{ textDecoration: 'none' }}
-              href={paths.accountPaymentMethodDetails.replaceAll(
-                '[id]',
-                item.id,
+      {paymentMethods.map((item) => {
+        const selected = item.id === paymentMethodId;
+        const selectedPaymentMethod =
+          isSelectionMode && item.id === selectedPaymentMethodId;
+        const title = getAccountPaymentMethodBrandLabel(item.brand);
+
+        return (
+          <Stack key={item.id} flexWrap="wrap" spacing={1}>
+            <Box sx={{ width: 280 }}>
+              {isSelectionMode ? (
+                <ButtonBase
+                  sx={{
+                    width: '100%',
+                    textAlign: 'left',
+                    borderRadius: 2,
+                    border: `2px solid ${selectedPaymentMethod ? theme.palette.primary.main : 'transparent'}`,
+                  }}
+                  onClick={() => onSelectPaymentMethod?.(item.id)}
+                >
+                  <PaymentMethodItem
+                    paymentMethod={item}
+                    selected={selected}
+                    title={title}
+                  />
+                </ButtonBase>
+              ) : (
+                <Link
+                  style={{ textDecoration: 'none' }}
+                  href={paths.accountPaymentMethodDetails.replaceAll(
+                    '[id]',
+                    item.id,
+                  )}
+                >
+                  <PaymentMethodItem
+                    paymentMethod={item}
+                    selected={selected}
+                    title={title}
+                  />
+                </Link>
               )}
-            >
-              <PaymentMethodItem
-                paymentMethod={item}
-                selected={item.id === paymentMethodId}
-                title={getAccountPaymentMethodBrandLabel(item.brand)}
-              />
-            </Link>
-          </Box>
-        </Stack>
-      ))}
+            </Box>
+          </Stack>
+        );
+      })}
     </Box>
   ) : (
     <Typography>No Recent Invoices</Typography>

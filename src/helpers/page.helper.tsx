@@ -29,7 +29,9 @@ export const paths = {
   accountSecurity: '/account/security',
   accountSecurityPassword: '/account/security/password',
   accountSubscription: '/account/subscription',
-  accountSubscriptionChoosePlan: '/account/subscription/plans',
+  accountSubscriptionChoosePlan: '/account/subscription/choose-plan',
+  accountSubscriptionChoosePlanSummary:
+    '/account/subscription/choose-plan/[id]',
   accountPaymentMethodDetails: '/account/payment-methods/[id]',
 };
 

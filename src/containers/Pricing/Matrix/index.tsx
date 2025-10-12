@@ -15,9 +15,12 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import React, { memo } from 'react';
 
-import { featureLabels, getFeatureValue } from '@/helpers/plan.helper';
+import {
+  featureLabels,
+  getFeatureValue,
+} from '@fuze-store/fuze-store-shared/helpers';
 
-import type { Plan, PlanFeatureValue } from '@/types/plan';
+import type { Plan, PlanFeatureValue } from '@fuze-store/fuze-store-shared';
 
 const Check = () => (
   <CheckIcon color="primary" sx={{ width: 24, height: 24 }} />
@@ -115,8 +118,6 @@ const Matrix = ({ plans }: Props) => {
                     >
                       {feature === 'Included' ? (
                         <Check />
-                      ) : feature === '--' ? (
-                        <Cross />
                       ) : (
                         <Typography variant="body2">{feature}</Typography>
                       )}

@@ -1,5 +1,6 @@
 'use client';
 
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Button, ButtonProps } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';
@@ -10,7 +11,7 @@ const GoBackButton = (props?: Partial<ButtonProps>) => {
   return (
     <Button
       onClick={() => router.back()}
-      // startIcon={<ArrowBackIcon />}
+      startIcon={<ArrowBackIcon />}
       disableElevation
       {...props}
     >

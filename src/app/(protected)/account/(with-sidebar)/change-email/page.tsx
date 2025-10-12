@@ -32,7 +32,7 @@ export default function Page() {
   }
 
   return (
-    <Container maxWidth="sm">
+    <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
       <SectionContainer>
         <GoBackButton />
       </SectionContainer>

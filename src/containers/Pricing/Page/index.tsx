@@ -8,14 +8,11 @@ import { useMemo } from 'react';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
-import { SubscriptionPlan } from '@/enums/subscription.enum';
-import {
-  getDifferentFeaturesValues,
-  getUniqueFeaturesByPlan,
-} from '@/helpers/plan.helper';
 import useSession from '@/hooks/useSession';
+import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
+import { getDifferentFeaturesValues } from '@fuze-store/fuze-store-shared/helpers';
 
-import type { Plan } from '@/types/plan';
+import type { Plan } from '@fuze-store/fuze-store-shared';
 
 import PlanCard from '@/components/PlanCard';
 import SectionContainer from '@/components/SectionContainer';
@@ -35,8 +32,7 @@ export default function PricingPage() {
   );
 
   const filteredPlans = useMemo(
-    (): Plan[] =>
-      plans.filter((plan) => plan.code !== SubscriptionPlan.FREETRIAL),
+    (): Plan[] => plans.filter((plan) => plan.code !== PlanCode.FREETRIAL),
     [plans],
   );
 
@@ -92,7 +88,6 @@ export default function PricingPage() {
                 <PlanCard
                   plan={plan}
                   prevPlan={filteredPlans[index - 1]}
-                  uniqueFeatures={getUniqueFeaturesByPlan(plan.code, plans)}
                   differentFeatures={differentFeatures}
                 />
               </Grid>

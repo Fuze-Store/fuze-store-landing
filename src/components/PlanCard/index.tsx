@@ -1,8 +1,8 @@
 'use client';
 
-import { SubscriptionPlan } from '@/enums/subscription.enum';
-import { featureLabels } from '@/helpers/plan.helper';
-import { Plan, PlanFeatureValue } from '@/types/plan';
+import { Plan, PlanFeatureValue } from '@fuze-store/fuze-store-shared';
+import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
+import { featureLabels } from '@fuze-store/fuze-store-shared/helpers';
 import CheckIcon from '@mui/icons-material/Check';
 import {
   alpha,
@@ -49,16 +49,22 @@ const FeatureItem = ({ name }: { name: string; value?: PlanFeatureValue }) => {
 type Props = {
   plan: Plan;
   prevPlan?: Plan;
-  uniqueFeatures?: Plan['features'];
+  selected?: boolean;
+  isSelection?: boolean;
+  onSelectPlan?: (_planId: string) => void;
   differentFeatures?: Record<string, Record<string, PlanFeatureValue>>;
 };
 
 const PlanCard = ({
   plan,
   prevPlan,
-  uniqueFeatures = {},
+  selected = false,
+  isSelection = false,
   differentFeatures = {},
+  onSelectPlan,
 }: Props) => {
+  const theme = useTheme();
+
   const message = useMemo(() => {
     if (plan.commissionRate > 0 && plan.salesThreshold > 0) {
       return `plus ${plan.commissionRate * 100}% above ${plan.currency} ${plan.salesThreshold} monthly sales`;
@@ -70,7 +76,6 @@ const PlanCard = ({
 
     return 'Always free';
   }, [plan]);
-  console.log({ plan, uniqueFeatures });
 
   const priceLabel = useMemo(() => {
     return (
@@ -105,8 +110,24 @@ const PlanCard = ({
     );
   }, [message, plan.baseFee, plan.currency]);
 
-  const getButton = (code: SubscriptionPlan) => {
-    if (code === SubscriptionPlan.BASIC) {
+  const getButton = (code: PlanCode) => {
+    if (isSelection) {
+      return (
+        <Button
+          sx={{ borderRadius: 2 }}
+          variant={selected ? 'contained' : 'outlined'}
+          fullWidth
+          disableElevation
+          disabled={selected}
+          color={selected ? 'primary' : 'primary'}
+          onClick={() => onSelectPlan?.(plan.id)}
+        >
+          {selected ? 'Selected' : 'Select Plan'}
+        </Button>
+      );
+    }
+
+    if (code === PlanCode.BASIC) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
@@ -120,7 +141,7 @@ const PlanCard = ({
       );
     }
 
-    if (code === SubscriptionPlan.STARTER) {
+    if (code === PlanCode.STARTER) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
@@ -134,7 +155,7 @@ const PlanCard = ({
       );
     }
 
-    if (code === SubscriptionPlan.STANDARD) {
+    if (code === PlanCode.STANDARD) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
@@ -147,7 +168,7 @@ const PlanCard = ({
       );
     }
 
-    if (code === SubscriptionPlan.PREMIUM) {
+    if (code === PlanCode.PREMIUM) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
@@ -174,7 +195,13 @@ const PlanCard = ({
   };
 
   return (
-    <Card sx={{ height: '100%', borderRadius: 4 }}>
+    <Card
+      sx={{
+        height: '100%',
+        borderRadius: 4,
+        border: `2px solid ${selected ? theme.palette.primary.main : theme.palette.divider}`,
+      }}
+    >
       <CardContent sx={{ flexDirection: 'column', display: 'flex' }}>
         <Stack
           mb={4}
@@ -212,52 +239,51 @@ const PlanCard = ({
         </Box>
 
         <Grid container spacing={1}>
-          {plan.code === SubscriptionPlan.BASIC && (
+          {plan.code === PlanCode.BASIC && (
             <Grid size={{ xs: 12 }}>
               <FeatureItem name="Basic Features" />
             </Grid>
           )}
-          {plan.code === SubscriptionPlan.STARTER && (
+          {plan.code === PlanCode.STARTER && (
             <Grid size={{ xs: 12 }}>
               <FeatureItem name="All Basic Features" />
             </Grid>
           )}
-          {plan.code === SubscriptionPlan.STANDARD && (
+          {plan.code === PlanCode.STANDARD && (
             <Grid size={{ xs: 12 }}>
               <FeatureItem name="All Starter Features" />
             </Grid>
           )}
-          {plan.code === SubscriptionPlan.PREMIUM && (
+          {plan.code === PlanCode.PREMIUM && (
             <Grid size={{ xs: 12 }}>
               <FeatureItem name="All Features" />
             </Grid>
           )}
 
-          {plan.code !== SubscriptionPlan.BASIC &&
-            plan.code !== SubscriptionPlan.PREMIUM && (
-              <>
-                {Object.keys(differentFeatures).map((key, index) => {
-                  const prevDiffFeature = prevPlan
-                    ? differentFeatures[key][prevPlan.code]
-                    : undefined;
-                  const diffFeature = differentFeatures[key][plan.code];
+          {plan.code !== PlanCode.BASIC && plan.code !== PlanCode.PREMIUM && (
+            <>
+              {Object.keys(differentFeatures).map((key, index) => {
+                const prevDiffFeature = prevPlan
+                  ? differentFeatures[key][prevPlan.code]
+                  : undefined;
+                const diffFeature = differentFeatures[key][plan.code];
 
-                  const showFeature =
-                    diffFeature !== false && prevDiffFeature === false;
+                const showFeature =
+                  diffFeature !== false && prevDiffFeature === false;
 
-                  return (
-                    showFeature && (
-                      <Grid size={{ xs: 12 }} key={index}>
-                        <FeatureItem
-                          name={key}
-                          value={differentFeatures[key][plan.code]}
-                        />
-                      </Grid>
-                    )
-                  );
-                })}
-              </>
-            )}
+                return (
+                  showFeature && (
+                    <Grid size={{ xs: 12 }} key={index}>
+                      <FeatureItem
+                        name={key}
+                        value={differentFeatures[key][plan.code]}
+                      />
+                    </Grid>
+                  )
+                );
+              })}
+            </>
+          )}
         </Grid>
       </CardContent>
     </Card>

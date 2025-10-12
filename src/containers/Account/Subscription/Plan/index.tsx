@@ -1,22 +1,21 @@
 'use client';
 
+import { Subscription } from '@fuze-store/fuze-store-shared';
+import {
+  PlanCode,
+  SubscriptionStatus,
+} from '@fuze-store/fuze-store-shared/enums';
 import { Box, Button, CircularProgress, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import { memo, useCallback } from 'react';
 
-import {
-  SubscriptionPlan,
-  SubscriptionStatus,
-} from '@/enums/subscription.enum';
-import { formatDate } from '@/helpers/date.helper';
-
-import { Subscription } from '@/types/subscription';
+import { formatDate } from '@fuze-store/fuze-store-shared/helpers';
 
 import SectionContainer from '@/components/SectionContainer';
 import CancelButton from '@/containers/Account/Subscription/CancelButton';
 import ReactiveButton from '@/containers/Account/Subscription/ReactiveButton';
 import { paths } from '@/helpers/page.helper';
-import Link from 'next/link';
 
 type Props = {
   subscription?: Subscription;
@@ -28,33 +27,30 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
 
   const isCanceled = subscription?.status === SubscriptionStatus.CANCELED;
 
-  const getAccountSubscriptionLabel = useCallback(
-    (code?: SubscriptionPlan): string => {
-      if (code === SubscriptionPlan.FREETRIAL) return 'Free Trial';
-      if (code === SubscriptionPlan.BASIC) return 'Basic Plan';
-      if (code === SubscriptionPlan.STARTER) return 'Starter';
-      if (code === SubscriptionPlan.STANDARD) return 'Standard';
-      if (code === SubscriptionPlan.PREMIUM) return 'Premium';
-      return '';
-    },
-    [],
-  );
+  const getAccountSubscriptionLabel = useCallback((code?: PlanCode): string => {
+    if (code === PlanCode.FREETRIAL) return 'Free Trial';
+    if (code === PlanCode.BASIC) return 'Basic Plan';
+    if (code === PlanCode.STARTER) return 'Starter';
+    if (code === PlanCode.STANDARD) return 'Standard';
+    if (code === PlanCode.PREMIUM) return 'Premium';
+    return '';
+  }, []);
 
   const getAccountSubscriptionMessage = useCallback(
-    (code?: SubscriptionPlan): string => {
-      if (code === SubscriptionPlan.FREETRIAL) {
+    (code?: PlanCode): string => {
+      if (code === PlanCode.FREETRIAL) {
         return 'Your are on the Free Trial. Please select a plan to continue using the features before the trial ends.';
       }
 
-      if (code === SubscriptionPlan.BASIC) {
+      if (code === PlanCode.BASIC) {
         return 'You`re on the basic plan. Upgrade to access more features.';
       }
 
-      if (code === SubscriptionPlan.STARTER) {
+      if (code === PlanCode.STARTER) {
         return 'You`re on the starter plan. Upgrade to access more features.';
       }
 
-      if (code === SubscriptionPlan.STANDARD) {
+      if (code === PlanCode.STANDARD) {
         return 'You`re on the standard plan. Upgrade to access more features.';
       }
 
@@ -64,10 +60,7 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   );
 
   const renderAction = () => {
-    if (
-      code !== SubscriptionPlan.FREETRIAL &&
-      code !== SubscriptionPlan.BASIC
-    ) {
+    if (code !== PlanCode.FREETRIAL && code !== PlanCode.BASIC) {
       if (isCanceled) return <ReactiveButton />;
       return <CancelButton />;
     }
@@ -120,7 +113,7 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
             {!isCanceled && (
               <Button
                 LinkComponent={Link}
-                href={paths.pricing}
+                href={paths.accountSubscriptionChoosePlan}
                 variant="contained"
                 disableElevation
               >

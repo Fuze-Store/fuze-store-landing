@@ -26,7 +26,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { data: response } = useGetAccount();
-  const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+  const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -91,7 +91,7 @@ const Sidebar = () => {
     </Box>
   );
 
-  if (isSmUp) {
+  if (isMdUp) {
     return renderContent();
   }
 

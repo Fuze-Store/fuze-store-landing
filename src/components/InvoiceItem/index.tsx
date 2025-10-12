@@ -4,7 +4,7 @@ import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 
-import { formatDate } from '@/helpers/date.helper';
+import { formatDate } from '@fuze-store/fuze-store-shared/helpers';
 
 import type { Invoice } from '@/types/invoice';
 

@@ -24,28 +24,26 @@ export default function Page() {
   };
 
   return (
-    <>
-      <Container sx={{ marginLeft: 0 }} maxWidth="sm">
-        <SectionContainer>
-          <GoBackButton />
-        </SectionContainer>
+    <Container sx={{ py: 2 }} maxWidth="sm">
+      <SectionContainer>
+        <GoBackButton />
+      </SectionContainer>
 
-        <AccountPasswordFormProvider
-          errors={error?.response?.data.errors}
-          onSubmit={onSubmit}
-        >
-          <AccountPasswordForm loading={isPending} />
+      <AccountPasswordFormProvider
+        errors={error?.response?.data.errors}
+        onSubmit={onSubmit}
+      >
+        <AccountPasswordForm loading={isPending} />
 
-          <Box mb={1}>
-            <AccountPasswordFormSubmit
-              variant="contained"
-              disableElevation
-              loading={isPending}
-              fullWidth
-            />
-          </Box>
-        </AccountPasswordFormProvider>
-      </Container>
-    </>
+        <Box mb={1}>
+          <AccountPasswordFormSubmit
+            variant="contained"
+            disableElevation
+            loading={isPending}
+            fullWidth
+          />
+        </Box>
+      </AccountPasswordFormProvider>
+    </Container>
   );
 }

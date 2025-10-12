@@ -41,39 +41,37 @@ export default function Page() {
   );
 
   return (
-    <>
-      <SectionContainer px={3}>
+    <Container sx={{ py: 2 }} maxWidth="md">
+      <SectionContainer>
         <GoBackButton />
       </SectionContainer>
 
       <PageTitle title="Edit Payment Method" />
 
-      <Container sx={{ ml: { md: 0 } }} maxWidth="sm">
-        {paymentMethod && (
-          <>
-            <SectionContainer>
-              <PaymentMethodItem
-                paymentMethod={paymentMethod}
-                selected={isDefault}
-                title={getAccountPaymentMethodBrandLabel(paymentMethod.brand)}
-              />
-            </SectionContainer>
+      {paymentMethod && (
+        <>
+          <SectionContainer>
+            <PaymentMethodItem
+              paymentMethod={paymentMethod}
+              selected={isDefault}
+              title={getAccountPaymentMethodBrandLabel(paymentMethod.brand)}
+            />
+          </SectionContainer>
 
-            <Stack direction="row" spacing={1}>
-              <SetDefaultButton
-                ButtonProps={{ disabled: isDefault }}
-                paymentMethodId={paymentMethod.id}
-              />
-              <Button
-                color="error"
-                onClick={() => deletePaymentMethod(paymentMethod.id)}
-              >
-                Delete Payment Method
-              </Button>
-            </Stack>
-          </>
-        )}
-      </Container>
-    </>
+          <Stack direction="row" spacing={1}>
+            <SetDefaultButton
+              ButtonProps={{ disabled: isDefault }}
+              paymentMethodId={paymentMethod.id}
+            />
+            <Button
+              color="error"
+              onClick={() => deletePaymentMethod(paymentMethod.id)}
+            >
+              Delete Payment Method
+            </Button>
+          </Stack>
+        </>
+      )}
+    </Container>
   );
 }
