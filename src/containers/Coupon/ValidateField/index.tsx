@@ -30,7 +30,7 @@ import useDebounce from '@/hooks/useDebounce';
 
 type Props = {
   label?: string;
-  key?: string;
+  name?: string;
   required?: boolean;
   InputProps?: Partial<InputProps>;
 };
@@ -57,7 +57,7 @@ const validate = async (
 
 const CouponField = ({
   label = 'Voucher Code',
-  key = 'couponCode',
+  name = 'couponCode',
   required = false,
   InputProps,
 }: Props) => {
@@ -68,10 +68,8 @@ const CouponField = ({
     clearErrors,
     formState: { errors },
   } = useFormContext();
-  const couponCode = watch(key) ?? '';
+  const couponCode = watch(name) ?? '';
   const debouncedCouponCode = useDebounce(couponCode, 500);
-
-  console.log('errors', errors);
 
   const { data: response } = useQuery({
     queryKey: ['validate-coupon', debouncedCouponCode],
@@ -85,7 +83,7 @@ const CouponField = ({
 
   useEffect(() => {
     if (response?.success === false) {
-      setError(key, {
+      setError(name, {
         type: 'server',
         types: { server: response?.message || 'Invalid coupon code' },
         message: response?.message || 'Invalid coupon code',
@@ -93,7 +91,7 @@ const CouponField = ({
       return;
     }
 
-    clearErrors(key);
+    clearErrors(name);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [response]);
@@ -107,7 +105,7 @@ const CouponField = ({
         variant="outlined"
       >
         <Label
-          htmlFor={key}
+          htmlFor={name}
           {...(isNotValid && { color: 'error' })}
           {...(isValid && { color: 'success' })}
         >
@@ -115,23 +113,23 @@ const CouponField = ({
         </Label>
         <OutlinedInput
           type="text"
-          id={key}
+          id={name}
           required={required}
           fullWidth
           color={isValid ? 'success' : 'primary'}
-          {...register(key)}
+          {...register(name)}
           error={isNotValid}
           {...InputProps}
         />
         {response?.success && (
           <FormHelperText
             sx={{ color: isValid ? 'success.main' : 'inherit' }}
-            id={key}
+            id={name}
           >
             {response.message}
           </FormHelperText>
         )}
-        <FieldErrorMessage name={key} errors={errors} />
+        <FieldErrorMessage name={name} errors={errors} />
       </FormControl>
     </>
   );

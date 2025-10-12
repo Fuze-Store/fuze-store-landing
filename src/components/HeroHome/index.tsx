@@ -7,12 +7,20 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import useSession from '@/hooks/useSession';
+
+import { paths } from '@/helpers/page.helper';
 import image1 from '@/images/image1.png';
+import Link from 'next/link';
 
 const HeroHome = () => {
+  const session = useSession();
   const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
   const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
   const isLgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+
+  const startFreeTrialLink =
+    session.status === 'authenticated' ? paths.account : paths.register;
 
   return (
     <section style={{ position: 'relative' }}>
@@ -54,10 +62,21 @@ const HeroHome = () => {
               </Typography>
 
               <Stack direction={isSmUp ? 'row' : 'column'} spacing={1}>
-                <Button size="extra-large" variant="contained" color="primary">
-                  Stat Free Trial
+                <Button
+                  LinkComponent={Link}
+                  href={startFreeTrialLink}
+                  size="extra-large"
+                  variant="contained"
+                  color="primary"
+                >
+                  Start Free Trial
                 </Button>
-                <Button size="extra-large" color="primary">
+                <Button
+                  LinkComponent={Link}
+                  href={paths.helpCenter}
+                  size="extra-large"
+                  color="primary"
+                >
                   Learn More
                 </Button>
               </Stack>

@@ -5,16 +5,12 @@
  */
 
 import { Button, ButtonProps } from '@mui/material';
-import * as Linking from 'expo-linking';
-import { useRouter } from 'expo-router';
+import { useRouter } from 'next/navigation';
 import { memo, useCallback } from 'react';
-import { useTranslation } from 'react-i18next';
 
-import useChangePlan from '@containers/Account/Subscription/hooks/useChangePlan';
-import useAppDispatch from '@hooks/useAppDispatch';
+import useChangePlan from '@/containers/Plan/hooks/useChangePlan';
 
 import { paths } from '@/helpers/page.helper';
-import { resetGlobalFields, updateGlobalFields } from '@rtk/appGlobal/slice';
 
 export type Props = {
   planId?: string;
@@ -28,65 +24,40 @@ export type Props = {
  * @category Containers
  *
  */
-const SubscriptionPlanFormSubmit = ({
-  planId,
-  paymentMethodId,
-  ButtonProps,
-}: Props) => {
+const PlanFormSubmit = ({ planId, paymentMethodId, ButtonProps }: Props) => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
-  const { changePlan } = useChangePlan();
-  const { t } = useTranslation(['fields', 'api']);
+  const { changePlan, isPending } = useChangePlan();
 
   const subscribe = useCallback(async () => {
     const returnUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/${paths.accountSubscription}`;
 
-    try {
-      if (planId && returnUrl) {
-        dispatch(
-          updateGlobalFields({
-            key: 'loading',
-            value: {
-              show: true,
-              message: t('changePlan.loading', { ns: 'api' }),
-            },
-          }),
-        );
-        const response = await changePlan({
-          returnUrl,
-          planId,
-          paymentMethodId,
-        });
+    if (planId && returnUrl) {
+      const response = await changePlan({
+        returnUrl,
+        planId,
+        paymentMethodId,
+      });
 
-        if (response) {
-          if (response.data.changeType === 'session') {
-            dispatch(
-              updateGlobalFields({
-                key: 'loading',
-                value: {
-                  show: true,
-                  message: t('changePlan.redirecting', { ns: 'api' }),
-                },
-              }),
-            );
-            void Linking.openURL(response.data.data.url);
-            setTimeout(() => dispatch(resetGlobalFields(['loading'])), 10000);
-          } else {
-            dispatch(resetGlobalFields(['loading']));
-            router.dismissTo(paths.accountSubscription);
-          }
+      if (response) {
+        if (response.data.changeType === 'session') {
+          window.location.href = response.data.data.url;
+        } else {
+          router.replace(paths.accountSubscription);
         }
       }
-    } finally {
-      dispatch(resetGlobalFields(['loading']));
     }
-  }, [planId, dispatch, t, changePlan, paymentMethodId, router]);
+  }, [planId, changePlan, paymentMethodId, router]);
 
   return (
-    <Button variant="contained" {...ButtonProps} onClick={subscribe}>
-      {t('submit.subscribe.label')}
+    <Button
+      variant="contained"
+      disabled={isPending}
+      {...ButtonProps}
+      onClick={subscribe}
+    >
+      {isPending ? 'Subscribing' : 'Subscribe'}
     </Button>
   );
 };
 
-export default memo(SubscriptionPlanFormSubmit);
+export default memo(PlanFormSubmit);

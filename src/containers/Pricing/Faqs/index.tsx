@@ -24,7 +24,7 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   <MuiAccordionSummary {...props} />
 ))(({ theme }) => ({
   ...theme.applyStyles('dark', {
-    backgroundColor: 'rgba(255, 255, 255, .05)',
+    backgroundColor: 'transparent',
   }),
 }));
 

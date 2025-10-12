@@ -12,6 +12,7 @@ import {
   Stack,
   Typography,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import Link from 'next/link';
@@ -23,6 +24,7 @@ import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import SectionContainer from '@/components/SectionContainer';
 
 const Sidebar = () => {
+  const theme = useTheme();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const { data: response } = useGetAccount();
@@ -41,8 +43,8 @@ const Sidebar = () => {
         width: 280,
         py: { xs: 2, md: 6 },
         px: 2,
-        borderRadius: 4,
-        bgcolor: (theme) => theme.palette.grey[50],
+        borderRadius: theme.palette.mode === 'dark' ? 0 : 2,
+        bgcolor: theme.palette.grey[theme.palette.mode === 'dark' ? 900 : 50],
       }}
     >
       <SectionContainer mb={6}>

@@ -4,11 +4,12 @@ import SocialList from '@/components/SocialList';
 import Form from '@/containers/ContactUs/Form';
 import FormProvider from '@/containers/ContactUs/Form/Provider';
 import FormSubmit from '@/containers/ContactUs/Form/Submit';
-import { Grid } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 export default function ContactUs() {
+  const theme = useTheme();
   return (
     <>
       <Box mb={8}>
@@ -49,7 +50,7 @@ export default function ContactUs() {
               <Typography variant="body1" gutterBottom>
                 <strong>Follow us:</strong>
               </Typography>
-              <SocialList />
+              <SocialList dark={theme.palette.mode === 'dark'} />
             </Box>
           </Box>
         </Grid>

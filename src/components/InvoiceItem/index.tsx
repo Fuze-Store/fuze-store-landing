@@ -4,9 +4,7 @@ import { Grid } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 
-import { formatDate } from '@fuze-store/fuze-store-shared/helpers';
-
-import type { Invoice } from '@/types/invoice';
+import { Invoice, formatDate } from '@fuze-store/fuze-store-shared';
 
 import InvoiceDownloadButton from '@/containers/Account/Invoice/DownloadButton';
 
@@ -27,7 +25,7 @@ const InvoiceItem = ({ invoice }: Props) => (
         <Typography>{`${invoice?.currency} ${invoice.totalAmount}`}</Typography>
       </Grid>
       <Grid size={{ xs: 12, sm: 3 }}>
-        <Typography>{invoice.status}</Typography>
+        <Typography>{invoice.status?.code}</Typography>
       </Grid>
     </Grid>
     <Grid size={{ xs: 12, sm: 'auto' }}>

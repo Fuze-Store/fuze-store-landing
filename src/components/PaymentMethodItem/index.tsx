@@ -12,6 +12,7 @@ import {
   Chip,
   Stack,
   Typography,
+  useTheme,
 } from '@mui/material';
 import { memo } from 'react';
 
@@ -38,6 +39,8 @@ const PaymentMethodItem = ({
   selected = false,
   CardProps,
 }: Props) => {
+  const theme = useTheme();
+
   const renderPaymentInfo = () => {
     if (paymentMethod?.expiryMonth && paymentMethod?.expiryYear) {
       return (
@@ -76,7 +79,7 @@ const PaymentMethodItem = ({
       sx={{
         width: '100%',
         height: 120,
-        bgcolor: (theme) => theme.palette.grey[100],
+        bgcolor: theme.palette.grey[theme.palette.mode === 'dark' ? 800 : 100],
       }}
       {...CardProps}
     >

@@ -1,5 +1,7 @@
 'use client';
 
+import { paths } from '@/helpers/page.helper';
+import useSession from '@/hooks/useSession';
 import { Plan, PlanFeatureValue } from '@fuze-store/fuze-store-shared';
 import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
 import { featureLabels } from '@fuze-store/fuze-store-shared/helpers';
@@ -17,6 +19,7 @@ import {
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import { memo, useMemo } from 'react';
 
 const FeatureItem = ({ name }: { name: string; value?: PlanFeatureValue }) => {
@@ -64,6 +67,7 @@ const PlanCard = ({
   onSelectPlan,
 }: Props) => {
   const theme = useTheme();
+  const session = useSession();
 
   const message = useMemo(() => {
     if (plan.commissionRate > 0 && plan.salesThreshold > 0) {
@@ -110,7 +114,7 @@ const PlanCard = ({
     );
   }, [message, plan.baseFee, plan.currency]);
 
-  const getButton = (code: PlanCode) => {
+  const getButton = (plan: Plan) => {
     if (isSelection) {
       return (
         <Button
@@ -127,7 +131,7 @@ const PlanCard = ({
       );
     }
 
-    if (code === PlanCode.BASIC) {
+    if (plan.code === PlanCode.BASIC) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
@@ -135,19 +139,32 @@ const PlanCard = ({
           disableElevation
           fullWidth
           color="inherit"
+          LinkComponent={Link}
+          href={
+            session.status === 'authenticated'
+              ? paths.accountSubscription
+              : paths.register
+          }
         >
           Get Started with Free Trial
         </Button>
       );
     }
 
-    if (code === PlanCode.STARTER) {
+    let href = paths.accountSubscriptionChoosePlan.replaceAll('[id]', plan.id);
+    const searchParams = new URLSearchParams();
+    searchParams.append('planId', plan.id);
+    href += `?${searchParams.toString()}`;
+
+    if (plan.code === PlanCode.STARTER) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
           variant="contained"
           fullWidth
           disableElevation
+          LinkComponent={Link}
+          href={href}
           color="inherit"
         >
           Get Started with Starter
@@ -155,26 +172,30 @@ const PlanCard = ({
       );
     }
 
-    if (code === PlanCode.STANDARD) {
+    if (plan.code === PlanCode.STANDARD) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
           variant="contained"
           fullWidth
           color="primary"
+          LinkComponent={Link}
+          href={href}
         >
           Get Started with Standard
         </Button>
       );
     }
 
-    if (code === PlanCode.PREMIUM) {
+    if (plan.code === PlanCode.PREMIUM) {
       return (
         <Button
           sx={{ borderRadius: 2 }}
           variant="contained"
           fullWidth
           color="primary"
+          LinkComponent={Link}
+          href={href}
         >
           Get Started with Premium
         </Button>
@@ -188,6 +209,8 @@ const PlanCard = ({
         disableElevation
         fullWidth
         color="primary"
+        LinkComponent={Link}
+        href={href}
       >
         Get Started
       </Button>
@@ -230,7 +253,7 @@ const PlanCard = ({
 
         {priceLabel}
 
-        <Box mt={2}>{getButton(plan.code)}</Box>
+        <Box mt={2}>{getButton(plan)}</Box>
       </CardContent>
       <Divider sx={{ mx: 2 }} />
       <CardContent sx={{ px: 3 }}>

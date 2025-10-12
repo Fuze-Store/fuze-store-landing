@@ -48,7 +48,7 @@ export default function Page() {
             <Typography fontWeight={600}>Personal Information</Typography>
             <Divider sx={{ mb: 2 }} />
 
-            <SectionContainer mt={3} mb={4}>
+            <SectionContainer mt={3} mb={6}>
               <AccountDetailsInfo
                 fullName={account.info.fullName}
                 initials={account.info.initials}
@@ -58,7 +58,7 @@ export default function Page() {
             <Typography fontWeight={600}>Email</Typography>
             <Divider sx={{ mb: 2 }} />
 
-            <SectionContainer mt={3} mb={4}>
+            <SectionContainer mt={3} mb={6}>
               <AccountDetailsEmail
                 email={account.email}
                 isVerified={account.isVerified}
@@ -68,7 +68,7 @@ export default function Page() {
             <Typography fontWeight={600}>Social</Typography>
             <Divider sx={{ mb: 2 }} />
 
-            <SectionContainer mt={3} mb={4}>
+            <SectionContainer mt={3} mb={6}>
               <AccountDetailsProvider providers={account.providers} />
             </SectionContainer>
 

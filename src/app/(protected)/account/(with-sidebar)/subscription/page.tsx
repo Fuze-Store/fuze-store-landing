@@ -1,13 +1,14 @@
 'use client';
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button, Divider, Stack } from '@mui/material';
+import { Alert, Button, Divider, Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
 import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
 import { paths } from '@/helpers/page.helper';
+import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
 
 import SectionContainer from '@/components/SectionContainer';
 import AccountRecentInvoices from '@/containers/Account/Invoice/Recent';
@@ -24,6 +25,16 @@ export default function Page() {
     <Container maxWidth="md">
       <Typography fontWeight={600}>Plan</Typography>
       <Divider sx={{ mb: 2 }} />
+
+      {subscription?.plan?.code === PlanCode.FREETRIAL && (
+        <SectionContainer mb={1}>
+          <Alert severity="warning">
+            <Typography color="warning" variant="body2" fontWeight="bold">
+              You`re on the free plan. Upgrade to access more features
+            </Typography>
+          </Alert>
+        </SectionContainer>
+      )}
 
       <SectionContainer sx={{ mb: 4 }}>
         <AccountSubscriptionPlan subscription={subscription} />

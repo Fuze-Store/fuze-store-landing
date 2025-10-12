@@ -71,19 +71,15 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   return (
     <Box py={2}>
       <SectionContainer>
-        <Typography>{getAccountSubscriptionLabel(code)}</Typography>
+        <Typography fontWeight={500}>
+          {getAccountSubscriptionLabel(code)}
+        </Typography>
       </SectionContainer>
 
       {loading ? (
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+        <Stack justifyContent="center" alignItems="center">
           <CircularProgress />
-        </Box>
+        </Stack>
       ) : (
         <>
           <SectionContainer>
@@ -92,26 +88,46 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
             ) : (
               <Typography>{getAccountSubscriptionMessage(code)}</Typography>
             )}
-            {subscription?.expiresAt ? (
-              <Typography>
-                {`Your plan will expire on `}
-                <Typography component="span" fontWeight="bold">
-                  {formatDate(subscription?.expiresAt)}
+
+            {Boolean(subscription?.expiresAt) && subscription?.expiresAt && (
+              <Stack flexWrap="wrap">
+                <Typography>{`Your plan will expire on `}</Typography>
+                <Typography fontWeight="bold">
+                  {formatDate(subscription?.expiresAt, 'MMM dd, yyyy')}
                 </Typography>
-              </Typography>
-            ) : (
+              </Stack>
+            )}
+
+            {Boolean(subscription?.endDate) && subscription?.endDate && (
               <Typography>
                 {`Your next billing will be on `}
                 <Typography component="span" fontWeight="bold">
-                  {formatDate(subscription?.endDate ?? undefined)}
+                  {formatDate(subscription?.endDate, 'MMMM dd, yyyy')}
                 </Typography>
               </Typography>
             )}
+
+            {subscription?.activeRedemptions &&
+              subscription?.activeRedemptions?.length > 0 && (
+                <Stack flexWrap="wrap">
+                  <Typography>{`You have an active coupon ${subscription?.activeRedemptions[0]?.validUntil ? `valid until ` : ''}`}</Typography>
+                  {Boolean(subscription?.activeRedemptions[0]?.validUntil) &&
+                    subscription?.activeRedemptions[0]?.validUntil && (
+                      <Typography fontWeight="bold">
+                        {formatDate(
+                          subscription?.activeRedemptions[0]?.validUntil,
+                          'MMMM yyyy',
+                        )}
+                      </Typography>
+                    )}
+                </Stack>
+              )}
           </SectionContainer>
 
           <Stack direction="row" spacing={1}>
             {!isCanceled && (
               <Button
+                sx={{ minWidth: 160 }}
                 LinkComponent={Link}
                 href={paths.accountSubscriptionChoosePlan}
                 variant="contained"

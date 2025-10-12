@@ -150,7 +150,7 @@ const RegisterForm = () => {
       </SectionContainer>
 
       <SectionContainer>
-        <CouponField key="couponCode" label="Voucher Code" required={false} />
+        <CouponField name="couponCode" label="Voucher Code" required={false} />
       </SectionContainer>
     </>
   );

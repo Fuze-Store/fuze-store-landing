@@ -9,10 +9,9 @@ import {
   Stack,
   Toolbar,
 } from '@mui/material';
-import { signIn } from 'next-auth/react';
+import { signIn, SignInResponse } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { paths } from '@/helpers/page.helper';
@@ -28,30 +27,25 @@ import LoginFormSubmit from '@/containers/Login/Form/Submit';
 import logo from '@/images/name-logo-black.png';
 
 export default function LoginPage() {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const onSubmit = async (params: FormInputs) => {
+    let result: SignInResponse | undefined;
     try {
       setLoading(true);
-      const result = await signIn('credentials', {
+      result = await signIn('credentials', {
         ...params,
         redirect: false,
       });
-
-      if (result?.ok) {
-        router.push(paths.account);
-        return;
-      }
-
-      if (result?.status === 401) {
-        setErrorMessage('Incorrect email or password.');
-      } else {
-        setErrorMessage('Something went wrong processing your request');
-      }
     } finally {
       setLoading(false);
+    }
+
+    if (result?.status === 401) {
+      setErrorMessage('Incorrect email or password.');
+    } else {
+      setErrorMessage('Something went wrong processing your request');
     }
   };
 

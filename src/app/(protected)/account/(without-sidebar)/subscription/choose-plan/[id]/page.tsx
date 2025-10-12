@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Container, Divider, Typography } from '@mui/material';
+import { Container, Divider, Typography } from '@mui/material';
 import { useParams } from 'next/navigation';
 import { useMemo, useState } from 'react';
 
@@ -14,6 +14,7 @@ import PlanCard from '@/components/PlanCard';
 import SectionContainer from '@/components/SectionContainer';
 import AddPaymentMethodButton from '@/containers/Account/PaymentMethod/AddButton';
 import PaymentMethodList from '@/containers/Account/PaymentMethod/List';
+import PlanFormSubmit from '@/containers/Plan/Form/Submit';
 
 export default function Page() {
   const params = useParams<{ id: string }>();
@@ -41,8 +42,8 @@ export default function Page() {
   }
 
   return (
-    <>
-      <SectionContainer px={3}>
+    <Container maxWidth="md">
+      <SectionContainer p={1}>
         <GoBackButton />
       </SectionContainer>
 
@@ -51,37 +52,38 @@ export default function Page() {
         title="Summary"
       />
 
-      <Container maxWidth="md" disableGutters>
-        <Typography fontWeight={600}>Plan</Typography>
-        <Divider sx={{ mb: 2 }} />
+      <Typography fontWeight={600}>Plan</Typography>
+      <Divider sx={{ mb: 2 }} />
 
-        {selectedPlan && (
+      {selectedPlan && (
+        <>
           <SectionContainer mb={4}>
             <PlanCard plan={selectedPlan} isSelection selected />
           </SectionContainer>
-        )}
+          <Typography fontWeight={600}>Payment Method</Typography>
+          <Divider sx={{ mb: 2 }} />
 
-        <Typography fontWeight={600}>Payment Method</Typography>
-        <Divider sx={{ mb: 2 }} />
+          <SectionContainer sx={{ mb: 4 }}>
+            <SectionContainer>
+              <PaymentMethodList
+                isSelectionMode
+                selectedPaymentMethodId={selectedPaymentMethodId}
+                onSelectPaymentMethod={setSelectedPaymentMethodId}
+              />
+            </SectionContainer>
 
-        <SectionContainer sx={{ mb: 4 }}>
-          <SectionContainer>
-            <PaymentMethodList
-              isSelectionMode
-              selectedPaymentMethodId={selectedPaymentMethodId}
-              onSelectPaymentMethod={setSelectedPaymentMethodId}
-            />
+            <SectionContainer>
+              <AddPaymentMethodButton />
+            </SectionContainer>
           </SectionContainer>
 
-          <SectionContainer>
-            <AddPaymentMethodButton />
-          </SectionContainer>
-        </SectionContainer>
-
-        <Button disableElevation variant="contained" fullWidth>
-          Subscribe
-        </Button>
-      </Container>
-    </>
+          <PlanFormSubmit
+            ButtonProps={{ fullWidth: true }}
+            planId={selectedPlan?.id}
+            paymentMethodId={selectedPaymentMethodId}
+          />
+        </>
+      )}
+    </Container>
   );
 }

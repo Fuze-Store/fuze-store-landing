@@ -138,7 +138,7 @@ export default function Page() {
                   <StyledTableCell align="right">
                     <Typography>{`${invoice?.currency} ${invoice.totalAmount}`}</Typography>
                   </StyledTableCell>
-                  <StyledTableCell>{invoice.status}</StyledTableCell>
+                  <StyledTableCell>{invoice.status?.code}</StyledTableCell>
                   <StyledTableCell>
                     <InvoiceDownloadButton invoiceId={invoice.id} />
                   </StyledTableCell>
