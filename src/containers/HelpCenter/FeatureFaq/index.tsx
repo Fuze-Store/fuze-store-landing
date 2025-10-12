@@ -9,23 +9,23 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 
-const GeneralFaq = () => (
+const FeatureFaq = () => (
   <Container maxWidth="lg">
     <Box mb={5}>
       <Typography component="h2" variant="h5" gutterBottom fontWeight={500}>
-        General FAQs
+        Feature FAQs
       </Typography>
     </Box>
 
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6" fontWeight={600} component="span">
-          What is Fuze Store?
+          Does it support table or room management?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Our POS system is an all-in-one platform for managing sales, inventory,
-        staff, and stores—built for food, small stores, and service businesses.
+        Yes! You can assign orders to tables, areas, or rooms—perfect for
+        restaurants, cafés, or service-based businesses.
       </AccordionDetails>
     </Accordion>
 
@@ -36,12 +36,12 @@ const GeneralFaq = () => (
         id="panel2-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Is it cloud-based or offline?
+          Can I customize my receipts and reports?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        It’s cloud-based, so you can access your data anytime, anywhere. Offline
-        features are not yet available.
+        As of now, receipt and report customization is not yet customizable. We
+        plan to add this feature in the future.
       </AccordionDetails>
     </Accordion>
 
@@ -52,12 +52,12 @@ const GeneralFaq = () => (
         id="panel3-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Does it work on mobile or tablet?
+          Can I manage staff permissions?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Yes, it works seamlessly on tablets, desktops, and mobile devices using
-        our responsive web app or mobile app version.
+        Yes, store owners and staff that has permission to manage staffs can
+        assign custom roles and permissions per store.
       </AccordionDetails>
     </Accordion>
 
@@ -68,12 +68,12 @@ const GeneralFaq = () => (
         id="panel4-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Can I manage multiple stores?
+          Can you customize how each store behaves?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Absolutely! You can manage multiple stores under one account, each with
-        separate settings, staff, and reports.
+        Yes, each store can have its own settings, payment methods, tax rates,
+        and more.
       </AccordionDetails>
     </Accordion>
 
@@ -84,12 +84,11 @@ const GeneralFaq = () => (
         id="panel4-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Do you offer customer support?
+          Does it support multiple devices or registers?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Yes. You can reach us via chat, email, or through our social media
-        pages.
+        Yes. You can run multiple terminals or registers in one store.
       </AccordionDetails>
     </Accordion>
 
@@ -100,15 +99,14 @@ const GeneralFaq = () => (
         id="panel4-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Is there a user guide or documentation?
+          Can I transfer store ownership?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Yes, we provide detailed documentation and user guides to help you
-        navigate our system.
+        Yes, store ownership can be securely transferred to another account.
       </AccordionDetails>
     </Accordion>
   </Container>
 );
 
-export default memo(GeneralFaq);
+export default memo(FeatureFaq);

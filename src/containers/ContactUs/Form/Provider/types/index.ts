@@ -15,7 +15,7 @@ export const schema = z.object({
     .min(1, 'Name is required')
     .max(50, 'Name cannot exceed 50 characters'),
   email: z.string().min(1, 'Email is required').email('Invalid email address'),
-  phoneNumber: z.string(),
+  phoneNumber: z.string().optional(),
   message: z.string().min(1, 'Message is required'),
 });
 

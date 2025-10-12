@@ -68,6 +68,9 @@ export const endpoints = {
   subscriptionPlan: {
     list: '/api/v1/subscriptions/plans',
   },
+  support: {
+    query: '/api/v1/support/query',
+  },
 };
 
 export default endpoints;
