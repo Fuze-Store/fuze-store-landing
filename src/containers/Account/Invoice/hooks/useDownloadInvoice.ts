@@ -6,8 +6,8 @@ import { AxiosError } from 'axios';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse } from '@/types';
 import { InvoiceDownloadResponse } from '@/types/invoice';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useDownloadInvoice = () => {
   const { mutateAsync, ...rest } = useMutation<

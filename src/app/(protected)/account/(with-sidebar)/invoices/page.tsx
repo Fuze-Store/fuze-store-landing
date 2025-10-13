@@ -18,7 +18,7 @@ import React, { ChangeEventHandler } from 'react';
 
 import useGetInvoiceList from '@/containers/Account/Invoice/hooks/useGetInvoiceList';
 import { paths } from '@/helpers/page.helper';
-import { formatDate } from '@fuze-store/fuze-store-shared/helpers';
+import { formatDate } from '@fuze-store/fuze-store-shared';
 
 import SectionContainer from '@/components/SectionContainer';
 import InvoiceDownloadButton from '@/containers/Account/Invoice/DownloadButton';

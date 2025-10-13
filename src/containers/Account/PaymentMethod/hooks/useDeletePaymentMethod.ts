@@ -9,8 +9,8 @@ import { useConfirmationContext } from '@/providers/Confirmation/Context';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse } from '@/types';
 import type { PaymentMethodSessionResponse } from '@/types/paymentMethod';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 import { resetGlobalFields, updateGlobalFields } from '@/rtk/global/slice';
 

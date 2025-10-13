@@ -1,5 +1,4 @@
-import type { ApiSuccessResponse } from '@/types';
-import type { User } from '@/types/user';
+import type { ApiSuccessResponse, User } from '@fuze-store/fuze-store-shared';
 
 export type LoginPayload = {
   email: string;

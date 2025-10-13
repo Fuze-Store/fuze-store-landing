@@ -6,7 +6,10 @@ import { toast } from 'sonner';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse, ApiSuccessResponse } from '@/types';
+import type {
+  ApiErrorResponse,
+  ApiSuccessResponse,
+} from '@fuze-store/fuze-store-shared';
 
 const useResendEmail = () => {
   const { mutateAsync, ...rest } = useMutation<

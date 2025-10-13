@@ -6,7 +6,10 @@ import { useConfirmationContext } from '@/providers/Confirmation/Context';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse, ApiSuccessResponse } from '@/types';
+import type {
+  ApiErrorResponse,
+  ApiSuccessResponse,
+} from '@fuze-store/fuze-store-shared';
 
 const useDeleteAccount = () => {
   const { showConfirmation } = useConfirmationContext();

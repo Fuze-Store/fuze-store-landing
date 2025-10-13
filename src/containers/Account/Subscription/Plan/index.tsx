@@ -1,16 +1,15 @@
 'use client';
 
-import { Subscription } from '@fuze-store/fuze-store-shared';
 import {
+  formatDate,
   PlanCode,
+  Subscription,
   SubscriptionStatus,
-} from '@fuze-store/fuze-store-shared/enums';
+} from '@fuze-store/fuze-store-shared';
 import { Box, Button, CircularProgress, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { memo, useCallback } from 'react';
-
-import { formatDate } from '@fuze-store/fuze-store-shared/helpers';
 
 import SectionContainer from '@/components/SectionContainer';
 import CancelButton from '@/containers/Account/Subscription/CancelButton';

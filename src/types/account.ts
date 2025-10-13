@@ -1,12 +1,11 @@
 import type { SocialProvider } from '@/enums/socialProviders.enum';
+import type { StringArray, ValueOf } from '@/types';
+import type { Address } from '@/types/address';
 import type {
   ApiErrorResponse,
   ApiSuccessResponse,
-  StringArray,
-  ValueOf,
-} from '@/types';
-import type { Address } from '@/types/address';
-import type { Subscription } from '@fuze-store/fuze-store-shared';
+  Subscription,
+} from '@fuze-store/fuze-store-shared';
 
 // ---- ACCOUNT
 

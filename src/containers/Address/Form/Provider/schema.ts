@@ -5,7 +5,7 @@
  */
 
 import type { FormInputs } from '@/containers/Address/Form/Provider/types';
-import { Address } from '@/types/address';
+import type { Address } from '@/types/address';
 
 /**
  * Form Default Values

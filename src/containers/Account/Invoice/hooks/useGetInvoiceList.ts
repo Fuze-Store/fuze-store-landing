@@ -7,8 +7,9 @@ import { CACHE_TAG } from '@/enums/cache.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiErrorResponse, FilterParams } from '@/types';
+import { FilterParams } from '@/types';
 import { InvoiceListResponse } from '@/types/invoice';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useGetInvoiceList = (filters: FilterParams) =>
   useQuery<InvoiceListResponse, AxiosError<ApiErrorResponse>>({

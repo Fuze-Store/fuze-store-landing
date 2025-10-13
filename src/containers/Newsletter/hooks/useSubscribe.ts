@@ -6,11 +6,11 @@ import { AxiosError } from 'axios';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiSuccessResponse } from '@/types';
 import type {
   NewsletterErrorResponse,
   NewsletterPayload,
 } from '@/types/newsletter';
+import type { ApiSuccessResponse } from '@fuze-store/fuze-store-shared';
 
 const subscribe = async (
   data: NewsletterPayload,

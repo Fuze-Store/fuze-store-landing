@@ -1,7 +1,6 @@
 'use client';
 
 import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear';
 import {
   Table,
   TableBody,
@@ -15,17 +14,13 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import React, { memo } from 'react';
 
-import {
-  featureLabels,
-  getFeatureValue,
-} from '@fuze-store/fuze-store-shared/helpers';
+import { featureLabels, getFeatureValue } from '@fuze-store/fuze-store-shared';
 
 import type { Plan, PlanFeatureValue } from '@fuze-store/fuze-store-shared';
 
 const Check = () => (
   <CheckIcon color="primary" sx={{ width: 24, height: 24 }} />
 );
-const Cross = () => <ClearIcon color="error" sx={{ width: 24, height: 24 }} />;
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '& td, & th': {

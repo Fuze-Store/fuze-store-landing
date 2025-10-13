@@ -1,5 +1,9 @@
-import { ApiErrorResponse, ApiSuccessResponse, StringArray } from '@/types';
-import { User } from '@/types/user';
+import { StringArray } from '@/types';
+import {
+  ApiErrorResponse,
+  ApiSuccessResponse,
+  User,
+} from '@fuze-store/fuze-store-shared';
 
 export type RegisterPayload = {
   username: string;

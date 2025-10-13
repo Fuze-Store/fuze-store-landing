@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { useMemo, useState } from 'react';
 
 import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
-import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
+import { PlanCode } from '@fuze-store/fuze-store-shared';
 
 import GoBackButton from '@/components/GoBackButton';
 import PageLoader from '@/components/PageLoader';

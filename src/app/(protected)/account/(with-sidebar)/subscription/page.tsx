@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
 import { paths } from '@/helpers/page.helper';
-import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
+import { PlanCode } from '@fuze-store/fuze-store-shared';
 
 import SectionContainer from '@/components/SectionContainer';
 import AccountRecentInvoices from '@/containers/Account/Invoice/Recent';

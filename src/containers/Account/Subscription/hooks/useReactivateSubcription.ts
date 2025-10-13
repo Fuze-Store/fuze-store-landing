@@ -8,8 +8,8 @@ import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
 import { useConfirmationContext } from '@/providers/Confirmation/Context';
-import type { ApiErrorResponse } from '@/types';
 import type { SubcriptionResponse } from '@/types/subscription';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 import { useCallback } from 'react';
 
 const useReactivateSubcription = () => {

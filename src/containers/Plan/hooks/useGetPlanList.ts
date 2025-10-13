@@ -8,8 +8,8 @@ import { CACHE_TAG } from '@/enums/cache.enum';
 import { axiosPublic } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiErrorResponse } from '@/types';
 import { PlanResponse } from '@/types/plan';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useGetPlanList = () =>
   useQuery<PlanResponse, AxiosError<ApiErrorResponse>>({

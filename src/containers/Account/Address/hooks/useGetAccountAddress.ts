@@ -6,8 +6,8 @@ import { CACHE_TAG } from '@/enums/cache.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiErrorResponse } from '@/types';
 import { AccountAddressResponse } from '@/types/account';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const getAccountAddress = async (): Promise<AccountAddressResponse> => {
   const response = await axiosPrivate.get<AccountAddressResponse>(

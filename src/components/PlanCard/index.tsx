@@ -2,9 +2,12 @@
 
 import { paths } from '@/helpers/page.helper';
 import useSession from '@/hooks/useSession';
-import { Plan, PlanFeatureValue } from '@fuze-store/fuze-store-shared';
-import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
-import { featureLabels } from '@fuze-store/fuze-store-shared/helpers';
+import {
+  featureLabels,
+  Plan,
+  PlanCode,
+  PlanFeatureValue,
+} from '@fuze-store/fuze-store-shared';
 import CheckIcon from '@mui/icons-material/Check';
 import {
   alpha,

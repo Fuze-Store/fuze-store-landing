@@ -9,8 +9,10 @@ import { useMemo } from 'react';
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useGetPlanList from '@/containers/Plan/hooks/useGetPlanList';
 import useSession from '@/hooks/useSession';
-import { PlanCode } from '@fuze-store/fuze-store-shared/enums';
-import { getDifferentFeaturesValues } from '@fuze-store/fuze-store-shared/helpers';
+import {
+  getDifferentFeaturesValues,
+  PlanCode,
+} from '@fuze-store/fuze-store-shared';
 
 import type { Plan } from '@fuze-store/fuze-store-shared';
 

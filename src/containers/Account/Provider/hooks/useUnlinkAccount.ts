@@ -9,8 +9,8 @@ import { SocialProvider } from '@/enums/socialProviders.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse } from '@/types';
 import type { AccountDetailsResponse } from '@/types/account';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 type Context = { previousData?: AccountDetailsResponse };
 

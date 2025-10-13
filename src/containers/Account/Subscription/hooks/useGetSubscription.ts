@@ -7,8 +7,8 @@ import { CACHE_TAG } from '@/enums/cache.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiErrorResponse } from '@/types';
 import { SubcriptionResponse } from '@/types/subscription';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useGetSubscription = () =>
   useQuery<SubcriptionResponse, AxiosError<ApiErrorResponse>>({

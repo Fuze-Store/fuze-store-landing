@@ -1,4 +1,5 @@
-import { ApiErrorResponse, StringArray } from '@/types';
+import { StringArray } from '@/types';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 export type NewsletterPayload = {
   email: string;

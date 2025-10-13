@@ -19,7 +19,7 @@ import type { AccountPasswordPayloadError } from '@/types/accountSecurity';
 
 type Props = {
   errors?: Partial<AccountPasswordPayloadError>;
-  onSubmit: (payload: FormInputs) => void;
+  onSubmit: (_payload: FormInputs) => void;
 };
 
 /**

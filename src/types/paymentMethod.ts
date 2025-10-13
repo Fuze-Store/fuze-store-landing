@@ -5,8 +5,8 @@
  */
 
 import type { AdyenSupportedRecurringProcessingModels } from '@/enums/adyen.enum';
-import type { ApiSuccessResponse } from '@/types';
 import type { AdyenSessionsResponse } from '@/types/adyen';
+import type { ApiSuccessResponse } from '@fuze-store/fuze-store-shared';
 
 export interface PaymentMethod {
   brand: string;

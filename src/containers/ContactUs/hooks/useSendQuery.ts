@@ -5,8 +5,11 @@ import { useMutation } from '@tanstack/react-query';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse, ApiSuccessResponse } from '@/types';
 import type { ContactQueryPayload } from '@/types/support';
+import type {
+  ApiErrorResponse,
+  ApiSuccessResponse,
+} from '@fuze-store/fuze-store-shared';
 import { toast } from 'sonner';
 
 const useSendQuery = () => {

@@ -1,5 +1,8 @@
-import { ApiSuccessResponse, ListResponse } from '@/types';
-import { Invoice } from '@fuze-store/fuze-store-shared';
+import {
+  ApiSuccessResponse,
+  Invoice,
+  ListResponse,
+} from '@fuze-store/fuze-store-shared';
 
 export type InvoiceListResponse = ApiSuccessResponse & {
   data: ListResponse<Invoice[]>;
