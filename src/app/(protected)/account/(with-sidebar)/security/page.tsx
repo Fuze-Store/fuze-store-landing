@@ -25,7 +25,7 @@ export default function Page() {
         description="Manage your security settings for Fuze Store."
       />
 
-      <Container sx={{ marginLeft: 0 }} maxWidth="sm">
+      <Container sx={{ marginLeft: 0 }} maxWidth="md">
         <Box py={2}>
           <Typography fontWeight={600}>Password</Typography>
           <Divider />

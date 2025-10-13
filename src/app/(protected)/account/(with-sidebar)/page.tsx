@@ -43,7 +43,7 @@ export default function Page() {
           description="Manage your account settings for Fuze Store."
         />
 
-        <Container sx={{ marginLeft: 0 }} maxWidth="sm">
+        <Container sx={{ marginLeft: 0 }} maxWidth="md">
           <Box py={2}>
             <Typography fontWeight={600}>Personal Information</Typography>
             <Divider sx={{ mb: 2 }} />

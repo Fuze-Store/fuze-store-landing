@@ -87,7 +87,7 @@ export default function RegisterPage() {
           </Box>
 
           <Box mb={2}>
-            <GoBackButton fullWidth />
+            <GoBackButton fullWidth startIcon={undefined} />
           </Box>
         </Box>
       </Container>
