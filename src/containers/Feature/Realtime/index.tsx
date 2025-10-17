@@ -3,7 +3,7 @@
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import SectionContainer from '@/components/SectionContainer';
 import DoneIcon from '@mui/icons-material/Done';
-import PointOfSaleOutlinedIcon from '@mui/icons-material/PointOfSaleOutlined';
+import SyncOutlinedIcon from '@mui/icons-material/SyncOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,14 +13,12 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeaturePOS = ({ rtl = false }: Props) => {
+const FeatureRealtime = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Intuitive Cart Summary – Keep track of current orders with a live summary section for easy review and editing.',
-    'Active Product & Service Listing – View all available products and services, neatly organized by categories.',
-    'Flexible Order Statuses – Assign orders to multiple statuses for smooth workflow management.',
-    'Multiple Service Modes – Handle In-Store, Service, Delivery, Takeout, or Pickup depending on your store type.',
-    'Quick Checkout & Editing – Modify orders, add items, or apply discounts without slowing down your operations.',
-    'Optimized for Busy Environments – Designed for fast-paced restaurants, retail shops, and service stores.',
+    'Instant Updates – Orders, inventory, and customer information sync automatically as soon as changes occur.',
+    'Optimized for Busy Stores – Perfect for fast-paced restaurants, retail, and multi-store setups.',
+    'Improved Staff Coordination – Staff can see changes immediately, from new orders to updated statuses.',
+    'Multi-Device Support – All terminals, tablets, and dashboards stay up-to-date in real time.',
   ];
 
   return (
@@ -46,22 +44,18 @@ const FeaturePOS = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <PointOfSaleOutlinedIcon
-            color="primary"
-            sx={{ height: 24, width: 24 }}
-          />
+          <SyncOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
         </StyledIconPlaceholder>
 
         <SectionContainer>
           <Typography variant="h5" fontWeight="500" gutterBottom>
-            Point of Sale
+            Real-Time Sync
           </Typography>
 
           <Typography variant="subtitle1">
-            The heart of your store operations — our POS system is designed to
-            make selling faster, smarter, and more organized. Whether you’re
-            managing products, services, or orders, everything you need is right
-            at your fingertips.
+            Keep your team and systems perfectly aligned with Real-Time Sync.
+            Every update in your store is instantly reflected across all
+            devices, ensuring that everyone is always on the same page.
           </Typography>
         </SectionContainer>
 
@@ -87,4 +81,4 @@ const FeaturePOS = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeaturePOS);
+export default memo(FeatureRealtime);

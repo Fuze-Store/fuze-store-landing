@@ -1,9 +1,8 @@
 'use client';
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
-import SectionContainer from '@/components/SectionContainer';
 import DoneIcon from '@mui/icons-material/Done';
-import PointOfSaleOutlinedIcon from '@mui/icons-material/PointOfSaleOutlined';
+import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,21 +12,18 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeaturePOS = ({ rtl = false }: Props) => {
+const FeatureOrderNotification = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Intuitive Cart Summary – Keep track of current orders with a live summary section for easy review and editing.',
-    'Active Product & Service Listing – View all available products and services, neatly organized by categories.',
-    'Flexible Order Statuses – Assign orders to multiple statuses for smooth workflow management.',
-    'Multiple Service Modes – Handle In-Store, Service, Delivery, Takeout, or Pickup depending on your store type.',
-    'Quick Checkout & Editing – Modify orders, add items, or apply discounts without slowing down your operations.',
-    'Optimized for Busy Environments – Designed for fast-paced restaurants, retail shops, and service stores.',
+    'Email Alerts – Automatically notify customers whenever an order is created, updated, or completed.',
+    'Real-Time Updates – Receive notifications immediately to act fast and avoid delays.',
+    'Order Tracking – Keep customers informed about their order status at every step.',
   ];
 
   return (
     <Grid
       container
       spacing={{ xs: 2, sm: 10 }}
-      alignItems="stretch"
+      alignItems="center"
       direction={rtl ? 'row-reverse' : 'row'}
     >
       <Grid size={{ xs: 12, sm: 6 }}>
@@ -37,8 +33,7 @@ const FeaturePOS = ({ rtl = false }: Props) => {
             borderStyle: 'solid',
             borderColor: '#ccc',
             borderRadius: 8,
-            minHeight: 460,
-            height: '100%',
+            height: 460,
             width: '100%',
           }}
         />
@@ -46,24 +41,22 @@ const FeaturePOS = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <PointOfSaleOutlinedIcon
+          <NotificationsActiveOutlinedIcon
             color="primary"
             sx={{ height: 24, width: 24 }}
           />
         </StyledIconPlaceholder>
 
-        <SectionContainer>
+        <Box mb={2}>
           <Typography variant="h5" fontWeight="500" gutterBottom>
-            Point of Sale
+            Order Notifications
           </Typography>
 
           <Typography variant="subtitle1">
-            The heart of your store operations — our POS system is designed to
-            make selling faster, smarter, and more organized. Whether you’re
-            managing products, services, or orders, everything you need is right
-            at your fingertips.
+            Keep your team and customers in the loop with Order Notifications —
+            ensuring every order update is communicated instantly and reliably.
           </Typography>
-        </SectionContainer>
+        </Box>
 
         <Box component="ul" p={0} my={4}>
           {bulletList.map((text, index) => (
@@ -87,4 +80,4 @@ const FeaturePOS = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeaturePOS);
+export default memo(FeatureOrderNotification);

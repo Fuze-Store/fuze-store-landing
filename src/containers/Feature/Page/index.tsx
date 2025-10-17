@@ -23,13 +23,17 @@ import FeatureDiscount from '@/containers/Feature/Discount';
 import FeatureEvent from '@/containers/Feature/Event';
 import FeatureExpense from '@/containers/Feature/Expense';
 import FeatureGiftCard from '@/containers/Feature/GiftCard';
+import FeatureMigration from '@/containers/Feature/Migration';
+import FeatureOrderNotification from '@/containers/Feature/OrderNotification';
 import PointOfSale from '@/containers/Feature/PointOfSale';
+import FeatureRealtime from '@/containers/Feature/Realtime';
 import FeatureRefund from '@/containers/Feature/Refund';
+import FeatureReport from '@/containers/Feature/Report';
 import FeatureRole from '@/containers/Feature/Role';
-import Sales from '@/containers/Feature/Sales';
 import FeatureSession from '@/containers/Feature/Session';
 import FeatureStaff from '@/containers/Feature/Staff';
 import FeatureTax from '@/containers/Feature/Tax';
+import FeatureWaitingList from '@/containers/Feature/WaitingList';
 
 export default function FeaturePage() {
   const session = useSession();
@@ -125,7 +129,9 @@ export default function FeaturePage() {
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <PointOfSale />
+        <Container maxWidth="lg">
+          <PointOfSale />
+        </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
@@ -204,7 +210,33 @@ export default function FeaturePage() {
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Sales />
+        <Container maxWidth="lg">
+          <FeatureReport />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="lg">
+          <FeatureRealtime />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="lg">
+          <FeatureWaitingList />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="lg">
+          <FeatureOrderNotification />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="lg">
+          <FeatureMigration />
+        </Container>
       </Box>
 
       <Divider />

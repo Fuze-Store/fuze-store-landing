@@ -2,8 +2,8 @@
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import SectionContainer from '@/components/SectionContainer';
+import BarChartOutlinedIcon from '@mui/icons-material/BarChartOutlined';
 import DoneIcon from '@mui/icons-material/Done';
-import PointOfSaleOutlinedIcon from '@mui/icons-material/PointOfSaleOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -13,14 +13,12 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeaturePOS = ({ rtl = false }: Props) => {
+const FeatureReport = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Intuitive Cart Summary – Keep track of current orders with a live summary section for easy review and editing.',
-    'Active Product & Service Listing – View all available products and services, neatly organized by categories.',
-    'Flexible Order Statuses – Assign orders to multiple statuses for smooth workflow management.',
-    'Multiple Service Modes – Handle In-Store, Service, Delivery, Takeout, or Pickup depending on your store type.',
-    'Quick Checkout & Editing – Modify orders, add items, or apply discounts without slowing down your operations.',
-    'Optimized for Busy Environments – Designed for fast-paced restaurants, retail shops, and service stores.',
+    'Customizable Reporting Periods – Export reports by daily, weekly, monthly, quarterly, or annual periods.',
+    'Sales Analytics – View best sellers, sales by category, and total sales to spot trends instantly.',
+    'Export Options – Download summaries in formats suitable for accounting, analysis, or presentations.',
+    'Make Informed Decisions – Use reports to adjust pricing, inventory, and marketing strategies.',
   ];
 
   return (
@@ -46,7 +44,7 @@ const FeaturePOS = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <PointOfSaleOutlinedIcon
+          <BarChartOutlinedIcon
             color="primary"
             sx={{ height: 24, width: 24 }}
           />
@@ -54,14 +52,13 @@ const FeaturePOS = ({ rtl = false }: Props) => {
 
         <SectionContainer>
           <Typography variant="h5" fontWeight="500" gutterBottom>
-            Point of Sale
+            Advanced Reporting
           </Typography>
 
           <Typography variant="subtitle1">
-            The heart of your store operations — our POS system is designed to
-            make selling faster, smarter, and more organized. Whether you’re
-            managing products, services, or orders, everything you need is right
-            at your fingertips.
+            Turn your data into actionable insights with Reports. Track
+            performance, understand trends, and make smarter business decisions
+            with easy-to-read summaries and detailed analytics.
           </Typography>
         </SectionContainer>
 
@@ -87,4 +84,4 @@ const FeaturePOS = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeaturePOS);
+export default memo(FeatureReport);
