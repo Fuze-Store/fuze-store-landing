@@ -2,7 +2,7 @@
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,12 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureArea = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    `Organize your space easily - Set up areas like Balcony, VIP Lounge, or Al Fresco for a clearer view of your floor.`,
+    'Real-time status updates - Instantly see which tables or rooms are Available, Reserved, Occupied, or Unavailable.',
+    'Print order details fast – Print bills or order summaries directly from each table or unit.',
+    'Smooth coordination – Keep your staff aligned and your service flowing, even during the busiest hours.',
   ];
 
   return (
@@ -41,18 +42,25 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <SpaceDashboardOutlinedIcon
+            color="primary"
+            sx={{ height: 24, width: 24 }}
+          />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Area & Unit/Table Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Keep your operations organized and your customers happy with a
+            simple yet powerful{' '}
+            <Typography component="span" fontWeight={700}>
+              Area and Table Management
+            </Typography>{' '}
+            system. Designed for restaurants, cafés, and service-based stores,
+            it helps you stay on top of every seat, room, or bay in real time.
           </Typography>
         </Box>
 
@@ -78,4 +86,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureArea);

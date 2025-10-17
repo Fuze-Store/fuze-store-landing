@@ -49,11 +49,11 @@ const PointOfSale = () => (
           </Typography>
 
           <Typography variant="subtitle1">
-            <Typography component="span" fontWeight="500">
-              Sell Faster with an Intuitive POS.
+            <Typography component="span" fontWeight="700">
+              Fast, Reliable, and Flexible Point of Sale.
             </Typography>{' '}
-            A clean, responsive interface that supports drag-and-drop items,
-            quick payments, and real-time syncing.
+            Sell food, services, or items easily — support for dine-in,
+            takeaway, or appointments
           </Typography>
         </Box>
 
@@ -66,7 +66,9 @@ const PointOfSale = () => (
               />
             </Box>
             <Box height={32}>
-              <Typography>Works offline & online</Typography>
+              <Typography>
+                Real-time order updates across all devices
+              </Typography>
             </Box>
           </Stack>
 

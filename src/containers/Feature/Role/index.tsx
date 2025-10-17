@@ -2,7 +2,7 @@
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,13 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureRole = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Custom Role Creation – Define roles that fit your workflow, like Cashier, Manager, or Staff.',
+    'Granular Permissions – Control access to every feature, from POS to reports, with precision.',
+    'Per-Store Configuration – Assign unique permissions for each store under your account for total flexibility.',
+    'Secure Access Control – Prevent unauthorized actions and protect sensitive business data.',
+    'Easy Updates – Modify roles or permissions anytime as your team and operations evolve.',
   ];
 
   return (
@@ -41,18 +43,19 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <GppGoodOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Roles & Permissions
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Stay in control of your business with Roles & Permissions. Whether
+            you’re managing a single store or multiple locations, you decide who
+            sees what — ensuring security, focus, and efficiency across your
+            team.
           </Typography>
         </Box>
 
@@ -78,4 +81,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureRole);

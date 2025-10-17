@@ -16,8 +16,6 @@ import Link from 'next/link';
 const HeroHome = () => {
   const session = useSession();
   const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
-  const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
-  const isLgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
 
   const startFreeTrialLink =
     session.status === 'authenticated' ? paths.account : paths.register;

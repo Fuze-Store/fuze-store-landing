@@ -2,7 +2,7 @@
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,13 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureStaff = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Create Staff Profiles Easily – Add team members without requiring them to create a full Fuze Store POS account.',
+    'Controlled Access – Only registered accounts can log in to the POS Store, ensuring secure and verified access.',
+    'Attach Roles & Permissions – Assign custom roles to define what each staff member can view or manage.',
+    'Perfect for Multi-Store Teams – Manage staff per location with role-based access unique to each store.',
+    'Centralized Management – View, edit, or remove staff anytime from your dashboard.',
   ];
 
   return (
@@ -41,18 +43,21 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <PersonOutlineOutlinedIcon
+            color="primary"
+            sx={{ height: 24, width: 24 }}
+          />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Staff Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Simplify team management and keep your operations organized with our
+            Staff Management feature. From role assignments to permissions,
+            everything you need to manage your people is built right in.
           </Typography>
         </Box>
 
@@ -78,4 +83,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureStaff);

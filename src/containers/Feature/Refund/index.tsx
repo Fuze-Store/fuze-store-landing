@@ -1,8 +1,8 @@
 'use client';
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
+import CurrencyExchangeOutlinedIcon from '@mui/icons-material/CurrencyExchangeOutlined';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,11 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureRefund = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Seamless Refund Processing – Quickly issue refunds directly from completed orders.',
+    'Automatic Record Keeping – Every refund is logged and linked to the original transaction for clear tracking.',
+    'Reason & Notes Field – Add internal notes or customer-facing reasons for refunds.',
   ];
 
   return (
@@ -41,18 +41,21 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <CurrencyExchangeOutlinedIcon
+            color="primary"
+            sx={{ height: 24, width: 24 }}
+          />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Refund Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Build customer trust and handle returns with confidence using our
+            Refund Management feature. Designed for transparency and ease, it
+            keeps your refund process smooth, accurate, and well-documented.
           </Typography>
         </Box>
 
@@ -78,4 +81,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureRefund);

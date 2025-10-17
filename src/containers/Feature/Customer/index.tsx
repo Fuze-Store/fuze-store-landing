@@ -2,7 +2,7 @@
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,12 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureCustomer = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    `Comprehensive customer profiles – Record basic information like name and email, plus optional details like gender, date of birth, mobile number, and address.`,
+    'Order history at a glance – Quickly view all past orders to understand preferences and trends.',
+    'Assign customers to orders – Link purchases to the right customer for accurate tracking and loyalty programs.',
+    'Connect customers to events – Track appointments or reservations and ensure seamless service.',
   ];
 
   return (
@@ -41,18 +42,19 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <GroupsOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Customer Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Build stronger relationships and keep track of every interaction
+            with your customers using our Customer Management system. Perfect
+            for both retail and service businesses, it helps you personalize
+            service and stay connected.
           </Typography>
         </Box>
 
@@ -78,4 +80,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureCustomer);

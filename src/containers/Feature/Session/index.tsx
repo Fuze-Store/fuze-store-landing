@@ -1,8 +1,8 @@
 'use client';
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,11 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureSession = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Open & Close Sessions Easily – Start your POS day by opening a session and entering your initial cash amount.',
+    'Track Staff Activity – Automatically log which staff opened or closed each session for accountability.',
+    'Prevent Overlaps – Ensure only one active session per register to avoid mix-ups during shifts.',
   ];
 
   return (
@@ -41,18 +41,22 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <AccessTimeOutlinedIcon
+            color="primary"
+            sx={{ height: 24, width: 24 }}
+          />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Store Session Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Keep every sales shift organized and transparent with Store Session
+            Management. Whether you’re tracking cash-ins, cash-outs, or staff
+            accountability, this feature helps you stay in control of daily
+            operations.
           </Typography>
         </Box>
 
@@ -78,4 +82,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureSession);

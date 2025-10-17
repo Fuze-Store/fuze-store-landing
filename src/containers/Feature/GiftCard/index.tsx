@@ -1,8 +1,8 @@
 'use client';
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
+import CardGiftcardOutlinedIcon from '@mui/icons-material/CardGiftcardOutlined';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,12 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureGiftCard = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Perfect for Promotions – Run seasonal campaigns or offer gift cards as rewards and incentives.',
+    'Easy Gift Card Creation – Generate and issue gift cards directly from your POS or dashboard.',
+    'Customizable Value – Set fixed or flexible gift card amounts based on your business needs.',
+    'Maximum Usage Limit – Control how many times a gift card can be used for added security.',
   ];
 
   return (
@@ -41,18 +42,21 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <CardGiftcardOutlinedIcon
+            color="primary"
+            sx={{ height: 24, width: 24 }}
+          />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Gift Cards
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Delight your customers and grow loyalty with Gift Cards — a simple
+            yet powerful way to encourage repeat visits and attract new
+            customers.
           </Typography>
         </Box>
 
@@ -78,4 +82,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureGiftCard);

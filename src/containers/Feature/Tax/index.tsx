@@ -1,8 +1,8 @@
 'use client';
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
+import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined';
 import DoneIcon from '@mui/icons-material/Done';
-import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,11 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureExpense = ({ rtl = false }: Props) => {
+const FeatureTax = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Flexible Tax Types – Support for both percentage-based and fixed-amount taxes.',
+    'Automatic Calculations – Taxes are applied instantly during checkout for accurate totals every time.',
+    'Compliance Made Simple – Keep your reports accurate and ready for audit or accounting.',
   ];
 
   return (
@@ -41,18 +41,21 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
+          <AccountBalanceOutlinedIcon
+            color="primary"
+            sx={{ height: 24, width: 24 }}
+          />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500">
-            Expense Management
+          <Typography variant="h5" fontWeight="500" gutterBottom>
+            Tax Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Stay compliant and keep pricing accurate with Tax Management built
+            right into your POS. Whether your store deals with fixed fees or
+            percentage-based taxes, you can set it all up in just a few clicks.
           </Typography>
         </Box>
 
@@ -78,4 +81,4 @@ const FeatureExpense = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureExpense);
+export default memo(FeatureTax);
