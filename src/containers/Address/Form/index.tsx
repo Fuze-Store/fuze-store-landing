@@ -37,12 +37,29 @@ const AddressForm = () => {
         <TextField
           type="text"
           id="street"
+          autoComplete="address-line1"
           required
           fullWidth
           {...register('street')}
           error={!!errors.street}
         />
         <FieldErrorMessage name="street" errors={errors} />
+      </SectionContainer>
+
+      <SectionContainer>
+        <Label htmlFor="address2" error={!!errors.address2}>
+          Address Line 2
+        </Label>
+        <TextField
+          type="text"
+          autoComplete="address-line2"
+          id="address2"
+          required
+          fullWidth
+          {...register('address2')}
+          error={!!errors.address2}
+        />
+        <FieldErrorMessage name="address2" errors={errors} />
       </SectionContainer>
 
       <SectionContainer>
@@ -68,6 +85,7 @@ const AddressForm = () => {
           id="city"
           required
           fullWidth
+          autoComplete="address-level2"
           {...register('city')}
           error={!!errors.city}
         />
@@ -83,6 +101,7 @@ const AddressForm = () => {
           id="province"
           required
           fullWidth
+          autoComplete="address-level1"
           {...register('province')}
           error={!!errors.province}
         />
@@ -98,6 +117,7 @@ const AddressForm = () => {
           id="postal-code"
           required
           fullWidth
+          autoComplete="postal-code"
           {...register('postalCode')}
           error={!!errors.postalCode}
         />
@@ -115,10 +135,6 @@ const AddressForm = () => {
             native
             {...register('country')}
             error={!!errors.country}
-            // value={age}
-            // label="Age"
-            // onChange={handleChange}
-            // sx={{ maxHeight: 400 }}
           >
             {countries.map((country) => (
               <option key={country.code} value={country.code}>

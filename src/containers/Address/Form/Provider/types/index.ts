@@ -16,6 +16,7 @@ export const schema = z.object({
     .string()
     .min(1, 'Street is required')
     .max(255, 'Street cannot exceed 255 characters'),
+  address2: z.string().max(255, 'Address line 2 cannot exceed 255 characters'),
   neighborhood: z
     .string()
     .min(1, 'Neighborhood is required')
