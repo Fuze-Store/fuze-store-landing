@@ -75,9 +75,9 @@ function generateFormErrors(
       types: getErrorMessageTypes(errors.address1),
     });
   }
-  if (errors?.barangay && errors.barangay.length > 0) {
-    setError('barangay', {
-      types: getErrorMessageTypes(errors.barangay),
+  if (errors?.neighborhood && errors.neighborhood.length > 0) {
+    setError('neighborhood', {
+      types: getErrorMessageTypes(errors.neighborhood),
     });
   }
   if (errors?.city && errors.city.length > 0) {

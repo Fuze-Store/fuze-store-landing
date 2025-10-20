@@ -15,7 +15,7 @@ import type { Address } from '@/types/address';
  */
 export const getInitialValues = (address?: Partial<Address>): FormInputs => ({
   street: address?.address1 ?? '',
-  barangay: address?.barangay ?? '',
+  neighborhood: address?.neighborhood ?? '',
   city: address?.city ?? '',
   province: address?.province ?? '',
   postalCode: address?.postalCode ?? '',

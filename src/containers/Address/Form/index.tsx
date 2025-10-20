@@ -46,18 +46,18 @@ const AddressForm = () => {
       </SectionContainer>
 
       <SectionContainer>
-        <Label htmlFor="barangay" error={!!errors.barangay}>
-          Barangay *
+        <Label htmlFor="neighborhood" error={!!errors.neighborhood}>
+          Neighborhood *
         </Label>
         <TextField
           type="text"
-          id="barangay"
+          id="neighborhood"
           required
           fullWidth
-          {...register('barangay')}
-          error={!!errors.barangay}
+          {...register('neighborhood')}
+          error={!!errors.neighborhood}
         />
-        <FieldErrorMessage name="barangay" errors={errors} />
+        <FieldErrorMessage name="neighborhood" errors={errors} />
       </SectionContainer>
 
       <SectionContainer>
