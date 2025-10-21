@@ -3,7 +3,7 @@
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import DoneIcon from '@mui/icons-material/Done';
 import NotificationsActiveOutlinedIcon from '@mui/icons-material/NotificationsActiveOutlined';
-import { Grid, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
@@ -20,63 +20,43 @@ const FeatureOrderNotification = ({ rtl = false }: Props) => {
   ];
 
   return (
-    <Grid
-      container
-      spacing={{ xs: 2, sm: 10 }}
-      alignItems="center"
-      direction={rtl ? 'row-reverse' : 'row'}
-    >
-      <Grid size={{ xs: 12, sm: 6 }}>
-        <Box
-          sx={{
-            borderWidth: 1,
-            borderStyle: 'solid',
-            borderColor: '#ccc',
-            borderRadius: 8,
-            height: 460,
-            width: '100%',
-          }}
+    <>
+      <StyledIconPlaceholder mb={2}>
+        <NotificationsActiveOutlinedIcon
+          color="primary"
+          sx={{ height: 24, width: 24 }}
         />
-      </Grid>
+      </StyledIconPlaceholder>
 
-      <Grid size={{ xs: 12, sm: 6 }}>
-        <StyledIconPlaceholder mb={2}>
-          <NotificationsActiveOutlinedIcon
-            color="primary"
-            sx={{ height: 24, width: 24 }}
-          />
-        </StyledIconPlaceholder>
+      <Box mb={2}>
+        <Typography variant="h5" fontWeight="500" gutterBottom>
+          Order Notifications
+        </Typography>
 
-        <Box mb={2}>
-          <Typography variant="h5" fontWeight="500" gutterBottom>
-            Order Notifications
-          </Typography>
+        <Typography variant="subtitle1">
+          Keep your team and customers in the loop with Order Notifications —
+          ensuring every order update is communicated instantly and reliably.
+        </Typography>
+      </Box>
 
-          <Typography variant="subtitle1">
-            Keep your team and customers in the loop with Order Notifications —
-            ensuring every order update is communicated instantly and reliably.
-          </Typography>
-        </Box>
-
-        <Box component="ul" p={0} my={4}>
-          {bulletList.map((text, index) => (
-            <Stack
-              component="li"
-              key={index}
-              mb={1}
-              direction="row"
-              alignItems="flex-start"
-              spacing={1}
-            >
-              <Box component="span">
-                <DoneIcon color="primary" sx={{ height: 28, width: 28 }} />
-              </Box>
-              <Typography>{text}</Typography>
-            </Stack>
-          ))}
-        </Box>
-      </Grid>
-    </Grid>
+      <Box component="ul" p={0} my={4}>
+        {bulletList.map((text, index) => (
+          <Stack
+            component="li"
+            key={index}
+            mb={1}
+            direction="row"
+            alignItems="flex-start"
+            spacing={1}
+          >
+            <Box component="span">
+              <DoneIcon color="primary" sx={{ height: 28, width: 28 }} />
+            </Box>
+            <Typography>{text}</Typography>
+          </Stack>
+        ))}
+      </Box>
+    </>
   );
 };
 

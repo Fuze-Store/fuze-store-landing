@@ -71,197 +71,173 @@ const FeatureCatalog = ({ rtl = false }: Props) => {
         </Typography>
       </Stack>
 
-      <Grid
-        container
-        spacing={{ xs: 2, sm: 8 }}
-        alignItems="stretch"
-        direction={rtl ? 'row-reverse' : 'row'}
-      >
-        <Grid size={{ xs: 12, md: 5 }}>
-          <Box
-            sx={{
-              borderWidth: 1,
-              borderStyle: 'solid',
-              borderColor: '#ccc',
-              borderRadius: 8,
-              minHeight: 460,
-              height: '100%',
-              width: '100%',
-            }}
-          />
+      <Grid container spacing={{ xs: 2, sm: 8 }}>
+        <Grid size={{ xs: 12, sm: 6 }}>
+          <Box mb={4}>
+            <StyledIconPlaceholder mb={2}>
+              <CategoryOutlinedIcon
+                color="primary"
+                sx={{ height: 24, width: 24 }}
+              />
+            </StyledIconPlaceholder>
+
+            <SectionContainer>
+              <Typography variant="h6" fontWeight="500">
+                Categories
+              </Typography>
+
+              <Typography>
+                Organize your store with style and clarity.
+              </Typography>
+
+              <Box component="ul" p={0} my={4}>
+                {bulletCategoryList.map((text, index) => (
+                  <Stack
+                    component="li"
+                    key={index}
+                    mb={1}
+                    direction="row"
+                    alignItems="flex-start"
+                    spacing={1}
+                  >
+                    <Box component="span">
+                      <DoneIcon
+                        color="primary"
+                        sx={{ height: 24, width: 24 }}
+                      />
+                    </Box>
+                    <Typography>{text}</Typography>
+                  </Stack>
+                ))}
+              </Box>
+            </SectionContainer>
+          </Box>
         </Grid>
 
-        <Grid size={{ xs: 12, md: 7 }}>
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Box mb={4}>
-                <StyledIconPlaceholder mb={2}>
-                  <CategoryOutlinedIcon
-                    color="primary"
-                    sx={{ height: 24, width: 24 }}
-                  />
-                </StyledIconPlaceholder>
+        <Grid size={{ xs: 12, sm: 6 }}>
+          <Box mb={4}>
+            <StyledIconPlaceholder mb={2}>
+              <ExtensionOutlinedIcon
+                color="primary"
+                sx={{ height: 24, width: 24 }}
+              />
+            </StyledIconPlaceholder>
 
-                <SectionContainer>
-                  <Typography variant="h6" fontWeight="500">
-                    Categories
-                  </Typography>
+            <SectionContainer>
+              <Typography variant="h6" fontWeight="500">
+                Modifiers
+              </Typography>
 
-                  <Typography>
-                    Organize your store with style and clarity.
-                  </Typography>
+              <Typography>
+                Let customers personalize their orders effortlessly.
+              </Typography>
 
-                  <Box component="ul" p={0} my={4}>
-                    {bulletCategoryList.map((text, index) => (
-                      <Stack
-                        component="li"
-                        key={index}
-                        mb={1}
-                        direction="row"
-                        alignItems="flex-start"
-                        spacing={1}
-                      >
-                        <Box component="span">
-                          <DoneIcon
-                            color="primary"
-                            sx={{ height: 24, width: 24 }}
-                          />
-                        </Box>
-                        <Typography>{text}</Typography>
-                      </Stack>
-                    ))}
-                  </Box>
-                </SectionContainer>
+              <Box component="ul" p={0} my={4}>
+                {bulletModifierList.map((text, index) => (
+                  <Stack
+                    component="li"
+                    key={index}
+                    mb={1}
+                    direction="row"
+                    alignItems="flex-start"
+                    spacing={1}
+                  >
+                    <Box component="span">
+                      <DoneIcon
+                        color="primary"
+                        sx={{ height: 24, width: 24 }}
+                      />
+                    </Box>
+                    <Typography>{text}</Typography>
+                  </Stack>
+                ))}
               </Box>
-            </Grid>
+            </SectionContainer>
+          </Box>
+        </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Box mb={4}>
-                <StyledIconPlaceholder mb={2}>
-                  <ExtensionOutlinedIcon
-                    color="primary"
-                    sx={{ height: 24, width: 24 }}
-                  />
-                </StyledIconPlaceholder>
+        <Grid size={{ xs: 12, sm: 6 }}>
+          <Box mb={4}>
+            <StyledIconPlaceholder mb={2}>
+              <LocalMallOutlinedIcon
+                color="primary"
+                sx={{ height: 24, width: 24 }}
+              />
+            </StyledIconPlaceholder>
 
-                <SectionContainer>
-                  <Typography variant="h6" fontWeight="500">
-                    Modifiers
-                  </Typography>
+            <SectionContainer mb={2}>
+              <Typography variant="h6" fontWeight="500">
+                Products
+              </Typography>
 
-                  <Typography>
-                    Let customers personalize their orders effortlessly.
-                  </Typography>
+              <Typography>
+                Manage everything you sell — from single items to bundled deals.
+              </Typography>
 
-                  <Box component="ul" p={0} my={4}>
-                    {bulletModifierList.map((text, index) => (
-                      <Stack
-                        component="li"
-                        key={index}
-                        mb={1}
-                        direction="row"
-                        alignItems="flex-start"
-                        spacing={1}
-                      >
-                        <Box component="span">
-                          <DoneIcon
-                            color="primary"
-                            sx={{ height: 24, width: 24 }}
-                          />
-                        </Box>
-                        <Typography>{text}</Typography>
-                      </Stack>
-                    ))}
-                  </Box>
-                </SectionContainer>
+              <Box component="ul" p={0} my={4}>
+                {bulletProductList.map((text, index) => (
+                  <Stack
+                    component="li"
+                    key={index}
+                    mb={1}
+                    direction="row"
+                    alignItems="flex-start"
+                    spacing={1}
+                  >
+                    <Box component="span">
+                      <DoneIcon
+                        color="primary"
+                        sx={{ height: 24, width: 24 }}
+                      />
+                    </Box>
+                    <Typography>{text}</Typography>
+                  </Stack>
+                ))}
               </Box>
-            </Grid>
+            </SectionContainer>
+          </Box>
+        </Grid>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Box mb={4}>
-                <StyledIconPlaceholder mb={2}>
-                  <LocalMallOutlinedIcon
-                    color="primary"
-                    sx={{ height: 24, width: 24 }}
-                  />
-                </StyledIconPlaceholder>
+        <Grid size={{ xs: 12, sm: 6 }}>
+          <Box mb={4}>
+            <StyledIconPlaceholder mb={2}>
+              <FrontHandOutlinedIcon
+                color="primary"
+                sx={{ height: 24, width: 24 }}
+              />
+            </StyledIconPlaceholder>
 
-                <SectionContainer mb={2}>
-                  <Typography variant="h6" fontWeight="500">
-                    Products
-                  </Typography>
+            <SectionContainer mb={2}>
+              <Typography variant="h6" fontWeight="500">
+                Services
+              </Typography>
 
-                  <Typography>
-                    Manage everything you sell — from single items to bundled
-                    deals.
-                  </Typography>
+              <Typography>
+                Perfect for salons, spas, and other service-based stores.
+              </Typography>
 
-                  <Box component="ul" p={0} my={4}>
-                    {bulletProductList.map((text, index) => (
-                      <Stack
-                        component="li"
-                        key={index}
-                        mb={1}
-                        direction="row"
-                        alignItems="flex-start"
-                        spacing={1}
-                      >
-                        <Box component="span">
-                          <DoneIcon
-                            color="primary"
-                            sx={{ height: 24, width: 24 }}
-                          />
-                        </Box>
-                        <Typography>{text}</Typography>
-                      </Stack>
-                    ))}
-                  </Box>
-                </SectionContainer>
+              <Box component="ul" p={0} my={4}>
+                {bulletServiceList.map((text, index) => (
+                  <Stack
+                    component="li"
+                    key={index}
+                    mb={1}
+                    direction="row"
+                    alignItems="flex-start"
+                    spacing={1}
+                  >
+                    <Box component="span">
+                      <DoneIcon
+                        color="primary"
+                        sx={{ height: 24, width: 24 }}
+                      />
+                    </Box>
+                    <Typography>{text}</Typography>
+                  </Stack>
+                ))}
               </Box>
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Box mb={4}>
-                <StyledIconPlaceholder mb={2}>
-                  <FrontHandOutlinedIcon
-                    color="primary"
-                    sx={{ height: 24, width: 24 }}
-                  />
-                </StyledIconPlaceholder>
-
-                <SectionContainer mb={2}>
-                  <Typography variant="h6" fontWeight="500">
-                    Services
-                  </Typography>
-
-                  <Typography>
-                    Perfect for salons, spas, and other service-based stores.
-                  </Typography>
-
-                  <Box component="ul" p={0} my={4}>
-                    {bulletServiceList.map((text, index) => (
-                      <Stack
-                        component="li"
-                        key={index}
-                        mb={1}
-                        direction="row"
-                        alignItems="flex-start"
-                        spacing={1}
-                      >
-                        <Box component="span">
-                          <DoneIcon
-                            color="primary"
-                            sx={{ height: 24, width: 24 }}
-                          />
-                        </Box>
-                        <Typography>{text}</Typography>
-                      </Stack>
-                    ))}
-                  </Box>
-                </SectionContainer>
-              </Box>
-            </Grid>
-          </Grid>
+            </SectionContainer>
+          </Box>
         </Grid>
       </Grid>
     </>

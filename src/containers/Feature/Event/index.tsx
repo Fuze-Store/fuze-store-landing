@@ -14,9 +14,9 @@ type Props = {
 
 const FeatureExpense = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
-    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
-    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
+    'Beautiful Calendar Views – Switch between Monthly, Agenda, or Day views for a clear overview of all upcoming events.',
+    'Two Event Types – Manage Reservations for tables or spaces and Appointments for services or clients.',
+    'Linked to Orders – Easily attach events to orders for seamless coordination and accurate tracking.',
   ];
 
   return (
@@ -46,13 +46,14 @@ const FeatureExpense = ({ rtl = false }: Props) => {
 
         <Box mb={2}>
           <Typography variant="h5" fontWeight="500">
-            Expense Management
+            Reservations & Appointments
           </Typography>
 
           <Typography variant="subtitle1">
-            Take full control of your store’s spending with our Expense
-            Management feature. Stay organized, monitor costs, and make smarter
-            financial decisions — all from one place.
+            Keep your schedule organized and your customers delighted with our
+            Events feature — designed for both reservations and appointments.
+            Whether you’re running a restaurant, salon, or service-based store,
+            managing bookings has never been easier.
           </Typography>
         </Box>
 

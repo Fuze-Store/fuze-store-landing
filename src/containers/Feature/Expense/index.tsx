@@ -2,7 +2,7 @@
 
 import StyledIconPlaceholder from '@/components/IconPlaceholder';
 import DoneIcon from '@mui/icons-material/Done';
-import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
+import EventOutlinedIcon from '@mui/icons-material/EventOutlined';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,11 +12,11 @@ type Props = {
   rtl?: boolean;
 };
 
-const FeatureDiscount = ({ rtl = false }: Props) => {
+const FeatureExpense = ({ rtl = false }: Props) => {
   const bulletList = [
-    'Fixed or Percentage Discounts – Apply either a set amount or a percentage off.',
-    'Cart-Level or Item-Level – Choose to discount the entire order or specific products/services.',
-    'Scheduled Availability – Set start and end dates for promotions so discounts are active only when you want them.',
+    'Create & Categorize Expenses – Log every expense and group them by category for clear insights into where your money goes.',
+    'Color-Coded Tracking – Use custom hex colors to visually distinguish expense types at a glance.',
+    'Approval Workflow – Manage expense statuses with Pending, Approved, and Rejected stages for better accountability.',
   ];
 
   return (
@@ -41,21 +41,18 @@ const FeatureDiscount = ({ rtl = false }: Props) => {
 
       <Grid size={{ xs: 12, sm: 6 }}>
         <StyledIconPlaceholder mb={2}>
-          <LocalOfferOutlinedIcon
-            color="primary"
-            sx={{ height: 24, width: 24 }}
-          />
+          <EventOutlinedIcon color="primary" sx={{ height: 24, width: 24 }} />
         </StyledIconPlaceholder>
 
         <Box mb={2}>
-          <Typography variant="h5" fontWeight="500" gutterBottom>
-            Flexible Discounts
+          <Typography variant="h5" fontWeight="500">
+            Expense Management
           </Typography>
 
           <Typography variant="subtitle1">
-            Boost sales and reward customers with our Discounts system. Simple
-            to set up, easy to manage, and perfect for promotions or seasonal
-            deals.
+            Take full control of your store’s spending with our Expense
+            Management feature. Stay organized, monitor costs, and make smarter
+            financial decisions — all from one place.
           </Typography>
         </Box>
 
@@ -81,4 +78,4 @@ const FeatureDiscount = ({ rtl = false }: Props) => {
   );
 };
 
-export default memo(FeatureDiscount);
+export default memo(FeatureExpense);
