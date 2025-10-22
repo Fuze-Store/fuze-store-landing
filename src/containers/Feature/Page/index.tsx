@@ -8,7 +8,6 @@ import {
   Stack,
   Toolbar,
   Typography,
-  useMediaQuery,
 } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -37,7 +36,6 @@ import FeatureWaitingList from '@/containers/Feature/WaitingList';
 
 export default function FeaturePage() {
   const session = useSession();
-  const isSmUp = useMediaQuery((theme) => theme.breakpoints.up('sm'));
 
   const startFreeTrialLink =
     session.status === 'authenticated' ? paths.account : paths.register;
@@ -55,7 +53,7 @@ export default function FeaturePage() {
         })}
       >
         <Toolbar />
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Box textAlign="center">
             <Typography
               textAlign="center"
@@ -117,55 +115,64 @@ export default function FeaturePage() {
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Dashboard />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureArea />
+        <Container maxWidth="xl">
+          <FeatureArea rtl />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <PointOfSale />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
+          <FeatureWaitingList rtl />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="xl">
           <FeatureEvent />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
+          <FeatureRole rtl />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="xl">
           <FeatureExpense />
         </Container>
       </Box>
 
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureGiftCard />
+      <Box
+        component="section"
+        sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
+          py: theme.spacing(10),
+        })}
+      >
+        <Container maxWidth="xl">
+          <Catalog />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureRefund />
-        </Container>
-      </Box>
-
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureRole />
-        </Container>
-      </Box>
-
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <FeatureStaff />
         </Container>
       </Box>
@@ -180,62 +187,89 @@ export default function FeaturePage() {
           py: theme.spacing(10),
         })}
       >
-        <Container maxWidth="lg">
-          <Catalog />
-        </Container>
-      </Box>
-
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <FeatureCustomer />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureDiscount />
+        <Container maxWidth="xl">
+          <FeatureGiftCard />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureSession />
+        <Container maxWidth="xl">
+          <FeatureDiscount rtl />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureTax />
+        <Container maxWidth="xl">
+          <FeatureRefund />
         </Container>
       </Box>
 
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureReport />
-        </Container>
-      </Box>
-
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+      <Box
+        component="section"
+        sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
+          py: theme.spacing(10),
+        })}
+      >
+        <Container maxWidth="xl">
           <FeatureRealtime />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
-          <FeatureWaitingList />
+        <Container maxWidth="xl">
+          <FeatureSession />
         </Container>
       </Box>
 
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+      <Box
+        component="section"
+        sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
+          py: theme.spacing(10),
+        })}
+      >
+        <Container maxWidth="xl">
           <FeatureOrderNotification />
         </Container>
       </Box>
 
       <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
+          <FeatureTax />
+        </Container>
+      </Box>
+
+      <Box
+        component="section"
+        sx={(theme) => ({
+          bgcolor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.grey[900]
+              : theme.palette.grey[50],
+          py: theme.spacing(10),
+        })}
+      >
+        <Container maxWidth="xl">
           <FeatureMigration />
+        </Container>
+      </Box>
+
+      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+        <Container maxWidth="xl">
+          <FeatureReport />
         </Container>
       </Box>
 

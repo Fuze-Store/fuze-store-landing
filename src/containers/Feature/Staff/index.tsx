@@ -6,7 +6,10 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import { memo } from 'react';
+
+import img1 from '@/images/ipadpro-staff-1.png';
 
 type Props = {
   rtl?: boolean;
@@ -29,16 +32,7 @@ const FeatureStaff = ({ rtl = false }: Props) => {
       direction={rtl ? 'row-reverse' : 'row'}
     >
       <Grid size={{ xs: 12, sm: 6 }}>
-        <Box
-          sx={{
-            borderWidth: 1,
-            borderStyle: 'solid',
-            borderColor: '#ccc',
-            borderRadius: 8,
-            height: 460,
-            width: '100%',
-          }}
-        />
+        <Image src={img1} alt="Staff" layout="responsive" width={500} />
       </Grid>
 
       <Grid size={{ xs: 12, sm: 6 }}>

@@ -7,7 +7,11 @@ import DoneIcon from '@mui/icons-material/Done';
 import { Grid, Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import { memo } from 'react';
+
+import img1 from '@/images/ipadpro-report-1.png';
+import img2 from '@/images/ipadpro-report-2.png';
 
 type Props = {
   rtl?: boolean;
@@ -31,15 +35,41 @@ const FeatureReport = ({ rtl = false }: Props) => {
       <Grid size={{ xs: 12, sm: 6 }}>
         <Box
           sx={{
-            borderWidth: 1,
-            borderStyle: 'solid',
-            borderColor: '#ccc',
-            borderRadius: 8,
-            minHeight: 460,
-            height: '100%',
+            position: 'relative',
             width: '100%',
+            height: '100%',
+            my: 4,
+            paddingBottom: '20%',
           }}
-        />
+        >
+          <Box
+            component={Image}
+            src={img1}
+            alt="POS 1"
+            layout="responsive"
+            sx={{
+              maxWidth: { xs: 400, sm: 520, md: 400, lg: 560, xl: 600 },
+              position: 'relative',
+              top: 0,
+              right: rtl
+                ? { xs: '-5%', sm: '-5%', md: '5%', lg: '8%', xl: 0 }
+                : 0,
+            }}
+          />
+
+          <Box
+            component={Image}
+            src={img2}
+            alt="POS 2"
+            layout="responsive"
+            sx={{
+              position: 'absolute',
+              top: '30%',
+              maxWidth: { xs: 400, sm: 520, md: 400, lg: 560, xl: 600 },
+              right: rtl ? 0 : { xs: '5%', md: '-10%', lg: '-8%', xl: 0 },
+            }}
+          />
+        </Box>
       </Grid>
 
       <Grid size={{ xs: 12, sm: 6 }}>
