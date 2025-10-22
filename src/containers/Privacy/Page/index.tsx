@@ -3,8 +3,9 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import { PropsWithChildren } from 'react';
 
-export default function PrivacyPage() {
+export default function PrivacyPage({ children }: PropsWithChildren) {
   return (
     <Box
       component="section"
@@ -17,7 +18,7 @@ export default function PrivacyPage() {
       })}
     >
       <Container maxWidth="md">
-        <Box mb={15}>
+        <Box mb={10}>
           <Typography
             textAlign="center"
             component="h2"
@@ -35,124 +36,15 @@ export default function PrivacyPage() {
             color="textSecondary"
             fontWeight={400}
           >
-            Your privacy is important to us at Fuze Store. We respect your
-            privacy regarding any information we may collect from you across our
+            At Fuze Store, we are committed to safeguarding your personal
+            information and ensuring transparency in how we collect, use, and
+            protect your data. This Privacy Policy outlines our practices and
+            your rights regarding your information when you interact with our
             application.
           </Typography>
         </Box>
 
-        <Box mb={4}>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            porttitor orci quis lacus viverra pulvinar. Suspendisse quis
-            pulvinar ex, molestie viverra libero. Vestibulum blandit diam a
-            scelerisque lacinia. Pellentesque lobortis commodo nulla at tempor.
-            In pellentesque volutpat sapien, vel venenatis magna fringilla non.
-            Donec dignissim tincidunt cursus. Integer est eros, blandit a
-            finibus quis, bibendum et sapien. Nam eleifend nibh mi, nec pharetra
-            massa rutrum vitae. Curabitur scelerisque erat magna, egestas
-            malesuada lacus vehicula eget. Donec leo nulla, scelerisque ut
-            laoreet eget, faucibus eu augue. Duis ultrices elit eu odio varius,
-            eu tristique justo imperdiet. Mauris rhoncus quis risus in
-            venenatis. Suspendisse vulputate feugiat odio hendrerit ullamcorper.
-          </Typography>
-        </Box>
-
-        <Box mb={4}>
-          <Typography mb={2} variant="h5" fontWeight={500}>
-            1. Information we collect
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci. Pellentesque euismod, mauris nec lobortis elementum,
-            dolor lectus fringilla ante, sit amet blandit sapien libero nec est.
-            Maecenas sodales neque sed augue viverra interdum tincidunt
-            malesuada purus. Phasellus lectus justo, congue vel vulputate quis,
-            mattis nec tellus. Fusce a ultricies dolor.
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci.
-          </Typography>
-        </Box>
-
-        <Box mb={4}>
-          <Typography mb={2} variant="h5" fontWeight={500}>
-            2. How we use your information
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci. Pellentesque euismod, mauris nec lobortis elementum,
-            dolor lectus fringilla ante, sit amet blandit sapien libero nec est.
-            Maecenas sodales neque sed augue viverra interdum tincidunt
-            malesuada purus. Phasellus lectus justo, congue vel vulputate quis,
-            mattis nec tellus. Fusce a ultricies dolor.
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci.
-          </Typography>
-        </Box>
-
-        <Box mb={4}>
-          <Typography mb={2} variant="h5" fontWeight={500}>
-            3. Data Security
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci. Pellentesque euismod, mauris nec lobortis elementum,
-            dolor lectus fringilla ante, sit amet blandit sapien libero nec est.
-            Maecenas sodales neque sed augue viverra interdum tincidunt
-            malesuada purus. Phasellus lectus justo, congue vel vulputate quis,
-            mattis nec tellus. Fusce a ultricies dolor.
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci.
-          </Typography>
-        </Box>
-
-        <Box mb={4}>
-          <Typography mb={2} variant="h5" fontWeight={500}>
-            4. Changes to our privacy policy
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci. Pellentesque euismod, mauris nec lobortis elementum,
-            dolor lectus fringilla ante, sit amet blandit sapien libero nec est.
-            Maecenas sodales neque sed augue viverra interdum tincidunt
-            malesuada purus. Phasellus lectus justo, congue vel vulputate quis,
-            mattis nec tellus. Fusce a ultricies dolor.
-          </Typography>
-
-          <Typography mb={2}>
-            Nam condimentum pellentesque enim quis commodo. Maecenas nec ipsum
-            nec mi sagittis sollicitudin. Maecenas vehicula, ipsum congue
-            sagittis consectetur, ipsum nulla elementum dui, quis elementum mi
-            sem quis orci.
-          </Typography>
-        </Box>
+        {children}
       </Container>
     </Box>
   );
