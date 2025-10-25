@@ -71,6 +71,7 @@ export default function PricingPage() {
 
               <Typography
                 textAlign="center"
+                variant="h6"
                 gutterBottom
                 color="textSecondary"
                 fontWeight={400}
@@ -94,6 +95,24 @@ export default function PricingPage() {
                 />
               </Grid>
             ))}
+            {/* TODO: Add Custom Plan */}
+            {/* <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
+              <PlanCard
+                plan={{
+                  name: 'Custom Plan',
+                  code: 'CUSTOM',
+                  baseFee: 0,
+                  commissionRate: 0,
+                  currency: 'PHP',
+                  description:
+                    'Tailored solutions for businesses with unique needs. Contact us to create a plan that fits your requirements.',
+                  id: '',
+                  salesThreshold: 0,
+                }}
+                // prevPlan={filteredPlans[index - 1]}
+                // differentFeatures={differentFeatures}
+              />
+            </Grid> */}
           </Grid>
         </Container>
       </Box>

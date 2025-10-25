@@ -225,7 +225,7 @@ const PlanCard = ({
       sx={{
         height: '100%',
         borderRadius: 4,
-        border: `2px solid ${selected ? theme.palette.primary.main : theme.palette.divider}`,
+        border: `1px solid ${selected ? theme.palette.primary.main : theme.palette.divider}`,
       }}
     >
       <CardContent sx={{ flexDirection: 'column', display: 'flex' }}>

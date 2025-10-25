@@ -38,6 +38,7 @@ export default function ContactUsPage() {
 
             <Typography
               textAlign="center"
+              variant="h6"
               gutterBottom
               color="textSecondary"
               fontWeight={400}

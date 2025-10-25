@@ -27,16 +27,6 @@ export default function Page() {
           <Box textAlign="center">
             <Typography
               textAlign="center"
-              component="h3"
-              color="primary"
-              fontWeight="bold"
-              gutterBottom
-            >
-              Help Center
-            </Typography>
-
-            <Typography
-              textAlign="center"
               component="h2"
               variant="h4"
               gutterBottom
