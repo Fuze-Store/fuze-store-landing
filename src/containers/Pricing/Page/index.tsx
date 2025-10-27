@@ -1,6 +1,13 @@
 'use client';
 
-import { Divider, Grid, Toolbar, useMediaQuery } from '@mui/material';
+import {
+  Button,
+  Divider,
+  Grid,
+  Stack,
+  Toolbar,
+  useMediaQuery,
+} from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -21,6 +28,8 @@ import SectionContainer from '@/components/SectionContainer';
 import ContactUs from '@/containers/Pricing/ContactUs';
 import Faqs from '@/containers/Pricing/Faqs';
 import Matrix from '@/containers/Pricing/Matrix';
+import { paths } from '@/helpers/page.helper';
+import Link from 'next/link';
 
 export default function PricingPage() {
   const { data: session } = useSession();
@@ -95,25 +104,44 @@ export default function PricingPage() {
                 />
               </Grid>
             ))}
-            {/* TODO: Add Custom Plan */}
-            {/* <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-              <PlanCard
-                plan={{
-                  name: 'Custom Plan',
-                  code: 'CUSTOM',
-                  baseFee: 0,
-                  commissionRate: 0,
-                  currency: 'PHP',
-                  description:
-                    'Tailored solutions for businesses with unique needs. Contact us to create a plan that fits your requirements.',
-                  id: '',
-                  salesThreshold: 0,
-                }}
-                // prevPlan={filteredPlans[index - 1]}
-                // differentFeatures={differentFeatures}
-              />
-            </Grid> */}
           </Grid>
+
+          <Stack my={4} direction="row" alignItems="center" spacing={2}>
+            <Divider sx={{ flex: 1 }} />
+            <Typography variant="body1" fontWeight={500}>
+              OR
+            </Typography>
+            <Divider sx={{ flex: 1 }} />
+          </Stack>
+
+          <Stack
+            sx={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              maxWidth: 400,
+              margin: '0 auto',
+            }}
+            spacing={3}
+          >
+            <Typography variant="h4" gutterBottom fontWeight={700}>
+              Custom
+            </Typography>
+
+            <Typography textAlign="center" gutterBottom>
+              Need a tailored solution? Contact us to create a plan that fits
+            </Typography>
+
+            <Button
+              variant="contained"
+              LinkComponent={Link}
+              href={paths.contactUs}
+              fullWidth
+              size="large"
+            >
+              Contact Us
+            </Button>
+          </Stack>
         </Container>
       </Box>
 
