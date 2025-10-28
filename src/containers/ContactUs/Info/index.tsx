@@ -10,21 +10,22 @@ export default function ContactUsInfo() {
   const theme = useTheme();
   return (
     <Box>
-      <Typography variant="h6" mb={2} fontWeight={500}>
+      <Typography variant="h6" mb={3} fontWeight={500}>
         Other Ways to Reach Us
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Email:</strong> support@fuzestore.com
+      <Typography variant="body1" mb={1.5}>
+        <strong>Email:</strong>{' '}
+        <a href="mailto:support@fuzestore.com">support@fuzestore.com</a>
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Phone:</strong> +1 (555) 123-4567
+      <Typography variant="body1" mb={1.5}>
+        <strong>Phone:</strong> (+63) 999 4817 197
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Address:</strong> 123 Fuze St, Suite 100, San Francisco, CA
-        94105
+      <Typography variant="body1" mb={1.5}>
+        <strong>Address:</strong> 1076 A. Bonifacio Balingasa, Balintawak Quezon
+        City, Philippines 1115
       </Typography>
       <Box mt={2}>
-        <Typography variant="body1" gutterBottom>
+        <Typography variant="body1" mb={1.5}>
           <strong>Follow us:</strong>
         </Typography>
         <SocialList dark={theme.palette.mode === 'dark'} />

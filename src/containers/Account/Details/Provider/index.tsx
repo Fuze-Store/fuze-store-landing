@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { memo, useCallback } from 'react';
 
 import { SocialProvider } from '@/enums/socialProviders.enum';
-import { SOCIAL_LINKS } from '@/utils/constants';
+import { SOCIAL_PROVIDERS } from '@/utils/constants';
 
 import type { AccountProvider } from '@/types/account';
 
@@ -45,7 +45,7 @@ const AccountDetailsProvider = ({ providers }: Props) => {
 
   return (
     <Stack spacing={1}>
-      {SOCIAL_LINKS.map((linkProvider) => {
+      {SOCIAL_PROVIDERS.map((linkProvider) => {
         const linked = isLinked(linkProvider);
         return (
           <Grid key={linkProvider} alignItems="center" container spacing={1}>

@@ -58,7 +58,7 @@ export default function ContactUsPage() {
         maxWidth="lg"
       >
         <Grid container spacing={2}>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6, lg: 7 }}>
             <ContactUsFormProvider>
               <ContactUsForm />
               <ContactUsFormSubmit
@@ -68,7 +68,7 @@ export default function ContactUsPage() {
               />
             </ContactUsFormProvider>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6, lg: 5 }}>
             <Box px={{ sm: 4 }} py={{ sm: 4 }}>
               <ContactUsInfo />
             </Box>

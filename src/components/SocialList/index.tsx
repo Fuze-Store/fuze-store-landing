@@ -1,11 +1,13 @@
 'use client';
 
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import YoutubeIcon from '@mui/icons-material/YouTube';
 import { Box, BoxProps, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Link from 'next/link';
 import React, { memo } from 'react';
+
+import { SOCIAL_LINKS } from '@/utils/constants';
 
 import TikTokIcon from '@/components/Icons/TikTokIcon';
 import ViberIcon from '@/components/Icons/ViberIcon';
@@ -49,7 +51,7 @@ const SocialList = ({ dark = false }: { dark?: boolean }) => {
       <LinkItem
         dark={dark}
         className="social"
-        href="https://web.facebook.com/profile.php?id=61580336897253"
+        href={SOCIAL_LINKS.facebook}
         title="Fuze Store"
         target="_blank"
       >
@@ -58,7 +60,7 @@ const SocialList = ({ dark = false }: { dark?: boolean }) => {
       <LinkItem
         dark={dark}
         className="social"
-        href="https://invite.viber.com/?g2=AQBjWRnR0%2B5AhlVPjtSKqBZRo%2BgLxIe2GipjXl7aQBgkfWVuwl6pi0f7ZnGcgWbM"
+        href={SOCIAL_LINKS.viber}
         target="_blank"
       >
         <ViberIcon color="inherit" sx={{ width: 40, height: 40 }} />
@@ -66,15 +68,15 @@ const SocialList = ({ dark = false }: { dark?: boolean }) => {
       <LinkItem
         dark={dark}
         className="social"
-        href="https://instagram.com"
+        href={SOCIAL_LINKS.youtube}
         target="_blank"
       >
-        <InstagramIcon sx={{ width: 40, height: 40 }} />
+        <YoutubeIcon sx={{ width: 40, height: 40 }} />
       </LinkItem>
       <LinkItem
         dark={dark}
         className="social"
-        href="https://tiktok.com"
+        href={SOCIAL_LINKS.tiktok}
         target="_blank"
       >
         <TikTokIcon color="inherit" sx={{ width: 40, height: 40 }} />
