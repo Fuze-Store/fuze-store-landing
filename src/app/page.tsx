@@ -107,34 +107,10 @@ export default function Page() {
           <SupportedPlatform />
         </Box>
 
-        {/* Roadmap */}
-        {/* <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
-          <Roadmap />
-
-          <Box mt={6} px={2} textAlign="center">
-            <Typography gutterBottom>
-              Have a feature in mind? We’d love to hear it.
-            </Typography>
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{ maxWidth: 240 }}
-              fullWidth
-              size="extra-large"
-            >
-              Submit an Idea
-            </Button>
-          </Box>
-        </Box> */}
-
         {/* Newsletter */}
         <Box
           component="section"
           sx={(theme) => ({
-            // bgcolor:
-            //   theme.palette.mode === 'dark'
-            //     ? theme.palette.grey[900]
-            //     : theme.palette.grey[50],
             py: theme.spacing(10),
           })}
         >
