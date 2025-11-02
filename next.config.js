@@ -17,6 +17,10 @@ const nextConfig = {
       '@/*': path.resolve(__dirname, 'src/*'),
     },
   },
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    return config;
+  },
   images: {
     // path: '/src/assets/',
     unoptimized: true,
