@@ -79,7 +79,7 @@ export default function Page() {
         <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
           <UseCase />
 
-          <Box mt={6} px={2} textAlign="center">
+          {/* <Box mt={6} px={2} textAlign="center">
             <Button
               variant="contained"
               disableElevation
@@ -90,7 +90,7 @@ export default function Page() {
             >
               Browse Use Cases
             </Button>
-          </Box>
+          </Box> */}
         </Box>
 
         {/* Platform */}

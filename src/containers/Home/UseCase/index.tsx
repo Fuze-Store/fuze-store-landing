@@ -24,7 +24,7 @@ type ItemProps = {
 const StackItem = styled(Box)(({ theme }) => ({
   minWidth: 0,
   flex: `0 0 100%`,
-  height: 240,
+  // height: 240,
   backgroundColor:
     theme.palette.mode === 'dark'
       ? theme.palette.grey[900]
@@ -32,9 +32,12 @@ const StackItem = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(1),
   marginLeft: theme.spacing(1),
   [theme.breakpoints.up('sm')]: {
-    flex: `0 0 25%`,
+    flex: `0 0 50%`,
   },
   [theme.breakpoints.up('md')]: {
+    flex: `0 0 25%`,
+  },
+  [theme.breakpoints.up('lg')]: {
     flex: `0 0 20%`,
   },
 }));
