@@ -43,10 +43,8 @@ export default function ContactUsPage() {
               color="textSecondary"
               fontWeight={400}
             >
-              Tired of wasting thousands of hours starting from scratch on every
-              project and rebuilding the same components? Untitled UI comes with
-              everything you need to design modern and beautiful UI and
-              websites.
+              If you have any questions or need assistance, feel free to reach
+              out to us.
             </Typography>
           </Box>
         </Container>

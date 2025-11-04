@@ -12,15 +12,6 @@ const nextConfig = {
   modularizeImports: {
     '@mui/icons-material': { transform: '@mui/icons-material/{{member}}' },
   },
-  turbopack: {
-    resolveAlias: {
-      '@/*': path.resolve(__dirname, 'src/*'),
-    },
-  },
-  webpack: (config) => {
-    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
-    return config;
-  },
   images: {
     // path: '/src/assets/',
     unoptimized: true,

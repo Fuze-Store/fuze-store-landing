@@ -4,7 +4,7 @@ import { NextResponse } from 'next/server';
 
 import { paths } from '@/helpers/page.helper';
 
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
   const isProtected = req.nextUrl.pathname.startsWith(paths.account);
@@ -19,5 +19,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: [`${paths.account}/:path*`],
+  matcher: [`/account/:path*`],
 };
