@@ -73,7 +73,7 @@ const CouponField = ({
 
   const { data: response } = useQuery({
     queryKey: ['validate-coupon', debouncedCouponCode],
-    queryFn: () => validate({ code: debouncedCouponCode }),
+    queryFn: () => validate({ couponCode: debouncedCouponCode }),
     enabled: !!debouncedCouponCode, // only run when couponCode has a value
     retry: false,
   });

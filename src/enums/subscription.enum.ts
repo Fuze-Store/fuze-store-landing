@@ -9,4 +9,5 @@
 export enum SubscriptionInvoiceStatus {
   PAID = 'PAID',
   PENDING = 'PENDING',
+  FAILED = 'FAILED',
 }

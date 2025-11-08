@@ -145,7 +145,11 @@ export default function PricingPage() {
         </Container>
       </Box>
 
-      <Box component="section" sx={(theme) => ({ py: theme.spacing(10) })}>
+      <Box
+        id="matrix"
+        component="section"
+        sx={(theme) => ({ py: theme.spacing(10) })}
+      >
         <Container maxWidth="lg" disableGutters={!isSmUp}>
           <Matrix plans={filteredPlans} />
         </Container>

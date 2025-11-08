@@ -54,6 +54,7 @@ export const endpoints = {
   },
   coupon: {
     validate: '/api/v1/coupons/validate',
+    apply: '/api/v1/coupons/apply',
   },
   newsletter: {
     subscribe: '/api/v1/newsletters/subscribe',

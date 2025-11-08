@@ -3,7 +3,7 @@
 import { Button, Chip, Grid, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
-import { memo } from 'react';
+import { Activity, memo } from 'react';
 
 import { paths } from '@/helpers/page.helper';
 
@@ -25,21 +25,22 @@ const AccountDetailsEmail = ({ email, isVerified = false }: Props) => {
               <Chip label="Not Verified" size="small" color="warning" />
             )}
           </Stack>
-
-          <Button
-            href={paths.accountChangeEmail}
-            LinkComponent={Link}
-            size="small"
-          >
-            Change Email
-          </Button>
         </Grid>
 
-        {!isVerified && (
-          <Grid size={{ xs: 12, sm: 'auto' }}>
-            <AccountResendEmailButton isVerified={isVerified} />
-          </Grid>
-        )}
+        <Grid size={{ xs: 12, sm: 'auto' }}>
+          <Stack direction="row" spacing={1}>
+            <Button
+              href={paths.accountChangeEmail}
+              LinkComponent={Link}
+              size="small"
+            >
+              Change Email
+            </Button>
+            <Activity mode={isVerified ? 'hidden' : 'visible'}>
+              <AccountResendEmailButton isVerified={isVerified} />
+            </Activity>
+          </Stack>
+        </Grid>
       </Grid>
     );
   }

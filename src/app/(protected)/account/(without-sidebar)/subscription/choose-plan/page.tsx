@@ -1,6 +1,6 @@
 'use client';
 
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Button, Container, Stack } from '@mui/material';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -42,13 +42,15 @@ export default function Page() {
     [planResponse?.data],
   );
 
+  const currentPlanId = subscriptionResponse?.data?.plan?.id;
+
   useEffect(() => {
     if (queryPlanId) {
       dispatch(queryPlanId);
-    } else if (subscriptionResponse?.data?.plan?.id) {
-      dispatch(subscriptionResponse?.data?.plan?.id);
+    } else if (currentPlanId) {
+      dispatch(currentPlanId);
     }
-  }, [queryPlanId, subscriptionResponse?.data?.plan?.id]);
+  }, [queryPlanId, currentPlanId]);
 
   if (isLoading) {
     return <PageLoader />;
@@ -65,6 +67,19 @@ export default function Page() {
         title="Choose Plans"
       />
 
+      <SectionContainer>
+        <Stack direction="row" justifyContent="flex-end">
+          <Button
+            LinkComponent={Link}
+            target="_blank"
+            href={`${paths.pricing}#matrix`}
+            endIcon={<OpenInNewIcon />}
+          >
+            Compare Plans
+          </Button>
+        </Stack>
+      </SectionContainer>
+
       <SectionContainer mb={4}>
         <PlanForm
           data={planList}
@@ -79,13 +94,14 @@ export default function Page() {
             '[id]',
             selectedPlanId || '',
           )}
+          fullWidth
+          size="large"
           disableElevation
           variant="contained"
           LinkComponent={Link}
-          disabled={!selectedPlanId}
-          endIcon={<ArrowForwardIcon />}
+          disabled={!selectedPlanId || currentPlanId === selectedPlanId}
         >
-          Continue to Summary
+          Summary
         </Button>
       </Stack>
     </Container>

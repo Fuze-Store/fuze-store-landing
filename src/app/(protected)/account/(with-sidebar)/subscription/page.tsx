@@ -14,6 +14,7 @@ import SectionContainer from '@/components/SectionContainer';
 import AccountRecentInvoices from '@/containers/Account/Invoice/Recent';
 import AddPaymentMethodButton from '@/containers/Account/PaymentMethod/AddButton';
 import PaymentMethodList from '@/containers/Account/PaymentMethod/List';
+import AccountSubscriptionCoupon from '@/containers/Account/Subscription/Coupon';
 import AccountSubscriptionPlan from '@/containers/Account/Subscription/Plan';
 
 export default function Page() {
@@ -23,27 +24,36 @@ export default function Page() {
 
   return (
     <Container maxWidth="md">
-      <Typography fontWeight={600}>Plan</Typography>
-      <Divider sx={{ mb: 2 }} />
-
-      {subscription?.plan?.code === PlanCode.FREETRIAL && (
-        <SectionContainer mb={1}>
-          <Alert severity="warning">
-            <Typography color="warning" variant="body2" fontWeight="bold">
-              You`re on the free plan. Upgrade to access more features
-            </Typography>
-          </Alert>
-        </SectionContainer>
-      )}
-
       <SectionContainer sx={{ mb: 4 }}>
+        <Typography fontWeight={600}>Plan</Typography>
+        <Divider sx={{ mb: 2 }} />
+
+        {subscription?.plan?.code === PlanCode.FREETRIAL && (
+          <SectionContainer mb={1}>
+            <Alert severity="warning">
+              <Typography color="warning" variant="body2" fontWeight="bold">
+                You`re on the free plan. Upgrade to access more features
+              </Typography>
+            </Alert>
+          </SectionContainer>
+        )}
+
         <AccountSubscriptionPlan subscription={subscription} />
       </SectionContainer>
 
-      <Typography fontWeight={600}>Payment Method</Typography>
-      <Divider sx={{ mb: 2 }} />
+      <SectionContainer sx={{ mb: 4 }}>
+        <Typography fontWeight={600}>Coupon</Typography>
+        <Divider sx={{ mb: 2 }} />
+
+        <SectionContainer>
+          <AccountSubscriptionCoupon activeRedemptions={[]} />
+        </SectionContainer>
+      </SectionContainer>
 
       <SectionContainer sx={{ mb: 4 }}>
+        <Typography fontWeight={600}>Payment Method</Typography>
+        <Divider sx={{ mb: 2 }} />
+
         <SectionContainer>
           <PaymentMethodList />
         </SectionContainer>

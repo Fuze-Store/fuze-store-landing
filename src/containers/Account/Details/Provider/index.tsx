@@ -18,9 +18,10 @@ type Props = {
   providers?: AccountProvider[];
 };
 
-const AccountDetailsProvider = ({ providers }: Props) => {
+const AccountDetailsProvider = ({ providers = [] }: Props) => {
   const isLinked = useCallback(
     (provider: SocialProvider) =>
+      providers &&
       providers?.findIndex((item) => item.provider === provider) !== -1,
     [providers],
   );

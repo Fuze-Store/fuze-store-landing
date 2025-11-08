@@ -24,6 +24,7 @@ export const paths = {
   accountInfo: '/account/info',
   accountEdit: '/account/edit',
   accountInvoice: '/account/invoices',
+  accountInvoiceDetails: '/account/invoices/[id]',
   accountAddress: '/account/address',
   accountChangeEmail: '/account/change-email',
   accountSecurity: '/account/security',

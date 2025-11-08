@@ -1,6 +1,6 @@
 'use client';
 
-import { Grid } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo } from 'react';
 
@@ -29,7 +29,9 @@ const InvoiceItem = ({ invoice }: Props) => (
       </Grid>
     </Grid>
     <Grid size={{ xs: 12, sm: 'auto' }}>
-      <InvoiceDownloadButton invoiceId={invoice.id} />
+      <Stack direction="row">
+        <InvoiceDownloadButton invoiceId={invoice.id} />
+      </Stack>
     </Grid>
   </Grid>
 );

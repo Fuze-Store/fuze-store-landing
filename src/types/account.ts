@@ -29,6 +29,8 @@ export type AccountInfo = {
   fullName: string;
   initials: string;
   lastName: string;
+  mobile: string | null;
+  country: string | null;
 };
 
 export type AccountProvider = {
@@ -63,6 +65,7 @@ export type AccountDetailsPayload = {
   info: {
     firstName: string;
     lastName: string;
+    mobile?: string;
   };
 };
 

@@ -23,9 +23,9 @@ const Breadcrumbs = () => {
     </Link>,
     ...segments.map((segment, index) => {
       const href = '/' + segments.slice(0, index + 1).join('/');
-      const label = decodeURIComponent(segment.replace(/-/g, ' ')).replace(
-        /\b\w/g,
-        (l) => l.toUpperCase(),
+      // const label = decodeURIComponent(segment.replace(/-/g, ' ')).replace(
+      const label = decodeURIComponent(segment).replace(/\b\w/g, (l) =>
+        l.toUpperCase(),
       );
 
       const isLast = index === segments.length - 1;

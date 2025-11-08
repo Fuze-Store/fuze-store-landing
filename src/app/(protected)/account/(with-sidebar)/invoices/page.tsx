@@ -1,6 +1,8 @@
 'use client';
 
 import {
+  Button,
+  Stack,
   styled,
   Table,
   TableBody,
@@ -13,7 +15,7 @@ import {
   Typography,
 } from '@mui/material';
 import Container from '@mui/material/Container';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { ChangeEventHandler } from 'react';
 
 import useGetInvoiceList from '@/containers/Account/Invoice/hooks/useGetInvoiceList';
@@ -22,6 +24,8 @@ import { formatDate } from '@fuze-store/fuze-store-shared';
 
 import SectionContainer from '@/components/SectionContainer';
 import InvoiceDownloadButton from '@/containers/Account/Invoice/DownloadButton';
+import BasicDatePicker from '@/containers/Account/Invoice/List/Filter';
+import Link from 'next/link';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   border: 0,
@@ -52,17 +56,17 @@ const HeaderTableHead = styled(TableHead)(({ theme }) => ({
 
 const HeaderTableRow = styled(TableRow)(({ theme }) => ({
   '& th:first-child, & td:first-child': {
-    borderTopLeftRadius: 24,
-    borderBottomLeftRadius: 24,
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
   },
   '& th:last-child, & td:last-child': {
-    borderTopRightRadius: 24,
-    borderBottomRightRadius: 24,
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
   },
   '& td, & th': {
     borderBottom: 0,
     backgroundColor:
-      theme.palette.grey[theme.palette.mode === 'dark' ? 400 : 200],
+      theme.palette.grey[theme.palette.mode === 'dark' ? 400 : 100],
   },
 }));
 
@@ -72,19 +76,23 @@ const HeaderTableCell = styled(TableCell)(() => ({
 
 export default function Page() {
   const router = useRouter();
-  // TODO:  useSearchParams() should be wrapped in a suspense boundary at page "/account/invoices". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
 
-  // const pageStr = searchParams.get('page');
-  // const pageStr = 1;
-  const pageStr = '1';
-  // const perPageStr = searchParams.get('perPage');
-  const perPageStr = '10';
-
+  const pageStr = searchParams.get('page');
+  const perPageStr = searchParams.get('perPage');
+  const queryStatuses = searchParams.get('statuses');
+  const queryStartDate = searchParams.get('startDate');
+  const queryEndDate = searchParams.get('endDate');
   const page = pageStr ? parseInt(pageStr) : 1;
   const perPage = perPageStr ? parseInt(perPageStr) : 10;
 
-  const { data: response } = useGetInvoiceList({ page, perPage });
+  const { data: response } = useGetInvoiceList({
+    page,
+    perPage,
+    statuses: queryStatuses ?? undefined,
+    startDate: queryStartDate ?? undefined,
+    endDate: queryEndDate ?? undefined,
+  });
 
   const paginatedInvoices = response?.data;
   const invoices = paginatedInvoices?.items;
@@ -113,6 +121,12 @@ export default function Page() {
   return (
     <Container maxWidth="lg">
       <SectionContainer>
+        <Stack>
+          <BasicDatePicker />
+        </Stack>
+      </SectionContainer>
+
+      <SectionContainer>
         <TableContainer>
           <Table
             size="small"
@@ -121,6 +135,7 @@ export default function Page() {
           >
             <HeaderTableHead>
               <HeaderTableRow>
+                <HeaderTableCell>Name</HeaderTableCell>
                 <HeaderTableCell>Period</HeaderTableCell>
                 <HeaderTableCell align="right">Amount</HeaderTableCell>
                 <HeaderTableCell>Status</HeaderTableCell>
@@ -131,16 +146,33 @@ export default function Page() {
               {invoices?.map((invoice) => (
                 <StyledTableRow key={invoice.id}>
                   <StyledTableCell>
-                    <Typography
-                      fontWeight={700}
-                    >{`${formatDate(invoice.billingStartDate, 'MMM dd, yyyy')} - ${formatDate(invoice.billingEndDate, 'MMM dd, yyyy')}`}</Typography>
+                    <Typography fontWeight={700}>
+                      {invoice.invoiceNumber}
+                    </Typography>
+                  </StyledTableCell>
+                  <StyledTableCell>
+                    <Typography>
+                      {formatDate(invoice.billingEndDate, 'MMM dd, yyyy')}
+                    </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography>{`${invoice?.currency} ${invoice.totalAmount}`}</Typography>
+                    <Typography>{`${invoice?.currency} ${invoice.totalAmount.toFixed(2)}`}</Typography>
                   </StyledTableCell>
                   <StyledTableCell>{invoice.status?.code}</StyledTableCell>
                   <StyledTableCell>
-                    <InvoiceDownloadButton invoiceId={invoice.id} />
+                    <Stack direction="row" spacing={1}>
+                      <Button
+                        sx={{ minWidth: 120 }}
+                        LinkComponent={Link}
+                        href={paths.accountInvoiceDetails.replace(
+                          '[id]',
+                          invoice.id,
+                        )}
+                      >
+                        View Details
+                      </Button>
+                      <InvoiceDownloadButton invoiceId={invoice.id} />
+                    </Stack>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

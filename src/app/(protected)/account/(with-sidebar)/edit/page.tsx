@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 import useUpdateAccount from '@/containers/Account/hooks/useUpdateAccount';
+import { getMobileStringValue } from '@/helpers/form.helper';
 import { paths } from '@/helpers/page.helper';
 
 import type { FormInputs } from '@/containers/Account/Details/Form/Provider/types';
@@ -26,7 +27,11 @@ export default function Page() {
   const onSubmit = async (data: FormInputs) => {
     await updateAccount({
       username: data.username,
-      info: { firstName: data.firstName, lastName: data.lastName },
+      info: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        mobile: data.mobile ? getMobileStringValue(data.mobile) : undefined,
+      },
     });
     router.replace(paths.account);
   };

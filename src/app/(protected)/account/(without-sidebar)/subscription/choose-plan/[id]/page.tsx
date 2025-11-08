@@ -12,7 +12,6 @@ import PageLoader from '@/components/PageLoader';
 import PageTitle from '@/components/PageTitle';
 import PlanCard from '@/components/PlanCard';
 import SectionContainer from '@/components/SectionContainer';
-import AddPaymentMethodButton from '@/containers/Account/PaymentMethod/AddButton';
 import PaymentMethodList from '@/containers/Account/PaymentMethod/List';
 import PlanFormSubmit from '@/containers/Plan/Form/Submit';
 
@@ -70,10 +69,6 @@ export default function Page() {
                 selectedPaymentMethodId={selectedPaymentMethodId}
                 onSelectPaymentMethod={setSelectedPaymentMethodId}
               />
-            </SectionContainer>
-
-            <SectionContainer>
-              <AddPaymentMethodButton />
             </SectionContainer>
           </SectionContainer>
 

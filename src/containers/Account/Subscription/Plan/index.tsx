@@ -6,7 +6,14 @@ import {
   Subscription,
   SubscriptionStatus,
 } from '@fuze-store/fuze-store-shared';
-import { Box, Button, CircularProgress, Stack } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardContent,
+  CircularProgress,
+  Stack,
+  useTheme,
+} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { memo, useCallback } from 'react';
@@ -22,6 +29,7 @@ type Props = {
 };
 
 const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
+  const theme = useTheme();
   const code = subscription?.plan?.code;
 
   const isCanceled = subscription?.status === SubscriptionStatus.CANCELED;
@@ -68,78 +76,94 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   };
 
   return (
-    <Box py={2}>
-      <SectionContainer>
-        <Typography fontWeight={500}>
-          {getAccountSubscriptionLabel(code)}
-        </Typography>
-      </SectionContainer>
+    <Card
+      elevation={0}
+      variant="elevation"
+      sx={{
+        bgcolor: theme.palette.grey[theme.palette.mode === 'dark' ? 800 : 100],
+      }}
+    >
+      <CardContent sx={{ p: 3 }}>
+        <SectionContainer>
+          <Typography variant="h6" fontWeight={500}>
+            {getAccountSubscriptionLabel(code)}
+          </Typography>
+        </SectionContainer>
 
-      {loading ? (
-        <Stack justifyContent="center" alignItems="center">
-          <CircularProgress />
-        </Stack>
-      ) : (
-        <>
-          <SectionContainer>
-            {isCanceled ? (
-              <Typography>Subscription canceled</Typography>
-            ) : (
-              <Typography>{getAccountSubscriptionMessage(code)}</Typography>
-            )}
-
-            {Boolean(subscription?.expiresAt) && subscription?.expiresAt && (
-              <Stack flexWrap="wrap">
-                <Typography>{`Your plan will expire on `}</Typography>
-                <Typography fontWeight="bold">
-                  {formatDate(subscription?.expiresAt, 'MMM dd, yyyy')}
-                </Typography>
-              </Stack>
-            )}
-
-            {Boolean(subscription?.endDate) && subscription?.endDate && (
-              <Typography>
-                {`Your next billing will be on `}
-                <Typography component="span" fontWeight="bold">
-                  {formatDate(subscription?.endDate, 'MMMM dd, yyyy')}
-                </Typography>
-              </Typography>
-            )}
-
-            {subscription?.activeRedemptions &&
-              subscription?.activeRedemptions?.length > 0 && (
-                <Stack flexWrap="wrap">
-                  <Typography>{`You have an active coupon ${subscription?.activeRedemptions[0]?.validUntil ? `valid until ` : ''}`}</Typography>
-                  {Boolean(subscription?.activeRedemptions[0]?.validUntil) &&
-                    subscription?.activeRedemptions[0]?.validUntil && (
-                      <Typography fontWeight="bold">
-                        {formatDate(
-                          subscription?.activeRedemptions[0]?.validUntil,
-                          'MMMM yyyy',
-                        )}
-                      </Typography>
-                    )}
-                </Stack>
-              )}
-          </SectionContainer>
-
-          <Stack direction="row" spacing={1}>
-            {!isCanceled && (
-              <Button
-                sx={{ minWidth: 160 }}
-                LinkComponent={Link}
-                href={paths.accountSubscriptionChoosePlan}
-                variant="contained"
-                disableElevation
-              >
-                Choose Plan
-              </Button>
-            )}
-            {renderAction()}
+        {loading ? (
+          <Stack justifyContent="center" alignItems="center">
+            <CircularProgress />
           </Stack>
-        </>
-      )}
-    </Box>
+        ) : (
+          <>
+            <SectionContainer mb={4}>
+              {isCanceled ? (
+                <Typography>Subscription canceled</Typography>
+              ) : (
+                <Typography>{getAccountSubscriptionMessage(code)}</Typography>
+              )}
+
+              {Boolean(subscription?.expiresAt) && subscription?.expiresAt && (
+                <Typography variant="body2">
+                  {`Your plan will expire on `}
+                  <Typography
+                    component="span"
+                    variant="inherit"
+                    fontWeight="bold"
+                  >
+                    {formatDate(subscription?.expiresAt, 'MMM dd, yyyy')}
+                  </Typography>
+                </Typography>
+              )}
+
+              {Boolean(subscription?.endDate) && subscription?.endDate && (
+                <Typography variant="body2">
+                  {`Your next billing will be on `}
+                  <Typography
+                    component="span"
+                    variant="inherit"
+                    fontWeight="bold"
+                  >
+                    {formatDate(subscription?.endDate, 'MMMM dd, yyyy')}
+                  </Typography>
+                </Typography>
+              )}
+
+              {subscription?.activeRedemptions &&
+                subscription?.activeRedemptions?.length > 0 && (
+                  <Stack flexWrap="wrap">
+                    <Typography>{`You have an active coupon ${subscription?.activeRedemptions[0]?.validUntil ? `valid until ` : ''}`}</Typography>
+                    {Boolean(subscription?.activeRedemptions[0]?.validUntil) &&
+                      subscription?.activeRedemptions[0]?.validUntil && (
+                        <Typography fontWeight="bold">
+                          {formatDate(
+                            subscription?.activeRedemptions[0]?.validUntil,
+                            'MMMM yyyy',
+                          )}
+                        </Typography>
+                      )}
+                  </Stack>
+                )}
+            </SectionContainer>
+
+            <Stack direction="row" spacing={1}>
+              {!isCanceled && (
+                <Button
+                  sx={{ minWidth: 160 }}
+                  LinkComponent={Link}
+                  href={paths.accountSubscriptionChoosePlan}
+                  variant="contained"
+                  disableElevation
+                >
+                  Choose Plan
+                </Button>
+              )}
+              {renderAction()}
+            </Stack>
+          </>
+        )}
+      </CardContent>
+    </Card>
   );
 };
 

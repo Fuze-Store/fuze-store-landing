@@ -14,7 +14,7 @@ export const getAccount = async (): Promise<AccountDetailsResponse> => {
     endpoints.account.me,
     {
       params: {
-        relations: `provider`,
+        relations: `providers`,
       },
     },
   );

@@ -75,7 +75,6 @@ const AccountResendEmailButton = ({
       return (
         <Button
           variant="outlined"
-          size="large"
           loading={isPending}
           disabled={isPending}
           onClick={() => resendEmail()}
