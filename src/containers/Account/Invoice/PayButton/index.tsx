@@ -16,10 +16,14 @@ import {
   DialogTitle,
   Grid,
   IconButton,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  MenuItemProps,
   Stack,
   Typography,
 } from '@mui/material';
-import { memo, useMemo, useState } from 'react';
+import { memo, MouseEvent, useMemo, useState } from 'react';
 
 import usePayInvoice from '@/containers/Account/Invoice/hooks/usePayInvoice';
 import useGetSubscription from '@/containers/Account/Subscription/hooks/useGetSubscription';
@@ -31,7 +35,10 @@ import { paths } from '@/helpers/page.helper';
 
 export type Props = {
   invoice: Invoice;
+  buttonType?: 'menu' | 'button';
+  onClick?: (event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => void;
   ButtonProps?: Partial<ButtonProps>;
+  MenuItemProps?: Partial<MenuItemProps>;
 };
 
 /**
@@ -40,7 +47,13 @@ export type Props = {
  * @category Components
  *
  */
-const PayButton = ({ invoice, ButtonProps }: Props) => {
+const PayButton = ({
+  invoice,
+  buttonType = 'button',
+  onClick,
+  MenuItemProps,
+  ButtonProps,
+}: Props) => {
   const [open, setOpen] = useState(false);
   const { payInvoice, isPending, isSuccess } = usePayInvoice();
   const { data: response } = useGetSubscription({ enabled: open });
@@ -63,8 +76,26 @@ const PayButton = ({ invoice, ButtonProps }: Props) => {
     handleClose();
   };
 
-  return (
-    <>
+  const renderButton = () => {
+    if (buttonType === 'menu') {
+      return (
+        <MenuItem
+          {...MenuItemProps}
+          onClick={(event) => {
+            onClick?.(event);
+            MenuItemProps?.onClick?.(event);
+            handleOpen();
+          }}
+        >
+          <ListItemIcon>
+            <AddCardIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText>Pay Now</ListItemText>
+        </MenuItem>
+      );
+    }
+
+    return (
       <Button
         variant="contained"
         disableElevation
@@ -76,6 +107,12 @@ const PayButton = ({ invoice, ButtonProps }: Props) => {
       >
         Pay Now
       </Button>
+    );
+  };
+
+  return (
+    <>
+      {renderButton()}
 
       <Dialog maxWidth="sm" fullWidth open={open} onClose={handleClose}>
         <DialogTitle>Summary</DialogTitle>

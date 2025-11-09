@@ -105,7 +105,15 @@ export default function InvoiceListFilter() {
     <Box component="form" onSubmit={handleSubmit}>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Stack direction="row" flexWrap="wrap">
-          <FormControl sx={{ minWidth: 200, pb: 2, px: 1 }} size="small">
+          <FormControl
+            sx={{
+              minWidth: 200,
+              pb: 2,
+              px: 1,
+              width: { xs: '100%', sm: 'auto' },
+            }}
+            size="small"
+          >
             <InputLabel id="invoice-status-label">Status</InputLabel>
             <Select
               labelId="invoice-status-label"
@@ -128,7 +136,7 @@ export default function InvoiceListFilter() {
           </FormControl>
 
           <Stack direction="row" flexWrap="wrap">
-            <Box pb={2} px={1}>
+            <Box pb={2} px={1} sx={{ flex: { xs: 1, sm: 'initial' } }}>
               <DatePicker
                 label="Start Date"
                 format="yyyy-MM-dd"
@@ -143,7 +151,7 @@ export default function InvoiceListFilter() {
                   textField: {
                     size: 'small',
                     name: 'start-date',
-                    sx: { width: 160 },
+                    sx: { width: { xs: '100%', sm: 160 } },
                     InputProps: {
                       endAdornment: startDate ? (
                         <IconButton
@@ -161,7 +169,7 @@ export default function InvoiceListFilter() {
               />
             </Box>
 
-            <Box pb={2} px={1}>
+            <Box pb={2} px={1} sx={{ flex: { xs: 1, sm: 'initial' } }}>
               <DatePicker
                 label="End Date"
                 format="yyyy-MM-dd"
@@ -177,7 +185,7 @@ export default function InvoiceListFilter() {
                   textField: {
                     size: 'small',
                     name: 'end-date',
-                    sx: { width: 160 },
+                    sx: { width: { xs: '100%', sm: 160 } },
                     InputProps: {
                       endAdornment: endDate ? (
                         <IconButton

@@ -1,20 +1,28 @@
 /**
- * @module InvoiceDownloadButton
+ * @module DownloadButton
  * @category Containers
  *
  */
 
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import { memo } from 'react';
+import {
+  Button,
+  ButtonProps,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  MenuItemProps,
+} from '@mui/material';
+import { memo, MouseEvent } from 'react';
 
-// import useDownloadInvoice from '@containers/Account/Invoice/hooks/useDownloadInvoice';
 import useDownloadInvoice from '@/containers/Account/Invoice/hooks/useDownloadInvoice';
-
-import { Button, ButtonProps } from '@mui/material';
 
 export type Props = {
   invoiceId: string;
+  buttonType?: 'menu' | 'button';
+  onClick?: (event: MouseEvent<HTMLLIElement, globalThis.MouseEvent>) => void;
   ButtonProps?: Partial<ButtonProps>;
+  MenuItemProps?: Partial<MenuItemProps>;
 };
 
 /**
@@ -23,8 +31,36 @@ export type Props = {
  * @category Components
  *
  */
-const InvoiceDownloadButton = ({ invoiceId, ButtonProps }: Props) => {
+const DownloadButton = ({
+  invoiceId,
+  buttonType = 'button',
+  onClick,
+  MenuItemProps,
+  ButtonProps,
+}: Props) => {
   const { downloadInvoice, isPending } = useDownloadInvoice();
+
+  const handleClick = () => {
+    downloadInvoice(invoiceId);
+  };
+
+  if (buttonType === 'menu') {
+    return (
+      <MenuItem
+        {...MenuItemProps}
+        onClick={(event) => {
+          onClick?.(event);
+          MenuItemProps?.onClick?.(event);
+          handleClick();
+        }}
+      >
+        <ListItemIcon>
+          <CloudDownloadIcon fontSize="small" />
+        </ListItemIcon>
+        <ListItemText>Download</ListItemText>
+      </MenuItem>
+    );
+  }
 
   return (
     <Button
@@ -33,11 +69,11 @@ const InvoiceDownloadButton = ({ invoiceId, ButtonProps }: Props) => {
       startIcon={<CloudDownloadIcon />}
       loading={isPending}
       {...ButtonProps}
-      onClick={() => downloadInvoice(invoiceId)}
+      onClick={handleClick}
     >
       Download
     </Button>
   );
 };
 
-export default memo(InvoiceDownloadButton);
+export default memo(DownloadButton);
