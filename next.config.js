@@ -12,6 +12,9 @@ const nextConfig = {
   modularizeImports: {
     '@mui/icons-material': { transform: '@mui/icons-material/{{member}}' },
   },
+  turbopack: {
+    root: '../../', // adjust this path to point to your actual project root
+  },
   images: {
     // path: '/src/assets/',
     unoptimized: true,
