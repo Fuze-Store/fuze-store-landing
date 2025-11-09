@@ -23,6 +23,7 @@ import InvoicePaymentCard from '@/components/InvoicePaymentCard';
 import SectionContainer from '@/components/SectionContainer';
 import Title from '@/components/Title';
 import InvoiceDownloadButton from '@/containers/Account/Invoice/DownloadButton';
+import PayButton from '@/containers/Account/Invoice/PayButton';
 
 const Stackitem = styled(Box)(({ theme }) => ({
   minWidth: 140,
@@ -39,13 +40,20 @@ export default function Page() {
 
   if (isFetching) {
     return (
-      <Box>
+      <>
         <SectionContainer>
           <GoBackButton />
         </SectionContainer>
 
-        <CircularProgress />
-      </Box>
+        <Box
+          minHeight={240}
+          justifyContent="center"
+          alignItems="center"
+          display="flex"
+        >
+          <CircularProgress />
+        </Box>
+      </>
     );
   }
 
@@ -53,7 +61,16 @@ export default function Page() {
     return (
       <Container maxWidth="lg">
         <SectionContainer>
-          <GoBackButton />
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="space-between"
+            spacing={1}
+          >
+            <GoBackButton />
+
+            <PayButton invoice={invoice} />
+          </Stack>
         </SectionContainer>
 
         <SectionContainer mb={4}>

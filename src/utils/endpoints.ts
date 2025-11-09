@@ -29,6 +29,7 @@ export const endpoints = {
     list: '/api/v1/account/invoices',
     get: '/api/v1/account/invoices/:invoiceId',
     download: '/api/v1/account/invoices/:invoiceId/download',
+    pay: '/api/v1/account/invoices/:invoiceId/pay',
   },
   accountSubscription: {
     get: '/api/v1/account/subscriptions',

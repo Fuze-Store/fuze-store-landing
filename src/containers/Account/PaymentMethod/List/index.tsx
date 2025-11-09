@@ -25,7 +25,7 @@ type Props = {
   paymentMethodId?: string;
 };
 
-const MIN_HEIGHT = 210;
+const MIN_HEIGHT = 160;
 
 const PaymentMethodList = ({
   paymentMethodId,

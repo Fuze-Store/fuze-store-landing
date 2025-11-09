@@ -34,7 +34,7 @@ export default function Layout({ children }: PropsWithChildren) {
             alignItems="stretch"
             sx={{ width: '100%', flexDirection: { xs: 'column', md: 'row' } }}
           >
-            <Box py={4}>
+            <Box py={{ xs: 0, md: 4 }}>
               <Sidebar />
             </Box>
 

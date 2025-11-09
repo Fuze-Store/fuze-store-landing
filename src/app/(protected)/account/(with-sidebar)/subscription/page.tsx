@@ -46,7 +46,9 @@ export default function Page() {
         <Divider sx={{ mb: 2 }} />
 
         <SectionContainer>
-          <AccountSubscriptionCoupon activeRedemptions={[]} />
+          <AccountSubscriptionCoupon
+            activeRedemptions={subscription?.activeRedemptions ?? []}
+          />
         </SectionContainer>
       </SectionContainer>
 
@@ -55,7 +57,9 @@ export default function Page() {
         <Divider sx={{ mb: 2 }} />
 
         <SectionContainer>
-          <PaymentMethodList />
+          <PaymentMethodList
+            paymentMethodId={subscription?.paymentMethodId ?? undefined}
+          />
         </SectionContainer>
 
         <SectionContainer>

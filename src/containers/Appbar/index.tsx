@@ -95,7 +95,7 @@ export default function AppBar() {
   const { logout } = useLogout();
   const { status } = useSession();
   const { setShowDrawer } = useContext(AppContext);
-  const isLgDown = useMediaQuery(theme.breakpoints.down('lg'));
+  const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -240,7 +240,7 @@ export default function AppBar() {
                 <Logo />
               </Link>
 
-              {!isLgDown && (
+              {isLgUp && (
                 <ListGroup className="list-none">
                   {navPages.map((nav) => {
                     const className =
@@ -270,11 +270,11 @@ export default function AppBar() {
                 </ListGroup>
               )}
             </Stack>
-            {!isLgDown && renderAccount()}
+            {isLgUp && renderAccount()}
           </Stack>
         </Container>
 
-        {isLgDown && (
+        {!isLgUp && (
           <Box
             sx={{
               position: 'absolute',

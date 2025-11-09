@@ -17,7 +17,7 @@ import {
 import Box from '@mui/material/Box';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { memo, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 
 import useGetAccount from '@/containers/Account/hooks/useGetAccount';
 
@@ -29,10 +29,18 @@ const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const { data: response } = useGetAccount();
   const isMdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const prevPath = useRef(pathname);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  useEffect(() => {
+    if (prevPath.current !== pathname) {
+      prevPath.current = pathname;
+      toggleDrawer(false)();
+    }
+  }, [pathname]);
 
   const account = response?.data;
 
