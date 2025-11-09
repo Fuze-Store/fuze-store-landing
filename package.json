@@ -38,7 +38,7 @@
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.1.0",
-    "esbuild": "^0.25.12",
+    "esbuild": "^0.26.0",
     "firebase": "^12.5.0",
     "i18next": "^25.6.0",
     "libphonenumber-js": "^1.12.26",
