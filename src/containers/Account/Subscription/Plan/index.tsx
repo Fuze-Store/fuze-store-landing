@@ -98,9 +98,11 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
           <>
             <SectionContainer mb={4}>
               {isCanceled ? (
-                <Typography>Subscription canceled</Typography>
+                <Typography variant="body2">Subscription canceled</Typography>
               ) : (
-                <Typography>{getAccountSubscriptionMessage(code)}</Typography>
+                <Typography variant="body2">
+                  {getAccountSubscriptionMessage(code)}
+                </Typography>
               )}
 
               {Boolean(subscription?.expiresAt) && subscription?.expiresAt && (
