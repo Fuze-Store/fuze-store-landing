@@ -2,15 +2,15 @@
 
 import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { useCallback } from 'react';
 import { toast } from 'sonner';
 
+import { useConfirmationContext } from '@/providers/Confirmation/Context';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { useConfirmationContext } from '@/providers/Confirmation/Context';
-import type { ApiErrorResponse } from '@/types';
 import type { SubcriptionResponse } from '@/types/subscription';
-import { useCallback } from 'react';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useReactivateSubcription = () => {
   const { showConfirmation } = useConfirmationContext();

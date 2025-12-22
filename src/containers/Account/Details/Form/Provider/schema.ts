@@ -4,6 +4,8 @@
  *
  */
 
+import { getMobileObjValue } from '@/helpers/form.helper';
+
 import type { FormInputs } from '@/containers/Account/Details/Form/Provider/types';
 import type { Account } from '@/types/account';
 
@@ -17,4 +19,7 @@ export const getInitialValues = (form?: Account): FormInputs => ({
   username: form?.username ?? '',
   firstName: form?.info.firstName ?? '',
   lastName: form?.info.lastName ?? '',
+  mobile: form?.info?.mobile
+    ? getMobileObjValue(form?.info?.mobile)
+    : { countryCode: '', number: '' },
 });

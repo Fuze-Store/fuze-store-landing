@@ -15,10 +15,16 @@ import useEmblaCarousel from 'embla-carousel-react';
 import React from 'react';
 import './style.css';
 
+type ItemProps = {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+};
+
 const StackItem = styled(Box)(({ theme }) => ({
   minWidth: 0,
   flex: `0 0 100%`,
-  height: 240,
+  // height: 240,
   backgroundColor:
     theme.palette.mode === 'dark'
       ? theme.palette.grey[900]
@@ -26,33 +32,26 @@ const StackItem = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(1),
   marginLeft: theme.spacing(1),
   [theme.breakpoints.up('sm')]: {
-    flex: `0 0 25%`,
+    flex: `0 0 50%`,
   },
   [theme.breakpoints.up('md')]: {
+    flex: `0 0 25%`,
+  },
+  [theme.breakpoints.up('lg')]: {
     flex: `0 0 20%`,
   },
 }));
 
-const Item = ({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) => (
+const Item = ({ icon, title, description }: ItemProps) => (
   <StackItem className="embla__slide_use_case">
     <Stack
       sx={{ p: 3, height: '100%' }}
       direction="column"
-      flexWrap="wrap"
       alignItems="space-between"
     >
       <Box sx={{ flex: 1 }}>
         <Box
           sx={{
-            flex: 1,
             borderRadius: '50%',
             borderWidth: 5,
             borderColor: '#424242',

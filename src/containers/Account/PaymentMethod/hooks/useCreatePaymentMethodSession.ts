@@ -7,8 +7,8 @@ import { useConfirmationContext } from '@/providers/Confirmation/Context';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse } from '@/types';
 import { PaymentMethodSessionResponse } from '@/types/paymentMethod';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useCreatePaymentMethodSession = () => {
   const { showConfirmation } = useConfirmationContext();

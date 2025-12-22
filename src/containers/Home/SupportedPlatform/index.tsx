@@ -1,9 +1,11 @@
 'use client';
 
+import platformImage from '@/images/platform_image.png';
+import { Stack } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import './style.css';
+import Image from 'next/image';
 
 const SupportedPlatform = () => (
   <Container maxWidth="lg">
@@ -40,16 +42,19 @@ const SupportedPlatform = () => (
       </Typography>
     </Box>
 
-    <Box
-      sx={{
-        borderWidth: 1,
-        borderStyle: 'solid',
-        borderColor: '#ccc',
-        borderRadius: 8,
-        height: 440,
-        width: '100%',
-      }}
-    />
+    <Stack sx={{ alignItems: 'center', justifyContent: 'center' }}>
+      <Image
+        src={platformImage}
+        alt="Platform and Devices"
+        style={{
+          maxWidth: 800,
+          width: '100%',
+          height: 'auto',
+          borderRadius: 8,
+          marginBottom: 32,
+        }}
+      />
+    </Stack>
   </Container>
 );
 

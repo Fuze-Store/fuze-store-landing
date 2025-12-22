@@ -1,6 +1,9 @@
-
 import { withSentryConfig } from '@sentry/nextjs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -8,6 +11,9 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   modularizeImports: {
     '@mui/icons-material': { transform: '@mui/icons-material/{{member}}' },
+  },
+  turbopack: {
+    root: '../../', // adjust this path to point to your actual project root
   },
   images: {
     // path: '/src/assets/',

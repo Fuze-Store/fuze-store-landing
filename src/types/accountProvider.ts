@@ -1,12 +1,5 @@
 import { SocialProvider } from '@/enums/socialProviders.enum';
-import { ApiErrorResponse, ApiSuccessResponse, StringArray } from '@/types';
-
-// ---- PASSWORD
-
-export type AccountPasswordResponse = ApiSuccessResponse;
-export type AccountPasswordErrorResponse = ApiErrorResponse & {
-  errors: AccountPasswordPayloadError;
-};
+import { StringArray } from '@/types';
 
 export type AccountProviderPayload = {
   provider: SocialProvider;

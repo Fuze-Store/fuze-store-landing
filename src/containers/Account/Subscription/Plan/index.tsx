@@ -1,29 +1,27 @@
 'use client';
 
 import {
-  Box,
+  formatDate,
+  PlanCode,
+  Subscription,
+  SubscriptionStatus,
+} from '@fuze-store/fuze-store-shared';
+import {
   Button,
   Card,
   CardContent,
   CircularProgress,
   Stack,
+  useTheme,
 } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 import { memo, useCallback } from 'react';
-
-import {
-  SubscriptionPlan,
-  SubscriptionStatus,
-} from '@/enums/subscription.enum';
-import { formatDate } from '@/helpers/date.helper';
-
-import { Subscription } from '@/types/subscription';
 
 import SectionContainer from '@/components/SectionContainer';
 import CancelButton from '@/containers/Account/Subscription/CancelButton';
 import ReactiveButton from '@/containers/Account/Subscription/ReactiveButton';
 import { paths } from '@/helpers/page.helper';
-import Link from 'next/link';
 
 type Props = {
   subscription?: Subscription;
@@ -31,37 +29,35 @@ type Props = {
 };
 
 const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
+  const theme = useTheme();
   const code = subscription?.plan?.code;
 
   const isCanceled = subscription?.status === SubscriptionStatus.CANCELED;
 
-  const getAccountSubscriptionLabel = useCallback(
-    (code?: SubscriptionPlan): string => {
-      if (code === SubscriptionPlan.FREETRIAL) return 'Free Trial';
-      if (code === SubscriptionPlan.BASIC) return 'Basic Plan';
-      if (code === SubscriptionPlan.STARTER) return 'Starter';
-      if (code === SubscriptionPlan.STANDARD) return 'Standard';
-      if (code === SubscriptionPlan.ENTERPRISE) return 'Enterprise';
-      return '';
-    },
-    [],
-  );
+  const getAccountSubscriptionLabel = useCallback((code?: PlanCode): string => {
+    if (code === PlanCode.FREETRIAL) return 'Free Trial';
+    if (code === PlanCode.BASIC) return 'Basic Plan';
+    if (code === PlanCode.STARTER) return 'Starter';
+    if (code === PlanCode.STANDARD) return 'Standard';
+    if (code === PlanCode.PREMIUM) return 'Premium';
+    return '';
+  }, []);
 
   const getAccountSubscriptionMessage = useCallback(
-    (code?: SubscriptionPlan): string => {
-      if (code === SubscriptionPlan.FREETRIAL) {
+    (code?: PlanCode): string => {
+      if (code === PlanCode.FREETRIAL) {
         return 'Your are on the Free Trial. Please select a plan to continue using the features before the trial ends.';
       }
 
-      if (code === SubscriptionPlan.BASIC) {
+      if (code === PlanCode.BASIC) {
         return 'You`re on the basic plan. Upgrade to access more features.';
       }
 
-      if (code === SubscriptionPlan.STARTER) {
+      if (code === PlanCode.STARTER) {
         return 'You`re on the starter plan. Upgrade to access more features.';
       }
 
-      if (code === SubscriptionPlan.STANDARD) {
+      if (code === PlanCode.STANDARD) {
         return 'You`re on the standard plan. Upgrade to access more features.';
       }
 
@@ -71,10 +67,7 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   );
 
   const renderAction = () => {
-    if (
-      code !== SubscriptionPlan.FREETRIAL &&
-      code !== SubscriptionPlan.BASIC
-    ) {
+    if (code !== PlanCode.FREETRIAL && code !== PlanCode.BASIC) {
       if (isCanceled) return <ReactiveButton />;
       return <CancelButton />;
     }
@@ -83,52 +76,84 @@ const AccountSubscriptionPlan = ({ subscription, loading = false }: Props) => {
   };
 
   return (
-    <Card elevation={0}>
-      <CardContent>
+    <Card
+      elevation={0}
+      variant="elevation"
+      sx={{
+        bgcolor: theme.palette.grey[theme.palette.mode === 'dark' ? 800 : 100],
+      }}
+    >
+      <CardContent sx={{ p: 3 }}>
         <SectionContainer>
-          <Typography>{getAccountSubscriptionLabel(code)}</Typography>
+          <Typography variant="h6" fontWeight={500}>
+            {getAccountSubscriptionLabel(code)}
+          </Typography>
         </SectionContainer>
 
         {loading ? (
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
+          <Stack justifyContent="center" alignItems="center">
             <CircularProgress />
-          </Box>
+          </Stack>
         ) : (
           <>
-            <SectionContainer>
+            <SectionContainer mb={4}>
               {isCanceled ? (
-                <Typography>Subscription canceled</Typography>
+                <Typography variant="body2">Subscription canceled</Typography>
               ) : (
-                <Typography>{getAccountSubscriptionMessage(code)}</Typography>
+                <Typography variant="body2">
+                  {getAccountSubscriptionMessage(code)}
+                </Typography>
               )}
-              {subscription?.expiresAt ? (
-                <Typography>
+
+              {Boolean(subscription?.expiresAt) && subscription?.expiresAt && (
+                <Typography variant="body2">
                   {`Your plan will expire on `}
-                  <Typography component="span" fontWeight="bold">
-                    {formatDate(subscription?.expiresAt)}
-                  </Typography>
-                </Typography>
-              ) : (
-                <Typography>
-                  {`Your next billing will be on `}
-                  <Typography component="span" fontWeight="bold">
-                    {formatDate(subscription?.endDate ?? undefined)}
+                  <Typography
+                    component="span"
+                    variant="inherit"
+                    fontWeight="bold"
+                  >
+                    {formatDate(subscription?.expiresAt, 'MMM dd, yyyy')}
                   </Typography>
                 </Typography>
               )}
+
+              {Boolean(subscription?.endDate) && subscription?.endDate && (
+                <Typography variant="body2">
+                  {`Your next billing will be on `}
+                  <Typography
+                    component="span"
+                    variant="inherit"
+                    fontWeight="bold"
+                  >
+                    {formatDate(subscription?.endDate, 'MMMM dd, yyyy')}
+                  </Typography>
+                </Typography>
+              )}
+
+              {subscription?.activeRedemptions &&
+                subscription?.activeRedemptions?.length > 0 && (
+                  <Stack flexWrap="wrap">
+                    <Typography>{`You have an active coupon ${subscription?.activeRedemptions[0]?.validUntil ? `valid until ` : ''}`}</Typography>
+                    {Boolean(subscription?.activeRedemptions[0]?.validUntil) &&
+                      subscription?.activeRedemptions[0]?.validUntil && (
+                        <Typography fontWeight="bold">
+                          {formatDate(
+                            subscription?.activeRedemptions[0]?.validUntil,
+                            'MMMM yyyy',
+                          )}
+                        </Typography>
+                      )}
+                  </Stack>
+                )}
             </SectionContainer>
 
             <Stack direction="row" spacing={1}>
               {!isCanceled && (
                 <Button
+                  sx={{ minWidth: 160 }}
                   LinkComponent={Link}
-                  href={paths.pricing}
+                  href={paths.accountSubscriptionChoosePlan}
                   variant="contained"
                   disableElevation
                 >

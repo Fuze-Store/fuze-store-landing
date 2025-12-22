@@ -1,12 +1,11 @@
-import { SocialProvider } from '@/enums/socialProviders.enum';
-import {
+import type { SocialProvider } from '@/enums/socialProviders.enum';
+import type { StringArray, ValueOf } from '@/types';
+import type { Address } from '@/types/address';
+import type {
   ApiErrorResponse,
   ApiSuccessResponse,
-  StringArray,
-  ValueOf,
-} from '@/types';
-import { Address } from '@/types/address';
-import { Subscription } from '@/types/subscription';
+  Subscription,
+} from '@fuze-store/fuze-store-shared';
 
 // ---- ACCOUNT
 
@@ -30,6 +29,8 @@ export type AccountInfo = {
   fullName: string;
   initials: string;
   lastName: string;
+  mobile: string | null;
+  country: string | null;
 };
 
 export type AccountProvider = {
@@ -64,6 +65,7 @@ export type AccountDetailsPayload = {
   info: {
     firstName: string;
     lastName: string;
+    mobile?: string;
   };
 };
 

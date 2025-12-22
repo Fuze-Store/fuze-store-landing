@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
+import MDXRenderer from '@/MDXRenderer';
 import TermsAndConditionsPage from '@/containers/Terms/Page';
+import { getMDXContent } from '@/utils/mdx';
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = `Terms and Conditions | ${process.env.NEXT_PUBLIC_APP_NAME || 'Fuze Store'}`;
@@ -17,6 +20,18 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function Page() {
-  return <TermsAndConditionsPage />;
+export default async function Page() {
+  let code: string | null = null;
+  try {
+    const result = await getMDXContent('terms-and-conditions');
+    code = result.code;
+  } catch (err) {
+    console.error(err);
+    return notFound(); // 🔥 Show Next.js 404 page
+  }
+  return (
+    <TermsAndConditionsPage>
+      <MDXRenderer code={code} />
+    </TermsAndConditionsPage>
+  );
 }

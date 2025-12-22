@@ -6,6 +6,7 @@
  *
  */
 
+import parsePhoneNumberFromString from 'libphonenumber-js';
 import type { FieldError, MultipleFieldErrors } from 'react-hook-form';
 
 export function getErrorMessages(error?: FieldError): string | string[] {
@@ -21,4 +22,32 @@ export function getErrorMessageTypes(messages: string[]): MultipleFieldErrors {
   });
 
   return types;
+}
+
+export function getMobileObjValue(mobile?: string | null): {
+  countryCode: string;
+  number: string;
+} {
+  if (mobile) {
+    const parsed = parsePhoneNumberFromString(mobile);
+
+    if (parsed) {
+      return {
+        countryCode: `+${parsed.countryCallingCode}`,
+        number: parsed.nationalNumber,
+      };
+    }
+  }
+
+  return { countryCode: '', number: '' };
+}
+
+export function getMobileStringValue(params?: {
+  countryCode?: string;
+  number?: string;
+}): string {
+  if (!params || (params && (!params?.countryCode || !params?.number))) {
+    return '';
+  }
+  return `${params.countryCode}${params.number}`;
 }

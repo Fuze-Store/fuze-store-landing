@@ -3,6 +3,7 @@
 // import { initializeApp } from 'firebase/app';
 import { PropsWithChildren } from 'react';
 
+import ScrollToTop from '@/components/ScrollToTop';
 import Main from '@/containers/Main';
 import { Metadata } from 'next';
 import Script from 'next/script';
@@ -42,6 +43,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+        />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -80,6 +85,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       </head>
       <body id="main">
         <Main>{children}</Main>
+        <ScrollToTop />
 
         {/* Tawk.to Script */}
         <Script id="tawk-to" strategy="afterInteractive">

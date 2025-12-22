@@ -8,8 +8,8 @@ import useAppDispatch from '@/hooks/useAppDispatch';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse } from '@/types';
 import type { SubcriptionResponse } from '@/types/subscription';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 import { resetGlobalFields, updateGlobalFields } from '@/rtk/global/slice';
 

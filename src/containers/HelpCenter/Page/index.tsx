@@ -6,7 +6,7 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import Articles from '@/containers/HelpCenter/Articles';
-import BillingFaq from '@/containers/HelpCenter/BillingFaq';
+import FeatureFaq from '@/containers/HelpCenter/FeatureFaq';
 import GeneralFaq from '@/containers/HelpCenter/GeneralFaq';
 
 export default function Page() {
@@ -25,16 +25,6 @@ export default function Page() {
         <Toolbar />
         <Container maxWidth="lg">
           <Box textAlign="center">
-            <Typography
-              textAlign="center"
-              component="h3"
-              color="primary"
-              fontWeight="bold"
-              gutterBottom
-            >
-              Help Center
-            </Typography>
-
             <Typography
               textAlign="center"
               component="h2"
@@ -76,7 +66,7 @@ export default function Page() {
         component="section"
         sx={(theme) => ({ py: { xs: theme.spacing(4), sm: theme.spacing(8) } })}
       >
-        <BillingFaq />
+        <FeatureFaq />
       </Box>
 
       <Divider />

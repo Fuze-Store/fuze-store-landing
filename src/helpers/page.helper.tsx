@@ -24,12 +24,15 @@ export const paths = {
   accountInfo: '/account/info',
   accountEdit: '/account/edit',
   accountInvoice: '/account/invoices',
+  accountInvoiceDetails: '/account/invoices/[id]',
   accountAddress: '/account/address',
   accountChangeEmail: '/account/change-email',
   accountSecurity: '/account/security',
   accountSecurityPassword: '/account/security/password',
   accountSubscription: '/account/subscription',
-  accountSubscriptionChoosePlan: '/account/subscription/plans',
+  accountSubscriptionChoosePlan: '/account/subscription/choose-plan',
+  accountSubscriptionChoosePlanSummary:
+    '/account/subscription/choose-plan/[id]',
   accountPaymentMethodDetails: '/account/payment-methods/[id]',
 };
 
@@ -66,26 +69,26 @@ export const accountPages = [
   {
     path: paths.account,
     label: 'Account',
-    icon: <PersonIcon />,
+    icon: <PersonIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountSubscription,
     label: 'Subscription',
-    icon: <CurrencyExchangeIcon />,
+    icon: <CurrencyExchangeIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountSecurity,
     label: 'Security',
-    icon: <SecurityIcon />,
+    icon: <SecurityIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountAddress,
     label: 'Address',
-    icon: <BusinessIcon />,
+    icon: <BusinessIcon fontSize="small" color="secondary" />,
   },
   {
     path: paths.accountInvoice,
     label: 'Invoices',
-    icon: <ReceiptIcon />,
+    icon: <ReceiptIcon fontSize="small" color="secondary" />,
   },
 ];

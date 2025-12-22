@@ -38,7 +38,7 @@ const RegisterFormProvider = ({
     defaultValues: getInitialValues(),
     resolver: zodResolver(schema),
   });
-  const { handleSubmit, setError, reset } = form;
+  const { handleSubmit, setError } = form;
 
   useEffect(() => {
     if (errors) generateFormErrors(errors, setError);
@@ -83,6 +83,11 @@ function generateFormErrors(
   if (errors.username && errors.username.length > 0) {
     setError('username', {
       types: getErrorMessageTypes(errors.username),
+    });
+  }
+  if (errors.couponCode && errors.couponCode.length > 0) {
+    setError('couponCode', {
+      types: getErrorMessageTypes(errors.couponCode),
     });
   }
 }

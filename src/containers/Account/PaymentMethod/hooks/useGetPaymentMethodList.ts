@@ -8,8 +8,8 @@ import { CACHE_TAG } from '@/enums/cache.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import type { ApiErrorResponse } from '@/types';
 import type { PaymentMethodListResponse } from '@/types/paymentMethod';
+import type { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 const useGetPaymentMethodList = () =>
   useQuery<PaymentMethodListResponse, AxiosError<ApiErrorResponse>>({

@@ -4,7 +4,7 @@
  *
  */
 
-import { Grid, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
@@ -28,36 +28,18 @@ const ContactUsForm = () => {
   return (
     <>
       <SectionContainer>
-        <Grid container spacing={1}>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <Label htmlFor="first-name" error={!!errors.firstName}>
-              First Name *
-            </Label>
-            <TextField
-              type="text"
-              id="first-name"
-              required
-              fullWidth
-              {...register('firstName')}
-              error={!!errors.firstName}
-              helperText={errors.firstName?.message}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
-            <Label htmlFor="last-name" error={!!errors.lastName}>
-              Last Name *
-            </Label>
-            <TextField
-              type="text"
-              id="last-name"
-              required
-              fullWidth
-              {...register('lastName')}
-              error={!!errors.lastName}
-              helperText={errors.lastName?.message}
-            />
-          </Grid>
-        </Grid>
+        <Label htmlFor="name" error={!!errors.name}>
+          Name *
+        </Label>
+        <TextField
+          type="text"
+          id="name"
+          required
+          fullWidth
+          {...register('name')}
+          error={!!errors.name}
+          helperText={errors.name?.message}
+        />
       </SectionContainer>
 
       <SectionContainer>

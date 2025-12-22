@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 import RegisterPage from '@/containers/Register/Page';
 
@@ -17,5 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page() {
-  return <RegisterPage />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RegisterPage />
+    </Suspense>
+  );
 }

@@ -1,6 +1,6 @@
-import { SocialProvider } from '@/enums/socialProviders.enum';
-import { Address } from '@/types/address';
-import { Subscription } from '@/types/subscription';
+import type { SocialProvider } from '@/enums/socialProviders.enum';
+import type { Address } from '@/types/address';
+import type { Subscription } from '@fuze-store/fuze-store-shared';
 
 export interface User {
   id: string;

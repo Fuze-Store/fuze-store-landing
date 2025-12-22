@@ -12,7 +12,10 @@ import { paths } from '@/helpers/page.helper';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiErrorResponse, ApiSuccessResponse } from '@/types';
+import {
+  ApiErrorResponse,
+  ApiSuccessResponse,
+} from '@fuze-store/fuze-store-shared';
 
 export const logoutFn = async (): Promise<ApiSuccessResponse> => {
   const response = await axiosPrivate.post<ApiSuccessResponse>(

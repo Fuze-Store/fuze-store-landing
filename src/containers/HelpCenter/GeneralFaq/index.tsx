@@ -17,21 +17,18 @@ const GeneralFaq = () => (
       </Typography>
     </Box>
 
-    <Accordion defaultExpanded>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls="panel1-content"
-        id="panel1-header"
-      >
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Typography variant="h6" fontWeight={600} component="span">
-          Can I upgrade anytime?
+          What is Fuze Store?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
+        Our POS system is an all-in-one platform for managing sales, inventory,
+        staff, and stores—built for food, small stores, and service businesses.
       </AccordionDetails>
     </Accordion>
+
     <Accordion>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -39,14 +36,15 @@ const GeneralFaq = () => (
         id="panel2-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Is there a trial period?
+          Is it cloud-based or offline?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
+        It’s cloud-based, so you can access your data anytime, anywhere. Offline
+        features are not yet available.
       </AccordionDetails>
     </Accordion>
+
     <Accordion>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -54,14 +52,15 @@ const GeneralFaq = () => (
         id="panel3-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Are there hidden fees?
+          Does it work on mobile or tablet?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
+        Yes, it works seamlessly on tablets, desktops, and mobile devices using
+        our responsive web app or mobile app version.
       </AccordionDetails>
     </Accordion>
+
     <Accordion>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
@@ -69,12 +68,44 @@ const GeneralFaq = () => (
         id="panel4-header"
       >
         <Typography variant="h6" fontWeight={600} component="span">
-          Do I need a credit card to start?
+          Can I manage multiple stores?
         </Typography>
       </AccordionSummary>
       <AccordionDetails>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-        malesuada lacus ex, sit amet blandit leo lobortis eget.
+        Absolutely! You can manage multiple stores under one account, each with
+        separate settings, staff, and reports.
+      </AccordionDetails>
+    </Accordion>
+
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel4-content"
+        id="panel4-header"
+      >
+        <Typography variant="h6" fontWeight={600} component="span">
+          Do you offer customer support?
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        Yes. You can reach us via chat, email, or through our social media
+        pages.
+      </AccordionDetails>
+    </Accordion>
+
+    <Accordion>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel4-content"
+        id="panel4-header"
+      >
+        <Typography variant="h6" fontWeight={600} component="span">
+          Is there a user guide or documentation?
+        </Typography>
+      </AccordionSummary>
+      <AccordionDetails>
+        Yes, we provide detailed documentation and user guides to help you
+        navigate our system.
       </AccordionDetails>
     </Accordion>
   </Container>

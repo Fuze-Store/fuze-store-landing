@@ -1,5 +1,8 @@
-import { Box, styled } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
+import { memo } from 'react';
 
-export default styled(Box)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-}));
+const SectionContainer = (props?: BoxProps) => {
+  return <Box mb={2} {...props} />;
+};
+
+export default memo(SectionContainer);

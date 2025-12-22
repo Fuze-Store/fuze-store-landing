@@ -14,6 +14,7 @@ import {
   FormProviderProps,
   schema,
 } from '@/containers/ContactUs/Form/Provider/types';
+import useSendQuery from '@/containers/ContactUs/hooks/useSendQuery';
 
 /**
  * ContactUs Form Provider
@@ -27,6 +28,8 @@ const ContactUsFormProvider = ({
   children,
   onSubmit: onFormSubmit,
 }: FormProviderProps) => {
+  const { sendQuery } = useSendQuery();
+
   const form = useForm<FormInputs>({
     mode: 'onSubmit',
     criteriaMode: 'all',
@@ -36,10 +39,11 @@ const ContactUsFormProvider = ({
   const { handleSubmit } = form;
 
   const onSubmit = useCallback(
-    (params: FormInputs) => {
+    async (params: FormInputs) => {
       onFormSubmit?.(params);
+      await sendQuery(params);
     },
-    [onFormSubmit],
+    [onFormSubmit, sendQuery],
   );
 
   return (

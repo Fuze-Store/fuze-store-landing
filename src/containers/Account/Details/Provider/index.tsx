@@ -2,12 +2,12 @@
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import GoogleIcon from '@mui/icons-material/Google';
-import { Card, CardContent, Chip, Grid, Stack } from '@mui/material';
+import { Chip, Grid, Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import { memo, useCallback } from 'react';
 
 import { SocialProvider } from '@/enums/socialProviders.enum';
-import { SOCIAL_LINKS } from '@/utils/constants';
+import { SOCIAL_PROVIDERS } from '@/utils/constants';
 
 import type { AccountProvider } from '@/types/account';
 
@@ -18,9 +18,10 @@ type Props = {
   providers?: AccountProvider[];
 };
 
-const AccountDetailsProvider = ({ providers }: Props) => {
+const AccountDetailsProvider = ({ providers = [] }: Props) => {
   const isLinked = useCallback(
     (provider: SocialProvider) =>
+      providers &&
       providers?.findIndex((item) => item.provider === provider) !== -1,
     [providers],
   );
@@ -44,41 +45,29 @@ const AccountDetailsProvider = ({ providers }: Props) => {
   };
 
   return (
-    <Card elevation={0} variant="outlined">
-      <CardContent>
-        <Typography variant="body2">Social</Typography>
-      </CardContent>
-      <CardContent>
-        <Stack spacing={1}>
-          {SOCIAL_LINKS.map((linkProvider) => {
-            const linked = isLinked(linkProvider);
-            return (
-              <Grid
-                key={linkProvider}
-                alignItems="center"
-                container
-                spacing={1}
-              >
-                <Grid size={{ xs: 12, sm: 'grow' }}>
-                  <Stack direction="row" alignItems="center" spacing={2}>
-                    {getProviderIcon(linkProvider)}
-                    <Typography>{getProviderLabel(linkProvider)}</Typography>
-                    {linked && <Chip label="Linked" color="success" />}
-                  </Stack>
-                </Grid>
-                <Grid size={{ xs: 12, sm: 'auto' }}>
-                  {linked ? (
-                    <UnlinkProviderButton provider={linkProvider} />
-                  ) : (
-                    <LinkProviderButton provider={linkProvider} />
-                  )}
-                </Grid>
-              </Grid>
-            );
-          })}
-        </Stack>
-      </CardContent>
-    </Card>
+    <Stack spacing={1}>
+      {SOCIAL_PROVIDERS.map((linkProvider) => {
+        const linked = isLinked(linkProvider);
+        return (
+          <Grid key={linkProvider} alignItems="center" container spacing={1}>
+            <Grid size={{ xs: 12, sm: 'grow' }}>
+              <Stack direction="row" alignItems="center" spacing={2}>
+                {getProviderIcon(linkProvider)}
+                <Typography>{getProviderLabel(linkProvider)}</Typography>
+                {linked && <Chip label="Linked" size="small" color="success" />}
+              </Stack>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 'auto' }}>
+              {linked ? (
+                <UnlinkProviderButton provider={linkProvider} />
+              ) : (
+                <LinkProviderButton provider={linkProvider} />
+              )}
+            </Grid>
+          </Grid>
+        );
+      })}
+    </Stack>
   );
 };
 

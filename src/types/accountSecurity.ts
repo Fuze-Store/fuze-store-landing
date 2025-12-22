@@ -1,8 +1,8 @@
-import { ApiErrorResponse, ApiSuccessResponse, StringArray } from '@/types';
+import { StringArray } from '@/types';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
 // ---- PASSWORD
 
-export type AccountPasswordResponse = ApiSuccessResponse;
 export type AccountPasswordErrorResponse = ApiErrorResponse & {
   errors: AccountPasswordPayloadError;
 };

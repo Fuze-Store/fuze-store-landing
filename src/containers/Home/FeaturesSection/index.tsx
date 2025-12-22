@@ -1,6 +1,5 @@
 'use client';
 
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import BusinessIcon from '@mui/icons-material/Business';
@@ -221,23 +220,6 @@ const HomeFeatures = () => (
             </Typography>
             <Typography variant="subtitle1">
               Fine-tuned access control per staff or role for store security.
-            </Typography>
-          </Stack>
-        </Stack>
-      </Grid>
-
-      <Grid size={{ xs: 12, sm: 6 }}>
-        <Stack direction="row" flexWrap="nowrap">
-          <Box mr={2} mt={1}>
-            <AccessTimeFilledIcon sx={{ width: 48, height: 48 }} />
-          </Box>
-          <Stack direction="column" sx={{ flex: 1 }}>
-            <Typography variant="h6" fontWeight={600}>
-              Store Sessions
-            </Typography>
-            <Typography variant="subtitle1">
-              Open/close store shifts and record cash drawer sessions
-              accurately.
             </Typography>
           </Stack>
         </Stack>

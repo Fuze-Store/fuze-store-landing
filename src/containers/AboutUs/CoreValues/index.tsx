@@ -27,8 +27,8 @@ const CoreValues = () => (
           color="textSecondary"
           fontWeight={400}
         >
-          Whether you’re at the counter, on the floor, or offsite — our POS
-          system keeps you connected and in control across every screen.
+          At Fuze Store, our work is guided by core values that shape every
+          decision:
         </Typography>
       </Box>
     </Container>
@@ -36,7 +36,7 @@ const CoreValues = () => (
     <Container maxWidth="lg">
       <Grid container direction="row" spacing={2}>
         <Grid size={{ xs: 6, md: 3 }}>
-          <Card sx={(theme) => ({ flex: 1, height: 290 })}>
+          <Card sx={(theme) => ({ flex: 1, height: 160 })}>
             <Stack
               sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
               direction="column"
@@ -44,11 +44,10 @@ const CoreValues = () => (
             >
               <Box>
                 <Typography variant="h6" fontWeight={500} gutterBottom>
-                  Customer-First Always
+                  Innovation with Purpose
                 </Typography>
                 <Typography fontWeight={500} color="text.secondary">
-                  We succeed when our customers do. Every feature we build,
-                  every improvement we make, starts with your needs in mind.
+                  We create tools that solve real challenges.
                 </Typography>
               </Box>
             </Stack>
@@ -56,7 +55,7 @@ const CoreValues = () => (
         </Grid>
 
         <Grid size={{ xs: 6, md: 3 }}>
-          <Card sx={(theme) => ({ flex: 1, height: 290 })}>
+          <Card sx={(theme) => ({ flex: 1, height: 160 })}>
             <Stack
               sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
               direction="column"
@@ -64,11 +63,10 @@ const CoreValues = () => (
             >
               <Box>
                 <Typography variant="h6" fontWeight={500} gutterBottom>
-                  Keep It Simple
+                  Simplicity First
                 </Typography>
                 <Typography fontWeight={500} color="text.secondary">
-                  Powerful doesn’t have to be complicated. We build intuitive
-                  tools that are easy to learn and even easier to love.
+                  Every feature should make running a business easier.
                 </Typography>
               </Box>
             </Stack>
@@ -76,7 +74,7 @@ const CoreValues = () => (
         </Grid>
 
         <Grid size={{ xs: 6, md: 3 }}>
-          <Card sx={(theme) => ({ flex: 1, height: 290 })}>
+          <Card sx={(theme) => ({ flex: 1, height: 160 })}>
             <Stack
               sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
               direction="column"
@@ -84,11 +82,10 @@ const CoreValues = () => (
             >
               <Box>
                 <Typography variant="h6" fontWeight={500} gutterBottom>
-                  Move with Purpose
+                  Empowerment for All
                 </Typography>
                 <Typography fontWeight={500} color="text.secondary">
-                  We’re here to help businesses grow — and we don’t waste time.
-                  We ship quickly, listen constantly, and evolve fast.
+                  We help local entrepreneurs thrive in the digital world.
                 </Typography>
               </Box>
             </Stack>
@@ -96,7 +93,7 @@ const CoreValues = () => (
         </Grid>
 
         <Grid size={{ xs: 6, md: 3 }}>
-          <Card sx={(theme) => ({ flex: 1, height: 290 })}>
+          <Card sx={(theme) => ({ flex: 1, height: 160 })}>
             <Stack
               sx={{ p: 3, display: 'flex', flex: 1, height: '100%' }}
               direction="column"
@@ -104,11 +101,10 @@ const CoreValues = () => (
             >
               <Box>
                 <Typography variant="h6" fontWeight={500} gutterBottom>
-                  Grow Together
+                  Trust and Transparency
                 </Typography>
                 <Typography fontWeight={500} color="text.secondary">
-                  Whether you’re running one store or scaling to many, we grow
-                  with you — supporting every step of your journey.
+                  We grow only when our users succeed.
                 </Typography>
               </Box>
             </Stack>

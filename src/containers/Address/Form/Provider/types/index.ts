@@ -16,14 +16,15 @@ export const schema = z.object({
     .string()
     .min(1, 'Street is required')
     .max(255, 'Street cannot exceed 255 characters'),
-  barangay: z
+  address2: z.string().max(255, 'Address line 2 cannot exceed 255 characters'),
+  neighborhood: z
     .string()
-    .min(1, 'Barangay is required')
-    .max(255, 'Barangay cannot exceed 255 characters'),
+    .min(1, 'Neighborhood is required')
+    .max(255, 'Neighborhood cannot exceed 255 characters'),
   city: z
     .string()
     .min(1, 'City is required')
-    .max(255, 'Barangay cannot exceed 255 characters'),
+    .max(255, 'Neighborhood cannot exceed 255 characters'),
   province: z
     .string()
     .min(1, 'Province is required')

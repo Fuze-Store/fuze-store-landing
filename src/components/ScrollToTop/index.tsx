@@ -1,17 +1,17 @@
 'use client';
 
-import Box from '@mui/material/Box';
-import Fade from '@mui/material/Fade';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import * as React from 'react';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Box, Fab, Fade, useScrollTrigger } from '@mui/material';
+import React, { memo } from 'react';
 
-interface Props {
-  children: React.ReactElement;
-}
+type Props = {
+  target?: Node | Window | null | undefined;
+};
 
-export default function ScrollTop(props: Props) {
-  const { children } = props;
+function ScrollTop(props: Props) {
+  const { target } = props;
   const trigger = useScrollTrigger({
+    target,
     disableHysteresis: true,
     threshold: 100,
   });
@@ -22,10 +22,7 @@ export default function ScrollTop(props: Props) {
     ).querySelector('#main');
 
     if (anchor) {
-      anchor.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
+      anchor.scrollIntoView({ block: 'start' });
     }
   };
 
@@ -34,10 +31,14 @@ export default function ScrollTop(props: Props) {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
+        sx={{ position: 'fixed', bottom: 16, left: 16, zIndex: 999 }}
       >
-        {children}
+        <Fab size="small" aria-label="scroll back to top">
+          <KeyboardArrowUpIcon />
+        </Fab>
       </Box>
     </Fade>
   );
 }
+
+export default memo(ScrollTop);

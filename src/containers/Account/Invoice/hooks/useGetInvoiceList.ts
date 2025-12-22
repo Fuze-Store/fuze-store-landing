@@ -7,20 +7,43 @@ import { CACHE_TAG } from '@/enums/cache.enum';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiErrorResponse, FilterParams } from '@/types';
+import { FilterParams } from '@/types';
 import { InvoiceListResponse } from '@/types/invoice';
+import { ApiErrorResponse } from '@fuze-store/fuze-store-shared';
 
-const useGetInvoiceList = (filters: FilterParams) =>
+type Params = {
+  statuses?: string;
+  startDate?: string;
+  endDate?: string;
+} & FilterParams;
+
+const useGetInvoiceList = ({
+  page,
+  perPage,
+  statuses,
+  startDate,
+  endDate,
+}: Params) =>
   useQuery<InvoiceListResponse, AxiosError<ApiErrorResponse>>({
-    queryKey: [CACHE_TAG.ACCOUNT_INVOICES, filters.page, filters.perPage],
+    queryKey: [
+      CACHE_TAG.ACCOUNT_INVOICES,
+      page,
+      perPage,
+      statuses,
+      startDate,
+      endDate,
+    ],
     queryFn: async (): Promise<InvoiceListResponse> => {
       const response = await axiosPrivate.get<InvoiceListResponse>(
         endpoints.accountInvoice.list,
         {
           params: {
-            page: filters.page,
-            perPage: filters.perPage,
             relations: 'payment',
+            page,
+            perPage,
+            ...(statuses && { statuses }),
+            ...(startDate && { startDate }),
+            ...(endDate && { endDate }),
           },
         },
       );

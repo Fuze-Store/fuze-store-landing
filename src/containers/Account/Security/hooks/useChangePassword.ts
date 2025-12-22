@@ -6,11 +6,11 @@ import { AxiosError } from 'axios';
 import { axiosPrivate } from '@/utils/axios';
 import endpoints from '@/utils/endpoints';
 
-import { ApiSuccessResponse } from '@/types';
 import type {
   AccountPasswordErrorResponse,
   AccountPasswordPayload,
 } from '@/types/accountSecurity';
+import { ApiSuccessResponse } from '@fuze-store/fuze-store-shared';
 
 const useChangePassword = () => {
   const { mutateAsync, ...rest } = useMutation<

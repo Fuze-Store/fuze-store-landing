@@ -47,6 +47,7 @@ export const lightTheme = createTheme({
       styleOverrides: {
         root: ({ ownerState }) => ({
           borderRadius: 50,
+          minWidth: 120,
           textTransform: 'none',
         }),
       },

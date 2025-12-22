@@ -4,18 +4,16 @@
  *
  */
 
-import { Box, Grid, styled, TextField, Typography } from '@mui/material';
+import { Box, Grid, TextField, Typography } from '@mui/material';
 import { memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { FormInputs } from '@/containers/Register/Form/Provider/types';
+import type { FormInputs } from '@/containers/Register/Form/Provider/types';
 
 import FieldErrorMessage from '@/components/FieldErrorMessage';
 import Label from '@/components/Label';
-
-const SectionContainer = styled(Box)(({ theme }) => ({
-  marginBottom: theme.spacing(2),
-}));
+import SectionContainer from '@/components/SectionContainer';
+import CouponField from '@/containers/Coupon/ValidateField';
 
 /**
  * Register Form
@@ -42,7 +40,6 @@ const RegisterForm = () => {
           fullWidth
           {...register('username')}
           error={!!errors.username}
-          helperText={errors.username?.message}
         />
         <FieldErrorMessage name="username" errors={errors} />
 
@@ -72,7 +69,6 @@ const RegisterForm = () => {
               fullWidth
               {...register('firstName')}
               error={!!errors.firstName}
-              helperText={errors.firstName?.message}
             />
             <FieldErrorMessage name="firstName" errors={errors} />
           </Grid>
@@ -119,7 +115,6 @@ const RegisterForm = () => {
           fullWidth
           {...register('password')}
           error={!!errors.password}
-          helperText={errors.password?.message}
         />
         <FieldErrorMessage name="password" errors={errors} />
 
@@ -150,9 +145,12 @@ const RegisterForm = () => {
           fullWidth
           {...register('confirmPassword')}
           error={!!errors.confirmPassword}
-          helperText={errors.confirmPassword?.message}
         />
         <FieldErrorMessage name="confirmPassword" errors={errors} />
+      </SectionContainer>
+
+      <SectionContainer>
+        <CouponField name="couponCode" label="Voucher Code" required={false} />
       </SectionContainer>
     </>
   );
