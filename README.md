@@ -19,29 +19,33 @@ Fuze Store is a modern SaaS Point of Sale solution designed to help businesses m
 
 To use or contribute to this landing page:
 
-1. **Clone the Repository:**
+**Clone the Repository:**
+
  ```bash
  git clone https://github.com/your-username/fuze-store-landing.git
  cd fuze-store-landing
  ```
 
-2. **Install Dependencies:**
+**Install Dependencies:**
+
  ```bash
  npm install
  # or
  yarn install
  ```
 
-3. **Run the Development Server:**
+**Run the Development Server:**
+
  ```bash
  npm run dev
  # or
  yarn dev
  ```
 
-	The app will be available at [http://localhost:3000](http://localhost:3000).
+ The app will be available at [http://localhost:3000](http://localhost:3000).
 
-4. **Build for Production:**
+**Build for Production:**
+
  ```bash
  npm run build
  npm start
